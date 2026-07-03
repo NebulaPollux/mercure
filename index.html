@@ -9,10 +9,7 @@
     <meta property="og:type" content="website">
     <meta property="og:title" content="Mercure — Post-Production Specialist">
     <meta property="og:description" content="Portfólio de pós-produção audiovisual, edição de vídeo sênior e motion design.">
-    <!-- ATENÇÃO: atualize para a URL real após o deploy no Vercel (ex: https://mercure.vercel.app) -->
     <meta property="og:url" content="https://mercure.com.br">
-    <!-- ATENÇÃO: og:image precisa ser uma URL ABSOLUTA (https://...) — redes sociais não
-         resolvem caminhos relativos como "input_file_3.png". Troque assim que tiver o domínio final. -->
     <meta property="og:image" content="input_file_3.png">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="theme-color" content="#12173A">
@@ -21,13 +18,11 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
 
-    <!-- Favicon Oficial Mercure usando seu Logotipo -->
     <link rel="icon" type="image/png" href="input_file_3.png">
 
     <style>
-        /* --- VARIÁVEIS DE ESTILO MERCURE (Nova Identidade Visual) --- */
+        /* --- VARIÁVEIS DE ESTILO MERCURE --- */
         :root {
-            /* Cores da Identidade Mercure */
             --color-indigo: #4D4999;
             --color-lilas: #6E4A8E;
             --color-turquesa: #1FC29B;
@@ -35,31 +30,29 @@
             --color-branco-gelo: #F5F4FA;
             --color-grafite: #17151F;
 
-            /* Mapeamento para o Layout */
-            --mercure-bg: var(--color-marinho);               /* Azul-marinho para a base escura do site */
-            --mercure-card-bg: var(--color-grafite);           /* Grafite para containers e cards */
-            --mercure-accent: var(--color-turquesa);           /* Turquesa para CTAs, links e badges */
-            --mercure-border: var(--color-indigo);             /* Índigo para bordas e divisão estrutural */
-            --mercure-text: var(--color-branco-gelo);          /* Branco gelo para leitura primária */
-            --mercure-text-secondary: rgba(245, 244, 250, 0.7); /* Branco gelo translúcido para textos de apoio */
-            --mercure-text-muted: var(--color-indigo);         /* Índigo para elementos silenciados */
-            --mercure-backdrop: rgba(18, 23, 58, 0.94);        /* Azul-marinho translúcido para o modal */
+            --mercure-bg: var(--color-marinho);
+            --mercure-card-bg: var(--color-grafite);
+            --mercure-accent: var(--color-turquesa);
+            --mercure-border: var(--color-indigo);
+            --mercure-text: var(--color-branco-gelo);
+            --mercure-text-secondary: rgba(245, 244, 250, 0.7);
+            --mercure-text-muted: var(--color-indigo);
+            --mercure-backdrop: rgba(18, 23, 58, 0.94);
             --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             --font-serif: 'IBM Plex Sans', var(--font-sans);
             --transition-smooth: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
         }
 
-        /* --- CONFIGURAÇÕES GERAIS (Sharp: Sem cantos arredondados) --- */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            border-radius: 0 !important; /* Estilo geométrico e minimalista */
+            border-radius: 0 !important;
         }
 
         html {
             scroll-behavior: smooth;
-            scroll-padding-top: 80px; /* Previne que o header sticky cubra o título das seções ao navegar pelos links */
+            scroll-padding-top: 80px;
         }
 
         body {
@@ -71,7 +64,6 @@
             -webkit-font-smoothing: antialiased;
         }
 
-        /* Container padrão para centralização de conteúdo */
         .container {
             max-width: 1200px;
             margin: 0 auto;
@@ -85,32 +77,31 @@
             }
         }
 
-        /* --- HEADER TRANSLÚCIDO FIXADO (Efeito Glassmorphism Posicionado) --- */
+        /* --- HEADER TRANSLÚCIDO COM MENU HAMBÚRGUER --- */
         header {
-            position: sticky; 
+            position: sticky;
             top: 0;
-            margin-top: 270px; /* Posiciona o header na transição exata do banner (350px de altura total - 80px do header) */
-            height: 80px;      /* Altura fixa para garantir precisão no cálculo do scroll */
+            margin-top: 270px;
+            height: 80px;
             left: 0;
             width: 100%;
-            z-index: 100; 
-            background: rgba(18, 23, 58, 0.55); /* Azul-marinho translúcido */
-            backdrop-filter: blur(12px); 
+            z-index: 100;
+            background: rgba(18, 23, 58, 0.55);
+            backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
             transition: var(--transition-smooth);
         }
 
-        /* Estado ativo no scroll: escurece suavemente ao atingir o topo e se tornar sticky */
         header.scrolled {
-            background: rgba(18, 23, 58, 0.9); 
+            background: rgba(18, 23, 58, 0.9);
             border-bottom: 1px solid rgba(255, 255, 255, 0.15);
         }
 
         .header-container {
             max-width: 1400px;
             margin: 0 auto;
-            padding: 0 2rem; /* Padding vertical controlado pela altura do header e align-items */
+            padding: 0 2rem;
             height: 100%;
             display: flex;
             justify-content: space-between;
@@ -124,9 +115,8 @@
             color: #ffffff;
         }
 
-        /* Estilização do logotipo oficial alinhado com a identidade */
         .logo-img {
-            height: 33px; 
+            height: 45px; /* Aumentado de 33px para 45px */
             width: auto;
             object-fit: contain;
             display: block;
@@ -135,20 +125,44 @@
         .logo-text {
             font-weight: 700;
             letter-spacing: 0.15em;
-            font-size: 0.95rem; 
+            font-size: 0.95rem;
         }
 
-        .header-right {
-            display: flex;
-            align-items: center;
+        /* Botão hambúrguer */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 8px 4px;
+            z-index: 110;
+            background: transparent;
+            border: none;
+        }
+        .hamburger span {
+            display: block;
+            width: 28px;
+            height: 2px;
+            background: #ffffff;
+            transition: var(--transition-smooth);
+            transform-origin: center;
+        }
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
         }
 
+        /* Navegação desktop */
         .header-nav {
             display: flex;
             gap: 30px;
             align-items: center;
         }
-
         .header-nav a {
             color: #ffffff;
             text-decoration: none;
@@ -157,12 +171,10 @@
             letter-spacing: 0.15em;
             transition: var(--transition-smooth);
         }
-
         .header-nav a:hover {
-            color: var(--mercure-accent); /* Hover para turquesa */
+            color: var(--mercure-accent);
         }
 
-        /* Botão Minimalista de Troca de Idioma */
         .lang-btn {
             background: transparent;
             border: 1px solid var(--mercure-border);
@@ -174,57 +186,85 @@
             transition: var(--transition-smooth);
             letter-spacing: 0.1em;
         }
-
         .lang-btn:hover {
             border-color: var(--mercure-accent);
             color: var(--mercure-accent);
         }
 
-        @media (max-width: 1024px) {
-            .logo-text {
-                font-size: 0.8rem;
-            }
-            .logo-img {
-                height: 28px;
-            }
+        /* Menu mobile (dropdown) */
+        .mobile-menu {
+            display: none;
+            position: absolute;
+            top: 80px;
+            left: 0;
+            width: 100%;
+            background: rgba(18, 23, 58, 0.96);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            padding: 1.5rem 2rem;
+            flex-direction: column;
+            gap: 1.2rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.4);
+            z-index: 99;
+        }
+        .mobile-menu.open {
+            display: flex;
+        }
+        .mobile-menu a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            transition: var(--transition-smooth);
+            padding: 0.4rem 0;
+        }
+        .mobile-menu a:hover {
+            color: var(--mercure-accent);
+        }
+        .mobile-menu .lang-btn {
+            align-self: flex-start;
+            margin-top: 0.2rem;
         }
 
         @media (max-width: 768px) {
+            .hamburger {
+                display: flex;
+            }
             .header-nav {
-                display: flex; 
-                gap: 15px;
+                display: none;
             }
             .logo-text {
-                display: none; /* Oculta em mobile para priorizar links */
+                display: none;
             }
             .logo-img {
-                height: 25px;
+                height: 38px;
             }
         }
 
         /* --- BANNER HERO PARALLAX --- */
         .parallax-banner {
-            position: fixed; 
+            position: fixed;
             top: 0;
             left: 0;
             width: 100%;
-            height: 350px; 
+            height: 350px;
             overflow: hidden;
             background: var(--mercure-bg);
             z-index: 1;
         }
 
-        /* Vídeo de fundo panorâmico em 31/4 */
         .parallax-video-container {
             position: absolute;
             top: -20%;
             left: 0;
             width: auto;
             height: 140%;
-            aspect-ratio: 31/4; 
+            aspect-ratio: 31/4;
             pointer-events: none;
             z-index: 1;
-            will-change: transform; 
+            will-change: transform;
         }
 
         .parallax-video-container iframe {
@@ -234,38 +274,36 @@
             left: 50%;
             width: 100%;
             height: 100%;
-            transition: opacity 0.5s ease-in-out; 
-            transform: translate(-50%, -50%) scale(1.25); 
-            opacity: 1; 
+            transition: opacity 0.5s ease-in-out;
+            transform: translate(-50%, -50%) scale(1.25);
+            opacity: 1;
         }
 
         @media (max-aspect-ratio: 31/4) {
             .parallax-video-container iframe {
                 width: auto;
                 height: 100%;
-                aspect-ratio: 31/4; 
-                transform: translate(-50%, -50%) scale(1.3); 
+                aspect-ratio: 31/4;
+                transform: translate(-50%, -50%) scale(1.3);
             }
         }
 
-        /* Filtro de atenuação sobre o vídeo */
         .parallax-overlay {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(18, 23, 58, 0.20); /* Azul-marinho translúcido */
+            background-color: rgba(18, 23, 58, 0.20);
             z-index: 2;
             cursor: default;
-            pointer-events: none; 
+            pointer-events: none;
             will-change: background-color;
         }
 
-        /* Conteúdo Textual do Banner */
         .hero-content {
             position: absolute;
-            top: 45%; /* Sutilmente elevado para dar espaço ao header na base sem conflito visual */
+            top: 45%;
             left: 50%;
             transform: translate(-50%, -50%);
             text-align: center;
@@ -277,7 +315,7 @@
         }
 
         .hero-title {
-            font-size: clamp(1.4rem, 3.5vw, 2.25rem); /* Fonte fluida e segura para evitar quebra de área */
+            font-size: clamp(1.4rem, 3.5vw, 2.25rem);
             font-weight: 700;
             letter-spacing: 0.1em;
             margin-bottom: 0.75rem;
@@ -285,8 +323,8 @@
             line-height: 1.35;
             max-width: 950px;
             margin: 0 auto 0.75rem auto;
-            color: var(--color-indigo); /* Índigo */
-            text-shadow: 0px 2px 4px rgba(255, 255, 255, 0.20), 1px 1px 10px rgba(0, 0, 0, 0.95); /* Sombra suave para leitura de alto contraste */
+            color: #ffffff; /* ALTERADO PARA BRANCO */
+            text-shadow: 0px 2px 8px rgba(0,0,0,0.8), 0px 0px 20px rgba(0,0,0,0.6);
         }
 
         .hero-subtitle {
@@ -295,22 +333,20 @@
             font-style: italic;
             opacity: 0.95;
             line-height: 1.45;
-            color: var(--color-indigo); /* Índigo */
-            text-shadow: 0px 1px 3px rgba(255, 255, 255, 0.15), 1px 1px 8px rgba(0, 0, 0, 0.95);
+            color: #ffffff; /* ALTERADO PARA BRANCO */
+            text-shadow: 0px 2px 8px rgba(0,0,0,0.8), 0px 0px 20px rgba(0,0,0,0.6);
         }
 
-        /* Fusão suave na base inferior do banner com desfoque */
         .bottom-feather {
             position: absolute;
             bottom: 0;
             left: 0;
             width: 100%;
-            height: 100px; 
+            height: 100px;
             background: linear-gradient(to bottom, rgba(18, 23, 58, 0) 0%, var(--mercure-bg) 100%);
             z-index: 5;
             pointer-events: none;
         }
-
         .bottom-feather::before {
             content: '';
             position: absolute;
@@ -318,7 +354,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            backdrop-filter: blur(10px); 
+            backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
             mask-image: linear-gradient(to bottom, transparent, black);
             -webkit-mask-image: linear-gradient(to bottom, transparent, black);
@@ -328,8 +364,8 @@
         .content-wrapper {
             position: relative;
             z-index: 10;
-            margin-top: 0; /* Margem removida; o próprio margin-top do header sticky empurra o conteúdo */
-            background: var(--mercure-bg); 
+            margin-top: 0;
+            background: var(--mercure-bg);
             padding-top: 3rem;
             box-shadow: 0 -15px 35px rgba(0, 0, 0, 0.15);
         }
@@ -339,7 +375,6 @@
             text-align: center;
             margin: 4rem 0 3.5rem 0;
         }
-
         .section-title {
             font-size: 1.75rem;
             font-weight: 700;
@@ -348,7 +383,6 @@
             margin-bottom: 0.5rem;
             text-transform: uppercase;
         }
-
         .section-subtitle {
             font-family: var(--font-serif);
             font-size: 1.05rem;
@@ -356,7 +390,7 @@
             color: var(--mercure-text-secondary);
         }
 
-        /* --- CONTÊINER DE FILTRAGEM (9:16) --- */
+        /* --- FILTROS --- */
         .filter-container {
             display: flex;
             justify-content: center;
@@ -364,7 +398,6 @@
             margin-bottom: 3rem;
             flex-wrap: wrap;
         }
-
         .filter-btn {
             background: transparent;
             color: var(--mercure-text);
@@ -377,36 +410,32 @@
             cursor: pointer;
             transition: var(--transition-smooth);
         }
-
         .filter-btn:hover {
             border-color: var(--mercure-accent);
             color: var(--mercure-accent);
         }
-
         .filter-btn.active {
             background: var(--mercure-accent);
             color: var(--mercure-bg);
             border-color: var(--mercure-accent);
         }
 
-        /* --- SEÇÕES DE VÍDEOS GUMLET --- */
+        /* --- SEÇÕES DE VÍDEOS --- */
         .video-section {
             margin-bottom: 5rem;
         }
 
-        /* Wrapper Base dos Vídeos (Fundo Grafite) */
         .video-wrapper {
             position: relative;
             width: 100%;
             aspect-ratio: 16/9;
-            background: var(--mercure-card-bg); 
+            background: var(--mercure-card-bg);
             overflow: hidden;
             cursor: pointer;
             border: 1px solid var(--mercure-border);
             transition: var(--transition-smooth);
         }
 
-        /* Destaque do vídeo Hero Showreel com bordas em Índigo */
         .video-hero .video-wrapper {
             border: 2px solid var(--mercure-border);
             box-shadow: 0 12px 30px rgba(77, 73, 153, 0.25);
@@ -422,7 +451,6 @@
             z-index: 2;
         }
 
-        /* Botão de Play circular */
         .play-button {
             position: absolute;
             top: 50%;
@@ -431,7 +459,7 @@
             width: 54px;
             height: 54px;
             border: 2px solid var(--mercure-text);
-            border-radius: 50% !important; 
+            border-radius: 50% !important;
             background: rgba(18, 23, 58, 0.35);
             display: flex;
             align-items: center;
@@ -441,7 +469,6 @@
             pointer-events: none;
             z-index: 5;
         }
-
         .play-button::after {
             content: '';
             display: block;
@@ -459,7 +486,6 @@
             padding: 0;
             color: var(--mercure-text);
         }
-
         .video-hero-title {
             text-align: center;
             font-size: 0.875rem;
@@ -469,69 +495,60 @@
             margin-bottom: 0.75rem;
             color: var(--mercure-text);
         }
-
         .card-caption h3 {
-            font-size: 0.875rem; 
+            font-size: 0.875rem;
             font-weight: 700;
             letter-spacing: 0.1em;
             text-transform: uppercase;
             margin-bottom: 0.15rem;
             color: var(--mercure-text);
         }
-
         .card-caption p {
             font-family: var(--font-serif);
             font-size: 0.8rem;
             font-style: italic;
-            color: var(--mercure-accent); /* Destaque da Categoria do Vídeo */
+            color: var(--mercure-accent);
         }
 
-        /* Transição em hover: Destaque para Turquesa */
         .video-wrapper:hover {
             transform: translateY(-4px);
             box-shadow: 0 12px 30px rgba(31, 194, 155, 0.15);
             border-color: var(--mercure-accent);
         }
-
         .video-wrapper:hover .video-thumbnail,
         .video-wrapper:hover .video-thumbnail-reel {
             transform: scale(1.05);
         }
-
         .video-wrapper:hover .play-button {
             background: var(--mercure-accent);
             border-color: var(--mercure-accent);
             transform: translate(-50%, -50%) scale(1.1);
             opacity: 1;
         }
-
         .hover-player {
             z-index: 3 !important;
-            transition: opacity 0.3s ease-in-out; 
+            transition: opacity 0.3s ease-in-out;
         }
 
-        /* Grade de Horizontais (3 colunas) */
         .video-grid-horizontal {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 24px;
         }
 
-        /* --- CONTÊINER EXPANSÍVEL (ACERVO 16:9) --- */
+        /* EXPANSÃO DO ACERVO - ALTURA SUFICIENTE PARA TODOS OS VÍDEOS */
         .expandable-wrapper {
             max-height: 0;
             overflow: hidden;
             opacity: 0;
             transition: max-height 0.8s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.6s ease-in-out;
         }
-
         .expandable-wrapper.expanded {
-            max-height: 3000px; /* Margem segura para resoluções variadas */
+            max-height: 9999px; /* valor alto o suficiente para caber todos os 13 itens */
             opacity: 1;
             margin-top: 24px;
         }
 
-        /* Grade de Reels Verticais (4 colunas) */
         .reels-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -539,11 +556,9 @@
             margin-bottom: 4rem;
             transition: var(--transition-smooth);
         }
-
         .reels-grid .video-wrapper {
             aspect-ratio: 9/16;
         }
-
         .video-thumbnail-reel {
             width: 100%;
             height: 100%;
@@ -553,16 +568,13 @@
             position: relative;
             z-index: 2;
         }
-
         .video-wrapper:hover .video-thumbnail-reel {
             transform: scale(1.02);
         }
-
         .vertical-card {
             transition: opacity 0.3s ease-in-out;
         }
 
-        /* Botão BROWSE ALL VIDEOS (Turquesa nos CTAs) */
         .btn-ver-todos {
             display: inline-flex;
             align-items: center;
@@ -571,7 +583,7 @@
             font-size: 0.75rem;
             font-weight: 700;
             letter-spacing: 0.15em;
-            color: var(--mercure-accent); 
+            color: var(--mercure-accent);
             border: 2px solid var(--mercure-accent);
             background: transparent;
             text-decoration: none;
@@ -579,7 +591,6 @@
             cursor: pointer;
             text-transform: uppercase;
         }
-
         .btn-ver-todos:hover {
             background: var(--mercure-accent);
             color: var(--mercure-bg);
@@ -587,13 +598,12 @@
             transform: translateY(-2px);
         }
 
-        /* Badge Mercure Verified (Fundo Turquesa com texto em Azul-marinho) */
         .mercure-badge {
             position: absolute;
             top: 16px;
             left: 16px;
             background-color: var(--mercure-accent);
-            color: var(--mercure-bg); 
+            color: var(--mercure-bg);
             font-size: 10px;
             font-weight: 700;
             padding: 5px 10px;
@@ -602,26 +612,23 @@
             z-index: 10;
         }
 
-        /* --- SEÇÃO 3: SOBRE MIM --- */
+        /* --- SEÇÃO SOBRE MIM --- */
         .about-section {
             padding: 5rem 0;
             border-top: 1px solid var(--mercure-border);
         }
-
         .about-grid {
             display: grid;
             grid-template-columns: 1fr 2fr;
             gap: 40px;
             align-items: flex-start;
         }
-
         .about-left {
             display: flex;
             flex-direction: column;
             align-items: center;
             gap: 30px;
         }
-
         .about-avatar {
             width: 250px;
             height: 250px;
@@ -630,12 +637,9 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 0; /* Removido espaçamento para o retrato preencher a área */
             overflow: hidden;
             position: relative;
         }
-
-        /* Moldura deslocada marcante que segue o padrão estético Mercure */
         .about-avatar::before {
             content: '';
             position: absolute;
@@ -646,34 +650,29 @@
             border: 2px solid var(--mercure-accent);
             z-index: -1;
         }
-
         .about-avatar img {
             width: 100%;
             height: 100%;
-            object-fit: cover; /* Recorta o retrato de forma proporcional */
+            object-fit: cover;
         }
 
-        /* Bloco de Marcas e Clientes em Destaque */
         .about-brands {
             text-align: center;
             width: 100%;
         }
-
         .about-brands h5 {
             font-size: 0.7rem;
             letter-spacing: 0.15em;
-            color: #C1BDE2; /* Tom lilás claro de alto contraste, garantindo leitura perfeita */
+            color: #C1BDE2;
             text-transform: uppercase;
             margin-bottom: 12px;
         }
-
         .brands-list {
             display: flex;
             flex-wrap: wrap;
             gap: 10px;
             justify-content: center;
         }
-
         .brand-badge {
             font-size: 0.75rem;
             font-weight: 600;
@@ -692,7 +691,6 @@
             color: var(--mercure-text);
             margin-bottom: 0.25rem;
         }
-
         .about-headline {
             font-family: var(--font-serif);
             font-style: italic;
@@ -700,15 +698,12 @@
             color: var(--mercure-accent);
             margin-bottom: 1.5rem;
         }
-
         .about-text {
             font-size: 0.95rem;
             color: var(--mercure-text-secondary);
             margin-bottom: 1.2rem;
             line-height: 1.6;
         }
-
-        /* Frase de Destaque */
         .about-quote {
             font-family: var(--font-serif);
             font-style: italic;
@@ -720,25 +715,21 @@
             line-height: 1.5;
         }
 
-        /* Seção de Especialidades Técnicas (Foco em Soluções) */
         .services-subgrid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 15px;
             margin-top: 2rem;
         }
-
         .service-item {
             background: var(--mercure-card-bg);
             border: 1px solid var(--mercure-border);
             padding: 1rem;
             transition: var(--transition-smooth);
         }
-
         .service-item:hover {
             border-color: var(--mercure-accent);
         }
-
         .service-item h5 {
             font-family: var(--font-sans);
             font-size: 0.85rem;
@@ -748,21 +739,18 @@
             margin-bottom: 4px;
             letter-spacing: 0.05em;
         }
-
         .service-item p {
             font-size: 0.75rem;
             color: var(--mercure-text-secondary);
             line-height: 1.4;
         }
 
-        /* Estatísticas de Performance */
         .about-stats {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 16px;
             margin-top: 2.5rem;
         }
-
         .stat-card {
             background: var(--mercure-card-bg);
             border: 1px solid var(--mercure-border);
@@ -770,12 +758,10 @@
             text-align: center;
             transition: var(--transition-smooth);
         }
-
         .stat-card:hover {
             border-color: var(--mercure-accent);
             transform: translateY(-2px);
         }
-
         .stat-card h4 {
             font-family: var(--font-sans);
             font-size: 1.25rem;
@@ -784,7 +770,6 @@
             margin-bottom: 0.25rem;
             text-transform: uppercase;
         }
-
         .stat-card p {
             font-size: 0.725rem;
             color: var(--mercure-text-secondary);
@@ -793,13 +778,12 @@
             line-height: 1.3;
         }
 
-        /* Rodapé Técnico de Softwares e Habilidades */
         .technical-footnote {
             margin-top: 2.5rem;
             padding-top: 1.5rem;
             border-top: 1px solid var(--mercure-border);
             font-size: 0.75rem;
-            color: #C1BDE2; /* Tom lilás claro de alto contraste, garantindo leitura perfeita no fundo escuro */
+            color: #C1BDE2;
             letter-spacing: 0.05em;
             text-transform: uppercase;
             display: flex;
@@ -808,19 +792,27 @@
             gap: 10px;
         }
 
+        /* RESPONSIVIDADE DO RODAPÉ TÉCNICO: centralizar em mobile */
+        @media (max-width: 768px) {
+            .technical-footnote {
+                justify-content: center;
+                text-align: center;
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
         /* --- RESPONSIVIDADE GRIDS --- */
         @media (max-width: 1200px) {
             .reels-grid {
                 grid-template-columns: repeat(3, 1fr);
             }
         }
-
         @media (max-width: 1024px) {
             .video-grid-horizontal {
                 grid-template-columns: repeat(2, 1fr);
             }
         }
-
         @media (max-width: 768px) {
             .video-grid-horizontal {
                 grid-template-columns: 1fr;
@@ -845,7 +837,6 @@
                 grid-template-columns: 1fr;
             }
         }
-
         @media (max-width: 480px) {
             .reels-grid {
                 grid-template-columns: 1fr;
@@ -855,7 +846,7 @@
             }
         }
 
-        /* --- BOTOES E ACOES DE CONTATO (FOOTER) --- */
+        /* --- BOTÕES --- */
         .btn {
             display: inline-flex;
             align-items: center;
@@ -866,58 +857,48 @@
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 0.1em;
-            text-decoration: none !important; /* Anula completamente o sublinhado padrão de links */
+            text-decoration: none !important;
             transition: var(--transition-smooth);
             border: 2px solid transparent;
             cursor: pointer;
-            background: transparent; /* Reset para tag button */
+            background: transparent;
             font-family: var(--font-sans);
         }
-
         .btn svg {
             flex-shrink: 0;
             transition: transform 0.2s ease;
         }
-
         .btn:hover svg {
             transform: translateY(-1px);
         }
 
-        /* Botão WhatsApp - Turquesa / Texto Marinho */
         .btn-primary-whatsapp {
             background: var(--color-turquesa);
             color: var(--color-marinho) !important;
             border-color: var(--color-turquesa);
         }
-
         .btn-primary-whatsapp:hover {
-            background: #19b28b; /* Tom sutilmente mais escuro de turquesa */
+            background: #19b28b;
             border-color: #19b28b;
             transform: translateY(-2px);
             box-shadow: 0 4px 15px rgba(31, 194, 155, 0.3);
         }
-
-        /* Botão Email - Índigo / Texto Branco Gelo */
         .btn-primary-email {
             background: var(--color-indigo);
             color: var(--color-branco-gelo) !important;
             border-color: var(--color-indigo);
         }
-
         .btn-primary-email:hover {
             background: var(--color-lilas);
             border-color: var(--color-lilas);
             transform: translateY(-2px);
             box-shadow: 0 4px 15px rgba(77, 73, 153, 0.3);
         }
-
-        /* Botão Currículo - Sem preenchimento / Borda Índigo */
         .btn-secondary {
             background: transparent;
             color: var(--mercure-text) !important;
             border-color: var(--mercure-border);
         }
-
         .btn-secondary:hover {
             background: var(--mercure-card-bg);
             border-color: var(--mercure-accent);
@@ -930,32 +911,28 @@
             padding: 4rem 0;
             text-align: center;
         }
-
         .cta-container {
             margin-bottom: 2rem;
         }
-
         .cta-title {
             font-size: 1.5rem;
             font-weight: 600;
             color: var(--mercure-text);
             margin-bottom: 1.5rem;
         }
-
         .btn-group {
             display: flex;
             gap: 12px;
             justify-content: center;
             flex-wrap: wrap;
         }
-
         .footer-copyright {
             font-size: 0.75rem;
             color: var(--mercure-text-secondary);
             line-height: 1.6;
         }
 
-        /* --- LIGHTBOX MODAL --- */
+        /* --- LIGHTBOX --- */
         .lightbox-modal {
             display: none;
             position: fixed;
@@ -963,21 +940,19 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: var(--mercure-backdrop); 
+            background: var(--mercure-backdrop);
             z-index: 1000;
             justify-content: center;
             align-items: center;
         }
-
         .lightbox-content {
             position: relative;
             background: #000;
             box-shadow: 0 12px 45px rgba(18, 23, 58, 0.5);
             overflow: hidden;
             width: 90%;
-            aspect-ratio: 16/9; 
+            aspect-ratio: 16/9;
         }
-
         .lightbox-content iframe {
             position: absolute;
             top: 0;
@@ -986,13 +961,12 @@
             height: 100%;
             border: none;
         }
-
         .lightbox-close {
             position: absolute;
             top: 25px;
             right: 25px;
-            background: var(--mercure-accent); 
-            color: var(--mercure-bg); 
+            background: var(--mercure-accent);
+            color: var(--mercure-bg);
             border: 1px solid rgba(255, 255, 255, 0.3);
             padding: 0.6rem 1.2rem;
             cursor: pointer;
@@ -1000,7 +974,6 @@
             transition: var(--transition-smooth);
             z-index: 1002;
         }
-
         .lightbox-close:hover {
             background: var(--color-lilas);
             color: var(--mercure-text);
@@ -1012,40 +985,44 @@
     
     <!-- BANNER HERO PARALLAX -->
     <section class="parallax-banner" id="home">
-        <!-- O ID do novo vídeo esticado otimizado no DaVinci (31/4 / ID 6a46b93ce81b019c9741e6bc) -->
-        <div class="parallax-video-container" id="parallaxVideo" data-video-id="6a46b93ce81b019c9741e6bc">
-            <!-- Capa estática de fallback imediato -->
-        </div>
-        <!-- Camada overlay estática não-clicável e sem botão -->
+        <div class="parallax-video-container" id="parallaxVideo" data-video-id="6a46b93ce81b019c9741e6bc"></div>
         <div class="parallax-overlay" id="parallaxOverlay"></div>
-        
-        <!-- Conteúdo Textual do Banner com Posicionamento Recomendado -->
         <div class="hero-content" id="heroContent">
             <h1 class="hero-title" data-translate-key="hero_title">EVERY FRAME HAS A PURPOSE. EVERY DEADLINE GETS MET.</h1>
             <p class="hero-subtitle" data-translate-key="hero_subtitle">Broadcast. Campanhas. Eventos. Conteúdo entregue no prazo.</p>
         </div>
-
-        <!-- Borda inferior desfocada e fundida -->
         <div class="bottom-feather"></div>
     </section>
 
-    <!-- HEADER TRANSLÚCIDO FIXADO (Efeito Glassmorphism Posicionado na Base do Banner) -->
+    <!-- HEADER COM MENU HAMBÚRGUER -->
     <header id="mainHeader">
         <div class="header-container">
             <div class="header-left">
-                <!-- Logotipo Oficial Integrado com posicionamento recomendado -->
                 <img src="input_file_3.png" class="logo-img" alt="Mercure — Marcos Soares Santos, editor de vídeo e motion designer" onerror="this.style.display='none';">
                 <span class="logo-text">MERCURE — POST-PRODUCTION SPECIALIST</span>
             </div>
             <div class="header-right">
+                <!-- Navegação Desktop -->
                 <nav class="header-nav">
                     <a href="#video" data-translate-key="nav_videos">VÍDEOS</a>
                     <a href="#about" data-translate-key="nav_about">SOBRE MIM</a>
                     <a href="https://linkedin.com/in/marcos-soares-santos-91a281163" target="_blank" rel="noopener">LINKEDIN ↗</a>
-                    <!-- Botão de Idioma Compacto -->
                     <button id="langToggleBtn" onclick="toggleLang()" class="lang-btn">EN</button>
                 </nav>
+                <!-- Botão Hambúrguer (mobile) -->
+                <button class="hamburger" id="hamburgerBtn" aria-label="Menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
             </div>
+        </div>
+        <!-- Menu Mobile (dropdown) -->
+        <div class="mobile-menu" id="mobileMenu">
+            <a href="#video" data-translate-key="nav_videos" onclick="closeMobileMenu()">VÍDEOS</a>
+            <a href="#about" data-translate-key="nav_about" onclick="closeMobileMenu()">SOBRE MIM</a>
+            <a href="https://linkedin.com/in/marcos-soares-santos-91a281163" target="_blank" rel="noopener" onclick="closeMobileMenu()">LINKEDIN ↗</a>
+            <button id="langToggleBtnMobile" onclick="toggleLang(); closeMobileMenu();" class="lang-btn">EN</button>
         </div>
     </header>
 
@@ -1053,14 +1030,14 @@
     <div class="content-wrapper">
         <main class="container">
             
-            <!-- SEÇÃO 1: PRODUÇÕES CORPORATIVAS, TV & SAME-DAY (16:9) -->
+            <!-- SEÇÃO 1: PRODUÇÕES CORPORATIVAS, TV & SAME-DAY -->
             <section class="video-section" id="video">
                 <div class="section-header">
                     <h2 class="section-title" data-translate-key="sec1_title">PRODUÇÕES CORPORATIVAS, TV & SAME-DAY</h2>
                     <p class="section-subtitle" data-translate-key="sec1_subtitle">Campanhas publicitárias, coberturas de alto impacto e jornalismo broadcast.</p>
                 </div>
 
-                <!-- 1. VÍDEO HERO (Destaque Principal do Portfólio / Think Plastic Brazil Summit 2025) -->
+                <!-- VÍDEO HERO -->
                 <div class="video-hero" style="margin-bottom: 4rem;">
                     <h3 class="video-hero-title" data-translate-key="showcase_title">Think Plastic Brazil Summit 2025</h3>
                     <p data-translate-key="showcase_desc" style="text-align: center; font-size: 0.9rem; color: var(--mercure-text-secondary); margin-bottom: 1.5rem; max-width: 800px; margin-left: auto; margin-right: auto; line-height: 1.5;">
@@ -1068,20 +1045,17 @@
                     </p>
                     <div class="video-wrapper" data-video-id="6a45bf80e4e7cc890ee34095">
                         <span class="mercure-badge">✓ Mercure Showcase</span>
-                        <!-- Inicializador Neutro Válido em Base64 (0ms LCP) -->
                         <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Think Plastic Brazil Summit 2025" class="video-thumbnail">
                         <div class="play-button"></div>
                     </div>
                 </div>
 
-                <!-- Título secundário "Outros Projetos" acima da grade principal -->
                 <div class="section-header" style="margin: 3rem 0 2.5rem 0;">
                     <h3 class="section-title" data-translate-key="other_projects" style="font-size: 1.25rem;">Outros Projetos</h3>
                 </div>
 
-                <!-- GRUPO 1: HIGHLIGHTS (Apenas 3 vídeos visíveis por padrão) -->
+                <!-- GRUPO 1: HIGHLIGHTS (3 visíveis) -->
                 <div class="video-grid-horizontal">
-                    
                     <div class="horizontal-card">
                         <div class="video-wrapper" data-video-id="6a471f53e81b019c974c3eed">
                             <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="O Imponderável - Record News" class="video-thumbnail">
@@ -1114,13 +1088,11 @@
                             <p data-translate-key="Cobertura e Edição Same-Day">Cobertura e Edição Same-Day</p>
                         </div>
                     </div>
-
                 </div>
 
-                <!-- GRUPO 2: MAIS PROJETOS (Revelação vertical via expansão suave - Contém os outros 13 vídeos) -->
+                <!-- GRUPO 2: MAIS PROJETOS (expansível) -->
                 <div class="expandable-wrapper" id="archiveContainer">
                     <div class="video-grid-horizontal">
-
                         <div class="horizontal-card">
                             <div class="video-wrapper" data-video-id="6a45b9b7e81b019c9723d6d3">
                                 <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Gree Senai" class="video-thumbnail">
@@ -1263,11 +1235,10 @@
                                 <p data-translate-key="Campanha Interna Corporativa">Campanha Interna Corporativa</p>
                             </div>
                         </div>
-
                     </div>
                 </div>
 
-                <!-- Botão Ver Mais Projetos -->
+                <!-- Botão Ver Mais -->
                 <div style="text-align: center; margin-top: 3rem;">
                     <button class="btn-ver-todos" id="toggleArchiveBtn" data-translate-key="toggle_more">Ver Mais Projetos</button>
                 </div>
@@ -1277,14 +1248,13 @@
 
         <main class="container">
 
-            <!-- SEÇÃO 2: REELS, SHORTS & CAMPANHAS DIGITAIS (9:16) -->
+            <!-- SEÇÃO 2: REELS, SHORTS & CAMPANHAS DIGITAIS -->
             <section class="video-section" id="reels">
                 <div class="section-header">
                     <h2 class="section-title" data-translate-key="sec2_title">REELS, SHORTS & CAMPANHAS DIGITAIS</h2>
                     <p class="section-subtitle" data-translate-key="sec2_subtitle">Edição dinâmica vertical para social media, lançamentos e tráfego pago.</p>
                 </div>
 
-                <!-- CARROSSEL DE ABAS / FILTRAGEM (Usabilidade avançada com 12 vídeos) -->
                 <div class="filter-container">
                     <button class="filter-btn active" data-filter="all" data-translate-key="filter_all">Todos</button>
                     <button class="filter-btn" data-filter="campanhas" data-translate-key="filter_campanhas">Campanhas Tattoo</button>
@@ -1295,7 +1265,7 @@
 
                 <div class="reels-grid" id="reelsGrid">
                     
-                    <!-- --- CATEGORIA: CAMPANHAS ORIGINAL SP TATTOO --- -->
+                    <!-- CAMPANHAS TATTOO -->
                     <div class="vertical-card" data-category="campanhas">
                         <div class="video-wrapper" data-video-id="6a45be3ee4e7cc890ee3284d">
                             <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Campanha Tattoo — ShenLong" class="video-thumbnail-reel">
@@ -1340,7 +1310,7 @@
                         </div>
                     </div>
 
-                    <!-- --- CATEGORIA: INSTITUCIONAIS --- -->
+                    <!-- INSTITUCIONAIS -->
                     <div class="vertical-card" data-category="institucionais">
                         <div class="video-wrapper" data-video-id="6a45bb6ee4e7cc890ee2f7a9">
                             <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="QualityCert" class="video-thumbnail-reel">
@@ -1363,7 +1333,7 @@
                         </div>
                     </div>
 
-                    <!-- --- CATEGORIA: INTERNACIONAIS --- -->
+                    <!-- INTERNACIONAIS -->
                     <div class="vertical-card" data-category="internacionais">
                         <div class="video-wrapper" data-video-id="6a45bafa18d11bffd5043ad5">
                             <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="The Pad Sarasota" class="video-thumbnail-reel">
@@ -1386,7 +1356,7 @@
                         </div>
                     </div>
 
-                    <!-- --- CATEGORIA: SAME DAY - APAS SHOW 2024 --- -->
+                    <!-- SAME DAY APAS -->
                     <div class="vertical-card" data-category="apas">
                         <div class="video-wrapper" data-video-id="6a45ba33e81b019c9723df2b">
                             <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="APAS Show 2024 - Cerimonia solene de abertura" class="video-thumbnail-reel">
@@ -1434,7 +1404,7 @@
                 </div>
             </section>
 
-            <!-- --- SEÇÃO 3: SOBRE MIM (Conceito e Narrativa Recomendados) --- -->
+            <!-- SEÇÃO 3: SOBRE MIM -->
             <section class="about-section" id="about">
                 <div class="section-header">
                     <h2 class="section-title" data-translate-key="sec3_title">POST-PRODUCTION SPECIALIST</h2>
@@ -1443,10 +1413,8 @@
                 <div class="about-grid">
                     <div class="about-left">
                         <div class="about-avatar">
-                            <!-- Foto de Perfil Atualizada (input_file_8.png) -->
                             <img src="input_file_8.png" alt="Marcos Soares Santos, editor de vídeo e motion designer sênior" onerror="this.style.display='none';">
                         </div>
-                        <!-- Bloco de Clientes e Credibilidade -->
                         <div class="about-brands">
                             <h5 data-translate-key="brands_heading">Marcas e Projetos Atendidos</h5>
                             <div class="brands-list">
@@ -1474,7 +1442,6 @@
                             O que gosto mesmo é resolver problema de comunicação com edição: decidir onde cortar, o que guardar, como manter o ritmo quando o material chega quebrado ou o prazo é curto demais. No dia a dia uso Premiere, After Effects, DaVinci Resolve e CapCut — e ferramentas de IA quando ajudam a ganhar tempo sem perder qualidade.
                         </p>
 
-                        <!-- Painel de Especialidades Técnicas focada em Soluções -->
                         <div class="services-subgrid">
                             <div class="service-item">
                                 <h5 data-translate-key="srv_broadcast_title">Edição Broadcast</h5>
@@ -1494,7 +1461,6 @@
                             </div>
                         </div>
 
-                        <!-- Painel de Indicadores Fortes de Desempenho -->
                         <div class="about-stats">
                             <div class="stat-card">
                                 <h4 data-translate-key="stat_years_title">7+ Anos</h4>
@@ -1514,7 +1480,7 @@
                             </div>
                         </div>
 
-                        <!-- Rodapé Técnico de Softwares e Habilidades (Footnote Discreto) -->
+                        <!-- Rodapé Técnico centralizado em mobile -->
                         <div class="technical-footnote">
                             <span data-translate-key="foot_tools">Softwares & Ferramentas: Adobe Premiere Pro, After Effects, DaVinci Resolve, CapCut Pro</span>
                             <span data-translate-key="foot_ia">IA & Teste: ElevenLabs, Sora, DeepSeek, Gemini</span>
@@ -1530,19 +1496,14 @@
             <div class="cta-container">
                 <h3 class="cta-title" data-translate-key="cta_title">Quer conversar sobre um projeto?</h3>
                 <div class="btn-group">
-                    <!-- Botão Email - Customizado em Índigo (Sem Underlines) -->
                     <a href="mailto:marcoscpc@outlook.com" class="btn btn-primary-email">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
                         Email
                     </a>
-                    
-                    <!-- Botão WhatsApp - Customizado em Turquesa (Sem Underlines) -->
                     <a href="https://wa.me/5511963033573" target="_blank" class="btn btn-primary-whatsapp">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12.012 2c-5.506 0-9.989 4.478-9.99 9.984a9.96 9.96 0 0 0 1.333 4.993L2 22l5.135-1.347a9.94 9.94 0 0 0 4.877 1.331h.005c5.505 0 9.99-4.478 9.99-9.985 0-2.667-1.037-5.176-2.922-7.062A9.919 9.919 0 0 0 12.012 2zm5.835 14.123c-.254.715-1.48 1.402-2.035 1.484-.509.075-1.173.137-3.41-.79-2.859-1.183-4.693-4.085-4.836-4.275-.143-.19-1.157-1.537-1.157-2.93 0-1.393.73-2.074 1.015-2.361.254-.254.666-.372 1.077-.372.174 0 .327.009.453.016.372.016.559.038.805.483.254.46.872 2.123.951 2.282.079.158.133.348.026.554-.105.206-.164.333-.327.523-.164.19-.344.425-.492.571-.164.158-.333.333-.143.626.19.294.842 1.382 1.802 2.183.916.762 1.691 1.001 1.931 1.113.238.111.378.092.52-.07.143-.164.602-.73.762-.977.159-.248.318-.206.539-.124.222.082 1.402.66 1.64.778.238.117.396.174.454.271.058.098.058.557-.196 1.272z"/></svg>
                         WhatsApp
                     </a>
-                    
-                    <!-- Botão Currículo Integrado via JavaScript (Sem Underlines) -->
                     <button onclick="openResume()" class="btn btn-secondary">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
                         <span data-translate-key="btn_cv">Currículo</span>
@@ -1558,41 +1519,47 @@
     <!-- LIGHTBOX MODAL -->
     <div class="lightbox-modal" id="videoModal" role="dialog" aria-modal="true" aria-label="Player de vídeo em destaque">
         <button class="lightbox-close" id="closeBtn" data-translate-key="close_btn" aria-label="Fechar vídeo">Fechar [X]</button>
-        <div class="lightbox-content" id="modalContent">
-            <!-- Player do Gumlet injetado dinamicamente -->
-        </div>
+        <div class="lightbox-content" id="modalContent"></div>
     </div>
 
-    <!-- SCRIPT DE SEGURANÇA, HOVER PREVIEW, STICKY HEADER, PARALLAX E INJEÇÃO DINÂMICA -->
+    <!-- SCRIPT -->
     <script>
+        // --- ELEMENTOS GLOBAIS ---
         const wrappers = document.querySelectorAll('.video-wrapper');
         const modal = document.getElementById('videoModal');
         const modalContent = document.getElementById('modalContent');
         const closeBtn = document.getElementById('closeBtn');
-
         const mainHeader = document.getElementById('mainHeader');
         const parallaxBanner = document.getElementById('home');
         const parallaxVideo = document.getElementById('parallaxVideo');
         const parallaxOverlay = document.getElementById('parallaxOverlay');
         const heroContent = document.getElementById('heroContent');
         const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-        
-        let ticking = false;
-        let isModalOpen = false;
-        let lastTime = 0;
-        let posX = 0;
-        let direction = -1; // -1 para mover à esquerda inicialmente
 
-        const BANNER_COVER_THRESHOLD = 350;
-        let bannerVisible = true; 
-        let bannerIframe = null; 
+        // --- MENU HAMBÚRGUER ---
+        const hamburgerBtn = document.getElementById('hamburgerBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
 
-        let cachedContainerWidth = 0;
-        let cachedVideoWidth = 0;
-        let cachedMaxPan = 0;
-        let cachedBaseCenterX = 0;
+        function toggleMobileMenu() {
+            hamburgerBtn.classList.toggle('active');
+            mobileMenu.classList.toggle('open');
+        }
 
-        // --- SISTEMA DE IDIOMA E TRADUÇÃO DINÂMICA ---
+        function closeMobileMenu() {
+            hamburgerBtn.classList.remove('active');
+            mobileMenu.classList.remove('open');
+        }
+
+        hamburgerBtn.addEventListener('click', toggleMobileMenu);
+
+        // Fechar menu ao clicar fora
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.header-container') && !e.target.closest('.mobile-menu')) {
+                closeMobileMenu();
+            }
+        });
+
+        // --- IDIOMA ---
         let currentLang = 'pt';
 
         const translations = {
@@ -1810,12 +1777,11 @@
         function toggleLang() {
             currentLang = currentLang === 'pt' ? 'en' : 'pt';
             document.getElementById('langToggleBtn').textContent = currentLang === 'pt' ? 'EN' : 'PT';
+            document.getElementById('langToggleBtnMobile').textContent = currentLang === 'pt' ? 'EN' : 'PT';
             document.documentElement.lang = currentLang === 'pt' ? 'pt-BR' : 'en-US';
 
-            // Traduz elementos principais com chaves
             document.querySelectorAll('[data-translate-key]').forEach(elem => {
                 const key = elem.getAttribute('data-translate-key');
-                
                 if (translations[currentLang][key]) {
                     elem.textContent = translations[currentLang][key];
                 } else if (projectTranslations[currentLang][key]) {
@@ -1823,43 +1789,11 @@
                 }
             });
 
-            // Ajusta o estado e texto do botão expansor de acervo (Mais Projetos)
             const isExpanded = archiveContainer.classList.contains('expanded');
             toggleArchiveBtn.textContent = translations[currentLang][isExpanded ? 'toggle_less' : 'toggle_more'];
         }
 
-        function updateCachedDimensions() {
-            const bannerHeight = parallaxBanner.clientHeight;
-            cachedContainerWidth = parallaxBanner.clientWidth;
-            cachedVideoWidth = bannerHeight * 1.4 * (31 / 4); 
-            cachedMaxPan = Math.max((cachedVideoWidth - cachedContainerWidth) / 2, 0);
-            cachedBaseCenterX = -(cachedVideoWidth - cachedContainerWidth) / 2;
-        }
-
-        // 1. SISTEMA DE SEGURANÇA: Desenha cartaz da Mercure na cor Grafite apenas se o carregamento da miniatura real falhar
-        document.querySelectorAll('img').forEach(img => {
-            img.addEventListener('error', function errorHandler() {
-                img.removeEventListener('error', errorHandler);
-
-                const isVertical = this.classList.contains('video-thumbnail-reel');
-                const svgWidth = isVertical ? 900 : 1600;
-                const svgHeight = isVertical ? 1600 : 900;
-                const textY = isVertical ? 820 : 470;
-                const circleX = isVertical ? 450 : 800;
-                const circleY = isVertical ? 800 : 450;
-
-                this.src = `data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${svgWidth} ${svgHeight}"><rect width="100%" height="100%" fill="%2317151F"/><circle cx="${circleX}" cy="${circleY}" r="110" fill="%23ffffff" opacity="0.08"/><text x="50%" y="${textY}" font-family="sans-serif" font-size="34" fill="%23ffffff" font-weight="700" text-anchor="middle" letter-spacing="4">MERCURE</text></svg>`;
-            });
-        });
-
-        // 2. SISTEMA DE CAPAS: workspace ID do Gumlet FIXO no código.
-        // Antes, isso era resolvido em tempo real via fetch() a APIs de terceiros e proxies
-        // públicos (allorigins, codetabs, corsproxy) — mas fetch() a domínios cross-origin
-        // esbarra em bloqueios de CORS e de Tracking Prevention (Edge bloqueia proxies genéricos
-        // por padrão) e falha por completo ao abrir o arquivo direto via file:// (origem 'null').
-        // Como o workspace ID do Gumlet é sempre o mesmo pra todos os seus vídeos, fixá-lo aqui
-        // elimina qualquer chamada de rede extra: a thumbnail carrega como uma <img> comum, direto
-        // da CDN do Gumlet — sem CORS, sem proxy, funciona em qualquer navegador e até local.
+        // --- THUMBNAILS ---
         const GUMLET_WORKSPACE_ID = "6a45b78918d11bffd503ee1a";
 
         function initThumbnails() {
@@ -1884,7 +1818,21 @@
 
         initThumbnails();
 
-        // 3. SISTEMA DE HOVER PREVIEW
+        // --- FALLBACK PARA IMAGENS ---
+        document.querySelectorAll('img').forEach(img => {
+            img.addEventListener('error', function errorHandler() {
+                img.removeEventListener('error', errorHandler);
+                const isVertical = this.classList.contains('video-thumbnail-reel');
+                const svgWidth = isVertical ? 900 : 1600;
+                const svgHeight = isVertical ? 1600 : 900;
+                const textY = isVertical ? 820 : 470;
+                const circleX = isVertical ? 450 : 800;
+                const circleY = isVertical ? 800 : 450;
+                this.src = `data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${svgWidth} ${svgHeight}"><rect width="100%" height="100%" fill="%2317151F"/><circle cx="${circleX}" cy="${circleY}" r="110" fill="%23ffffff" opacity="0.08"/><text x="50%" y="${textY}" font-family="sans-serif" font-size="34" fill="%23ffffff" font-weight="700" text-anchor="middle" letter-spacing="4">MERCURE</text></svg>`;
+            });
+        });
+
+        // --- HOVER PREVIEW + CLICK LIGHTBOX ---
         wrappers.forEach(wrapper => {
             const videoId = wrapper.getAttribute('data-video-id');
             if (!videoId) return;
@@ -1893,10 +1841,8 @@
 
             wrapper.addEventListener('mouseenter', () => {
                 if (isModalOpen) return;
-
                 hoverTimeout = setTimeout(() => {
                     if (wrapper.querySelector('.hover-player')) return;
-
                     const hoverIframe = document.createElement('iframe');
                     hoverIframe.src = `https://play.gumlet.io/embed/${videoId}?autoplay=true&muted=true&loop=true&background=true`;
                     hoverIframe.className = "hover-player";
@@ -1908,12 +1854,10 @@
                     hoverIframe.style.border = "none";
                     hoverIframe.style.zIndex = "3";
                     hoverIframe.style.pointerEvents = "none";
-                    hoverIframe.style.opacity = "0"; 
+                    hoverIframe.style.opacity = "0";
                     hoverIframe.style.transition = "opacity 0.4s ease-in-out";
-                    hoverIframe.setAttribute('allow', 'autoplay'); 
-
+                    hoverIframe.setAttribute('allow', 'autoplay');
                     wrapper.appendChild(hoverIframe);
-
                     hoverIframe.addEventListener('load', () => {
                         hoverIframe.style.opacity = "1";
                     });
@@ -1926,17 +1870,14 @@
                 if (hoverPlayer) hoverPlayer.remove();
             });
 
-            // 4. CLIQUE: Carrega lightbox modal com controles
             wrapper.addEventListener('click', () => {
                 isModalOpen = true;
-
                 const bgPlayer = document.getElementById('backgroundBannerPlayer');
                 if (bgPlayer && bgPlayer.src && bgPlayer.src !== "about:blank") {
                     bgPlayer.dataset.savedSrc = bgPlayer.src;
-                    bgPlayer.src = "about:blank"; 
+                    bgPlayer.src = "about:blank";
                     bgPlayer.style.opacity = "0";
                 }
-
                 document.querySelectorAll('.hover-player').forEach(player => player.remove());
 
                 const iframe = document.createElement('iframe');
@@ -1948,7 +1889,7 @@
 
                 if (wrapper.closest('.reels-grid')) {
                     modalContent.style.aspectRatio = "9/16";
-                    modalContent.style.width = "calc(80vh * 9 / 16)"; 
+                    modalContent.style.width = "calc(80vh * 9 / 16)";
                     modalContent.style.maxWidth = "90%";
                 } else {
                     modalContent.style.aspectRatio = "16/9";
@@ -1964,11 +1905,10 @@
             });
         });
 
-        // 5. OTIMIZAÇÃO: Injeção postergada do banner
+        // --- BANNER BACKGROUND ---
         window.addEventListener('load', () => {
             const container = document.getElementById('parallaxVideo');
             const videoId = container.getAttribute('data-video-id');
-            
             if (videoId) {
                 const iframe = document.createElement('iframe');
                 iframe.id = "backgroundBannerPlayer";
@@ -1981,40 +1921,46 @@
                 iframe.style.minWidth = "100%";
                 iframe.style.minHeight = "100%";
                 iframe.style.transform = "translate(-50%, -50%) scale(1.25)";
-                iframe.style.opacity = "1"; 
-                
-                iframe.setAttribute('allow', 'autoplay'); 
+                iframe.style.opacity = "1";
+                iframe.setAttribute('allow', 'autoplay');
                 iframe.setAttribute('referrerpolicy', 'origin');
-
                 iframe.dataset.savedSrc = `https://play.gumlet.io/embed/${videoId}?autoplay=true&muted=true&loop=true&background=true&preload=true`;
                 iframe.src = iframe.dataset.savedSrc;
-                
                 container.appendChild(iframe);
-                bannerIframe = iframe; 
-
+                bannerIframe = iframe;
                 setTimeout(updateCachedDimensions, 250);
             }
         });
 
-        window.addEventListener('resize', () => {
-            if (!ticking) {
-                window.requestAnimationFrame(() => {
-                    updateCachedDimensions();
-                    ticking = false;
-                });
-                ticking = true;
-            }
-        });
+        // --- PARALLAX E ANIMAÇÃO ---
+        let ticking = false;
+        let isModalOpen = false;
+        let lastTime = 0;
+        let posX = 0;
+        let direction = -1;
+        const BANNER_COVER_THRESHOLD = 350;
+        let bannerVisible = true;
+        let bannerIframe = null;
+        let cachedContainerWidth = 0;
+        let cachedVideoWidth = 0;
+        let cachedMaxPan = 0;
+        let cachedBaseCenterX = 0;
 
-        // 6. LOOP DE ANIMAÇÃO UNIFICADO (Parallax, Overlay, Fade-out)
+        function updateCachedDimensions() {
+            const bannerHeight = parallaxBanner.clientHeight;
+            cachedContainerWidth = parallaxBanner.clientWidth;
+            cachedVideoWidth = bannerHeight * 1.4 * (31 / 4);
+            cachedMaxPan = Math.max((cachedVideoWidth - cachedContainerWidth) / 2, 0);
+            cachedBaseCenterX = -(cachedVideoWidth - cachedContainerWidth) / 2;
+        }
+
         function animationLoop(timestamp) {
             if (!lastTime) lastTime = timestamp;
-            const deltaTime = (timestamp - lastTime) / 1000; 
+            const deltaTime = (timestamp - lastTime) / 1000;
             lastTime = timestamp;
 
             const scrollY = window.pageYOffset;
 
-            // Cabeçalho escurece ao scrollar quando atinge o topo (ao se tornar sticky)
             if (scrollY >= 270) {
                 mainHeader.classList.add('scrolled');
             } else {
@@ -2027,7 +1973,7 @@
                 if (covered && bannerVisible) {
                     bannerVisible = false;
                     if (bannerIframe && bannerIframe.src && bannerIframe.src !== "about:blank") {
-                        bannerIframe.style.opacity = "0"; 
+                        bannerIframe.style.opacity = "0";
                         setTimeout(() => {
                             if (!bannerVisible) bannerIframe.src = "about:blank";
                         }, 500);
@@ -2036,7 +1982,7 @@
                     bannerVisible = true;
                     if (bannerIframe && bannerIframe.dataset.savedSrc && bannerIframe.src !== bannerIframe.dataset.savedSrc) {
                         bannerIframe.src = bannerIframe.dataset.savedSrc;
-                        setTimeout(() => { if (bannerVisible) bannerIframe.style.opacity = "1"; }, 100); 
+                        setTimeout(() => { if (bannerVisible) bannerIframe.style.opacity = "1"; }, 100);
                     }
                 }
 
@@ -2044,39 +1990,42 @@
 
                 if (bannerVisible && cachedVideoWidth > 0) {
                     posX += direction * 35 * deltaTime;
-
                     if (Math.abs(posX) >= cachedMaxPan) {
                         direction *= -1;
                         posX = Math.max(-cachedMaxPan, Math.min(cachedMaxPan, posX));
                     }
-
                     const finalX = cachedBaseCenterX + posX;
-                    const posY = scrollY * 0.35; 
-
+                    const posY = scrollY * 0.35;
                     parallaxVideo.style.transform = `translate3d(${finalX}px, ${posY}px, 0)`;
-
-                    const overlayOpacity = 0.20 + (scrollFraction * 0.70); 
+                    const overlayOpacity = 0.20 + (scrollFraction * 0.70);
                     parallaxOverlay.style.backgroundColor = `rgba(18, 23, 58, ${overlayOpacity})`;
-
                     const textOpacity = 1 - scrollFraction;
                     heroContent.style.opacity = textOpacity;
                     heroContent.style.transform = `translate(-50%, calc(-50% - ${scrollY * 0.15}px))`;
                 }
             }
 
-            requestAnimationFrame(animationLoop); 
+            requestAnimationFrame(animationLoop);
         }
 
         requestAnimationFrame(animationLoop);
 
-        // 7. CONTROLES DO MODAL
+        window.addEventListener('resize', () => {
+            if (!ticking) {
+                window.requestAnimationFrame(() => {
+                    updateCachedDimensions();
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        });
+
+        // --- MODAL CONTROLS ---
         function closeModal() {
             modal.style.display = 'none';
             isModalOpen = false;
-
             const activePlayer = document.getElementById('activeGumletPlayer');
-            if (activePlayer) activePlayer.remove(); 
-
+            if (activePlayer) activePlayer.remove();
             if (window.pageYOffset < BANNER_COVER_THRESHOLD) {
                 bannerVisible = true;
                 const bgPlayer = document.getElementById('backgroundBannerPlayer');
@@ -2097,7 +2046,7 @@
             if (e.key === "Escape" && isModalOpen) closeModal();
         });
 
-        // 8. SISTEMA DE REVELAÇÃO DO ACERVO (16:9 - Mais Projetos)
+        // --- EXPANSÃO DO ACERVO ---
         const toggleArchiveBtn = document.getElementById('toggleArchiveBtn');
         const archiveContainer = document.getElementById('archiveContainer');
 
@@ -2113,7 +2062,7 @@
             }
         });
 
-        // 9. SISTEMA DE FILTRAGEM DINÂMICA DE ABAS (Para os vídeos 9:16)
+        // --- FILTROS REELS ---
         const filterBtns = document.querySelectorAll('.filter-btn');
         const verticalCards = document.querySelectorAll('.vertical-card');
 
@@ -2121,9 +2070,7 @@
             btn.addEventListener('click', () => {
                 filterBtns.forEach(b => b.classList.remove('active'));
                 btn.classList.add('active');
-
                 const filterValue = btn.getAttribute('data-filter');
-
                 verticalCards.forEach(card => {
                     const cardCategory = card.getAttribute('data-category');
                     if (filterValue === 'all' || cardCategory === filterValue) {
@@ -2137,7 +2084,7 @@
             });
         });
 
-        // 10. SISTEMA DE INJEÇÃO DO CURRÍCULO DENTRO DE NOVA ABA (Bilingue)
+        // --- CURRÍCULO ---
         function openResume() {
             const resumeWindow = window.open('', '_blank');
             if (!resumeWindow) {
@@ -2418,7 +2365,7 @@
                 </div>
                 <ul class="exp-bullets">
                     <li>Edited 3 broadcast-standard videos per week for a channel with 1.5 million subscribers and 461 million total views.</li>
-                    <li>Promovido a Coordenador de Pós-Produção, com gestão de equipe, organização de servidores e controle de fluxo de entregas.</li>
+                    <li>Promoted to Post-Production Coordinator, managing team workflow, server organization, and delivery pipeline.</li>
                 </ul>
             </div>
             <div class="experience-item">
@@ -2469,13 +2416,12 @@
             resumeWindow.document.close();
         }
 
-        // 11. SISTEMA DE SEGURANÇA CONTRA INSPEÇÃO DE CÓDIGO
+        // --- SEGURANÇA ---
         document.addEventListener('contextmenu', event => event.preventDefault());
-
         document.addEventListener('keydown', event => {
             if (
-                event.key === 'F12' || 
-                (event.ctrlKey && event.shiftKey && (event.key === 'I' || event.key === 'J' || event.key === 'C')) || 
+                event.key === 'F12' ||
+                (event.ctrlKey && event.shiftKey && (event.key === 'I' || event.key === 'J' || event.key === 'C')) ||
                 (event.ctrlKey && event.key === 'U')
             ) {
                 event.preventDefault();
