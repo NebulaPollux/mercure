@@ -1,0 +1,2558 @@
+
+```html
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mercur — Marcos Edição & Motion | Portfolio</title>
+    
+    <meta name="description" content="Mercur é um estúdio de pós-produção liderado por Marcos Soares. Especialista em edição de vídeo, broadcast e motion design sob pressão de prazos.">
+    <meta property="og:title" content="Mercur — Post-Production Specialist">
+    <meta property="og:description" content="Portfólio de pós-produção audiovisual, edição de vídeo sênior e motion design.">
+    <meta property="og:url" content="https://mercur.com.br">
+    <meta name="theme-color" content="#12173A">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+
+    <!-- Favicon Oficial Mercur usando seu Logotipo -->
+    <link rel="icon" type="image/png" href="input_file_3.png">
+
+    <style>
+        /* --- VARIÁVEIS DE ESTILO MERCUR (Nova Identidade Visual) --- */
+        :root {
+            /* Cores da Identidade Mercur */
+            --color-indigo: #4D4999;
+            --color-lilas: #6E4A8E;
+            --color-turquesa: #1FC29B;
+            --color-marinho: #12173A;
+            --color-branco-gelo: #F5F4FA;
+            --color-grafite: #17151F;
+
+            /* Mapeamento para o Layout */
+            --mercur-bg: var(--color-marinho);               /* Azul-marinho para a base escura do site */
+            --mercur-card-bg: var(--color-grafite);           /* Grafite para containers e cards */
+            --mercur-accent: var(--color-turquesa);           /* Turquesa para CTAs, links e badges */
+            --mercur-border: var(--color-indigo);             /* Índigo para bordas e divisão estrutural */
+            --mercur-text: var(--color-branco-gelo);          /* Branco gelo para leitura primária */
+            --mercur-text-secondary: rgba(245, 244, 250, 0.7); /* Branco gelo translúcido para textos de apoio */
+            --mercur-text-muted: var(--color-indigo);         /* Índigo para elementos silenciados */
+            --mercur-backdrop: rgba(18, 23, 58, 0.94);        /* Azul-marinho translúcido para o modal */
+            --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-serif: 'IBM Plex Sans', var(--font-sans);
+            --transition-smooth: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        /* --- CONFIGURAÇÕES GERAIS (Sharp: Sem cantos arredondados) --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            border-radius: 0 !important; /* Estilo geométrico e minimalista */
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 80px; /* Previne que o header sticky cubra o título das seções ao navegar pelos links */
+        }
+
+        body {
+            background-color: var(--mercur-bg);
+            color: var(--mercur-text);
+            font-family: var(--font-sans);
+            line-height: 1.5;
+            padding: 0;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Container padrão para centralização de conteúdo */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            width: 100%;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 1rem;
+            }
+        }
+
+        /* --- HEADER TRANSLÚCIDO FIXADO (Efeito Glassmorphism Posicionado) --- */
+        header {
+            position: sticky; 
+            top: 0;
+            margin-top: 270px; /* Posiciona o header na transição exata do banner (350px de altura total - 80px do header) */
+            height: 80px;      /* Altura fixa para garantir precisão no cálculo do scroll */
+            left: 0;
+            width: 100%;
+            z-index: 100; 
+            background: rgba(18, 23, 58, 0.55); /* Azul-marinho translúcido */
+            backdrop-filter: blur(12px); 
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            transition: var(--transition-smooth);
+        }
+
+        /* Estado ativo no scroll: escurece suavemente ao atingir o topo e se tornar sticky */
+        header.scrolled {
+            background: rgba(18, 23, 58, 0.9); 
+            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .header-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem; /* Padding vertical controlado pela altura do header e align-items */
+            height: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: #ffffff;
+        }
+
+        /* Estilização do logotipo oficial alinhado com a identidade */
+        .logo-img {
+            height: 33px; 
+            width: auto;
+            object-fit: contain;
+            display: block;
+        }
+
+        .logo-text {
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            font-size: 0.95rem; 
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+        }
+
+        .header-nav {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .header-nav a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            transition: var(--transition-smooth);
+        }
+
+        .header-nav a:hover {
+            color: var(--mercur-accent); /* Hover para turquesa */
+        }
+
+        /* Botão Minimalista de Troca de Idioma */
+        .lang-btn {
+            background: transparent;
+            border: 1px solid var(--mercur-border);
+            color: #ffffff;
+            font-size: 0.7rem;
+            font-weight: 700;
+            padding: 5px 12px;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            letter-spacing: 0.1em;
+        }
+
+        .lang-btn:hover {
+            border-color: var(--mercur-accent);
+            color: var(--mercur-accent);
+        }
+
+        @media (max-width: 1024px) {
+            .logo-text {
+                font-size: 0.8rem;
+            }
+            .logo-img {
+                height: 28px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-nav {
+                display: flex; 
+                gap: 15px;
+            }
+            .logo-text {
+                display: none; /* Oculta em mobile para priorizar links */
+            }
+            .logo-img {
+                height: 25px;
+            }
+        }
+
+        /* --- BANNER HERO PARALLAX --- */
+        .parallax-banner {
+            position: fixed; 
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 350px; 
+            overflow: hidden;
+            background: var(--mercur-bg);
+            z-index: 1;
+        }
+
+        /* Vídeo de fundo panorâmico em 31/4 */
+        .parallax-video-container {
+            position: absolute;
+            top: -20%;
+            left: 0;
+            width: auto;
+            height: 140%;
+            aspect-ratio: 31/4; 
+            pointer-events: none;
+            z-index: 1;
+            will-change: transform; 
+        }
+
+        .parallax-video-container iframe {
+            border: none;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 100%;
+            height: 100%;
+            transition: opacity 0.5s ease-in-out; 
+            transform: translate(-50%, -50%) scale(1.25); 
+            opacity: 1; 
+        }
+
+        @media (max-aspect-ratio: 31/4) {
+            .parallax-video-container iframe {
+                width: auto;
+                height: 100%;
+                aspect-ratio: 31/4; 
+                transform: translate(-50%, -50%) scale(1.3); 
+            }
+        }
+
+        /* Filtro de atenuação sobre o vídeo */
+        .parallax-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(18, 23, 58, 0.20); /* Azul-marinho translúcido */
+            z-index: 2;
+            cursor: default;
+            pointer-events: none; 
+            will-change: background-color;
+        }
+
+        /* Conteúdo Textual do Banner */
+        .hero-content {
+            position: absolute;
+            top: 45%; /* Sutilmente elevado para dar espaço ao header na base sem conflito visual */
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            width: 100%;
+            max-width: 1100px;
+            padding: 0 1rem;
+            z-index: 3;
+            will-change: opacity, transform;
+        }
+
+        .hero-title {
+            font-size: clamp(1.4rem, 3.5vw, 2.25rem); /* Fonte fluida e segura para evitar quebra de área */
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            margin-bottom: 0.75rem;
+            text-transform: uppercase;
+            line-height: 1.35;
+            max-width: 950px;
+            margin: 0 auto 0.75rem auto;
+            color: var(--color-indigo); /* Índigo */
+            text-shadow: 0px 2px 4px rgba(255, 255, 255, 0.20), 1px 1px 10px rgba(0, 0, 0, 0.95); /* Sombra suave para leitura de alto contraste */
+        }
+
+        .hero-subtitle {
+            font-family: var(--font-serif);
+            font-size: 1.15rem;
+            font-style: italic;
+            opacity: 0.95;
+            line-height: 1.45;
+            color: var(--color-indigo); /* Índigo */
+            text-shadow: 0px 1px 3px rgba(255, 255, 255, 0.15), 1px 1px 8px rgba(0, 0, 0, 0.95);
+        }
+
+        /* Fusão suave na base inferior do banner com desfoque */
+        .bottom-feather {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100px; 
+            background: linear-gradient(to bottom, rgba(18, 23, 58, 0) 0%, var(--mercur-bg) 100%);
+            z-index: 5;
+            pointer-events: none;
+        }
+
+        .bottom-feather::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            backdrop-filter: blur(10px); 
+            -webkit-backdrop-filter: blur(10px);
+            mask-image: linear-gradient(to bottom, transparent, black);
+            -webkit-mask-image: linear-gradient(to bottom, transparent, black);
+        }
+
+        /* --- ENVELOPADOR DE CONTEÚDO --- */
+        .content-wrapper {
+            position: relative;
+            z-index: 10;
+            margin-top: 0; /* Margem removida; o próprio margin-top do header sticky empurra o conteúdo */
+            background: var(--mercur-bg); 
+            padding-top: 3rem;
+            box-shadow: 0 -15px 35px rgba(0, 0, 0, 0.15);
+        }
+
+        /* --- CABEÇALHOS DAS SEÇÕES --- */
+        .section-header {
+            text-align: center;
+            margin: 4rem 0 3.5rem 0;
+        }
+
+        .section-title {
+            font-size: 1.75rem;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            color: var(--mercur-text);
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+        }
+
+        .section-subtitle {
+            font-family: var(--font-serif);
+            font-size: 1.05rem;
+            font-style: italic;
+            color: var(--mercur-text-secondary);
+        }
+
+        /* --- CONTÊINER DE FILTRAGEM (9:16) --- */
+        .filter-container {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            background: transparent;
+            color: var(--mercur-text);
+            border: 1px solid var(--mercur-border);
+            padding: 0.6rem 1.5rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+        }
+
+        .filter-btn:hover {
+            border-color: var(--mercur-accent);
+            color: var(--mercur-accent);
+        }
+
+        .filter-btn.active {
+            background: var(--mercur-accent);
+            color: var(--mercur-bg);
+            border-color: var(--mercur-accent);
+        }
+
+        /* --- SEÇÕES DE VÍDEOS GUMLET --- */
+        .video-section {
+            margin-bottom: 5rem;
+        }
+
+        /* Wrapper Base dos Vídeos (Fundo Grafite) */
+        .video-wrapper {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 16/9;
+            background: var(--mercur-card-bg); 
+            overflow: hidden;
+            cursor: pointer;
+            border: 1px solid var(--mercur-border);
+            transition: var(--transition-smooth);
+        }
+
+        /* Destaque do vídeo Hero Showreel com bordas em Índigo */
+        .video-hero .video-wrapper {
+            border: 2px solid var(--mercur-border);
+            box-shadow: 0 12px 30px rgba(77, 73, 153, 0.25);
+        }
+
+        .video-thumbnail {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition-smooth);
+            display: block;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Botão de Play circular */
+        .play-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 54px;
+            height: 54px;
+            border: 2px solid var(--mercur-text);
+            border-radius: 50% !important; 
+            background: rgba(18, 23, 58, 0.35);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0.85;
+            transition: var(--transition-smooth);
+            pointer-events: none;
+            z-index: 5;
+        }
+
+        .play-button::after {
+            content: '';
+            display: block;
+            width: 0;
+            height: 0;
+            border-top: 8px solid transparent;
+            border-bottom: 8px solid transparent;
+            border-left: 14px solid white;
+            margin-left: 4px;
+        }
+
+        .card-caption {
+            text-align: center;
+            margin-top: 1rem;
+            padding: 0;
+            color: var(--mercur-text);
+        }
+
+        .video-hero-title {
+            text-align: center;
+            font-size: 0.875rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin-bottom: 0.75rem;
+            color: var(--mercur-text);
+        }
+
+        .card-caption h3 {
+            font-size: 0.875rem; 
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin-bottom: 0.15rem;
+            color: var(--mercur-text);
+        }
+
+        .card-caption p {
+            font-family: var(--font-serif);
+            font-size: 0.8rem;
+            font-style: italic;
+            color: var(--mercur-accent); /* Destaque da Categoria do Vídeo */
+        }
+
+        /* Transição em hover: Destaque para Turquesa */
+        .video-wrapper:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 30px rgba(31, 194, 155, 0.15);
+            border-color: var(--mercur-accent);
+        }
+
+        .video-wrapper:hover .video-thumbnail,
+        .video-wrapper:hover .video-thumbnail-reel {
+            transform: scale(1.05);
+        }
+
+        .video-wrapper:hover .play-button {
+            background: var(--mercur-accent);
+            border-color: var(--mercur-accent);
+            transform: translate(-50%, -50%) scale(1.1);
+            opacity: 1;
+        }
+
+        .hover-player {
+            z-index: 3 !important;
+            transition: opacity 0.3s ease-in-out; 
+        }
+
+        /* Grade de Horizontais (3 colunas) */
+        .video-grid-horizontal {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        /* --- CONTÊINER EXPANSÍVEL (ACERVO 16:9) --- */
+        .expandable-wrapper {
+            max-height: 0;
+            overflow: hidden;
+            opacity: 0;
+            transition: max-height 0.8s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.6s ease-in-out;
+        }
+
+        .expandable-wrapper.expanded {
+            max-height: 3000px; /* Margem segura para resoluções variadas */
+            opacity: 1;
+            margin-top: 24px;
+        }
+
+        /* Grade de Reels Verticais (4 colunas) */
+        .reels-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-bottom: 4rem;
+            transition: var(--transition-smooth);
+        }
+
+        .reels-grid .video-wrapper {
+            aspect-ratio: 9/16;
+        }
+
+        .video-thumbnail-reel {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition-smooth);
+            display: block;
+            position: relative;
+            z-index: 2;
+        }
+
+        .video-wrapper:hover .video-thumbnail-reel {
+            transform: scale(1.02);
+        }
+
+        .vertical-card {
+            transition: opacity 0.3s ease-in-out;
+        }
+
+        /* Botão BROWSE ALL VIDEOS (Turquesa nos CTAs) */
+        .btn-ver-todos {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.85rem 2rem;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            color: var(--mercur-accent); 
+            border: 2px solid var(--mercur-accent);
+            background: transparent;
+            text-decoration: none;
+            transition: var(--transition-smooth);
+            cursor: pointer;
+            text-transform: uppercase;
+        }
+
+        .btn-ver-todos:hover {
+            background: var(--mercur-accent);
+            color: var(--mercur-bg);
+            border-color: var(--mercur-accent);
+            transform: translateY(-2px);
+        }
+
+        /* Badge Mercur Verified (Fundo Turquesa com texto em Azul-marinho) */
+        .mercur-badge {
+            position: absolute;
+            top: 16px;
+            left: 16px;
+            background-color: var(--mercur-accent);
+            color: var(--mercur-bg); 
+            font-size: 10px;
+            font-weight: 700;
+            padding: 5px 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            z-index: 10;
+        }
+
+        /* --- SEÇÃO 3: SOBRE MIM --- */
+        .about-section {
+            padding: 5rem 0;
+            border-top: 1px solid var(--mercur-border);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 40px;
+            align-items: flex-start;
+        }
+
+        .about-left {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .about-avatar {
+            width: 250px;
+            height: 250px;
+            background: var(--mercur-card-bg);
+            border: 2px solid var(--mercur-border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0; /* Removido espaçamento para o retrato preencher a área */
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Moldura deslocada marcante que segue o padrão estético Mercur */
+        .about-avatar::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            width: 100%;
+            height: 100%;
+            border: 2px solid var(--mercur-accent);
+            z-index: -1;
+        }
+
+        .about-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Recorta o retrato de forma proporcional */
+        }
+
+        /* Bloco de Marcas e Clientes em Destaque */
+        .about-brands {
+            text-align: center;
+            width: 100%;
+        }
+
+        .about-brands h5 {
+            font-size: 0.7rem;
+            letter-spacing: 0.15em;
+            color: #C1BDE2; /* Tom lilás claro de alto contraste, garantindo leitura perfeita */
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+
+        .brands-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        .brand-badge {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--mercur-text);
+            border: 1px solid var(--mercur-border);
+            padding: 4px 10px;
+            background: var(--mercur-card-bg);
+        }
+
+        .about-name {
+            font-family: var(--font-sans);
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--mercur-text);
+            margin-bottom: 0.25rem;
+        }
+
+        .about-headline {
+            font-family: var(--font-serif);
+            font-style: italic;
+            font-size: 1.05rem;
+            color: var(--mercur-accent);
+            margin-bottom: 1.5rem;
+        }
+
+        .about-text {
+            font-size: 0.95rem;
+            color: var(--mercur-text-secondary);
+            margin-bottom: 1.2rem;
+            line-height: 1.6;
+        }
+
+        /* Frase de Destaque */
+        .about-quote {
+            font-family: var(--font-serif);
+            font-style: italic;
+            font-size: 1.1rem;
+            color: #ffffff;
+            border-left: 2px solid var(--mercur-accent);
+            padding-left: 15px;
+            margin: 20px 0;
+            line-height: 1.5;
+        }
+
+        /* Seção de Especialidades Técnicas (Foco em Soluções) */
+        .services-subgrid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-top: 2rem;
+        }
+
+        .service-item {
+            background: var(--mercur-card-bg);
+            border: 1px solid var(--mercur-border);
+            padding: 1rem;
+            transition: var(--transition-smooth);
+        }
+
+        .service-item:hover {
+            border-color: var(--mercur-accent);
+        }
+
+        .service-item h5 {
+            font-family: var(--font-sans);
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--mercur-text);
+            text-transform: uppercase;
+            margin-bottom: 4px;
+            letter-spacing: 0.05em;
+        }
+
+        .service-item p {
+            font-size: 0.75rem;
+            color: var(--mercur-text-secondary);
+            line-height: 1.4;
+        }
+
+        /* Estatísticas de Performance */
+        .about-stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin-top: 2.5rem;
+        }
+
+        .stat-card {
+            background: var(--mercur-card-bg);
+            border: 1px solid var(--mercur-border);
+            padding: 1.2rem;
+            text-align: center;
+            transition: var(--transition-smooth);
+        }
+
+        .stat-card:hover {
+            border-color: var(--mercur-accent);
+            transform: translateY(-2px);
+        }
+
+        .stat-card h4 {
+            font-family: var(--font-sans);
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--mercur-accent);
+            margin-bottom: 0.25rem;
+            text-transform: uppercase;
+        }
+
+        .stat-card p {
+            font-size: 0.725rem;
+            color: var(--mercur-text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            line-height: 1.3;
+        }
+
+        /* Rodapé Técnico de Softwares e Habilidades */
+        .technical-footnote {
+            margin-top: 2.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--mercur-border);
+            font-size: 0.75rem;
+            color: #C1BDE2; /* Tom lilás claro de alto contraste, garantindo leitura perfeita no fundo escuro */
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        /* --- RESPONSIVIDADE GRIDS --- */
+        @media (max-width: 1200px) {
+            .reels-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 1024px) {
+            .video-grid-horizontal {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .video-grid-horizontal {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+            .reels-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+                text-align: center;
+            }
+            .about-avatar {
+                width: 200px;
+                height: 200px;
+            }
+            .about-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .services-subgrid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .reels-grid {
+                grid-template-columns: 1fr;
+            }
+            .about-stats {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* --- BOTOES E ACOES DE CONTATO (FOOTER) --- */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 0.85rem 2rem;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            text-decoration: none !important; /* Anula completamente o sublinhado padrão de links */
+            transition: var(--transition-smooth);
+            border: 2px solid transparent;
+            cursor: pointer;
+            background: transparent; /* Reset para tag button */
+            font-family: var(--font-sans);
+        }
+
+        .btn svg {
+            flex-shrink: 0;
+            transition: transform 0.2s ease;
+        }
+
+        .btn:hover svg {
+            transform: translateY(-1px);
+        }
+
+        /* Botão WhatsApp - Turquesa / Texto Marinho */
+        .btn-primary-whatsapp {
+            background: var(--color-turquesa);
+            color: var(--color-marinho) !important;
+            border-color: var(--color-turquesa);
+        }
+
+        .btn-primary-whatsapp:hover {
+            background: #19b28b; /* Tom sutilmente mais escuro de turquesa */
+            border-color: #19b28b;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(31, 194, 155, 0.3);
+        }
+
+        /* Botão Email - Índigo / Texto Branco Gelo */
+        .btn-primary-email {
+            background: var(--color-indigo);
+            color: var(--color-branco-gelo) !important;
+            border-color: var(--color-indigo);
+        }
+
+        .btn-primary-email:hover {
+            background: var(--color-lilas);
+            border-color: var(--color-lilas);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(77, 73, 153, 0.3);
+        }
+
+        /* Botão Currículo - Sem preenchimento / Borda Índigo */
+        .btn-secondary {
+            background: transparent;
+            color: var(--mercur-text) !important;
+            border-color: var(--mercur-border);
+        }
+
+        .btn-secondary:hover {
+            background: var(--mercur-card-bg);
+            border-color: var(--mercur-accent);
+            transform: translateY(-2px);
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            border-top: 1px solid var(--mercur-border);
+            padding: 4rem 0;
+            text-align: center;
+        }
+
+        .cta-container {
+            margin-bottom: 2rem;
+        }
+
+        .cta-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--mercur-text);
+            margin-bottom: 1.5rem;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .footer-copyright {
+            font-size: 0.75rem;
+            color: var(--mercur-text-secondary);
+            line-height: 1.6;
+        }
+
+        /* --- LIGHTBOX MODAL --- */
+        .lightbox-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--mercur-backdrop); 
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .lightbox-content {
+            position: relative;
+            background: #000;
+            box-shadow: 0 12px 45px rgba(18, 23, 58, 0.5);
+            overflow: hidden;
+            width: 90%;
+            aspect-ratio: 16/9; 
+        }
+
+        .lightbox-content iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 25px;
+            right: 25px;
+            background: var(--mercur-accent); 
+            color: var(--mercur-bg); 
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 0.6rem 1.2rem;
+            cursor: pointer;
+            font-weight: 600;
+            transition: var(--transition-smooth);
+            z-index: 1002;
+        }
+
+        .lightbox-close:hover {
+            background: var(--color-lilas);
+            color: var(--mercur-text);
+            border-color: white;
+        }
+    </style>
+</head>
+<body>
+    
+    <!-- BANNER HERO PARALLAX -->
+    <section class="parallax-banner" id="home">
+        <!-- O ID do novo vídeo esticado otimizado no DaVinci (31/4 / ID 6a46b93ce81b019c9741e6bc) -->
+        <div class="parallax-video-container" id="parallaxVideo" data-video-id="6a46b93ce81b019c9741e6bc">
+            <!-- Capa estática de fallback imediato -->
+        </div>
+        <!-- Camada overlay estática não-clicável e sem botão -->
+        <div class="parallax-overlay" id="parallaxOverlay"></div>
+        
+        <!-- Conteúdo Textual do Banner com Posicionamento Recomendado -->
+        <div class="hero-content" id="heroContent">
+            <h1 class="hero-title" data-translate-key="hero_title">EVERY FRAME HAS A PURPOSE. EVERY DEADLINE GETS MET.</h1>
+            <p class="hero-subtitle" data-translate-key="hero_subtitle">Broadcast. Campanhas. Eventos. Conteúdo entregue no prazo.</p>
+        </div>
+
+        <!-- Borda inferior desfocada e fundida -->
+        <div class="bottom-feather"></div>
+    </section>
+
+    <!-- HEADER TRANSLÚCIDO FIXADO (Efeito Glassmorphism Posicionado na Base do Banner) -->
+    <header id="mainHeader">
+        <div class="header-container">
+            <div class="header-left">
+                <!-- Logotipo Oficial Integrado com posicionamento recomendado -->
+                <img src="input_file_3.png" class="logo-img" alt="Mercur Logo">
+                <span class="logo-text">MERCUR — POST-PRODUCTION SPECIALIST</span>
+            </div>
+            <div class="header-right">
+                <nav class="header-nav">
+                    <a href="#video" data-translate-key="nav_videos">VÍDEOS</a>
+                    <a href="#about" data-translate-key="nav_about">SOBRE MIM</a>
+                    <a href="https://linkedin.com/in/marcos-soares-santos-91a281163" target="_blank" rel="noopener">LINKEDIN ↗</a>
+                    <!-- Botão de Idioma Compacto -->
+                    <button id="langToggleBtn" onclick="toggleLang()" class="lang-btn">EN</button>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- ENVELOPADOR DE CONTEÚDO -->
+    <div class="content-wrapper">
+        <main class="container">
+            
+            <!-- SEÇÃO 1: PRODUÇÕES CORPORATIVAS, TV & SAME-DAY (16:9) -->
+            <section class="video-section" id="video">
+                <div class="section-header">
+                    <h2 class="section-title" data-translate-key="sec1_title">PRODUÇÕES CORPORATIVAS, TV & SAME-DAY</h2>
+                    <p class="section-subtitle" data-translate-key="sec1_subtitle">Campanhas publicitárias, coberturas de alto impacto e jornalismo broadcast.</p>
+                </div>
+
+                <!-- 1. VÍDEO HERO (Destaque Principal do Portfólio / Think Plastic Brazil Summit 2025) -->
+                <div class="video-hero" style="margin-bottom: 4rem;">
+                    <h3 class="video-hero-title" data-translate-key="showcase_title">Think Plastic Brazil Summit 2025</h3>
+                    <p data-translate-key="showcase_desc" style="text-align: center; font-size: 0.9rem; color: var(--mercur-text-secondary); margin-bottom: 1.5rem; max-width: 800px; margin-left: auto; margin-right: auto; line-height: 1.5;">
+                        Abertura oficial do evento global, com motion design e animações desenvolvidos inteiramente no DaVinci Resolve Fusion.
+                    </p>
+                    <div class="video-wrapper" data-video-id="6a45bf80e4e7cc890ee34095">
+                        <span class="mercur-badge">✓ Mercur Showcase</span>
+                        <!-- Inicializador Neutro Válido em Base64 (0ms LCP) -->
+                        <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Think Plastic Brazil Summit 2025" class="video-thumbnail">
+                        <div class="play-button"></div>
+                    </div>
+                </div>
+
+                <!-- Título secundário "Outros Projetos" acima da grade principal -->
+                <div class="section-header" style="margin: 3rem 0 2.5rem 0;">
+                    <h3 class="section-title" data-translate-key="other_projects" style="font-size: 1.25rem;">Outros Projetos</h3>
+                </div>
+
+                <!-- GRUPO 1: HIGHLIGHTS (Apenas 3 vídeos visíveis por padrão) -->
+                <div class="video-grid-horizontal">
+                    
+                    <div class="horizontal-card">
+                        <div class="video-wrapper" data-video-id="6a471f53e81b019c974c3eed">
+                            <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="O Imponderável - Record News" class="video-thumbnail">
+                            <div class="play-button"></div>
+                        </div>
+                        <div class="card-caption">
+                            <h3 data-translate-key="O Imponderável — Record News">O Imponderável — Record News</h3>
+                            <p data-translate-key="Broadcast de Televisão / Talk Show de Inovação">Broadcast de Televisão / Talk Show de Inovação</p>
+                        </div>
+                    </div>
+
+                    <div class="horizontal-card">
+                        <div class="video-wrapper" data-video-id="6a45babde81b019c9723eb60">
+                            <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="BodyAction na Arnold Expo" class="video-thumbnail">
+                            <div class="play-button"></div>
+                        </div>
+                        <div class="card-caption">
+                            <h3 data-translate-key="BodyAction na Arnold Expo">BodyAction na Arnold Expo</h3>
+                            <p data-translate-key="Cobertura de Evento / Esportivo">Cobertura de Evento / Esportivo</p>
+                        </div>
+                    </div>
+
+                    <div class="horizontal-card">
+                        <div class="video-wrapper" data-video-id="6a45bb7f18d11bffd504439a">
+                            <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Same-day TRANSPETRO - Jd. Hollywood" class="video-thumbnail">
+                            <div class="play-button"></div>
+                        </div>
+                        <div class="card-caption">
+                            <h3 data-translate-key="TRANSPETRO - Jd. Hollywood">TRANSPETRO - Jd. Hollywood</h3>
+                            <p data-translate-key="Cobertura e Edição Same-Day">Cobertura e Edição Same-Day</p>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- GRUPO 2: MAIS PROJETOS (Revelação vertical via expansão suave - Contém os outros 13 vídeos) -->
+                <div class="expandable-wrapper" id="archiveContainer">
+                    <div class="video-grid-horizontal">
+
+                        <div class="horizontal-card">
+                            <div class="video-wrapper" data-video-id="6a45b9b7e81b019c9723d6d3">
+                                <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Gree Senai" class="video-thumbnail">
+                                <div class="play-button"></div>
+                            </div>
+                            <div class="card-caption">
+                                <h3 data-translate-key="Gree Senai">Gree Senai</h3>
+                                <p data-translate-key="Edição Comercial / Motion Graphics">Edição Comercial / Motion Graphics</p>
+                            </div>
+                        </div>
+
+                        <div class="horizontal-card">
+                            <div class="video-wrapper" data-video-id="6a45b92318d11bffd5040e32">
+                                <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="HTI Longevidade Saudável 2023" class="video-thumbnail">
+                                <div class="play-button"></div>
+                            </div>
+                            <div class="card-caption">
+                                <h3 data-translate-key="HTI Longevidade 2023">HTI Longevidade 2023</h3>
+                                <p data-translate-key="Cobertura e Edição Same-Day">Cobertura e Edição Same-Day</p>
+                            </div>
+                        </div>
+
+                        <div class="horizontal-card">
+                            <div class="video-wrapper" data-video-id="6a45bb92e4e7cc890ee2fa22">
+                                <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Same-day TRANSPETRO - Salesópolis" class="video-thumbnail">
+                                <div class="play-button"></div>
+                            </div>
+                            <div class="card-caption">
+                                <h3 data-translate-key="TRANSPETRO - Salesópolis">TRANSPETRO - Salesópolis</h3>
+                                <p data-translate-key="Cobertura e Edição Same-Day">Cobertura e Edição Same-Day</p>
+                            </div>
+                        </div>
+
+                        <div class="horizontal-card">
+                            <div class="video-wrapper" data-video-id="6a45b9d818d11bffd5041f0a">
+                                <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Making-of Dior" class="video-thumbnail">
+                                <div class="play-button"></div>
+                            </div>
+                            <div class="card-caption">
+                                <h3 data-translate-key="Making-of Dior">Making-of Dior</h3>
+                                <p data-translate-key="Aftermovie de Evento / Edição Comercial">Aftermovie de Evento / Edição Comercial</p>
+                            </div>
+                        </div>
+
+                        <div class="horizontal-card">
+                            <div class="video-wrapper" data-video-id="6a45b89018d11bffd50404a1">
+                                <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Institucional Rapha Filmes" class="video-thumbnail">
+                                <div class="play-button"></div>
+                            </div>
+                            <div class="card-caption">
+                                <h3 data-translate-key="Institucional Rapha Filmes">Institucional Rapha Filmes</h3>
+                                <p data-translate-key="Edição Comercial / Cinematográfico">Edição Comercial / Cinematográfico</p>
+                            </div>
+                        </div>
+
+                        <div class="horizontal-card">
+                            <div class="video-wrapper" data-video-id="6a45bef418d11bffd5048073">
+                                <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Institucional Logpark - motion graphics" class="video-thumbnail">
+                                <div class="play-button"></div>
+                            </div>
+                            <div class="card-caption">
+                                <h3 data-translate-key="Institucional Logpark">Institucional Logpark</h3>
+                                <p data-translate-key="Motion Graphics / Evento Corporativo">Motion Graphics / Evento Corporativo</p>
+                            </div>
+                        </div>
+
+                        <div class="horizontal-card">
+                            <div class="video-wrapper" data-video-id="6a45b9a0e81b019c9723d556">
+                                <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Coleções G91 - Pai e Filho" class="video-thumbnail">
+                                <div class="play-button"></div>
+                            </div>
+                            <div class="card-caption">
+                                <h3 data-translate-key="Coleções G91 - Pai e Filho">Coleções G91 - Pai e Filho</h3>
+                                <p data-translate-key="Edição Comercial / Campanha de E-Commerce">Edição Comercial / Campanha de E-Commerce</p>
+                            </div>
+                        </div>
+
+                        <div class="horizontal-card">
+                            <div class="video-wrapper" data-video-id="6a45b97818d11bffd50415eb">
+                                <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Aftermovie P&G" class="video-thumbnail">
+                                <div class="play-button"></div>
+                            </div>
+                            <div class="card-caption">
+                                <h3 data-translate-key="Aftermovie P&G">Aftermovie P&G</h3>
+                                <p data-translate-key="Aftermovie de Evento Corporativo">Aftermovie de Evento Corporativo</p>
+                            </div>
+                        </div>
+
+                        <div class="horizontal-card">
+                            <div class="video-wrapper" data-video-id="6a45b8a618d11bffd50405b6">
+                                <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Aftermovie Escola Eugenio Montale" class="video-thumbnail">
+                                <div class="play-button"></div>
+                            </div>
+                            <div class="card-caption">
+                                <h3 data-translate-key="Aftermovie Escola Eugenio Montale">Aftermovie Escola Eugenio Montale</h3>
+                                <p data-translate-key="Aftermovie / Institucional">Aftermovie / Institucional</p>
+                            </div>
+                        </div>
+
+                        <div class="horizontal-card">
+                            <div class="video-wrapper" data-video-id="6a45ba55e81b019c9723e28f">
+                                <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="MANDIC CAMESP Ouro" class="video-thumbnail">
+                                <div class="play-button"></div>
+                            </div>
+                            <div class="card-caption">
+                                <h3 data-translate-key="MANDIC CAMESP Ouro">MANDIC CAMESP Ouro</h3>
+                                <p data-translate-key="Cobertura de Torneio Universitário">Cobertura de Torneio Universitário</p>
+                            </div>
+                        </div>
+
+                        <div class="horizontal-card">
+                            <div class="video-wrapper" data-video-id="6a45be3e18d11bffd50473aa">
+                                <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="TuzinhoAcademy e Original SP Tattoo na TattooWeek 2024" class="video-thumbnail">
+                                <div class="play-button"></div>
+                            </div>
+                            <div class="card-caption">
+                                <h3 data-translate-key="TattooWeek 2024">TattooWeek 2024</h3>
+                                <p data-translate-key="Cobertura Same-Day de Convenção">Cobertura Same-Day de Convenção</p>
+                            </div>
+                        </div>
+
+                        <div class="horizontal-card">
+                            <div class="video-wrapper" data-video-id="6a45bbf6e4e7cc890ee300aa">
+                                <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Institucional VATECH" class="video-thumbnail">
+                                <div class="play-button"></div>
+                            </div>
+                            <div class="card-caption">
+                                <h3 data-translate-key="Institucional VATECH">Institucional VATECH</h3>
+                                <p data-translate-key="Edição Comercial de Produto">Edição Comercial de Produto</p>
+                            </div>
+                        </div>
+
+                        <div class="horizontal-card">
+                            <div class="video-wrapper" data-video-id="6a45b87be81b019c9723bc54">
+                                <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Sequoia - dia do motorista" class="video-thumbnail">
+                                <div class="play-button"></div>
+                            </div>
+                            <div class="card-caption">
+                                <h3 data-translate-key="Sequoia - Dia do Motorista">Sequoia - Dia do Motorista</h3>
+                                <p data-translate-key="Campanha Interna Corporativa">Campanha Interna Corporativa</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Botão Ver Mais Projetos -->
+                <div style="text-align: center; margin-top: 3rem;">
+                    <button class="btn-ver-todos" id="toggleArchiveBtn" data-translate-key="toggle_more">Ver Mais Projetos</button>
+                </div>
+            </section>
+
+        </main>
+
+        <main class="container">
+
+            <!-- SEÇÃO 2: REELS, SHORTS & CAMPANHAS DIGITAIS (9:16) -->
+            <section class="video-section" id="reels">
+                <div class="section-header">
+                    <h2 class="section-title" data-translate-key="sec2_title">REELS, SHORTS & CAMPANHAS DIGITAIS</h2>
+                    <p class="section-subtitle" data-translate-key="sec2_subtitle">Edição dinâmica vertical para social media, lançamentos e tráfego pago.</p>
+                </div>
+
+                <!-- CARROSSEL DE ABAS / FILTRAGEM (Usabilidade avançada com 12 vídeos) -->
+                <div class="filter-container">
+                    <button class="filter-btn active" data-filter="all" data-translate-key="filter_all">Todos</button>
+                    <button class="filter-btn" data-filter="campanhas" data-translate-key="filter_campanhas">Campanhas Tattoo</button>
+                    <button class="filter-btn" data-filter="institucionais" data-translate-key="filter_institucionais">Institucionais</button>
+                    <button class="filter-btn" data-filter="internacionais" data-translate-key="filter_internacionais">Internacionais</button>
+                    <button class="filter-btn" data-filter="apas" data-translate-key="filter_apas">Same Day (APAS)</button>
+                </div>
+
+                <div class="reels-grid" id="reelsGrid">
+                    
+                    <!-- --- CATEGORIA: CAMPANHAS ORIGINAL SP TATTOO --- -->
+                    <div class="vertical-card" data-category="campanhas">
+                        <div class="video-wrapper" data-video-id="6a45be3ee4e7cc890ee3284d">
+                            <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Campanha Tattoo — ShenLong" class="video-thumbnail-reel">
+                            <div class="play-button"></div>
+                        </div>
+                        <div class="card-caption">
+                            <h3 data-translate-key="ShenLong">ShenLong</h3>
+                            <p data-translate-key="Campanha para Redes Sociais / Lançamento">Campanha para Redes Sociais / Lançamento</p>
+                        </div>
+                    </div>
+
+                    <div class="vertical-card" data-category="campanhas">
+                        <div class="video-wrapper" data-video-id="6a45be3de81b019c97242b4e">
+                            <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="NumbFlow - Por que ainda sofre pra se tatuar?" class="video-thumbnail-reel">
+                            <div class="play-button"></div>
+                        </div>
+                        <div class="card-caption">
+                            <h3 data-translate-key="NumbFlow">NumbFlow</h3>
+                            <p data-translate-key="Campanha para Redes Sociais / Motion">Campanha para Redes Sociais / Motion</p>
+                        </div>
+                    </div>
+
+                    <div class="vertical-card" data-category="campanhas">
+                        <div class="video-wrapper" data-video-id="6a45be3de81b019c97242b46">
+                            <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Cobra viva — Original SP Tattoo" class="video-thumbnail-reel">
+                            <div class="play-button"></div>
+                        </div>
+                        <div class="card-caption">
+                            <h3 data-translate-key="Cobra Viva">Cobra Viva</h3>
+                            <p data-translate-key="Campanha para Redes Sociais">Campanha para Redes Sociais</p>
+                        </div>
+                    </div>
+
+                    <div class="vertical-card" data-category="campanhas">
+                        <div class="video-wrapper" data-video-id="6a45be3d18d11bffd5047388">
+                            <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Batman — Original SP Tattoo" class="video-thumbnail-reel">
+                            <div class="play-button"></div>
+                        </div>
+                        <div class="card-caption">
+                            <h3 data-translate-key="Batman">Batman</h3>
+                            <p data-translate-key="Redes Sociais / Edição Conceitual">Redes Sociais / Edição Conceitual</p>
+                        </div>
+                    </div>
+
+                    <!-- --- CATEGORIA: INSTITUCIONAIS --- -->
+                    <div class="vertical-card" data-category="institucionais">
+                        <div class="video-wrapper" data-video-id="6a45bb6ee4e7cc890ee2f7a9">
+                            <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="QualityCert" class="video-thumbnail-reel">
+                            <div class="play-button"></div>
+                        </div>
+                        <div class="card-caption">
+                            <h3 data-translate-key="QualityCert">QualityCert</h3>
+                            <p data-translate-key="Edição Comercial / Negócios">Edição Comercial / Negócios</p>
+                        </div>
+                    </div>
+
+                    <div class="vertical-card" data-category="institucionais">
+                        <div class="video-wrapper" data-video-id="6a45bb13e81b019c9723f308">
+                            <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Missão Contador" class="video-thumbnail-reel">
+                            <div class="play-button"></div>
+                        </div>
+                        <div class="card-caption">
+                            <h3 data-translate-key="Missão Contador">Missão Contador</h3>
+                            <p data-translate-key="Edição Comercial / Infoproduto">Edição Comercial / Infoproduto</p>
+                        </div>
+                    </div>
+
+                    <!-- --- CATEGORIA: INTERNACIONAIS --- -->
+                    <div class="vertical-card" data-category="internacionais">
+                        <div class="video-wrapper" data-video-id="6a45bafa18d11bffd5043ad5">
+                            <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="The Pad Sarasota" class="video-thumbnail-reel">
+                            <div class="play-button"></div>
+                        </div>
+                        <div class="card-caption">
+                            <h3 data-translate-key="The Pad Sarasota">The Pad Sarasota</h3>
+                            <p data-translate-key="Campanha para Redes Sociais / Imobiliário">Campanha para Redes Sociais / Imobiliário</p>
+                        </div>
+                    </div>
+
+                    <div class="vertical-card" data-category="internacionais">
+                        <div class="video-wrapper" data-video-id="6a45badb18d11bffd5043858">
+                            <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Pettingell Professionals" class="video-thumbnail-reel">
+                            <div class="play-button"></div>
+                        </div>
+                        <div class="card-caption">
+                            <h3 data-translate-key="Pettingell Professionals">Pettingell Professionals</h3>
+                            <p data-translate-key="Campanha para Redes Sociais / Negócios">Campanha para Redes Sociais / Negócios</p>
+                        </div>
+                    </div>
+
+                    <!-- --- CATEGORIA: SAME DAY - APAS SHOW 2024 --- -->
+                    <div class="vertical-card" data-category="apas">
+                        <div class="video-wrapper" data-video-id="6a45ba33e81b019c9723df2b">
+                            <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="APAS Show 2024 - Cerimonia solene de abertura" class="video-thumbnail-reel">
+                            <div class="play-button"></div>
+                        </div>
+                        <div class="card-caption">
+                            <h3 data-translate-key="Abertura Solene">Abertura Solene</h3>
+                            <p data-translate-key="Same-Day Event Coverage">Same-Day Event Coverage</p>
+                        </div>
+                    </div>
+
+                    <div class="vertical-card" data-category="apas">
+                        <div class="video-wrapper" data-video-id="6a45ba3318d11bffd50426cf">
+                            <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="APAS Show 2024 - Coletiva" class="video-thumbnail-reel">
+                            <div class="play-button"></div>
+                        </div>
+                        <div class="card-caption">
+                            <h3 data-translate-key="Coletiva de Imprensa">Coletiva de Imprensa</h3>
+                            <p data-translate-key="Same-Day Event Coverage / Press">Same-Day Event Coverage / Press</p>
+                        </div>
+                    </div>
+
+                    <div class="vertical-card" data-category="apas">
+                        <div class="video-wrapper" data-video-id="6a45ba3318d11bffd504269d">
+                            <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="APAS Show 2024 - Destaques" class="video-thumbnail-reel">
+                            <div class="play-button"></div>
+                        </div>
+                        <div class="card-caption">
+                            <h3 data-translate-key="Destaques APAS Show">Destaques APAS Show</h3>
+                            <p data-translate-key="Same-Day Event Coverage">Same-Day Event Coverage</p>
+                        </div>
+                    </div>
+
+                    <div class="vertical-card" data-category="apas">
+                        <div class="video-wrapper" data-video-id="6a45ba3318d11bffd50426a0">
+                            <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="APAS Show 2024 - Entrevista com expositores" class="video-thumbnail-reel">
+                            <div class="play-button"></div>
+                        </div>
+                        <div class="card-caption">
+                            <h3 data-translate-key="Expositores">Expositores</h3>
+                            <p data-translate-key="Same-Day Event Coverage / Interviews">Same-Day Event Coverage / Interviews</p>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- --- SEÇÃO 3: SOBRE MIM (Conceito e Narrativa Recomendados) --- -->
+            <section class="about-section" id="about">
+                <div class="section-header">
+                    <h2 class="section-title" data-translate-key="sec3_title">POST-PRODUCTION SPECIALIST</h2>
+                    <p class="section-subtitle" data-translate-key="sec3_subtitle">Liderança, ritmo narrativo e consistência sob forte pressão operacional.</p>
+                </div>
+                <div class="about-grid">
+                    <div class="about-left">
+                        <div class="about-avatar">
+                            <!-- Foto de Perfil Atualizada (input_file_8.png) -->
+                            <img src="input_file_8.png" alt="Marcos Soares Santos">
+                        </div>
+                        <!-- Bloco de Clientes e Credibilidade -->
+                        <div class="about-brands">
+                            <h5 data-translate-key="brands_heading">Marcas e Projetos Atendidos</h5>
+                            <div class="brands-list">
+                                <span class="brand-badge">Dior</span>
+                                <span class="brand-badge">Santander</span>
+                                <span class="brand-badge">P&G</span>
+                                <span class="brand-badge">TRANSPETRO</span>
+                                <span class="brand-badge">Record News</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="about-right">
+                        <h3 class="about-name">Marcos Soares Santos</h3>
+                        <p class="about-headline" data-translate-key="about_headline">Editor de vídeo & Post-Production Lead</p>
+                        
+                        <p class="about-text" data-translate-key="about_p1">
+                            Nos últimos sete anos trabalhei em praticamente todos os cenários da pós-produção: televisão, publicidade, eventos ao vivo, conteúdo digital e campanhas para marcas nacionais e internacionais.
+                        </p>
+
+                        <div class="about-quote" data-translate-key="about_quote">
+                            "Comecei editando vídeo de game pra um canal do YouTube em 2020. De lá pra cá, editei mais de 40 episódios de um talk show pra Record News, cobri a APAS Show direto da feira — entregando Reels em até 4 horas depois da gravação — e ajudei a levar um canal de aviação a mais de 1,5 milhão de inscritos. No meio do caminho aprendi que ritmo importa tanto quanto corte."
+                        </div>
+
+                        <p class="about-text" data-translate-key="about_p2">
+                            O que gosto mesmo é resolver problema de comunicação com edição: decidir onde cortar, o que guardar, como manter o ritmo quando o material chega quebrado ou o prazo é curto demais. No dia a dia uso Premiere, After Effects, DaVinci Resolve e CapCut — e ferramentas de IA quando ajudam a ganhar tempo sem perder qualidade.
+                        </p>
+
+                        <!-- Painel de Especialidades Técnicas focada em Soluções -->
+                        <div class="services-subgrid">
+                            <div class="service-item">
+                                <h5 data-translate-key="srv_broadcast_title">Edição Broadcast</h5>
+                                <p data-translate-key="srv_broadcast_desc">Montagem refinada para TV aberta, talk-shows de inovação e jornalismo digital.</p>
+                            </div>
+                            <div class="service-item">
+                                <h5 data-translate-key="srv_comercial_title">Edição Comercial</h5>
+                                <p data-translate-key="srv_comercial_desc">Criação e finalização de comerciais voltados para retenção e campanhas digitais.</p>
+                            </div>
+                            <div class="service-item">
+                                <h5 data-translate-key="srv_sameday_title">Edição Same-Day</h5>
+                                <p data-translate-key="srv_sameday_desc">Fluxo de edição ultra-rápido para entrega de eventos em até 4 horas.</p>
+                            </div>
+                            <div class="service-item">
+                                <h5 data-translate-key="srv_sup_title">Supervisão de Pós-Produção</h5>
+                                <p data-translate-key="srv_sup_desc">Gestão de fluxo e conformidade técnica para controle de qualidade.</p>
+                            </div>
+                        </div>
+
+                        <!-- Painel de Indicadores Fortes de Desempenho -->
+                        <div class="about-stats">
+                            <div class="stat-card">
+                                <h4 data-translate-key="stat_years_title">7+ Anos</h4>
+                                <p data-translate-key="stat_years_desc">em pós-produção</p>
+                            </div>
+                            <div class="stat-card">
+                                <h4 data-translate-key="stat_episodes_title">40+ Episódios</h4>
+                                <p data-translate-key="stat_episodes_desc">editados para TV</p>
+                            </div>
+                            <div class="stat-card">
+                                <h4>1.5M+</h4>
+                                <p data-translate-key="stat_subs_desc">Inscritos em canais atendidos</p>
+                            </div>
+                            <div class="stat-card">
+                                <h4 data-translate-key="stat_sameday_title">Same-Day</h4>
+                                <p data-translate-key="stat_sameday_desc">em até 4 horas</p>
+                            </div>
+                        </div>
+
+                        <!-- Rodapé Técnico de Softwares e Habilidades (Footnote Discreto) -->
+                        <div class="technical-footnote">
+                            <span data-translate-key="foot_tools">Softwares & Ferramentas: Adobe Premiere Pro, After Effects, DaVinci Resolve, CapCut Pro</span>
+                            <span data-translate-key="foot_ia">IA & Teste: ElevenLabs, Sora, DeepSeek, Gemini</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
+        <!-- FOOTER -->
+        <footer class="container">
+            <div class="cta-container">
+                <h3 class="cta-title" data-translate-key="cta_title">Quer conversar sobre um projeto?</h3>
+                <div class="btn-group">
+                    <!-- Botão Email - Customizado em Índigo (Sem Underlines) -->
+                    <a href="mailto:marcoscpc@outlook.com" class="btn btn-primary-email">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                        Email
+                    </a>
+                    
+                    <!-- Botão WhatsApp - Customizado em Turquesa (Sem Underlines) -->
+                    <a href="https://wa.me/5511963033573" target="_blank" class="btn btn-primary-whatsapp">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12.012 2c-5.506 0-9.989 4.478-9.99 9.984a9.96 9.96 0 0 0 1.333 4.993L2 22l5.135-1.347a9.94 9.94 0 0 0 4.877 1.331h.005c5.505 0 9.99-4.478 9.99-9.985 0-2.667-1.037-5.176-2.922-7.062A9.919 9.919 0 0 0 12.012 2zm5.835 14.123c-.254.715-1.48 1.402-2.035 1.484-.509.075-1.173.137-3.41-.79-2.859-1.183-4.693-4.085-4.836-4.275-.143-.19-1.157-1.537-1.157-2.93 0-1.393.73-2.074 1.015-2.361.254-.254.666-.372 1.077-.372.174 0 .327.009.453.016.372.016.559.038.805.483.254.46.872 2.123.951 2.282.079.158.133.348.026.554-.105.206-.164.333-.327.523-.164.19-.344.425-.492.571-.164.158-.333.333-.143.626.19.294.842 1.382 1.802 2.183.916.762 1.691 1.001 1.931 1.113.238.111.378.092.52-.07.143-.164.602-.73.762-.977.159-.248.318-.206.539-.124.222.082 1.402.66 1.64.778.238.117.396.174.454.271.058.098.058.557-.196 1.272z"/></svg>
+                        WhatsApp
+                    </a>
+                    
+                    <!-- Botão Currículo Integrado via JavaScript (Sem Underlines) -->
+                    <button onclick="openResume()" class="btn btn-secondary">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                        <span data-translate-key="btn_cv">Currículo</span>
+                    </button>
+                </div>
+            </div>
+            <p class="footer-copyright" data-translate-key="copyright">
+                © 2026 Mercur | Marcos Edição & Motion
+            </p>
+        </footer>
+    </div>
+
+    <!-- LIGHTBOX MODAL -->
+    <div class="lightbox-modal" id="videoModal">
+        <button class="lightbox-close" id="closeBtn" data-translate-key="close_btn">Fechar [X]</button>
+        <div class="lightbox-content" id="modalContent">
+            <!-- Player do Gumlet injetado dinamicamente -->
+        </div>
+    </div>
+
+    <!-- SCRIPT DE SEGURANÇA, HOVER PREVIEW, STICKY HEADER, PARALLAX E INJEÇÃO DINÂMICA -->
+    <script>
+        const wrappers = document.querySelectorAll('.video-wrapper');
+        const modal = document.getElementById('videoModal');
+        const modalContent = document.getElementById('modalContent');
+        const closeBtn = document.getElementById('closeBtn');
+
+        const mainHeader = document.getElementById('mainHeader');
+        const parallaxBanner = document.getElementById('home');
+        const parallaxVideo = document.getElementById('parallaxVideo');
+        const parallaxOverlay = document.getElementById('parallaxOverlay');
+        const heroContent = document.getElementById('heroContent');
+        const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        
+        let ticking = false;
+        let isModalOpen = false;
+        let lastTime = 0;
+        let posX = 0;
+        let direction = -1; // -1 para mover à esquerda inicialmente
+
+        const BANNER_COVER_THRESHOLD = 350;
+        let bannerVisible = true; 
+        let bannerIframe = null; 
+
+        let cachedContainerWidth = 0;
+        let cachedVideoWidth = 0;
+        let cachedMaxPan = 0;
+        let cachedBaseCenterX = 0;
+
+        // --- SISTEMA DE IDIOMA E TRADUÇÃO DINÂMICA ---
+        let currentLang = 'pt';
+
+        const translations = {
+            pt: {
+                "nav_videos": "VÍDEOS",
+                "nav_about": "SOBRE MIM",
+                "hero_title": "EVERY FRAME HAS A PURPOSE. EVERY DEADLINE GETS MET.",
+                "hero_subtitle": "Broadcast. Campanhas. Eventos. Conteúdo entregue no prazo.",
+                "sec1_title": "PRODUÇÕES CORPORATIVAS, TV & SAME-DAY",
+                "sec1_subtitle": "Campanhas publicitárias, coberturas de alto impacto e jornalismo broadcast.",
+                "showcase_title": "Think Plastic Brazil Summit 2025",
+                "showcase_desc": "Abertura oficial do evento global, com motion design e animações desenvolvidos inteiramente no DaVinci Resolve Fusion.",
+                "other_projects": "Outros Projetos",
+                "toggle_more": "Ver Mais Projetos",
+                "toggle_less": "Mostrar Menos",
+                "sec2_title": "REELS, SHORTS & CAMPANHAS DIGITAIS",
+                "sec2_subtitle": "Edição dinâmica vertical para social media, lançamentos e tráfego pago.",
+                "filter_all": "Todos",
+                "filter_campanhas": "Campanhas Tattoo",
+                "filter_institucionais": "Institucionais",
+                "filter_internacionais": "Internacionais",
+                "filter_apas": "Same Day (APAS)",
+                "sec3_title": "POST-PRODUCTION SPECIALIST",
+                "sec3_subtitle": "Liderança, ritmo narrativo e consistência sob forte pressão operacional.",
+                "brands_heading": "Marcas e Projetos Atendidos",
+                "about_headline": "Editor de vídeo & Post-Production Lead",
+                "about_p1": "Nos últimos sete anos trabalhei em praticamente todos os cenários da pós-produção: televisão, publicidade, eventos ao vivo, conteúdo digital e campanhas para marcas nacionais e internacionais.",
+                "about_quote": '"Comecei editando vídeo de game pra um canal do YouTube em 2020. De lá pra cá, editei mais de 40 episódios de um talk show pra Record News, cobri a APAS Show direto da feira — entregando Reels em até 4 horas depois da gravação — e ajudei a levar um canal de aviação a mais de 1,5 milhão de inscritos. No meio do caminho aprendi que ritmo importa tanto quanto corte."',
+                "about_p2": "O que gosto mesmo é resolver problema de comunicação com edição: decidir onde cortar, o que guardar, como manter o ritmo quando o material chega quebrado ou o prazo é curto demais. No dia a dia uso Premiere, After Effects, DaVinci Resolve e CapCut — e ferramentas de IA quando ajudam a ganhar tempo sem perder qualidade.",
+                "srv_broadcast_title": "Edição Broadcast",
+                "srv_broadcast_desc": "Montagem refinada para TV aberta, talk-shows de inovação e jornalismo digital.",
+                "srv_comercial_title": "Edição Comercial",
+                "srv_comercial_desc": "Criação e finalização de comerciais voltados para retenção e campanhas digitais.",
+                "srv_sameday_title": "Edição Same-Day",
+                "srv_sameday_desc": "Fluxo de edição ultra-rápido para entrega de eventos em até 4 horas.",
+                "srv_sup_title": "Supervisão de Pós-Produção",
+                "srv_sup_desc": "Gestão de fluxo e conformidade técnica para controle de qualidade.",
+                "stat_years_title": "7+ Anos",
+                "stat_years_desc": "em pós-produção",
+                "stat_episodes_title": "40+ Episódios",
+                "stat_episodes_desc": "editados para TV",
+                "stat_subs_desc": "Inscritos em canais atendidos",
+                "stat_sameday_title": "Same-Day",
+                "stat_sameday_desc": "em até 4 horas",
+                "foot_tools": "Softwares & Ferramentas: Adobe Premiere Pro, After Effects, DaVinci Resolve, CapCut Pro",
+                "foot_ia": "IA & Teste: ElevenLabs, Sora, DeepSeek, Gemini",
+                "cta_title": "Quer conversar sobre um projeto?",
+                "btn_cv": "Currículo",
+                "copyright": "© 2026 Mercur | Marcos Edição & Motion",
+                "close_btn": "Fechar [X]"
+            },
+            en: {
+                "nav_videos": "VIDEOS",
+                "nav_about": "ABOUT ME",
+                "hero_title": "EVERY FRAME HAS A PURPOSE. EVERY DEADLINE GETS MET.",
+                "hero_subtitle": "Broadcast. Campaigns. Events. Content delivered on time.",
+                "sec1_title": "CORPORATE PRODUCTIONS, TV & SAME-DAY",
+                "sec1_subtitle": "Advertising campaigns, high-impact coverage, and broadcast journalism.",
+                "showcase_title": "Think Plastic Brazil Summit 2025",
+                "showcase_desc": "Official opening of the global event, with motion design and animations developed entirely in DaVinci Resolve Fusion.",
+                "other_projects": "Other Projects",
+                "toggle_more": "See More Projects",
+                "toggle_less": "Show Less",
+                "sec2_title": "REELS, SHORTS & DIGITAL CAMPAIGNS",
+                "sec2_subtitle": "Dynamic vertical editing for social media, launches, and paid traffic.",
+                "filter_all": "All",
+                "filter_campanhas": "Tattoo Campaigns",
+                "filter_institucionais": "Institutional",
+                "filter_internacionais": "International",
+                "filter_apas": "Same Day (APAS)",
+                "sec3_title": "POST-PRODUCTION SPECIALIST",
+                "sec3_subtitle": "Leadership, narrative rhythm, and consistency under heavy operational pressure.",
+                "brands_heading": "Brands & Projects Served",
+                "about_headline": "Video Editor & Post-Production Lead",
+                "about_p1": "Over the past seven years, I have worked in virtually every post-production scenario: television, advertising, live events, digital content, and campaigns for national and international brands.",
+                "about_quote": '"I started editing gaming videos for a YouTube channel in 2020. Since then, I\'ve edited over 40 episodes of a weekly talk show for Record News, covered the APAS Show live from the convention floor — delivering Reels within 4 hours of recording — and helped grow an aviation channel to over 1.5 million subscribers. Along the way, I learned that pacing matters just as much as the cut."',
+                "about_p2": "What I truly enjoy is solving communication problems through editing: deciding where to cut, what to keep, and how to maintain the rhythm when the footage arrives incomplete or the deadline is extremely tight. Daily, I work with Premiere, After Effects, DaVinci Resolve, and CapCut — leveraging AI tools whenever they help save time without sacrificing quality.",
+                "srv_broadcast_title": "Broadcast Editing",
+                "srv_broadcast_desc": "Refined editing for free-to-air TV, innovation talk shows, and digital journalism.",
+                "srv_comercial_title": "Commercial Editing",
+                "srv_comercial_desc": "Creation and finalization of commercials geared towards retention and digital campaigns.",
+                "srv_sameday_title": "Same-Day Editing",
+                "srv_sameday_desc": "Ultra-fast editing workflow for event deliveries within 4 hours.",
+                "srv_sup_title": "Post-Production Supervision",
+                "srv_sup_desc": "Workflow management and technical compliance for quality control.",
+                "stat_years_title": "7+ Years",
+                "stat_years_desc": "in post-production",
+                "stat_episodes_title": "40+ Episodes",
+                "stat_episodes_desc": "edited for TV",
+                "stat_subs_desc": "Subscribers on served channels",
+                "stat_sameday_title": "Same-Day",
+                "stat_sameday_desc": "within 4 hours",
+                "foot_tools": "Software & Tools: Adobe Premiere Pro, After Effects, DaVinci Resolve, CapCut Pro",
+                "foot_ia": "AI & Testing: ElevenLabs, Sora, DeepSeek, Gemini",
+                "cta_title": "Want to talk about a project?",
+                "btn_cv": "Resume",
+                "copyright": "© 2026 Mercur | Marcos Editing & Motion",
+                "close_btn": "Close [X]"
+            }
+        };
+
+        const projectTranslations = {
+            pt: {
+                "O Imponderável — Record News": "O Imponderável — Record News",
+                "Broadcast de Televisão / Talk Show de Inovação": "Broadcast de Televisão / Talk Show de Inovação",
+                "BodyAction na Arnold Expo": "BodyAction na Arnold Expo",
+                "Cobertura de Evento / Esportivo": "Cobertura de Evento / Esportivo",
+                "TRANSPETRO - Jd. Hollywood": "TRANSPETRO - Jd. Hollywood",
+                "Cobertura e Edição Same-Day": "Cobertura e Edição Same-Day",
+                "Gree Senai": "Gree Senai",
+                "Edição Comercial / Motion Graphics": "Edição Comercial / Motion Graphics",
+                "HTI Longevidade 2023": "HTI Longevidade 2023",
+                "TRANSPETRO - Salesópolis": "TRANSPETRO - Salesópolis",
+                "Making-of Dior": "Making-of Dior",
+                "Aftermovie de Evento / Edição Comercial": "Aftermovie de Evento / Edição Comercial",
+                "Institucional Rapha Filmes": "Institucional Rapha Filmes",
+                "Edição Comercial / Cinematográfico": "Edição Comercial / Cinematográfico",
+                "Institucional Logpark": "Institucional Logpark",
+                "Motion Graphics / Evento Corporativo": "Motion Graphics / Evento Corporativo",
+                "Coleções G91 - Pai e Filho": "Coleções G91 - Pai e Filho",
+                "Edição Comercial / Campanha de E-Commerce": "Edição Comercial / Campanha de E-Commerce",
+                "Aftermovie P&G": "Aftermovie P&G",
+                "Aftermovie de Evento Corporativo": "Aftermovie de Evento Corporativo",
+                "Escola Eugenio Montale": "Escola Eugenio Montale",
+                "Aftermovie / Institucional": "Aftermovie / Institucional",
+                "MANDIC CAMESP Ouro": "MANDIC CAMESP Ouro",
+                "Cobertura de Torneio Universitário": "Cobertura de Torneio Universitário",
+                "TattooWeek 2024": "TattooWeek 2024",
+                "Cobertura Same-Day de Convenção": "Cobertura Same-Day de Convenção",
+                "Institucional VATECH": "Institucional VATECH",
+                "Edição Comercial de Produto": "Edição Comercial de Produto",
+                "Sequoia - Dia do Motorista": "Sequoia - Dia do Motorista",
+                "Campanha Interna Corporativa": "Campanha Interna Corporativa",
+                "ShenLong": "ShenLong",
+                "Campanha para Redes Sociais / Lançamento": "Campanha para Redes Sociais / Lançamento",
+                "NumbFlow": "NumbFlow",
+                "Campanha para Redes Sociais / Motion": "Campanha para Redes Sociais / Motion",
+                "Cobra Viva": "Cobra Viva",
+                "Campanha para Redes Sociais": "Campanha para Redes Sociais",
+                "Batman": "Batman",
+                "Redes Sociais / Edição Conceitual": "Redes Sociais / Edição Conceitual",
+                "QualityCert": "QualityCert",
+                "Edição Comercial / Negócios": "Edição Comercial / Negócios",
+                "Missão Contador": "Missão Contador",
+                "Edição Comercial / Infoproduto": "Edição Comercial / Infoproduto",
+                "The Pad Sarasota": "The Pad Sarasota",
+                "Campanha para Redes Sociais / Imobiliário": "Campanha para Redes Sociais / Imobiliário",
+                "Pettingell Professionals": "Pettingell Professionals",
+                "Campanha para Redes Sociais / Negócios": "Campanha para Redes Sociais / Negócios",
+                "Abertura Solene": "Abertura Solene",
+                "Same-Day Event Coverage": "Same-Day Event Coverage",
+                "Coletiva de Imprensa": "Coletiva de Imprensa",
+                "Same-Day Event Coverage / Press": "Same-Day Event Coverage / Press",
+                "Destaques APAS Show": "Destaques APAS Show",
+                "Expositores": "Expositores",
+                "Same-Day Event Coverage / Interviews": "Same-Day Event Coverage / Interviews"
+            },
+            en: {
+                "O Imponderável — Record News": "O Imponderável — Record News",
+                "Broadcast de Televisão / Talk Show de Inovação": "TV Broadcast / Innovation Talk Show",
+                "BodyAction na Arnold Expo": "BodyAction at Arnold Expo",
+                "Cobertura de Evento / Esportivo": "Event Coverage / Sports",
+                "TRANSPETRO - Jd. Hollywood": "TRANSPETRO - Jd. Hollywood",
+                "Cobertura e Edição Same-Day": "Same-Day Coverage & Editing",
+                "Gree Senai": "Gree Senai",
+                "Edição Comercial / Motion Graphics": "Commercial Editing / Motion Graphics",
+                "HTI Longevidade 2023": "HTI Longevidade 2023",
+                "TRANSPETRO - Salesópolis": "TRANSPETRO - Salesópolis",
+                "Making-of Dior": "Making-of Dior",
+                "Aftermovie de Evento / Edição Comercial": "Event Aftermovie / Commercial Editing",
+                "Institucional Rapha Filmes": "Rapha Filmes Institutional",
+                "Edição Comercial / Cinematográfico": "Commercial Editing / Cinematic",
+                "Institucional Logpark": "Logpark Institutional",
+                "Motion Graphics / Evento Corporativo": "Motion Graphics / Corporate Event",
+                "Coleções G91 - Pai e Filho": "G91 Collections - Father & Son",
+                "Edição Comercial / Campanha de E-Commerce": "Commercial Editing / E-Commerce Campaign",
+                "Aftermovie P&G": "P&G Aftermovie",
+                "Aftermovie de Evento Corporativo": "Corporate Event Aftermovie",
+                "Escola Eugenio Montale": "Eugenio Montale School",
+                "Aftermovie / Institucional": "Aftermovie / Institutional",
+                "MANDIC CAMESP Ouro": "MANDIC CAMESP Ouro",
+                "Cobertura de Torneio Universitário": "University Tournament Coverage",
+                "TattooWeek 2024": "TattooWeek 2024",
+                "Cobertura Same-Day de Convenção": "Same-Day Convention Coverage",
+                "Institucional VATECH": "VATECH Institutional",
+                "Edição Comercial de Produto": "Commercial Product Editing",
+                "Sequoia - Dia do Motorista": "Sequoia - Driver's Day",
+                "Campanha Interna Corporativa": "Internal Corporate Campaign",
+                "ShenLong": "ShenLong",
+                "Campanha para Redes Sociais / Lançamento": "Social Media Campaign / Launch",
+                "NumbFlow": "NumbFlow",
+                "Campanha para Redes Sociais / Motion": "Social Media Campaign / Motion",
+                "Cobra Viva": "Cobra Viva",
+                "Campanha para Redes Sociais": "Social Media Campaign",
+                "Batman": "Batman",
+                "Redes Sociais / Edição Conceitual": "Social Media / Conceptual Edit",
+                "QualityCert": "QualityCert",
+                "Edição Comercial / Negócios": "Commercial Edit / Business",
+                "Missão Contador": "Missão Contador",
+                "Edição Comercial / Infoproduto": "Commercial Edit / Digital Product",
+                "The Pad Sarasota": "The Pad Sarasota",
+                "Campanha para Redes Sociais / Imobiliário": "Social Media Campaign / Real Estate",
+                "Pettingell Professionals": "Pettingell Professionals",
+                "Campanha para Redes Sociais / Negócios": "Social Media Campaign / Business",
+                "Abertura Solene": "Solemn Opening",
+                "Same-Day Event Coverage": "Same-Day Event Coverage",
+                "Coletiva de Imprensa": "Press Conference",
+                "Same-Day Event Coverage / Press": "Same-Day Event Coverage / Press",
+                "Destaques APAS Show": "APAS Show Highlights",
+                "Expositores": "Exhibitors",
+                "Same-Day Event Coverage / Interviews": "Same-Day Event Coverage / Interviews"
+            }
+        };
+
+        function toggleLang() {
+            currentLang = currentLang === 'pt' ? 'en' : 'pt';
+            document.getElementById('langToggleBtn').textContent = currentLang === 'pt' ? 'EN' : 'PT';
+            document.documentElement.lang = currentLang === 'pt' ? 'pt-BR' : 'en-US';
+
+            // Traduz elementos principais com chaves
+            document.querySelectorAll('[data-translate-key]').forEach(elem => {
+                const key = elem.getAttribute('data-translate-key');
+                
+                if (translations[currentLang][key]) {
+                    elem.textContent = translations[currentLang][key];
+                } else if (projectTranslations[currentLang][key]) {
+                    elem.textContent = projectTranslations[currentLang][key];
+                }
+            });
+
+            // Ajusta o estado e texto do botão expansor de acervo (Mais Projetos)
+            const isExpanded = archiveContainer.classList.contains('expanded');
+            toggleArchiveBtn.textContent = translations[currentLang][isExpanded ? 'toggle_less' : 'toggle_more'];
+        }
+
+        function updateCachedDimensions() {
+            const bannerHeight = parallaxBanner.clientHeight;
+            cachedContainerWidth = parallaxBanner.clientWidth;
+            cachedVideoWidth = bannerHeight * 1.4 * (31 / 4); 
+            cachedMaxPan = Math.max((cachedVideoWidth - cachedContainerWidth) / 2, 0);
+            cachedBaseCenterX = -(cachedVideoWidth - cachedContainerWidth) / 2;
+        }
+
+        // 1. SISTEMA DE SEGURANÇA: Desenha cartaz da Mercur na cor Grafite apenas se o carregamento da miniatura real falhar
+        document.querySelectorAll('img').forEach(img => {
+            img.addEventListener('error', function errorHandler() {
+                img.removeEventListener('error', errorHandler);
+
+                const isVertical = this.classList.contains('video-thumbnail-reel');
+                const svgWidth = isVertical ? 900 : 1600;
+                const svgHeight = isVertical ? 1600 : 900;
+                const textY = isVertical ? 820 : 470;
+                const circleX = isVertical ? 450 : 800;
+                const circleY = isVertical ? 800 : 450;
+
+                this.src = `data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${svgWidth} ${svgHeight}"><rect width="100%" height="100%" fill="%2317151F"/><circle cx="${circleX}" cy="${circleY}" r="110" fill="%23ffffff" opacity="0.08"/><text x="50%" y="${textY}" font-family="sans-serif" font-size="34" fill="%23ffffff" font-weight="700" text-anchor="middle" letter-spacing="4">MERCUR</text></svg>`;
+            });
+        });
+
+        // 2. SISTEMA DE CAPAS DINÂMICAS: Resolve as URLs dinamicamente de forma integrada com a API do Gumlet
+        const GUMLET_API_KEY = "gumlet_d6d0a15715a1a69c91e111025cbcec73"; 
+        let cachedWorkspaceId = localStorage.getItem('mercur_workspace_id');
+
+        function initThumbnails() {
+            if (cachedWorkspaceId) {
+                wrappers.forEach(wrapper => {
+                    const videoId = wrapper.getAttribute('data-video-id');
+                    const img = wrapper.querySelector('img');
+                    if (videoId && img) {
+                        img.src = `https://video.gumlet.io/${cachedWorkspaceId}/${videoId}/thumbnail-1-0.png?time=3&width=800`;
+                    }
+                });
+
+                const bannerContainer = document.getElementById('parallaxVideo');
+                if (bannerContainer) {
+                    const bannerVideoId = bannerContainer.getAttribute('data-video-id');
+                    if (bannerVideoId) {
+                        bannerContainer.style.backgroundImage = `url('https://video.gumlet.io/${cachedWorkspaceId}/${bannerVideoId}/thumbnail-1-0.png?time=3&width=1920')`;
+                        bannerContainer.style.backgroundSize = "cover";
+                        bannerContainer.style.backgroundPosition = "center";
+                    }
+                }
+                return;
+            }
+
+            let resolved = false;
+
+            wrappers.forEach(wrapper => {
+                const videoId = wrapper.getAttribute('data-video-id');
+                const img = wrapper.querySelector('img');
+                
+                if (videoId && img) {
+                    if (GUMLET_API_KEY) {
+                        fetch(`https://api.gumlet.com/v1/video/assets/${videoId}`, {
+                            headers: {
+                                'Authorization': `Bearer ${GUMLET_API_KEY}`,
+                                'Accept': 'application/json'
+                            }
+                        })
+                        .then(res => {
+                            if (!res.ok) throw new Error('API Rejeitada');
+                            return res.json();
+                        })
+                        .then(data => {
+                            if (resolved) return;
+                            extractAndApplyWorkspaceId(JSON.stringify(data));
+                        })
+                        .catch(() => {
+                            fallbackToProxies(videoId, img);
+                        });
+                    } else {
+                        fallbackToProxies(videoId, img);
+                    }
+                }
+            });
+
+            function fallbackToProxies(videoId, img) {
+                if (resolved) return;
+                const targetApi = `https://api.gumlet.com/v1/oembed?url=https://play.gumlet.io/embed/${videoId}`;
+                
+                fetch(`https://api.allorigins.win/get?url=${encodeURIComponent(targetApi)}`)
+                    .then(res => {
+                        if (!res.ok) throw new Error();
+                        return res.json();
+                    })
+                    .then(data => {
+                        if (resolved) return;
+                        const oembed = JSON.parse(data.contents);
+                        if (oembed && oembed.thumbnail_url) {
+                            extractAndApplyWorkspaceId(oembed.thumbnail_url);
+                        }
+                    })
+                    .catch(() => {
+                        if (resolved) return;
+                        fetch(`https://api.codetabs.com/v1/proxy/?quest=${encodeURIComponent(targetApi)}`)
+                            .then(res => {
+                                if (!res.ok) throw new Error();
+                                return res.json();
+                            })
+                            .then(oembed => {
+                                if (resolved) return;
+                                if (oembed && oembed.thumbnail_url) {
+                                    extractAndApplyWorkspaceId(oembed.thumbnail_url);
+                                }
+                            })
+                            .catch(() => {
+                                if (!resolved) {
+                                    img.dispatchEvent(new Event('error'));
+                                }
+                            });
+                    });
+            }
+
+            function extractAndApplyWorkspaceId(targetString) {
+                const match = targetString.match(/video\.gumlet\.io\/([a-f0-9]{24})/i);
+                if (match && match[1]) {
+                    resolved = true;
+                    cachedWorkspaceId = match[1];
+                    localStorage.setItem('mercur_workspace_id', cachedWorkspaceId);
+                    initThumbnails();
+                }
+            }
+        }
+
+        initThumbnails();
+
+        // 3. SISTEMA DE HOVER PREVIEW
+        wrappers.forEach(wrapper => {
+            const videoId = wrapper.getAttribute('data-video-id');
+            if (!videoId) return;
+
+            let hoverTimeout;
+
+            wrapper.addEventListener('mouseenter', () => {
+                if (isModalOpen) return;
+
+                hoverTimeout = setTimeout(() => {
+                    if (wrapper.querySelector('.hover-player')) return;
+
+                    const hoverIframe = document.createElement('iframe');
+                    hoverIframe.src = `https://play.gumlet.io/embed/${videoId}?autoplay=true&muted=true&loop=true&background=true`;
+                    hoverIframe.className = "hover-player";
+                    hoverIframe.style.position = "absolute";
+                    hoverIframe.style.top = "0";
+                    hoverIframe.style.left = "0";
+                    hoverIframe.style.width = "100%";
+                    hoverIframe.style.height = "100%";
+                    hoverIframe.style.border = "none";
+                    hoverIframe.style.zIndex = "3";
+                    hoverIframe.style.pointerEvents = "none";
+                    hoverIframe.style.opacity = "0"; 
+                    hoverIframe.style.transition = "opacity 0.4s ease-in-out";
+                    hoverIframe.setAttribute('allow', 'autoplay'); 
+
+                    wrapper.appendChild(hoverIframe);
+
+                    hoverIframe.addEventListener('load', () => {
+                        hoverIframe.style.opacity = "1";
+                    });
+                }, 180);
+            });
+
+            wrapper.addEventListener('mouseleave', () => {
+                clearTimeout(hoverTimeout);
+                const hoverPlayer = wrapper.querySelector('.hover-player');
+                if (hoverPlayer) hoverPlayer.remove();
+            });
+
+            // 4. CLIQUE: Carrega lightbox modal com controles
+            wrapper.addEventListener('click', () => {
+                isModalOpen = true;
+
+                const bgPlayer = document.getElementById('backgroundBannerPlayer');
+                if (bgPlayer && bgPlayer.src && bgPlayer.src !== "about:blank") {
+                    bgPlayer.dataset.savedSrc = bgPlayer.src;
+                    bgPlayer.src = "about:blank"; 
+                    bgPlayer.style.opacity = "0";
+                }
+
+                document.querySelectorAll('.hover-player').forEach(player => player.remove());
+
+                const iframe = document.createElement('iframe');
+                iframe.src = `https://play.gumlet.io/embed/${videoId}?autoplay=true&preload=true`;
+                iframe.setAttribute('referrerpolicy', 'origin');
+                iframe.setAttribute('allow', 'accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture; fullscreen; clipboard-write;');
+                iframe.setAttribute('allowfullscreen', 'true');
+                iframe.id = "activeGumletPlayer";
+
+                if (wrapper.closest('.reels-grid')) {
+                    modalContent.style.aspectRatio = "9/16";
+                    modalContent.style.width = "calc(80vh * 9 / 16)"; 
+                    modalContent.style.maxWidth = "90%";
+                } else {
+                    modalContent.style.aspectRatio = "16/9";
+                    modalContent.style.width = "90%";
+                    modalContent.style.maxWidth = "1100px";
+                }
+
+                const oldPlayer = document.getElementById('activeGumletPlayer');
+                if (oldPlayer) oldPlayer.remove();
+
+                modal.style.display = 'flex';
+                modalContent.appendChild(iframe);
+            });
+        });
+
+        // 5. OTIMIZAÇÃO: Injeção postergada do banner
+        window.addEventListener('load', () => {
+            const container = document.getElementById('parallaxVideo');
+            const videoId = container.getAttribute('data-video-id');
+            
+            if (videoId) {
+                const iframe = document.createElement('iframe');
+                iframe.id = "backgroundBannerPlayer";
+                iframe.style.border = "none";
+                iframe.style.position = "absolute";
+                iframe.style.top = "50%";
+                iframe.style.left = "50%";
+                iframe.style.width = "100%";
+                iframe.style.height = "100%";
+                iframe.style.minWidth = "100%";
+                iframe.style.minHeight = "100%";
+                iframe.style.transform = "translate(-50%, -50%) scale(1.25)";
+                iframe.style.opacity = "1"; 
+                
+                iframe.setAttribute('allow', 'autoplay'); 
+                iframe.setAttribute('referrerpolicy', 'origin');
+
+                iframe.dataset.savedSrc = `https://play.gumlet.io/embed/${videoId}?autoplay=true&muted=true&loop=true&background=true&preload=true`;
+                iframe.src = iframe.dataset.savedSrc;
+                
+                container.appendChild(iframe);
+                bannerIframe = iframe; 
+
+                setTimeout(updateCachedDimensions, 250);
+            }
+        });
+
+        window.addEventListener('resize', () => {
+            if (!ticking) {
+                window.requestAnimationFrame(() => {
+                    updateCachedDimensions();
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        });
+
+        // 6. LOOP DE ANIMAÇÃO UNIFICADO (Parallax, Overlay, Fade-out)
+        function animationLoop(timestamp) {
+            if (!lastTime) lastTime = timestamp;
+            const deltaTime = (timestamp - lastTime) / 1000; 
+            lastTime = timestamp;
+
+            const scrollY = window.pageYOffset;
+
+            // Cabeçalho escurece ao scrollar quando atinge o topo (ao se tornar sticky)
+            if (scrollY >= 270) {
+                mainHeader.classList.add('scrolled');
+            } else {
+                mainHeader.classList.remove('scrolled');
+            }
+
+            if (!reduceMotion && !isModalOpen) {
+                const covered = scrollY >= BANNER_COVER_THRESHOLD;
+
+                if (covered && bannerVisible) {
+                    bannerVisible = false;
+                    if (bannerIframe && bannerIframe.src && bannerIframe.src !== "about:blank") {
+                        bannerIframe.style.opacity = "0"; 
+                        setTimeout(() => {
+                            if (!bannerVisible) bannerIframe.src = "about:blank";
+                        }, 500);
+                    }
+                } else if (!covered && !bannerVisible) {
+                    bannerVisible = true;
+                    if (bannerIframe && bannerIframe.dataset.savedSrc && bannerIframe.src !== bannerIframe.dataset.savedSrc) {
+                        bannerIframe.src = bannerIframe.dataset.savedSrc;
+                        setTimeout(() => { if (bannerVisible) bannerIframe.style.opacity = "1"; }, 100); 
+                    }
+                }
+
+                const scrollFraction = Math.min(scrollY / BANNER_COVER_THRESHOLD, 1);
+
+                if (bannerVisible && cachedVideoWidth > 0) {
+                    posX += direction * 35 * deltaTime;
+
+                    if (Math.abs(posX) >= cachedMaxPan) {
+                        direction *= -1;
+                        posX = Math.max(-cachedMaxPan, Math.min(cachedMaxPan, posX));
+                    }
+
+                    const finalX = cachedBaseCenterX + posX;
+                    const posY = scrollY * 0.35; 
+
+                    parallaxVideo.style.transform = `translate3d(${finalX}px, ${posY}px, 0)`;
+
+                    const overlayOpacity = 0.20 + (scrollFraction * 0.70); 
+                    parallaxOverlay.style.backgroundColor = `rgba(18, 23, 58, ${overlayOpacity})`;
+
+                    const textOpacity = 1 - scrollFraction;
+                    heroContent.style.opacity = textOpacity;
+                    heroContent.style.transform = `translate(-50%, calc(-50% - ${scrollY * 0.15}px))`;
+                }
+            }
+
+            requestAnimationFrame(animationLoop); 
+        }
+
+        requestAnimationFrame(animationLoop);
+
+        // 7. CONTROLES DO MODAL
+        function closeModal() {
+            modal.style.display = 'none';
+            isModalOpen = false;
+
+            const activePlayer = document.getElementById('activeGumletPlayer');
+            if (activePlayer) activePlayer.remove(); 
+
+            if (window.pageYOffset < BANNER_COVER_THRESHOLD) {
+                bannerVisible = true;
+                const bgPlayer = document.getElementById('backgroundBannerPlayer');
+                if (bgPlayer && bgPlayer.dataset.savedSrc) {
+                    bgPlayer.src = bgPlayer.dataset.savedSrc;
+                    setTimeout(() => { bgPlayer.style.opacity = "1"; }, 100);
+                }
+            } else {
+                bannerVisible = false;
+            }
+        }
+
+        closeBtn.addEventListener('click', closeModal);
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) closeModal();
+        });
+        window.addEventListener('keydown', (e) => {
+            if (e.key === "Escape" && isModalOpen) closeModal();
+        });
+
+        // 8. SISTEMA DE REVELAÇÃO DO ACERVO (16:9 - Mais Projetos)
+        const toggleArchiveBtn = document.getElementById('toggleArchiveBtn');
+        const archiveContainer = document.getElementById('archiveContainer');
+
+        toggleArchiveBtn.addEventListener('click', () => {
+            const isExpanded = archiveContainer.classList.contains('expanded');
+            if (isExpanded) {
+                archiveContainer.classList.remove('expanded');
+                toggleArchiveBtn.textContent = translations[currentLang]['toggle_more'];
+                document.getElementById('video').scrollIntoView({ behavior: 'smooth' });
+            } else {
+                archiveContainer.classList.add('expanded');
+                toggleArchiveBtn.textContent = translations[currentLang]['toggle_less'];
+            }
+        });
+
+        // 9. SISTEMA DE FILTRAGEM DINÂMICA DE ABAS (Para os vídeos 9:16)
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const verticalCards = document.querySelectorAll('.vertical-card');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                const filterValue = btn.getAttribute('data-filter');
+
+                verticalCards.forEach(card => {
+                    const cardCategory = card.getAttribute('data-category');
+                    if (filterValue === 'all' || cardCategory === filterValue) {
+                        card.style.display = 'block';
+                        setTimeout(() => { card.style.opacity = '1'; }, 10);
+                    } else {
+                        card.style.opacity = '0';
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // 10. SISTEMA DE INJEÇÃO DO CURRÍCULO DENTRO DE NOVA ABA (Bilingue)
+        function openResume() {
+            const resumeWindow = window.open('', '_blank');
+            if (!resumeWindow) {
+                alert(currentLang === 'pt' ? 'Por favor, permita pop-ups para visualizar o currículo.' : 'Please allow pop-ups to view the resume.');
+                return;
+            }
+
+            const ptResumeHTML = `
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Marcos Soares Santos — Currículo Técnico</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=IBM+Plex+Sans:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Inter', sans-serif; color: #17151F; background-color: #f3f4f6; line-height: 1.45; padding: 40px 0; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+        .print-header { max-width: 800px; margin: 0 auto 20px auto; display: flex; justify-content: space-between; align-items: center; background: #12173A; padding: 15px 25px; border-left: 4px solid #1FC29B; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+        .print-header span { color: #F5F4FA; font-size: 0.85rem; font-weight: 500; }
+        .print-btn { background: #1FC29B; color: #12173A; border: none; padding: 8px 18px; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; cursor: pointer; transition: 0.2s ease; }
+        .print-btn:hover { background: #4D4999; color: #F5F4FA; }
+        .resume-page { width: 210mm; min-height: 297mm; background: #ffffff; margin: 0 auto; padding: 22mm 20mm; box-shadow: 0 4px 20px rgba(0,0,0,0.08); position: relative; }
+        header { border-bottom: 2px solid #4D4999; padding-bottom: 12px; margin-bottom: 18px; }
+        .name { font-family: 'IBM Plex Sans', sans-serif; font-size: 1.85rem; font-weight: 600; text-transform: uppercase; color: #12173A; letter-spacing: 0.05em; }
+        .title { font-family: 'IBM Plex Sans', sans-serif; font-style: italic; font-size: 1.05rem; color: #4D4999; margin-top: 2px; font-weight: 500; }
+        .contacts { display: flex; flex-wrap: wrap; gap: 15px; font-size: 0.75rem; color: #555; margin-top: 8px; font-weight: 500; }
+        .contacts a { color: #17151F; text-decoration: none; }
+        h2 { font-family: 'IBM Plex Sans', sans-serif; font-size: 0.95rem; font-weight: 600; text-transform: uppercase; color: #12173A; letter-spacing: 0.1em; border-bottom: 1px solid #e5e7eb; padding-bottom: 4px; margin-top: 18px; margin-bottom: 10px; }
+        p { font-size: 0.8rem; color: #333; text-align: justify; }
+        .experience-item { margin-bottom: 12px; }
+        .exp-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 3px; }
+        .exp-role { font-size: 0.825rem; font-weight: 700; color: #17151F; }
+        .exp-date { font-size: 0.725rem; font-weight: 600; color: #4D4999; white-space: nowrap; }
+        .exp-bullets { list-style-type: none; padding-left: 0; }
+        .exp-bullets li { font-size: 0.775rem; color: #444; position: relative; padding-left: 12px; margin-bottom: 3px; text-align: justify; }
+        .exp-bullets li::before { content: "•"; position: absolute; left: 0; color: #1FC29B; font-weight: bold; }
+        .grid-two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .skill-group { margin-bottom: 6px; }
+        .skill-group strong { font-size: 0.75rem; color: #12173A; text-transform: uppercase; letter-spacing: 0.03em; }
+        .skill-group span { font-size: 0.775rem; color: #444; }
+        @media print { body { background-color: #ffffff; padding: 0; } .print-header { display: none; } .resume-page { box-shadow: none; padding: 0; width: 100%; height: 100%; } }
+    </style>
+</head>
+<body>
+    <div class="print-header">
+        <span>Marcos Soares Santos — Visualização de Impressão de Currículo</span>
+        <button class="print-btn" onclick="window.print()">Salvar como PDF</button>
+    </div>
+    <div class="resume-page">
+        <header>
+            <div class="name">Marcos Soares Santos</div>
+            <div class="title">Editor de Vídeo | Conteúdo para Redes Sociais, Marca e Mídia Paga</div>
+            <div class="contacts">
+                <span>São Paulo, SP</span>
+                <span>• (11) 96303-3573</span>
+                <span>• <a href="mailto:marcoscpc@outlook.com">marcoscpc@outlook.com</a></span>
+                <span>• <a href="https://linkedin.com/in/marcos-soares-santos-91a281163" target="_blank">linkedin.com/in/marcos-soares-santos-91a281163</a></span>
+                <span>• Portfólio: tinyurl.com/ycycv983</span>
+            </div>
+        </header>
+        <section>
+            <h2>Resumo Profissional</h2>
+            <p>Editor de vídeo com 7 anos de experiência em pós-produção para redes sociais, YouTube, campanhas institucionais e mídia paga. Domínio completo de Adobe Premiere Pro, After Effects, DaVinci Resolve e CapCut, com prática consolidada em corte, montagem, correção de cor, motion graphics, tratamento de áudio e adaptação de formatos (9:16, 16:9, 1:1, 4:5) para Instagram, YouTube, LinkedIn e campanhas de performance. Já entreguei projetos para marcas como Dior, P&G, Santander e TRANSPETRO, e tenho experiência direta com anúncios para Meta Ads e Google Ads, incluindo testes A/B e otimização de CTR. Uso ferramentas de inteligência artificial no fluxo de trabalho para ganhar agilidade sem perder qualidade. Disponível imediatamente para trabalho 100% remoto.</p>
+        </section>
+        <section>
+            <h2>Competências-Chave</h2>
+            <div class="grid-two-col" style="gap:10px; margin-bottom:10px;">
+                <ul class="exp-bullets">
+                    <li>Edição multi-formato para Instagram (Reels e Stories), YouTube, LinkedIn e site institucional</li>
+                    <li>Corte, montagem, colorização, correção de cor, tratamento de áudio e motion graphics</li>
+                    <li>Legendagem e adaptação de proporções (9:16, 16:9, 1:1, 4:5) conforme plataforma e objetivo</li>
+                </ul>
+                <ul class="exp-bullets">
+                    <li>Vídeos para mídia paga: Meta Ads e Google Ads, com foco em CTR, de retenção e testes A/B</li>
+                    <li>CapCut Pro para edições rápidas em formato mobile</li>
+                    <li>Gestão de pipeline de entregas, organização de assets, presets e projetos, e cumprimento de prazos</li>
+                    <li>IA generativa de vídeo e áudio aplicada à produtividade: ElevenLabs, Sora, ChatGPT, DeepSeek, Gemini</li>
+                </ul>
+            </div>
+        </section>
+        <section>
+            <h2>Experiência Profissional</h2>
+            <div class="experience-item">
+                <div class="exp-header">
+                    <span class="exp-role">Editor de Vídeo e Estrategista de Conteúdo | Tuzinho Academy & Original SP Tattoo</span>
+                    <span class="exp-date">jun/2024 – out/2025</span>
+                </div>
+                <ul class="exp-bullets">
+                    <li>Editei conteúdo para canal com 63 mil inscritos no YouTube, com média de 22 mil visualizações por publicação.</li>
+                    <li>Criei roteiros e editei anúncios para Meta Ads e Google Ads, com legendagem e otimização via IA.</li>
+                    <li>Atuei como videomaker em cobertura same-day de evento, com entrega rápida e fluxo organizado de produção.</li>
+                </ul>
+            </div>
+            <div class="experience-item">
+                <div class="exp-header">
+                    <span class="exp-role">Editor de Vídeo Sênior | Publicidade, TV e Performance Digital — Freelancer</span>
+                    <span class="exp-date">2020 – Presente</span>
+                </div>
+                <ul class="exp-bullets">
+                    <li>Editei comerciais para TV, vídeos institucionais, motion graphics e campanhas digitais para Dior, P&G, Santander, TRANSPETRO e outras marcas.</li>
+                    <li>Produzi peças para campanhas de performance digital com foco em VSL, testes A/B e otimização de retenção.</li>
+                </ul>
+            </div>
+            <div class="experience-item">
+                <div class="exp-header">
+                    <span class="exp-role">Editor de Vídeo Same-Day | APAS Show 2024</span>
+                    <span class="exp-date">mai/2024 | Freelancer</span>
+                </div>
+                <ul class="exp-bullets">
+                    <li>Editei Reels e Stories para o perfil oficial no Instagram durante 6 dias consecutivos, com entrega em até 4h após a captação.</li>
+                    <li>Centenas de milhares de visualizações orgânicas, com zero retrabalho — alta exigência de ritmo e qualidade.</li>
+                </ul>
+            </div>
+            <div class="experience-item">
+                <div class="exp-header">
+                    <span class="exp-role">Editor de Vídeo e Coordenador de Pós-Produção | Singular Filmes</span>
+                    <span class="exp-date">abr/2021 – fev/2022</span>
+                </div>
+                <ul class="exp-bullets">
+                    <li>Editei 3 vídeos por semana em padrão broadcast para canal com 1,5 milhão de inscritos e 461 milhões de visualizações.</li>
+                    <li>Promovido a Coordenador de Pós-Produção, com gestão de equipe, organização de servidores e controle de fluxo de entregas.</li>
+                </ul>
+            </div>
+            <div class="experience-item">
+                <div class="exp-header">
+                    <span class="exp-role">Editor de Vídeo Freelancer | O Imponderável — Record News / 5ERA Produções</span>
+                    <span class="exp-date">mai/2022 – mar/2023</span>
+                </div>
+                <ul class="exp-bullets">
+                    <li>Editei mais de 40 episódios de talk show semanal, com entregas consistentes em prazos de 2 a 4 dias.</li>
+                </ul>
+            </div>
+        </section>
+        <section>
+            <h2>Outras Experiências</h2>
+            <p style="font-size:0.775rem; color:#444;">
+                <strong>Editor de Vídeo (Canal ChratosGameplay, 2020)</strong> — edição de conteúdo de games para YouTube | <strong>Atendente Bilíngue (Orbitall / Noizz, 2019–2020)</strong> — suporte técnico e moderação de conteúdo em inglês | <strong>Impressor Gráfico (P&B Comunicação Visual, 2018–2019)</strong> — produção gráfica e operação de plotters.
+            </p>
+        </section>
+        <div class="grid-two-col">
+            <div>
+                <h2>Ferramentas e Idiomas</h2>
+                <div class="skill-group">
+                    <strong>Edição e Motion:</strong>
+                    <span>Adobe Premiere Pro, After Effects, DaVinci Resolve, CapCut Pro, Fusion DaVinci.</span>
+                </div>
+                <div class="skill-group">
+                    <strong>Mídia Paga e IA:</strong>
+                    <span>Meta Ads, Google Ads, VSL, testes A/B, ElevenLabs, Sora, ChatGPT, Gemini, DeepSeek.</span>
+                </div>
+                <div class="skill-group">
+                    <strong>Idiomas:</strong>
+                    <span>Português nativo | Inglês fluente.</span>
+                </div>
+            </div>
+            <div>
+                <h2>Formação</h2>
+                <div class="skill-group">
+                    <strong>Técnico em Multimídia</strong>
+                    <p style="font-size: 0.75rem; color:#4D4999; font-weight:600;">ETEC Jornalista Roberto Marinho | 2017 – 2018</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>`;
+
+            const enResumeHTML = `
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Marcos Soares Santos — Technical Resume</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=IBM+Plex+Sans:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Inter', sans-serif; color: #17151F; background-color: #f3f4f6; line-height: 1.45; padding: 40px 0; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+        .print-header { max-width: 800px; margin: 0 auto 20px auto; display: flex; justify-content: space-between; align-items: center; background: #12173A; padding: 15px 25px; border-left: 4px solid #1FC29B; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+        .print-header span { color: #F5F4FA; font-size: 0.85rem; font-weight: 500; }
+        .print-btn { background: #1FC29B; color: #12173A; border: none; padding: 8px 18px; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; cursor: pointer; transition: 0.2s ease; }
+        .print-btn:hover { background: #4D4999; color: #F5F4FA; }
+        .resume-page { width: 210mm; min-height: 297mm; background: #ffffff; margin: 0 auto; padding: 22mm 20mm; box-shadow: 0 4px 20px rgba(0,0,0,0.08); position: relative; }
+        header { border-bottom: 2px solid #4D4999; padding-bottom: 12px; margin-bottom: 18px; }
+        .name { font-family: 'IBM Plex Sans', sans-serif; font-size: 1.85rem; font-weight: 600; text-transform: uppercase; color: #12173A; letter-spacing: 0.05em; }
+        .title { font-family: 'IBM Plex Sans', sans-serif; font-style: italic; font-size: 1.05rem; color: #4D4999; margin-top: 2px; font-weight: 500; }
+        .contacts { display: flex; flex-wrap: wrap; gap: 15px; font-size: 0.75rem; color: #555; margin-top: 8px; font-weight: 500; }
+        .contacts a { color: #17151F; text-decoration: none; }
+        h2 { font-family: 'IBM Plex Sans', sans-serif; font-size: 0.95rem; font-weight: 600; text-transform: uppercase; color: #12173A; letter-spacing: 0.1em; border-bottom: 1px solid #e5e7eb; padding-bottom: 4px; margin-top: 18px; margin-bottom: 10px; }
+        p { font-size: 0.8rem; color: #333; text-align: justify; }
+        .experience-item { margin-bottom: 12px; }
+        .exp-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 3px; }
+        .exp-role { font-size: 0.825rem; font-weight: 700; color: #17151F; }
+        .exp-date { font-size: 0.725rem; font-weight: 600; color: #4D4999; white-space: nowrap; }
+        .exp-bullets { list-style-type: none; padding-left: 0; }
+        .exp-bullets li { font-size: 0.775rem; color: #444; position: relative; padding-left: 12px; margin-bottom: 3px; text-align: justify; }
+        .exp-bullets li::before { content: "•"; position: absolute; left: 0; color: #1FC29B; font-weight: bold; }
+        .grid-two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .skill-group { margin-bottom: 6px; }
+        .skill-group strong { font-size: 0.75rem; color: #12173A; text-transform: uppercase; letter-spacing: 0.03em; }
+        .skill-group span { font-size: 0.775rem; color: #444; }
+        @media print { body { background-color: #ffffff; padding: 0; } .print-header { display: none; } .resume-page { box-shadow: none; padding: 0; width: 100%; height: 100%; } }
+    </style>
+</head>
+<body>
+    <div class="print-header">
+        <span>Marcos Soares Santos — Resume Print View</span>
+        <button class="print-btn" onclick="window.print()">Save as PDF</button>
+    </div>
+    <div class="resume-page">
+        <header>
+            <div class="name">Marcos Soares Santos</div>
+            <div class="title">Video Editor | Social Media, Brand & Paid Media Content</div>
+            <div class="contacts">
+                <span>São Paulo, Brazil</span>
+                <span>• +55 (11) 96303-3573</span>
+                <span>• <a href="mailto:marcoscpc@outlook.com">marcoscpc@outlook.com</a></span>
+                <span>• <a href="https://linkedin.com/in/marcos-soares-santos-91a281163" target="_blank">linkedin.com/in/marcos-soares-santos-91a281163</a></span>
+                <span>• Portfolio: tinyurl.com/ycycv983</span>
+            </div>
+        </header>
+        <section>
+            <h2>Professional Summary</h2>
+            <p>Video Editor with 7 years of post-production experience in social media, YouTube, corporate campaigns, and paid media. Full mastery of Adobe Premiere Pro, After Effects, DaVinci Resolve, and CapCut, with consolidated experience in cutting, editing, color correction, motion graphics, audio processing, and format adaptation (9:16, 16:9, 1:1, 4:5) for Instagram, YouTube, LinkedIn, and performance campaigns. I have delivered projects for major brands such as Dior, P&G, Santander, and TRANSPETRO, and have direct experience editing ads for Meta Ads and Google Ads, including A/B testing and CTR optimization. I leverage generative AI tools in my workflow to boost speed without sacrificing quality. Immediately available for 100% remote work.</p>
+        </section>
+        <section>
+            <h2>Key Competencies</h2>
+            <div class="grid-two-col" style="gap:10px; margin-bottom:10px;">
+                <ul class="exp-bullets">
+                    <li>Multi-format editing for Instagram (Reels/Stories), YouTube, LinkedIn, and corporate websites</li>
+                    <li>Cutting, assembly, colorization, color grading, audio mixing, and motion graphics</li>
+                    <li>Subtitling and aspect ratio adaptation (9:16, 16:9, 1:1, 4:5) optimized for each platform</li>
+                </ul>
+                <ul class="exp-bullets">
+                    <li>Videos for paid media: Meta Ads and Google Ads focusing on CTR, retention, and A/B testing</li>
+                    <li>CapCut Pro for fast mobile-first edits</li>
+                    <li>Pipeline and asset management, workflow organization, and strict compliance with deadlines</li>
+                    <li>Generative AI tools applied to post-production: ElevenLabs, Sora, ChatGPT, DeepSeek, Gemini</li>
+                </ul>
+            </div>
+        </section>
+        <section>
+            <h2>Professional Experience</h2>
+            <div class="experience-item">
+                <div class="exp-header">
+                    <span class="exp-role">Video Editor & Content Strategist | Tuzinho Academy & Original SP Tattoo</span>
+                    <span class="exp-date">Jun/2024 – Oct/2025</span>
+                </div>
+                <ul class="exp-bullets">
+                    <li>Edited content for a YouTube channel with 63,000 subscribers, averaging 22,000 views per release.</li>
+                    <li>Drafted scripts and edited ads for Meta Ads and Google Ads, applying AI translation and subtitling.</li>
+                    <li>Acted as videomaker and editor in same-day event coverages, focusing on fast delivery and organized delivery pipeline.</li>
+                </ul>
+            </div>
+            <div class="experience-item">
+                <div class="exp-header">
+                    <span class="exp-role">Senior Video Editor | Advertising, TV & Digital Performance — Freelancer</span>
+                    <span class="exp-date">2020 – Present</span>
+                </div>
+                <ul class="exp-bullets">
+                    <li>Edited TV commercials, institutional videos, motion graphics, and digital campaigns for Dior, P&G, Santander, TRANSPETRO, and other brands.</li>
+                    <li>Produced assets for digital performance campaigns focusing on VSLs, A/B testing, and retention optimization.</li>
+                </ul>
+            </div>
+            <div class="experience-item">
+                <div class="exp-header">
+                    <span class="exp-role">Same-Day Video Editor | APAS Show 2024</span>
+                    <span class="exp-date">May/2024 | Freelancer</span>
+                </div>
+                <ul class="exp-bullets">
+                    <li>Edited Reels and Stories for the official Instagram profile during 6 consecutive days, delivering files within 4 hours of capture.</li>
+                    <li>Generated hundreds of thousands of organic views with zero rework under a highly demanding fast-paced schedule.</li>
+                </ul>
+            </div>
+            <div class="experience-item">
+                <div class="exp-header">
+                    <span class="exp-role">Video Editor & Post-Production Coordinator | Singular Filmes</span>
+                    <span class="exp-date">Apr/2021 – Feb/2022</span>
+                </div>
+                <ul class="exp-bullets">
+                    <li>Edited 3 broadcast-standard videos per week for a channel with 1.5 million subscribers and 461 million total views.</li>
+                    <li>Promovido a Coordenador de Pós-Produção, com gestão de equipe, organização de servidores e controle de fluxo de entregas.</li>
+                </ul>
+            </div>
+            <div class="experience-item">
+                <div class="exp-header">
+                    <span class="exp-role">Freelance Video Editor | O Imponderável — Record News / 5ERA Produções</span>
+                    <span class="exp-date">May/2022 – Mar/2023</span>
+                </div>
+                <ul class="exp-bullets">
+                    <li>Edited more than 40 episodes of a weekly TV talk show, ensuring consistent deliveries within 2 to 4 days.</li>
+                </ul>
+            </div>
+        </section>
+        <section>
+            <h2>Other Experience</h2>
+            <p style="font-size:0.775rem; color:#444;">
+                <strong>Video Editor (ChratosGameplay Channel, 2020)</strong> — edited gaming content for YouTube | <strong>Bilingual Customer Agent (Orbitall / Noizz, 2019–2020)</strong> — technical support and content moderation in English | <strong>Graphic Print Operator (P&B Comunicação Visual, 2018–2019)</strong> — graphic production and plotter printer operations.
+            </p>
+        </section>
+        <div class="grid-two-col">
+            <div>
+                <h2>Tools & Languages</h2>
+                <div class="skill-group">
+                    <strong>Editing & Motion:</strong>
+                    <span>Adobe Premiere Pro, After Effects, DaVinci Resolve, CapCut Pro, DaVinci Fusion.</span>
+                </div>
+                <div class="skill-group">
+                    <strong>Paid Ads & AI:</strong>
+                    <span>Meta Ads, Google Ads, VSL, A/B testing, ElevenLabs, Sora, ChatGPT, Gemini, DeepSeek.</span>
+                </div>
+                <div class="skill-group">
+                    <strong>Languages:</strong>
+                    <span>Native Portuguese | Fluent English.</span>
+                </div>
+            </div>
+            <div>
+                <h2>Education</h2>
+                <div class="skill-group">
+                    <strong>Multimedia Technician</strong>
+                    <p style="font-size: 0.75rem; color:#4D4999; font-weight:600;">ETEC Jornalista Roberto Marinho | 2017 – 2018</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>`;
+
+            resumeWindow.document.write(currentLang === 'pt' ? ptResumeHTML : enResumeHTML);
+            resumeWindow.document.close();
+        }
+
+        // 11. SISTEMA DE SEGURANÇA CONTRA INSPEÇÃO DE CÓDIGO
+        document.addEventListener('contextmenu', event => event.preventDefault());
+
+        document.addEventListener('keydown', event => {
+            if (
+                event.key === 'F12' || 
+                (event.ctrlKey && event.shiftKey && (event.key === 'I' || event.key === 'J' || event.key === 'C')) || 
+                (event.ctrlKey && event.key === 'U')
+            ) {
+                event.preventDefault();
+            }
+        });
+    </script>
+</body>
+</html>
+```
