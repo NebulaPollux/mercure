@@ -20,6 +20,9 @@
 
     <link rel="icon" type="image/png" href="input_file_3.png">
 
+    <!-- Carrega a Configuração Centralizada de Vídeos -->
+    <script src="config.js" defer></script>
+
     <style>
         /* --- VARIÁVEIS DE ESTILO MERCURE --- */
         :root {
@@ -81,7 +84,7 @@
         header {
             position: sticky;
             top: 0;
-            margin-top: 270px;
+            margin-top: 0;
             height: 80px;
             left: 0;
             width: 100%;
@@ -116,7 +119,7 @@
         }
 
         .logo-img {
-            height: 45px; /* Aumentado de 33px para 45px */
+            height: 45px; 
             width: auto;
             object-fit: contain;
             display: block;
@@ -160,7 +163,7 @@
         /* Navegação desktop */
         .header-nav {
             display: flex;
-            gap: 30px;
+            gap: 25px;
             align-items: center;
         }
         .header-nav a {
@@ -198,12 +201,12 @@
             top: 80px;
             left: 0;
             width: 100%;
-            background: rgba(18, 23, 58, 0.96);
+            background: rgba(18, 23, 58, 0.98);
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
-            padding: 1.5rem 2rem;
+            padding: 2rem;
             flex-direction: column;
-            gap: 1.2rem;
+            gap: 1.5rem;
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
             box-shadow: 0 12px 30px rgba(0,0,0,0.4);
             z-index: 99;
@@ -214,7 +217,7 @@
         .mobile-menu a {
             color: #ffffff;
             text-decoration: none;
-            font-size: 0.9rem;
+            font-size: 1rem;
             font-weight: 600;
             letter-spacing: 0.1em;
             transition: var(--transition-smooth);
@@ -243,49 +246,41 @@
             }
         }
 
-        /* --- BANNER HERO PARALLAX --- */
+        /* --- BANNER HERO PARALLAX (Proporção Responsiva Otimizada 16:9) --- */
         .parallax-banner {
-            position: fixed;
-            top: 0;
-            left: 0;
+            position: relative;
             width: 100%;
-            height: 350px;
+            aspect-ratio: 16/9; /* Strict 16:9 Aspect Ratio */
             overflow: hidden;
             background: var(--mercure-bg);
             z-index: 1;
+            transition: var(--transition-smooth);
         }
 
         .parallax-video-container {
             position: absolute;
-            top: -20%;
+            top: 0;
             left: 0;
-            width: auto;
-            height: 140%;
-            aspect-ratio: 31/4;
+            width: 100%;
+            height: 100%;
             pointer-events: none;
             z-index: 1;
-            will-change: transform;
         }
 
-        .parallax-video-container iframe {
-            border: none;
+        /* Iframe Gumlet de Segundo Plano */
+        #backgroundBannerPlayer {
             position: absolute;
             top: 50%;
             left: 50%;
             width: 100%;
             height: 100%;
-            transition: opacity 0.5s ease-in-out;
-            transform: translate(-50%, -50%) scale(1.25);
+            min-width: 100%;
+            min-height: 100%;
+            transform: translate(-50%, -50%) scale(1.15); /* Escala de 1.15 para corte e preenchimento (object-fit) perfeito */
+            border: none;
             opacity: 1;
-        }
-
-        @media (max-aspect-ratio: 31/4) {
-            .parallax-video-container iframe {
-                width: auto;
-                height: 100%;
-                aspect-ratio: 31/4;
-                transform: translate(-50%, -50%) scale(1.3);
-            }
+            z-index: 1;
+            pointer-events: none;
         }
 
         .parallax-overlay {
@@ -294,7 +289,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(18, 23, 58, 0.20);
+            background-color: rgba(18, 23, 58, 0.40); /* Opacidade para excelente leitura sobre frames claros */
             z-index: 2;
             cursor: default;
             pointer-events: none;
@@ -303,40 +298,126 @@
 
         .hero-content {
             position: absolute;
-            top: 45%;
+            top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
             text-align: center;
-            width: 100%;
-            max-width: 1100px;
-            padding: 0 1rem;
+            width: 85%; /* Menor largura útil no desktop para desobstruir o vídeo */
+            max-width: 800px;
+            padding: 0;
             z-index: 3;
             will-change: opacity, transform;
         }
 
         .hero-title {
-            font-size: clamp(1.4rem, 3.5vw, 2.25rem);
+            font-size: clamp(1rem, 2.5vw, 1.85rem); /* Diminuído para visual minimalista que preserva o vídeo de fundo */
             font-weight: 700;
-            letter-spacing: 0.1em;
-            margin-bottom: 0.75rem;
+            letter-spacing: 0.12em; /* Maior espaçamento elegante */
+            margin-bottom: 0.6rem;
             text-transform: uppercase;
-            line-height: 1.35;
-            max-width: 950px;
-            margin: 0 auto 0.75rem auto;
-            color: #ffffff; /* ALTERADO PARA BRANCO */
-            text-shadow: 0px 2px 8px rgba(0,0,0,0.8), 0px 0px 20px rgba(0,0,0,0.6);
+            line-height: 1.3; 
+            max-width: 750px;
+            margin: 0 auto 0.6rem auto;
+            color: #ffffff; 
+            text-shadow: 0px 3px 12px rgba(18, 23, 58, 0.9), 0px 0px 30px rgba(18, 23, 58, 0.65);
         }
 
         .hero-subtitle {
             font-family: var(--font-serif);
-            font-size: 1.15rem;
+            font-size: clamp(0.75rem, 1.3vw, 1rem); /* Proporcionalmente menor */
             font-style: italic;
-            opacity: 0.95;
-            line-height: 1.45;
-            color: #ffffff; /* ALTERADO PARA BRANCO */
-            text-shadow: 0px 2px 8px rgba(0,0,0,0.8), 0px 0px 20px rgba(0,0,0,0.6);
+            opacity: 0.9;
+            line-height: 1.4;
+            color: #ffffff; 
+            text-shadow: 0px 2px 8px rgba(18, 23, 58, 0.8);
         }
 
+        /* Botões com Efeito de Glassmorphism Avançado */
+        .hero-cta-group {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 1.5rem; /* Menor espaçamento vertical */
+        }
+        .btn-hero-primary {
+            background: rgba(31, 194, 155, 0.15) !important; /* Turquesa translúcido */
+            color: #ffffff !important;
+            border: 1px solid rgba(31, 194, 155, 0.45) !important;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            font-weight: 700;
+            font-size: clamp(0.65rem, 1vw, 0.75rem); /* Compacto e limpo */
+            padding: 0.75rem 1.8rem; /* Padding reduzido para diagramação equilibrada */
+            letter-spacing: 0.12em;
+            box-shadow: 0 4px 30px rgba(31, 194, 155, 0.1);
+            transition: var(--transition-smooth);
+            text-transform: uppercase;
+            text-decoration: none !important;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+        .btn-hero-primary:hover {
+            background: rgba(31, 194, 155, 0.85) !important; /* Sólido no hover */
+            color: var(--color-marinho) !important;
+            border-color: var(--mercure-accent) !important;
+            transform: translateY(-1px);
+            box-shadow: 0 6px 20px rgba(31, 194, 155, 0.4);
+        }
+
+        .btn-hero-secondary {
+            background: rgba(255, 255, 255, 0.05) !important; /* Branco translúcido */
+            color: #ffffff !important;
+            border: 1px solid rgba(255, 255, 255, 0.2) !important;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            font-weight: 700;
+            font-size: clamp(0.65rem, 1vw, 0.75rem);
+            padding: 0.75rem 1.8rem;
+            letter-spacing: 0.12em;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
+            transition: var(--transition-smooth);
+            text-transform: uppercase;
+            text-decoration: none !important;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+        .btn-hero-secondary:hover {
+            background: rgba(255, 255, 255, 0.2) !important;
+            transform: translateY(-1px);
+            box-shadow: 0 6px 20px rgba(255, 255, 255, 0.1);
+        }
+
+        /* Ajustes de Escala para Evitar Amontoamento no Mobile */
+        @media (max-width: 768px) {
+            .hero-content {
+                width: 95%; /* Ocupa mais largura para evitar quebras excessivas de linha */
+            }
+            .hero-title {
+                font-size: clamp(0.7rem, 3.2vw, 1.1rem) !important; /* Escala menor para caber no 16:9 vertical */
+                margin-bottom: 0.3rem;
+                line-height: 1.25;
+            }
+            .hero-subtitle {
+                font-size: clamp(0.55rem, 2.2vw, 0.7rem) !important;
+                line-height: 1.3;
+            }
+            .hero-cta-group {
+                flex-direction: row !important; /* Força os dois botões a ficarem lado a lado (horizontal) */
+                gap: 8px;
+                margin-top: 0.6rem;
+            }
+            .btn-hero-primary, .btn-hero-secondary {
+                font-size: 0.55rem !important; /* Botões ultracompactos no mobile */
+                padding: 0.4rem 0.8rem !important; /* Padding reduzido para economizar espaço vertical */
+                letter-spacing: 0.05em;
+            }
+        }
+
+        /* Envidraçamento (Glassmorphic Blur) fundido no final do Banner Hero */
         .bottom-feather {
             position: absolute;
             bottom: 0;
@@ -354,10 +435,40 @@
             left: 0;
             width: 100%;
             height: 100%;
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            mask-image: linear-gradient(to bottom, transparent, black);
-            -webkit-mask-image: linear-gradient(to bottom, transparent, black);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            mask-image: linear-gradient(to bottom, transparent, #000000);
+            -webkit-mask-image: linear-gradient(to bottom, transparent, #000000);
+        }
+
+        /* --- TRUST BAR --- */
+        .trust-bar {
+            padding: 2.5rem 0;
+            border-bottom: 1px solid var(--mercure-border);
+            text-align: center;
+        }
+        .trust-bar-label {
+            font-size: 0.7rem;
+            letter-spacing: 0.15em;
+            color: #C1BDE2;
+            text-transform: uppercase;
+            margin-bottom: 14px;
+        }
+        .trust-bar-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: center;
+            padding: 0 1rem;
+        }
+        .brand-badge {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--mercure-text);
+            border: 1px solid var(--mercure-border);
+            padding: 4px 10px;
+            background: var(--mercure-card-bg);
+            white-space: nowrap; 
         }
 
         /* --- ENVELOPADOR DE CONTEÚDO --- */
@@ -366,7 +477,7 @@
             z-index: 10;
             margin-top: 0;
             background: var(--mercure-bg);
-            padding-top: 3rem;
+            padding-top: 0.5rem;
             box-shadow: 0 -15px 35px rgba(0, 0, 0, 0.15);
         }
 
@@ -420,7 +531,7 @@
             border-color: var(--mercure-accent);
         }
 
-        /* --- SEÇÕES DE VÍDEOS --- */
+        /* --- SEÇÕES DE VÍDEOS GUMLET --- */
         .video-section {
             margin-bottom: 5rem;
         }
@@ -536,7 +647,7 @@
             gap: 24px;
         }
 
-        /* EXPANSÃO DO ACERVO - ALTURA SUFICIENTE PARA TODOS OS VÍDEOS */
+        /* EXPANSÃO DO ACERVO */
         .expandable-wrapper {
             max-height: 0;
             overflow: hidden;
@@ -544,7 +655,7 @@
             transition: max-height 0.8s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.6s ease-in-out;
         }
         .expandable-wrapper.expanded {
-            max-height: 9999px; /* valor alto o suficiente para caber todos os 13 itens */
+            max-height: 9999px; 
             opacity: 1;
             margin-top: 24px;
         }
@@ -656,32 +767,6 @@
             object-fit: cover;
         }
 
-        .about-brands {
-            text-align: center;
-            width: 100%;
-        }
-        .about-brands h5 {
-            font-size: 0.7rem;
-            letter-spacing: 0.15em;
-            color: #C1BDE2;
-            text-transform: uppercase;
-            margin-bottom: 12px;
-        }
-        .brands-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            justify-content: center;
-        }
-        .brand-badge {
-            font-size: 0.75rem;
-            font-weight: 600;
-            color: var(--mercure-text);
-            border: 1px solid var(--mercure-border);
-            padding: 4px 10px;
-            background: var(--mercure-card-bg);
-        }
-
         .about-name {
             font-family: var(--font-sans);
             font-size: 1.5rem;
@@ -724,7 +809,7 @@
         .service-item {
             background: var(--mercure-card-bg);
             border: 1px solid var(--mercure-border);
-            padding: 1rem;
+            padding: 1.2rem;
             transition: var(--transition-smooth);
         }
         .service-item:hover {
@@ -792,13 +877,19 @@
             gap: 10px;
         }
 
-        /* RESPONSIVIDADE DO RODAPÉ TÉCNICO: centralizar em mobile */
+        /* RESPONSIVIDADE DO RODAPÉ TÉCNICO */
         @media (max-width: 768px) {
             .technical-footnote {
                 justify-content: center;
                 text-align: center;
                 flex-direction: column;
                 align-items: center;
+            }
+            .about-quote {
+                border-left: none;
+                border-top: 1px solid var(--mercure-accent);
+                border-bottom: 1px solid var(--mercure-accent);
+                padding: 1rem 0;
             }
         }
 
@@ -985,12 +1076,19 @@
     
     <!-- BANNER HERO PARALLAX -->
     <section class="parallax-banner" id="home">
-        <div class="parallax-video-container" id="parallaxVideo" data-video-id="6a46b93ce81b019c9741e6bc"></div>
+        <div class="parallax-video-container" id="parallaxVideo">
+            <!-- O iframe do Gumlet será injetado aqui via JS com o parâmetro de background ativo -->
+        </div>
         <div class="parallax-overlay" id="parallaxOverlay"></div>
         <div class="hero-content" id="heroContent">
             <h1 class="hero-title" data-translate-key="hero_title">EVERY FRAME HAS A PURPOSE. EVERY DEADLINE GETS MET.</h1>
             <p class="hero-subtitle" data-translate-key="hero_subtitle">Broadcast. Campanhas. Eventos. Conteúdo entregue no prazo.</p>
+            <div class="hero-cta-group">
+                <a href="#video" class="btn btn-hero-primary" data-translate-key="hero_cta_work">Ver Portfólio ↓</a>
+                <button id="openReelBtn" class="btn btn-hero-secondary" data-translate-key="hero_cta_reel">Assistir Reel</button>
+            </div>
         </div>
+        
         <div class="bottom-feather"></div>
     </section>
 
@@ -1004,7 +1102,6 @@
             <div class="header-right">
                 <!-- Navegação Desktop -->
                 <nav class="header-nav">
-                    <a href="#video" data-translate-key="nav_videos">VÍDEOS</a>
                     <a href="#about" data-translate-key="nav_about">SOBRE MIM</a>
                     <a href="https://linkedin.com/in/marcos-soares-santos-91a281163" target="_blank" rel="noopener">LINKEDIN ↗</a>
                     <button id="langToggleBtn" onclick="toggleLang()" class="lang-btn">EN</button>
@@ -1019,7 +1116,6 @@
         </div>
         <!-- Menu Mobile (dropdown) -->
         <div class="mobile-menu" id="mobileMenu">
-            <a href="#video" data-translate-key="nav_videos" onclick="closeMobileMenu()">VÍDEOS</a>
             <a href="#about" data-translate-key="nav_about" onclick="closeMobileMenu()">SOBRE MIM</a>
             <a href="https://linkedin.com/in/marcos-soares-santos-91a281163" target="_blank" rel="noopener" onclick="closeMobileMenu()">LINKEDIN ↗</a>
             <button id="langToggleBtnMobile" onclick="toggleLang(); closeMobileMenu();" class="lang-btn">EN</button>
@@ -1028,6 +1124,19 @@
 
     <!-- ENVELOPADOR DE CONTEÚDO -->
     <div class="content-wrapper">
+
+        <!-- TRUST BAR: prova social imediata, logo após o vídeo -->
+        <div class="trust-bar container">
+            <p class="trust-bar-label" data-translate-key="trust_bar_label">Marcas que já confiaram na entrega</p>
+            <div class="trust-bar-list">
+                <span class="brand-badge">Dior</span>
+                <span class="brand-badge">Santander</span>
+                <span class="brand-badge">P&G</span>
+                <span class="brand-badge">TRANSPETRO</span>
+                <span class="brand-badge">Record News</span>
+            </div>
+        </div>
+
         <main class="container">
             
             <!-- SEÇÃO 1: PRODUÇÕES CORPORATIVAS, TV & SAME-DAY -->
@@ -1037,15 +1146,15 @@
                     <p class="section-subtitle" data-translate-key="sec1_subtitle">Campanhas publicitárias, coberturas de alto impacto e jornalismo broadcast.</p>
                 </div>
 
-                <!-- VÍDEO HERO -->
+                <!-- VÍDEO HERO (Destaque Principal Dior) -->
                 <div class="video-hero" style="margin-bottom: 4rem;">
-                    <h3 class="video-hero-title" data-translate-key="showcase_title">Think Plastic Brazil Summit 2025</h3>
+                    <h3 class="video-hero-title" data-translate-key="showcase_title">Making-Of Dior</h3>
                     <p data-translate-key="showcase_desc" style="text-align: center; font-size: 0.9rem; color: var(--mercure-text-secondary); margin-bottom: 1.5rem; max-width: 800px; margin-left: auto; margin-right: auto; line-height: 1.5;">
-                        Abertura oficial do evento global, com motion design e animações desenvolvidos inteiramente no DaVinci Resolve Fusion.
+                        Aftermovie exclusivo documentando os bastidores e o desfile de lançamento da grife de luxo Dior, com montagem cinematográfica e finalização de cor de alto nível.
                     </p>
-                    <div class="video-wrapper" data-video-id="6a45bf80e4e7cc890ee34095">
+                    <div class="video-wrapper" data-video-id="6a45b9d818d11bffd5041f0a">
                         <span class="mercure-badge">✓ Mercure Showcase</span>
-                        <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Think Plastic Brazil Summit 2025" class="video-thumbnail">
+                        <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Making-Of Dior" class="video-thumbnail">
                         <div class="play-button"></div>
                     </div>
                 </div>
@@ -1123,17 +1232,6 @@
                             <div class="card-caption">
                                 <h3 data-translate-key="TRANSPETRO - Salesópolis">TRANSPETRO - Salesópolis</h3>
                                 <p data-translate-key="Cobertura e Edição Same-Day">Cobertura e Edição Same-Day</p>
-                            </div>
-                        </div>
-
-                        <div class="horizontal-card">
-                            <div class="video-wrapper" data-video-id="6a45b9d818d11bffd5041f0a">
-                                <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Making-of Dior" class="video-thumbnail">
-                                <div class="play-button"></div>
-                            </div>
-                            <div class="card-caption">
-                                <h3 data-translate-key="Making-of Dior">Making-of Dior</h3>
-                                <p data-translate-key="Aftermovie de Evento / Edição Comercial">Aftermovie de Evento / Edição Comercial</p>
                             </div>
                         </div>
 
@@ -1352,7 +1450,7 @@
                         </div>
                         <div class="card-caption">
                             <h3 data-translate-key="Pettingell Professionals">Pettingell Professionals</h3>
-                            <p data-translate-key="Campanha para Redes Sociais / Negócios">Campanha para Redes Sociais / Negócios</p>
+                            <p style="font-size: 0.75rem; color: #444; line-height: 1.3;" data-translate-key="srv_sup_desc">Edição em tempo real durante eventos com entrega em até 4 horas. Desempenho comprovado sob alta pressão operacional.</p>
                         </div>
                     </div>
 
@@ -1428,36 +1526,36 @@
                     </div>
                     <div class="about-right">
                         <h3 class="about-name">Marcos Soares Santos</h3>
-                        <p class="about-headline" data-translate-key="about_headline">Editor de vídeo & Post-Production Lead</p>
+                        <p class="about-headline" data-translate-key="about_headline">Editor de vídeo sênior · Motion graphics · Estrategista de conteúdo</p>
                         
                         <p class="about-text" data-translate-key="about_p1">
-                            Nos últimos sete anos trabalhei em praticamente todos os cenários da pós-produção: televisão, publicidade, eventos ao vivo, conteúdo digital e campanhas para marcas nacionais e internacionais.
+                            Editor de vídeo com 7 anos de experiência, especializado em transformar material bruto em narrativas que prendem, comunicam e convertem. Já editei documentários de aviação para canais de 1,5 milhão de inscritos, talk shows semanais na Record News, aftermovies para a Dior, anúncios de alta conversão para o Santander e conteúdos de tráfego pago otimizados para retenção.
                         </p>
 
                         <div class="about-quote" data-translate-key="about_quote">
-                            "Comecei editando vídeo de game pra um canal do YouTube em 2020. De lá pra cá, editei mais de 40 episódios de um talk show pra Record News, cobri a APAS Show direto da feira — entregando Reels em até 4 horas depois da gravação — e ajudei a levar um canal de aviação a mais de 1,5 milhão de inscritos. No meio do caminho aprendi que ritmo importa tanto quanto corte."
+                            "Sou apaixonado por música, ler ficção e filosofia. No fundo, sou um contador de histórias que busca criar conexões reais. Reparo nos detalhes de cada frame para garantir que o corte aconteça no tempo certo do ritmo e da música."
                         </div>
 
                         <p class="about-text" data-translate-key="about_p2">
-                            O que gosto mesmo é resolver problema de comunicação com edição: decidir onde cortar, o que guardar, como manter o ritmo quando o material chega quebrado ou o prazo é curto demais. No dia a dia uso Premiere, After Effects, DaVinci Resolve e CapCut — e ferramentas de IA quando ajudam a ganhar tempo sem perder qualidade.
+                            No dia a dia utilizo Premiere Pro, After Effects, DaVinci Resolve (Fusion) e CapCut Pro — integrando ferramentas de inteligência artificial no fluxo de trabalho para acelerar entregas sem abrir mão do controle de qualidade.
                         </p>
 
                         <div class="services-subgrid">
                             <div class="service-item">
-                                <h5 data-translate-key="srv_broadcast_title">Edição Broadcast</h5>
-                                <p data-translate-key="srv_broadcast_desc">Montagem refinada para TV aberta, talk-shows de inovação e jornalismo digital.</p>
+                                <h5 data-translate-key="srv_broadcast_title">Edição & Finalização</h5>
+                                <p data-translate-key="srv_broadcast_desc">Comerciais de TV, institucionais, aftermovies, YouTube de longa duração e Reels/Shorts de alta retenção.</p>
                             </div>
                             <div class="service-item">
-                                <h5 data-translate-key="srv_comercial_title">Edição Comercial</h5>
-                                <p data-translate-key="srv_comercial_desc">Criação e finalização de comerciais voltados para retenção e campanhas digitais.</p>
+                                <h5 data-translate-key="srv_comercial_title">Motion Graphics & VFX</h5>
+                                <p data-translate-key="srv_comercial_desc">Vinhetas, intros, legendas dinâmicas, lower thirds, animação 2D e composição complexa no Fusion e After Effects.</p>
                             </div>
                             <div class="service-item">
-                                <h5 data-translate-key="srv_sameday_title">Edição Same-Day</h5>
-                                <p data-translate-key="srv_sameday_desc">Fluxo de edição ultra-rápido para entrega de eventos em até 4 horas.</p>
+                                <h5 data-translate-key="srv_sameday_title">Performance & Estratégia</h5>
+                                <p data-translate-key="srv_sameday_desc">VSLs, roteiros para tráfego pago (Meta/Google Ads), testes A/B de criativos e retenção de público.</p>
                             </div>
                             <div class="service-item">
-                                <h5 data-translate-key="srv_sup_title">Supervisão de Pós-Produção</h5>
-                                <p data-translate-key="srv_sup_desc">Gestão de fluxo e conformidade técnica para controle de qualidade.</p>
+                                <h5 data-translate-key="srv_sup_title">Same-day Editing</h5>
+                                <p data-translate-key="srv_sup_desc">Edição em tempo real durante eventos com entrega em até 4 horas. Desempenho comprovado sob alta pressão operacional.</p>
                             </div>
                         </div>
 
@@ -1564,14 +1662,19 @@
 
         const translations = {
             pt: {
-                "nav_videos": "VÍDEOS",
                 "nav_about": "SOBRE MIM",
                 "hero_title": "EVERY FRAME HAS A PURPOSE. EVERY DEADLINE GETS MET.",
                 "hero_subtitle": "Broadcast. Campanhas. Eventos. Conteúdo entregue no prazo.",
+                "hero_cta_work": "Ver Portfólio ↓",
+                "hero_cta_reel": "Assistir Reel",
+                "nav_contact_wa": "WHATSAPP ↗",
+                "hero_volume_unmute": "Ouvir som",
+                "hero_volume_mute": "Mudo",
+                "trust_bar_label": "Marcas que já confiaram na entrega",
                 "sec1_title": "PRODUÇÕES CORPORATIVAS, TV & SAME-DAY",
                 "sec1_subtitle": "Campanhas publicitárias, coberturas de alto impacto e jornalismo broadcast.",
-                "showcase_title": "Think Plastic Brazil Summit 2025",
-                "showcase_desc": "Abertura oficial do evento global, com motion design e animações desenvolvidos inteiramente no DaVinci Resolve Fusion.",
+                "showcase_title": "Making-Of Dior",
+                "showcase_desc": "Aftermovie exclusivo documentando os bastidores e o desfile de lançamento da grife de luxo Dior, com montagem cinematográfica e finalização de cor de alto nível.",
                 "other_projects": "Outros Projetos",
                 "toggle_more": "Ver Mais Projetos",
                 "toggle_less": "Mostrar Menos",
@@ -1585,18 +1688,18 @@
                 "sec3_title": "POST-PRODUCTION SPECIALIST",
                 "sec3_subtitle": "Liderança, ritmo narrativo e consistência sob forte pressão operacional.",
                 "brands_heading": "Marcas e Projetos Atendidos",
-                "about_headline": "Editor de vídeo & Post-Production Lead",
-                "about_p1": "Nos últimos sete anos trabalhei em praticamente todos os cenários da pós-produção: televisão, publicidade, eventos ao vivo, conteúdo digital e campanhas para marcas nacionais e internacionais.",
-                "about_quote": '"Comecei editando vídeo de game pra um canal do YouTube em 2020. De lá pra cá, editei mais de 40 episódios de um talk show pra Record News, cobri a APAS Show direto da feira — entregando Reels em até 4 horas depois da gravação — e ajudei a levar um canal de aviação a mais de 1,5 milhão de inscritos. No meio do caminho aprendi que ritmo importa tanto quanto corte."',
-                "about_p2": "O que gosto mesmo é resolver problema de comunicação com edição: decidir onde cortar, o que guardar, como manter o ritmo quando o material chega quebrado ou o prazo é curto demais. No dia a dia uso Premiere, After Effects, DaVinci Resolve e CapCut — e ferramentas de IA quando ajudam a ganhar tempo sem perder qualidade.",
-                "srv_broadcast_title": "Edição Broadcast",
-                "srv_broadcast_desc": "Montagem refinada para TV aberta, talk-shows de inovação e jornalismo digital.",
-                "srv_comercial_title": "Edição Comercial",
-                "srv_comercial_desc": "Criação e finalização de comerciais voltados para retenção e campanhas digitais.",
-                "srv_sameday_title": "Edição Same-Day",
-                "srv_sameday_desc": "Fluxo de edição ultra-rápido para entrega de eventos em até 4 horas.",
-                "srv_sup_title": "Supervisão de Pós-Produção",
-                "srv_sup_desc": "Gestão de fluxo e conformidade técnica para controle de qualidade.",
+                "about_headline": "Editor de vídeo sênior · Motion graphics · Estrategista de conteúdo",
+                "about_p1": "Editor de vídeo com 7 anos de experiência, especializado em transformar material bruto em narrativas que prendem, comunicam e convertem. Já editei documentários de aviação para canais de 1,5 milhão de inscritos, talk shows semanais na Record News, aftermovies para a Dior, anúncios de alta conversão para o Santander e conteúdos de tráfego pago otimizados para retenção.",
+                "about_quote": '"Sou apaixonado por música, ler ficção e filosofia. No fundo, sou um contador de histórias que busca criar conexões reais. Reparo nos detalhes de cada frame para garantir que o corte aconteça no tempo certo do ritmo e da música."',
+                "about_p2": "No dia a dia utilizo Premiere Pro, After Effects, DaVinci Resolve (Fusion) e CapCut Pro — integrando ferramentas de inteligência artificial no fluxo de trabalho para acelerar entregas sem abrir mão do controle de qualidade.",
+                "srv_broadcast_title": "Edição & Finalização",
+                "srv_broadcast_desc": "Comerciais de TV, institucionais, aftermovies, YouTube de longa duração e Reels/Shorts de alta retenção.",
+                "srv_comercial_title": "Motion Graphics & VFX",
+                "srv_comercial_desc": "Vinhetas, intros, legendas dinâmicas, lower thirds, animação 2D e composição complexa no Fusion e After Effects.",
+                "srv_sameday_title": "Performance & Estratégia",
+                "srv_sameday_desc": "VSLs, roteiros para tráfego pago (Meta/Google Ads), testes A/B de criativos e retenção de público.",
+                "srv_sup_title": "Same-day Editing",
+                "srv_sup_desc": "Edição em tempo real durante eventos com entrega em até 4 horas. Desempenho comprovado sob alta pressão operacional.",
                 "stat_years_title": "7+ Anos",
                 "stat_years_desc": "em pós-produção",
                 "stat_episodes_title": "40+ Episódios",
@@ -1612,14 +1715,19 @@
                 "close_btn": "Fechar [X]"
             },
             en: {
-                "nav_videos": "VIDEOS",
                 "nav_about": "ABOUT ME",
                 "hero_title": "EVERY FRAME HAS A PURPOSE. EVERY DEADLINE GETS MET.",
                 "hero_subtitle": "Broadcast. Campaigns. Events. Content delivered on time.",
+                "hero_cta_work": "View Portfolio ↓",
+                "hero_cta_reel": "Watch Reel",
+                "nav_contact_wa": "WHATSAPP ↗",
+                "hero_volume_unmute": "Tap to unmute",
+                "hero_volume_mute": "Mute",
+                "trust_bar_label": "Brands that have trusted our delivery",
                 "sec1_title": "CORPORATE PRODUCTIONS, TV & SAME-DAY",
                 "sec1_subtitle": "Advertising campaigns, high-impact coverage, and broadcast journalism.",
-                "showcase_title": "Think Plastic Brazil Summit 2025",
-                "showcase_desc": "Official opening of the global event, with motion design and animations developed entirely in DaVinci Resolve Fusion.",
+                "showcase_title": "Making-Of Dior",
+                "showcase_desc": "Exclusive aftermovie documenting the behind-the-scenes and launch of the luxury fashion brand Dior, featuring cinematic editing and high-tier color grading.",
                 "other_projects": "Other Projects",
                 "toggle_more": "See More Projects",
                 "toggle_less": "Show Less",
@@ -1633,18 +1741,18 @@
                 "sec3_title": "POST-PRODUCTION SPECIALIST",
                 "sec3_subtitle": "Leadership, narrative rhythm, and consistency under heavy operational pressure.",
                 "brands_heading": "Brands & Projects Served",
-                "about_headline": "Video Editor & Post-Production Lead",
-                "about_p1": "Over the past seven years, I have worked in virtually every post-production scenario: television, advertising, live events, digital content, and campaigns for national and international brands.",
-                "about_quote": '"I started editing gaming videos for a YouTube channel in 2020. Since then, I\'ve edited over 40 episodes of a weekly talk show for Record News, covered the APAS Show live from the convention floor — delivering Reels within 4 hours of recording — and helped grow an aviation channel to over 1.5 million subscribers. Along the way, I learned that pacing matters just as much as the cut."',
-                "about_p2": "What I truly enjoy is solving communication problems through editing: deciding where to cut, what to keep, and how to maintain the rhythm when the footage arrives incomplete or the deadline is extremely tight. Daily, I work with Premiere, After Effects, DaVinci Resolve, and CapCut — leveraging AI tools whenever they help save time without sacrificing quality.",
-                "srv_broadcast_title": "Broadcast Editing",
-                "srv_broadcast_desc": "Refined editing for free-to-air TV, innovation talk shows, and digital journalism.",
-                "srv_comercial_title": "Commercial Editing",
-                "srv_comercial_desc": "Creation and finalization of commercials geared towards retention and digital campaigns.",
-                "srv_sameday_title": "Same-Day Editing",
-                "srv_sameday_desc": "Ultra-fast editing workflow for event deliveries within 4 hours.",
-                "srv_sup_title": "Post-Production Supervision",
-                "srv_sup_desc": "Workflow management and technical compliance for quality control.",
+                "about_headline": "Senior Video Editor · Motion Graphics · Content Strategist",
+                "about_p1": "Video editor with 7 years of experience, specialized in turning raw footage into narratives that capture, communicate, and convert. I have edited aviation documentaries for channels with 1.5 million subscribers, weekly talk shows on Record News, aftermovies for Dior, high-converting ads for Santander, and paid traffic assets optimized for retention.",
+                "about_quote": '"I am passionate about music, reading fiction and philosophy. At heart, I am a storyteller who seeks to build genuine connections. I pay attention to the details of every single frame to ensure each cut lands perfectly on the beat and pace of the music."',
+                "about_p2": "Daily, I work with Premiere Pro, After Effects, DaVinci Resolve (Fusion), and CapCut Pro — seamlessly integrating AI tools into my post-production pipeline to speed up delivery times while maintaining strict quality control.",
+                "srv_broadcast_title": "Editing & Finishing",
+                "srv_broadcast_desc": "TV commercials, corporate videos, aftermovies, long-form YouTube content, and high-retention Reels/Shorts.",
+                "srv_comercial_title": "Motion Graphics & VFX",
+                "srv_comercial_desc": "Intros, dynamic subtitles, lower thirds, 2D animations, and complex composition in Fusion and After Effects.",
+                "srv_sameday_title": "Performance & Strategy",
+                "srv_sameday_desc": "VSLs, ad scripts for paid traffic (Meta/Google Ads), A/B testing of creatives, and audience retention hooks.",
+                "srv_sup_title": "Same-day Editing",
+                "srv_sup_desc": "Real-time editing during events with delivery in under 4 hours. Proven performance under high operational pressure.",
                 "stat_years_title": "7+ Years",
                 "stat_years_desc": "in post-production",
                 "stat_episodes_title": "40+ Episodes",
@@ -1793,27 +1901,19 @@
             toggleArchiveBtn.textContent = translations[currentLang][isExpanded ? 'toggle_less' : 'toggle_more'];
         }
 
-        // --- THUMBNAILS ---
-        const GUMLET_WORKSPACE_ID = "6a45b78918d11bffd503ee1a";
+        // --- THUMBNAILS GUMLET ---
+        const GUMLET_WORKSPACE_ID = (typeof VIDEO_CONFIG !== 'undefined' && VIDEO_CONFIG.gumletWorkspaceId) 
+            ? VIDEO_CONFIG.gumletWorkspaceId 
+            : "6a45b78918d11bffd503ee1a";
 
         function initThumbnails() {
             wrappers.forEach(wrapper => {
                 const videoId = wrapper.getAttribute('data-video-id');
                 const img = wrapper.querySelector('img');
                 if (videoId && img) {
-                    img.src = `https://video.gumlet.io/${GUMLET_WORKSPACE_ID}/${videoId}/thumbnail-1-0.png?time=3&width=800`;
+                    img.src = `https://video.gumlet.io/${GUMLET_WORKSPACE_ID}/${videoId}/thumbnail-1-0.png?time=8&width=800`;
                 }
             });
-
-            const bannerContainer = document.getElementById('parallaxVideo');
-            if (bannerContainer) {
-                const bannerVideoId = bannerContainer.getAttribute('data-video-id');
-                if (bannerVideoId) {
-                    bannerContainer.style.backgroundImage = `url('https://video.gumlet.io/${GUMLET_WORKSPACE_ID}/${bannerVideoId}/thumbnail-1-0.png?time=3&width=1920')`;
-                    bannerContainer.style.backgroundSize = "cover";
-                    bannerContainer.style.backgroundPosition = "center";
-                }
-            }
         }
 
         initThumbnails();
@@ -1872,12 +1972,14 @@
 
             wrapper.addEventListener('click', () => {
                 isModalOpen = true;
+                
+                // Envia comandos de pausa para o player de fundo do Gumlet
                 const bgPlayer = document.getElementById('backgroundBannerPlayer');
-                if (bgPlayer && bgPlayer.src && bgPlayer.src !== "about:blank") {
-                    bgPlayer.dataset.savedSrc = bgPlayer.src;
-                    bgPlayer.src = "about:blank";
-                    bgPlayer.style.opacity = "0";
+                if (bgPlayer && bgPlayer.contentWindow) {
+                    bgPlayer.contentWindow.postMessage(JSON.stringify({method: 'pause'}), '*');
+                    bgPlayer.contentWindow.postMessage(JSON.stringify({event: 'command', func: 'pause'}), '*');
                 }
+
                 document.querySelectorAll('.hover-player').forEach(player => player.remove());
 
                 const iframe = document.createElement('iframe');
@@ -1905,42 +2007,12 @@
             });
         });
 
-        // --- BANNER BACKGROUND ---
-        window.addEventListener('load', () => {
-            const container = document.getElementById('parallaxVideo');
-            const videoId = container.getAttribute('data-video-id');
-            if (videoId) {
-                const iframe = document.createElement('iframe');
-                iframe.id = "backgroundBannerPlayer";
-                iframe.style.border = "none";
-                iframe.style.position = "absolute";
-                iframe.style.top = "50%";
-                iframe.style.left = "50%";
-                iframe.style.width = "100%";
-                iframe.style.height = "100%";
-                iframe.style.minWidth = "100%";
-                iframe.style.minHeight = "100%";
-                iframe.style.transform = "translate(-50%, -50%) scale(1.25)";
-                iframe.style.opacity = "1";
-                iframe.setAttribute('allow', 'autoplay');
-                iframe.setAttribute('referrerpolicy', 'origin');
-                iframe.dataset.savedSrc = `https://play.gumlet.io/embed/${videoId}?autoplay=true&muted=true&loop=true&background=true&preload=true`;
-                iframe.src = iframe.dataset.savedSrc;
-                container.appendChild(iframe);
-                bannerIframe = iframe;
-                setTimeout(updateCachedDimensions, 250);
-            }
-        });
-
         // --- PARALLAX E ANIMAÇÃO ---
         let ticking = false;
         let isModalOpen = false;
         let lastTime = 0;
-        let posX = 0;
-        let direction = -1;
         const BANNER_COVER_THRESHOLD = 350;
         let bannerVisible = true;
-        let bannerIframe = null;
         let cachedContainerWidth = 0;
         let cachedVideoWidth = 0;
         let cachedMaxPan = 0;
@@ -1960,44 +2032,22 @@
             lastTime = timestamp;
 
             const scrollY = window.pageYOffset;
+            const bannerHeight = parallaxBanner.offsetHeight;
 
-            if (scrollY >= 270) {
+            if (scrollY >= Math.max(bannerHeight - 80, 50)) {
                 mainHeader.classList.add('scrolled');
             } else {
                 mainHeader.classList.remove('scrolled');
             }
 
             if (!reduceMotion && !isModalOpen) {
-                const covered = scrollY >= BANNER_COVER_THRESHOLD;
+                const scrollFraction = Math.min(scrollY / bannerHeight, 1);
 
-                if (covered && bannerVisible) {
-                    bannerVisible = false;
-                    if (bannerIframe && bannerIframe.src && bannerIframe.src !== "about:blank") {
-                        bannerIframe.style.opacity = "0";
-                        setTimeout(() => {
-                            if (!bannerVisible) bannerIframe.src = "about:blank";
-                        }, 500);
-                    }
-                } else if (!covered && !bannerVisible) {
-                    bannerVisible = true;
-                    if (bannerIframe && bannerIframe.dataset.savedSrc && bannerIframe.src !== bannerIframe.dataset.savedSrc) {
-                        bannerIframe.src = bannerIframe.dataset.savedSrc;
-                        setTimeout(() => { if (bannerVisible) bannerIframe.style.opacity = "1"; }, 100);
-                    }
-                }
-
-                const scrollFraction = Math.min(scrollY / BANNER_COVER_THRESHOLD, 1);
-
-                if (bannerVisible && cachedVideoWidth > 0) {
-                    posX += direction * 35 * deltaTime;
-                    if (Math.abs(posX) >= cachedMaxPan) {
-                        direction *= -1;
-                        posX = Math.max(-cachedMaxPan, Math.min(cachedMaxPan, posX));
-                    }
-                    const finalX = cachedBaseCenterX + posX;
+                if (scrollY < bannerHeight) {
+                    const finalX = 0; // Travado horizontalmente para evitar corte responsivo
                     const posY = scrollY * 0.35;
                     parallaxVideo.style.transform = `translate3d(${finalX}px, ${posY}px, 0)`;
-                    const overlayOpacity = 0.20 + (scrollFraction * 0.70);
+                    const overlayOpacity = 0.35 + (scrollFraction * 0.55);
                     parallaxOverlay.style.backgroundColor = `rgba(18, 23, 58, ${overlayOpacity})`;
                     const textOpacity = 1 - scrollFraction;
                     heroContent.style.opacity = textOpacity;
@@ -2020,21 +2070,124 @@
             }
         });
 
+        // --- DOM CONTENT LOADED (Injeta configurações com segurança) ---
+        document.addEventListener('DOMContentLoaded', () => {
+            // Traduz elementos básicos imediatamente no load
+            document.querySelectorAll('[data-translate-key]').forEach(elem => {
+                const key = elem.getAttribute('data-translate-key');
+                if (translations[currentLang][key]) {
+                    elem.textContent = translations[currentLang][key];
+                } else if (projectTranslations[currentLang][key]) {
+                    elem.textContent = projectTranslations[currentLang][key];
+                }
+            });
+
+            if (typeof VIDEO_CONFIG === 'undefined') {
+                console.warn('⚠️ config.js não carregou. Usando mídias fallback estáticas do HTML.');
+                return;
+            }
+
+            try {
+                // 1. Configurar o Vídeo de Fundo do Hero (Iframe do Gumlet com Autoplay nativo e mudo)
+                const container = document.getElementById('parallaxVideo');
+                if (container) {
+                    // Configura o poster de fallback como plano de fundo do container enquanto o iframe carrega
+                    if (VIDEO_CONFIG.backgroundPoster && VIDEO_CONFIG.backgroundPoster.trim() !== '') {
+                        container.style.backgroundImage = `url('${VIDEO_CONFIG.backgroundPoster}')`;
+                        container.style.backgroundSize = "cover";
+                        container.style.backgroundPosition = "center";
+                    }
+
+                    const iframe = document.createElement('iframe');
+                    iframe.id = "backgroundBannerPlayer";
+                    iframe.setAttribute('allow', 'autoplay');
+                    iframe.setAttribute('referrerpolicy', 'origin');
+                    
+                    // Converte e usa a URL de embed direta do config.js
+                    let embedUrl = (VIDEO_CONFIG.backgroundEmbed && VIDEO_CONFIG.backgroundEmbed.trim() !== '')
+                        ? VIDEO_CONFIG.backgroundEmbed.trim()
+                        : `https://play.gumlet.io/embed/6a45bf80e4e7cc890ee34095?autoplay=true&muted=true&loop=true&background=true&preload=true`;
+
+                    iframe.src = embedUrl;
+                    container.appendChild(iframe);
+                    bannerIframe = iframe;
+                }
+
+                // 2. Aplicar thumbnails customizadas se configuradas (Caso contrário, usa time=8 configurado no Gumlet)
+                const caseImages = document.querySelectorAll('.case-thumb img');
+                const thumbs = VIDEO_CONFIG.caseThumbs;
+                const keys = ['aviacao', 'record', 'dior', 'sameDay'];
+                
+                if (thumbs) {
+                    caseImages.forEach((img, index) => {
+                        if (keys[index] && thumbs[keys[index]] && thumbs[keys[index]].trim() !== '') {
+                            img.src = thumbs[keys[index]];
+                        }
+                    });
+                }
+
+                // 3. Lógica do Botão de Abertura do Reel (Modal)
+                const openReelBtn = document.getElementById('openReelBtn');
+                if (openReelBtn) {
+                    openReelBtn.addEventListener('click', () => {
+                        isModalOpen = true;
+                        
+                        // Envia comandos de pausa para o player de fundo do Gumlet
+                        const bgPlayer = document.getElementById('backgroundBannerPlayer');
+                        if (bgPlayer && bgPlayer.contentWindow) {
+                            bgPlayer.contentWindow.postMessage(JSON.stringify({method: 'pause'}), '*');
+                            bgPlayer.contentWindow.postMessage(JSON.stringify({event: 'command', func: 'pause'}), '*');
+                        }
+
+                        let src = VIDEO_CONFIG.reelEmbed || "https://play.gumlet.io/embed/6a45bf80e4e7cc890ee34095?autoplay=true";
+                        
+                        if (src.trim() === '') {
+                            alert('URL do Reel não configurada no config.js.');
+                            return;
+                        }
+
+                        if (!src.includes('autoplay=1') && !src.includes('autoplay=true')) {
+                            src = src.includes('?') ? src + '&autoplay=true' : src + '?autoplay=true';
+                        }
+
+                        const iframe = document.createElement('iframe');
+                        iframe.src = src;
+                        iframe.id = "activeGumletPlayer";
+                        iframe.setAttribute('allow', 'autoplay; fullscreen');
+                        iframe.setAttribute('allowfullscreen', 'true');
+                        iframe.style.width = "100%";
+                        iframe.style.height = "100%";
+                        iframe.style.border = "none";
+
+                        modalContent.style.aspectRatio = "16/9";
+                        modalContent.style.width = "90%";
+                        modalContent.style.maxWidth = "1100px";
+
+                        const oldPlayer = document.getElementById('activeGumletPlayer');
+                        if (oldPlayer) oldPlayer.remove();
+
+                        modal.style.display = 'flex';
+                        modalContent.appendChild(iframe);
+                    });
+                }
+
+            } catch (error) {
+                console.error('❌ Erro inesperado ao carregar configurações do config.js:', error);
+            }
+        });
+
         // --- MODAL CONTROLS ---
         function closeModal() {
             modal.style.display = 'none';
             isModalOpen = false;
             const activePlayer = document.getElementById('activeGumletPlayer');
             if (activePlayer) activePlayer.remove();
-            if (window.pageYOffset < BANNER_COVER_THRESHOLD) {
-                bannerVisible = true;
-                const bgPlayer = document.getElementById('backgroundBannerPlayer');
-                if (bgPlayer && bgPlayer.dataset.savedSrc) {
-                    bgPlayer.src = bgPlayer.dataset.savedSrc;
-                    setTimeout(() => { bgPlayer.style.opacity = "1"; }, 100);
-                }
-            } else {
-                bannerVisible = false;
+            
+            // Retoma a execução do player de fundo do Gumlet se o modal for fechado
+            const bgPlayer = document.getElementById('backgroundBannerPlayer');
+            if (bgPlayer && bgPlayer.contentWindow && window.pageYOffset < parallaxBanner.offsetHeight) {
+                bgPlayer.contentWindow.postMessage(JSON.stringify({method: 'play'}), '*');
+                bgPlayer.contentWindow.postMessage(JSON.stringify({event: 'command', func: 'play'}), '*');
             }
         }
 
@@ -2084,349 +2237,11 @@
             });
         });
 
-        // --- CURRÍCULO ---
+        // --- CURRÍCULO (Abre arquivos externos bilingues) ---
         function openResume() {
-            const resumeWindow = window.open('', '_blank');
-            if (!resumeWindow) {
-                alert(currentLang === 'pt' ? 'Por favor, permita pop-ups para visualizar o currículo.' : 'Please allow pop-ups to view the resume.');
-                return;
-            }
-
-            const ptResumeHTML = `
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <title>Marcos Soares Santos — Currículo Técnico</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=IBM+Plex+Sans:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
-    <style>
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { font-family: 'Inter', sans-serif; color: #17151F; background-color: #f3f4f6; line-height: 1.45; padding: 40px 0; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-        .print-header { max-width: 800px; margin: 0 auto 20px auto; display: flex; justify-content: space-between; align-items: center; background: #12173A; padding: 15px 25px; border-left: 4px solid #1FC29B; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
-        .print-header span { color: #F5F4FA; font-size: 0.85rem; font-weight: 500; }
-        .print-btn { background: #1FC29B; color: #12173A; border: none; padding: 8px 18px; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; cursor: pointer; transition: 0.2s ease; }
-        .print-btn:hover { background: #4D4999; color: #F5F4FA; }
-        .resume-page { width: 210mm; min-height: 297mm; background: #ffffff; margin: 0 auto; padding: 22mm 20mm; box-shadow: 0 4px 20px rgba(0,0,0,0.08); position: relative; }
-        header { border-bottom: 2px solid #4D4999; padding-bottom: 12px; margin-bottom: 18px; }
-        .name { font-family: 'IBM Plex Sans', sans-serif; font-size: 1.85rem; font-weight: 600; text-transform: uppercase; color: #12173A; letter-spacing: 0.05em; }
-        .title { font-family: 'IBM Plex Sans', sans-serif; font-style: italic; font-size: 1.05rem; color: #4D4999; margin-top: 2px; font-weight: 500; }
-        .contacts { display: flex; flex-wrap: wrap; gap: 15px; font-size: 0.75rem; color: #555; margin-top: 8px; font-weight: 500; }
-        .contacts a { color: #17151F; text-decoration: none; }
-        h2 { font-family: 'IBM Plex Sans', sans-serif; font-size: 0.95rem; font-weight: 600; text-transform: uppercase; color: #12173A; letter-spacing: 0.1em; border-bottom: 1px solid #e5e7eb; padding-bottom: 4px; margin-top: 18px; margin-bottom: 10px; }
-        p { font-size: 0.8rem; color: #333; text-align: justify; }
-        .experience-item { margin-bottom: 12px; }
-        .exp-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 3px; }
-        .exp-role { font-size: 0.825rem; font-weight: 700; color: #17151F; }
-        .exp-date { font-size: 0.725rem; font-weight: 600; color: #4D4999; white-space: nowrap; }
-        .exp-bullets { list-style-type: none; padding-left: 0; }
-        .exp-bullets li { font-size: 0.775rem; color: #444; position: relative; padding-left: 12px; margin-bottom: 3px; text-align: justify; }
-        .exp-bullets li::before { content: "•"; position: absolute; left: 0; color: #1FC29B; font-weight: bold; }
-        .grid-two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-        .skill-group { margin-bottom: 6px; }
-        .skill-group strong { font-size: 0.75rem; color: #12173A; text-transform: uppercase; letter-spacing: 0.03em; }
-        .skill-group span { font-size: 0.775rem; color: #444; }
-        @media print { body { background-color: #ffffff; padding: 0; } .print-header { display: none; } .resume-page { box-shadow: none; padding: 0; width: 100%; height: 100%; } }
-    </style>
-</head>
-<body>
-    <div class="print-header">
-        <span>Marcos Soares Santos — Visualização de Impressão de Currículo</span>
-        <button class="print-btn" onclick="window.print()">Salvar como PDF</button>
-    </div>
-    <div class="resume-page">
-        <header>
-            <div class="name">Marcos Soares Santos</div>
-            <div class="title">Editor de Vídeo | Conteúdo para Redes Sociais, Marca e Mídia Paga</div>
-            <div class="contacts">
-                <span>São Paulo, SP</span>
-                <span>• (11) 96303-3573</span>
-                <span>• <a href="mailto:marcoscpc@outlook.com">marcoscpc@outlook.com</a></span>
-                <span>• <a href="https://linkedin.com/in/marcos-soares-santos-91a281163" target="_blank">linkedin.com/in/marcos-soares-santos-91a281163</a></span>
-                <span>• Portfólio: tinyurl.com/ycycv983</span>
-            </div>
-        </header>
-        <section>
-            <h2>Resumo Profissional</h2>
-            <p>Editor de vídeo com 7 anos de experiência em pós-produção para redes sociais, YouTube, campanhas institucionais e mídia paga. Domínio completo de Adobe Premiere Pro, After Effects, DaVinci Resolve e CapCut, com prática consolidada em corte, montagem, correção de cor, motion graphics, tratamento de áudio e adaptação de formatos (9:16, 16:9, 1:1, 4:5) para Instagram, YouTube, LinkedIn e campanhas de performance. Já entreguei projetos para marcas como Dior, P&G, Santander e TRANSPETRO, e tenho experiência direta com anúncios para Meta Ads e Google Ads, incluindo testes A/B e otimização de CTR. Uso ferramentas de inteligência artificial no fluxo de trabalho para ganhar agilidade sem perder qualidade. Disponível imediatamente para trabalho 100% remoto.</p>
-        </section>
-        <section>
-            <h2>Competências-Chave</h2>
-            <div class="grid-two-col" style="gap:10px; margin-bottom:10px;">
-                <ul class="exp-bullets">
-                    <li>Edição multi-formato para Instagram (Reels e Stories), YouTube, LinkedIn e site institucional</li>
-                    <li>Corte, montagem, colorização, correção de cor, tratamento de áudio e motion graphics</li>
-                    <li>Legendagem e adaptação de proporções (9:16, 16:9, 1:1, 4:5) conforme plataforma e objetivo</li>
-                </ul>
-                <ul class="exp-bullets">
-                    <li>Vídeos para mídia paga: Meta Ads e Google Ads, com foco em CTR, de retenção e testes A/B</li>
-                    <li>CapCut Pro para edições rápidas em formato mobile</li>
-                    <li>Gestão de pipeline de entregas, organização de assets, presets e projetos, e cumprimento de prazos</li>
-                    <li>IA generativa de vídeo e áudio aplicada à produtividade: ElevenLabs, Sora, ChatGPT, DeepSeek, Gemini</li>
-                </ul>
-            </div>
-        </section>
-        <section>
-            <h2>Experiência Profissional</h2>
-            <div class="experience-item">
-                <div class="exp-header">
-                    <span class="exp-role">Editor de Vídeo e Estrategista de Conteúdo | Tuzinho Academy & Original SP Tattoo</span>
-                    <span class="exp-date">jun/2024 – out/2025</span>
-                </div>
-                <ul class="exp-bullets">
-                    <li>Editei conteúdo para canal com 63 mil inscritos no YouTube, com média de 22 mil visualizações por publicação.</li>
-                    <li>Criei roteiros e editei anúncios para Meta Ads e Google Ads, com legendagem e otimização via IA.</li>
-                    <li>Atuei como videomaker em cobertura same-day de evento, com entrega rápida e fluxo organizado de produção.</li>
-                </ul>
-            </div>
-            <div class="experience-item">
-                <div class="exp-header">
-                    <span class="exp-role">Editor de Vídeo Sênior | Publicidade, TV e Performance Digital — Freelancer</span>
-                    <span class="exp-date">2020 – Presente</span>
-                </div>
-                <ul class="exp-bullets">
-                    <li>Editei comerciais para TV, vídeos institucionais, motion graphics e campanhas digitais para Dior, P&G, Santander, TRANSPETRO e outras marcas.</li>
-                    <li>Produzi peças para campanhas de performance digital com foco em VSL, testes A/B e otimização de retenção.</li>
-                </ul>
-            </div>
-            <div class="experience-item">
-                <div class="exp-header">
-                    <span class="exp-role">Editor de Vídeo Same-Day | APAS Show 2024</span>
-                    <span class="exp-date">mai/2024 | Freelancer</span>
-                </div>
-                <ul class="exp-bullets">
-                    <li>Editei Reels e Stories para o perfil oficial no Instagram durante 6 dias consecutivos, com entrega em até 4h após a captação.</li>
-                    <li>Centenas de milhares de visualizações orgânicas, com zero retrabalho — alta exigência de ritmo e qualidade.</li>
-                </ul>
-            </div>
-            <div class="experience-item">
-                <div class="exp-header">
-                    <span class="exp-role">Editor de Vídeo e Coordenador de Pós-Produção | Singular Filmes</span>
-                    <span class="exp-date">abr/2021 – fev/2022</span>
-                </div>
-                <ul class="exp-bullets">
-                    <li>Editei 3 vídeos por semana em padrão broadcast para canal com 1,5 milhão de inscritos e 461 milhões de visualizações.</li>
-                    <li>Promovido a Coordenador de Pós-Produção, com gestão de equipe, organização de servidores e controle de fluxo de entregas.</li>
-                </ul>
-            </div>
-            <div class="experience-item">
-                <div class="exp-header">
-                    <span class="exp-role">Editor de Vídeo Freelancer | O Imponderável — Record News / 5ERA Produções</span>
-                    <span class="exp-date">mai/2022 – mar/2023</span>
-                </div>
-                <ul class="exp-bullets">
-                    <li>Editei mais de 40 episódios de talk show semanal, com entregas consistentes em prazos de 2 a 4 dias.</li>
-                </ul>
-            </div>
-        </section>
-        <section>
-            <h2>Outras Experiências</h2>
-            <p style="font-size:0.775rem; color:#444;">
-                <strong>Editor de Vídeo (Canal ChratosGameplay, 2020)</strong> — edição de conteúdo de games para YouTube | <strong>Atendente Bilíngue (Orbitall / Noizz, 2019–2020)</strong> — suporte técnico e moderação de conteúdo em inglês | <strong>Impressor Gráfico (P&B Comunicação Visual, 2018–2019)</strong> — produção gráfica e operação de plotters.
-            </p>
-        </section>
-        <div class="grid-two-col">
-            <div>
-                <h2>Ferramentas e Idiomas</h2>
-                <div class="skill-group">
-                    <strong>Edição e Motion:</strong>
-                    <span>Adobe Premiere Pro, After Effects, DaVinci Resolve, CapCut Pro, Fusion DaVinci.</span>
-                </div>
-                <div class="skill-group">
-                    <strong>Mídia Paga e IA:</strong>
-                    <span>Meta Ads, Google Ads, VSL, testes A/B, ElevenLabs, Sora, ChatGPT, Gemini, DeepSeek.</span>
-                </div>
-                <div class="skill-group">
-                    <strong>Idiomas:</strong>
-                    <span>Português nativo | Inglês fluente.</span>
-                </div>
-            </div>
-            <div>
-                <h2>Formação</h2>
-                <div class="skill-group">
-                    <strong>Técnico em Multimídia</strong>
-                    <p style="font-size: 0.75rem; color:#4D4999; font-weight:600;">ETEC Jornalista Roberto Marinho | 2017 – 2018</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</body>
-</html>`;
-
-            const enResumeHTML = `
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Marcos Soares Santos — Technical Resume</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=IBM+Plex+Sans:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
-    <style>
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { font-family: 'Inter', sans-serif; color: #17151F; background-color: #f3f4f6; line-height: 1.45; padding: 40px 0; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-        .print-header { max-width: 800px; margin: 0 auto 20px auto; display: flex; justify-content: space-between; align-items: center; background: #12173A; padding: 15px 25px; border-left: 4px solid #1FC29B; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
-        .print-header span { color: #F5F4FA; font-size: 0.85rem; font-weight: 500; }
-        .print-btn { background: #1FC29B; color: #12173A; border: none; padding: 8px 18px; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; cursor: pointer; transition: 0.2s ease; }
-        .print-btn:hover { background: #4D4999; color: #F5F4FA; }
-        .resume-page { width: 210mm; min-height: 297mm; background: #ffffff; margin: 0 auto; padding: 22mm 20mm; box-shadow: 0 4px 20px rgba(0,0,0,0.08); position: relative; }
-        header { border-bottom: 2px solid #4D4999; padding-bottom: 12px; margin-bottom: 18px; }
-        .name { font-family: 'IBM Plex Sans', sans-serif; font-size: 1.85rem; font-weight: 600; text-transform: uppercase; color: #12173A; letter-spacing: 0.05em; }
-        .title { font-family: 'IBM Plex Sans', sans-serif; font-style: italic; font-size: 1.05rem; color: #4D4999; margin-top: 2px; font-weight: 500; }
-        .contacts { display: flex; flex-wrap: wrap; gap: 15px; font-size: 0.75rem; color: #555; margin-top: 8px; font-weight: 500; }
-        .contacts a { color: #17151F; text-decoration: none; }
-        h2 { font-family: 'IBM Plex Sans', sans-serif; font-size: 0.95rem; font-weight: 600; text-transform: uppercase; color: #12173A; letter-spacing: 0.1em; border-bottom: 1px solid #e5e7eb; padding-bottom: 4px; margin-top: 18px; margin-bottom: 10px; }
-        p { font-size: 0.8rem; color: #333; text-align: justify; }
-        .experience-item { margin-bottom: 12px; }
-        .exp-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 3px; }
-        .exp-role { font-size: 0.825rem; font-weight: 700; color: #17151F; }
-        .exp-date { font-size: 0.725rem; font-weight: 600; color: #4D4999; white-space: nowrap; }
-        .exp-bullets { list-style-type: none; padding-left: 0; }
-        .exp-bullets li { font-size: 0.775rem; color: #444; position: relative; padding-left: 12px; margin-bottom: 3px; text-align: justify; }
-        .exp-bullets li::before { content: "•"; position: absolute; left: 0; color: #1FC29B; font-weight: bold; }
-        .grid-two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-        .skill-group { margin-bottom: 6px; }
-        .skill-group strong { font-size: 0.75rem; color: #12173A; text-transform: uppercase; letter-spacing: 0.03em; }
-        .skill-group span { font-size: 0.775rem; color: #444; }
-        @media print { body { background-color: #ffffff; padding: 0; } .print-header { display: none; } .resume-page { box-shadow: none; padding: 0; width: 100%; height: 100%; } }
-    </style>
-</head>
-<body>
-    <div class="print-header">
-        <span>Marcos Soares Santos — Resume Print View</span>
-        <button class="print-btn" onclick="window.print()">Save as PDF</button>
-    </div>
-    <div class="resume-page">
-        <header>
-            <div class="name">Marcos Soares Santos</div>
-            <div class="title">Video Editor | Social Media, Brand & Paid Media Content</div>
-            <div class="contacts">
-                <span>São Paulo, Brazil</span>
-                <span>• +55 (11) 96303-3573</span>
-                <span>• <a href="mailto:marcoscpc@outlook.com">marcoscpc@outlook.com</a></span>
-                <span>• <a href="https://linkedin.com/in/marcos-soares-santos-91a281163" target="_blank">linkedin.com/in/marcos-soares-santos-91a281163</a></span>
-                <span>• Portfolio: tinyurl.com/ycycv983</span>
-            </div>
-        </header>
-        <section>
-            <h2>Professional Summary</h2>
-            <p>Video Editor with 7 years of post-production experience in social media, YouTube, corporate campaigns, and paid media. Full mastery of Adobe Premiere Pro, After Effects, DaVinci Resolve, and CapCut, with consolidated experience in cutting, editing, color correction, motion graphics, audio processing, and format adaptation (9:16, 16:9, 1:1, 4:5) for Instagram, YouTube, LinkedIn, and performance campaigns. I have delivered projects for major brands such as Dior, P&G, Santander, and TRANSPETRO, and have direct experience editing ads for Meta Ads and Google Ads, including A/B testing and CTR optimization. I leverage generative AI tools in my workflow to boost speed without sacrificing quality. Immediately available for 100% remote work.</p>
-        </section>
-        <section>
-            <h2>Key Competencies</h2>
-            <div class="grid-two-col" style="gap:10px; margin-bottom:10px;">
-                <ul class="exp-bullets">
-                    <li>Multi-format editing for Instagram (Reels/Stories), YouTube, LinkedIn, and corporate websites</li>
-                    <li>Cutting, assembly, colorization, color grading, audio mixing, and motion graphics</li>
-                    <li>Subtitling and aspect ratio adaptation (9:16, 16:9, 1:1, 4:5) optimized for each platform</li>
-                </ul>
-                <ul class="exp-bullets">
-                    <li>Videos for paid media: Meta Ads and Google Ads focusing on CTR, retention, and A/B testing</li>
-                    <li>CapCut Pro for fast mobile-first edits</li>
-                    <li>Pipeline and asset management, workflow organization, and strict compliance with deadlines</li>
-                    <li>Generative AI tools applied to post-production: ElevenLabs, Sora, ChatGPT, DeepSeek, Gemini</li>
-                </ul>
-            </div>
-        </section>
-        <section>
-            <h2>Professional Experience</h2>
-            <div class="experience-item">
-                <div class="exp-header">
-                    <span class="exp-role">Video Editor & Content Strategist | Tuzinho Academy & Original SP Tattoo</span>
-                    <span class="exp-date">Jun/2024 – Oct/2025</span>
-                </div>
-                <ul class="exp-bullets">
-                    <li>Edited content for a YouTube channel with 63,000 subscribers, averaging 22,000 views per release.</li>
-                    <li>Drafted scripts and edited ads for Meta Ads and Google Ads, applying AI translation and subtitling.</li>
-                    <li>Acted as videomaker and editor in same-day event coverages, focusing on fast delivery and organized delivery pipeline.</li>
-                </ul>
-            </div>
-            <div class="experience-item">
-                <div class="exp-header">
-                    <span class="exp-role">Senior Video Editor | Advertising, TV & Digital Performance — Freelancer</span>
-                    <span class="exp-date">2020 – Present</span>
-                </div>
-                <ul class="exp-bullets">
-                    <li>Edited TV commercials, institutional videos, motion graphics, and digital campaigns for Dior, P&G, Santander, TRANSPETRO, and other brands.</li>
-                    <li>Produced assets for digital performance campaigns focusing on VSLs, A/B testing, and retention optimization.</li>
-                </ul>
-            </div>
-            <div class="experience-item">
-                <div class="exp-header">
-                    <span class="exp-role">Same-Day Video Editor | APAS Show 2024</span>
-                    <span class="exp-date">May/2024 | Freelancer</span>
-                </div>
-                <ul class="exp-bullets">
-                    <li>Edited Reels and Stories for the official Instagram profile during 6 consecutive days, delivering files within 4 hours of capture.</li>
-                    <li>Generated hundreds of thousands of organic views with zero rework under a highly demanding fast-paced schedule.</li>
-                </ul>
-            </div>
-            <div class="experience-item">
-                <div class="exp-header">
-                    <span class="exp-role">Video Editor & Post-Production Coordinator | Singular Filmes</span>
-                    <span class="exp-date">Apr/2021 – Feb/2022</span>
-                </div>
-                <ul class="exp-bullets">
-                    <li>Edited 3 broadcast-standard videos per week for a channel with 1.5 million subscribers and 461 million total views.</li>
-                    <li>Promoted to Post-Production Coordinator, managing team workflow, server organization, and delivery pipeline.</li>
-                </ul>
-            </div>
-            <div class="experience-item">
-                <div class="exp-header">
-                    <span class="exp-role">Freelance Video Editor | O Imponderável — Record News / 5ERA Produções</span>
-                    <span class="exp-date">May/2022 – Mar/2023</span>
-                </div>
-                <ul class="exp-bullets">
-                    <li>Edited more than 40 episodes of a weekly TV talk show, ensuring consistent deliveries within 2 to 4 days.</li>
-                </ul>
-            </div>
-        </section>
-        <section>
-            <h2>Other Experience</h2>
-            <p style="font-size:0.775rem; color:#444;">
-                <strong>Video Editor (ChratosGameplay Channel, 2020)</strong> — edited gaming content for YouTube | <strong>Bilingual Customer Agent (Orbitall / Noizz, 2019–2020)</strong> — technical support and content moderation in English | <strong>Graphic Print Operator (P&B Comunicação Visual, 2018–2019)</strong> — graphic production and plotter printer operations.
-            </p>
-        </section>
-        <div class="grid-two-col">
-            <div>
-                <h2>Tools & Languages</h2>
-                <div class="skill-group">
-                    <strong>Editing & Motion:</strong>
-                    <span>Adobe Premiere Pro, After Effects, DaVinci Resolve, CapCut Pro, DaVinci Fusion.</span>
-                </div>
-                <div class="skill-group">
-                    <strong>Paid Ads & AI:</strong>
-                    <span>Meta Ads, Google Ads, VSL, A/B testing, ElevenLabs, Sora, ChatGPT, Gemini, DeepSeek.</span>
-                </div>
-                <div class="skill-group">
-                    <strong>Languages:</strong>
-                    <span>Native Portuguese | Fluent English.</span>
-                </div>
-            </div>
-            <div>
-                <h2>Education</h2>
-                <div class="skill-group">
-                    <strong>Multimedia Technician</strong>
-                    <p style="font-size: 0.75rem; color:#4D4999; font-weight:600;">ETEC Jornalista Roberto Marinho | 2017 – 2018</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</body>
-</html>`;
-
-            resumeWindow.document.write(currentLang === 'pt' ? ptResumeHTML : enResumeHTML);
-            resumeWindow.document.close();
+            const file = currentLang === 'pt' ? 'curriculo.html' : 'resume.html';
+            window.open(file, '_blank');
         }
-
-        // --- SEGURANÇA ---
-        document.addEventListener('contextmenu', event => event.preventDefault());
-        document.addEventListener('keydown', event => {
-            if (
-                event.key === 'F12' ||
-                (event.ctrlKey && event.shiftKey && (event.key === 'I' || event.key === 'J' || event.key === 'C')) ||
-                (event.ctrlKey && event.key === 'U')
-            ) {
-                event.preventDefault();
-            }
-        });
     </script>
 </body>
 </html>
