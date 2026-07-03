@@ -1,29 +1,33 @@
-
-```html
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mercur — Marcos Edição & Motion | Portfolio</title>
+    <title>Mercure — Marcos Edição & Motion | Portfolio</title>
     
-    <meta name="description" content="Mercur é um estúdio de pós-produção liderado por Marcos Soares. Especialista em edição de vídeo, broadcast e motion design sob pressão de prazos.">
-    <meta property="og:title" content="Mercur — Post-Production Specialist">
+    <meta name="description" content="Mercure é um estúdio de pós-produção liderado por Marcos Soares. Especialista em edição de vídeo, broadcast e motion design sob pressão de prazos.">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Mercure — Post-Production Specialist">
     <meta property="og:description" content="Portfólio de pós-produção audiovisual, edição de vídeo sênior e motion design.">
-    <meta property="og:url" content="https://mercur.com.br">
+    <!-- ATENÇÃO: atualize para a URL real após o deploy no Vercel (ex: https://mercure.vercel.app) -->
+    <meta property="og:url" content="https://mercure.com.br">
+    <!-- ATENÇÃO: og:image precisa ser uma URL ABSOLUTA (https://...) — redes sociais não
+         resolvem caminhos relativos como "input_file_3.png". Troque assim que tiver o domínio final. -->
+    <meta property="og:image" content="input_file_3.png">
+    <meta name="twitter:card" content="summary_large_image">
     <meta name="theme-color" content="#12173A">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
 
-    <!-- Favicon Oficial Mercur usando seu Logotipo -->
+    <!-- Favicon Oficial Mercure usando seu Logotipo -->
     <link rel="icon" type="image/png" href="input_file_3.png">
 
     <style>
-        /* --- VARIÁVEIS DE ESTILO MERCUR (Nova Identidade Visual) --- */
+        /* --- VARIÁVEIS DE ESTILO MERCURE (Nova Identidade Visual) --- */
         :root {
-            /* Cores da Identidade Mercur */
+            /* Cores da Identidade Mercure */
             --color-indigo: #4D4999;
             --color-lilas: #6E4A8E;
             --color-turquesa: #1FC29B;
@@ -32,14 +36,14 @@
             --color-grafite: #17151F;
 
             /* Mapeamento para o Layout */
-            --mercur-bg: var(--color-marinho);               /* Azul-marinho para a base escura do site */
-            --mercur-card-bg: var(--color-grafite);           /* Grafite para containers e cards */
-            --mercur-accent: var(--color-turquesa);           /* Turquesa para CTAs, links e badges */
-            --mercur-border: var(--color-indigo);             /* Índigo para bordas e divisão estrutural */
-            --mercur-text: var(--color-branco-gelo);          /* Branco gelo para leitura primária */
-            --mercur-text-secondary: rgba(245, 244, 250, 0.7); /* Branco gelo translúcido para textos de apoio */
-            --mercur-text-muted: var(--color-indigo);         /* Índigo para elementos silenciados */
-            --mercur-backdrop: rgba(18, 23, 58, 0.94);        /* Azul-marinho translúcido para o modal */
+            --mercure-bg: var(--color-marinho);               /* Azul-marinho para a base escura do site */
+            --mercure-card-bg: var(--color-grafite);           /* Grafite para containers e cards */
+            --mercure-accent: var(--color-turquesa);           /* Turquesa para CTAs, links e badges */
+            --mercure-border: var(--color-indigo);             /* Índigo para bordas e divisão estrutural */
+            --mercure-text: var(--color-branco-gelo);          /* Branco gelo para leitura primária */
+            --mercure-text-secondary: rgba(245, 244, 250, 0.7); /* Branco gelo translúcido para textos de apoio */
+            --mercure-text-muted: var(--color-indigo);         /* Índigo para elementos silenciados */
+            --mercure-backdrop: rgba(18, 23, 58, 0.94);        /* Azul-marinho translúcido para o modal */
             --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             --font-serif: 'IBM Plex Sans', var(--font-sans);
             --transition-smooth: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
@@ -59,8 +63,8 @@
         }
 
         body {
-            background-color: var(--mercur-bg);
-            color: var(--mercur-text);
+            background-color: var(--mercure-bg);
+            color: var(--mercure-text);
             font-family: var(--font-sans);
             line-height: 1.5;
             padding: 0;
@@ -155,13 +159,13 @@
         }
 
         .header-nav a:hover {
-            color: var(--mercur-accent); /* Hover para turquesa */
+            color: var(--mercure-accent); /* Hover para turquesa */
         }
 
         /* Botão Minimalista de Troca de Idioma */
         .lang-btn {
             background: transparent;
-            border: 1px solid var(--mercur-border);
+            border: 1px solid var(--mercure-border);
             color: #ffffff;
             font-size: 0.7rem;
             font-weight: 700;
@@ -172,8 +176,8 @@
         }
 
         .lang-btn:hover {
-            border-color: var(--mercur-accent);
-            color: var(--mercur-accent);
+            border-color: var(--mercure-accent);
+            color: var(--mercure-accent);
         }
 
         @media (max-width: 1024px) {
@@ -206,7 +210,7 @@
             width: 100%;
             height: 350px; 
             overflow: hidden;
-            background: var(--mercur-bg);
+            background: var(--mercure-bg);
             z-index: 1;
         }
 
@@ -302,7 +306,7 @@
             left: 0;
             width: 100%;
             height: 100px; 
-            background: linear-gradient(to bottom, rgba(18, 23, 58, 0) 0%, var(--mercur-bg) 100%);
+            background: linear-gradient(to bottom, rgba(18, 23, 58, 0) 0%, var(--mercure-bg) 100%);
             z-index: 5;
             pointer-events: none;
         }
@@ -325,7 +329,7 @@
             position: relative;
             z-index: 10;
             margin-top: 0; /* Margem removida; o próprio margin-top do header sticky empurra o conteúdo */
-            background: var(--mercur-bg); 
+            background: var(--mercure-bg); 
             padding-top: 3rem;
             box-shadow: 0 -15px 35px rgba(0, 0, 0, 0.15);
         }
@@ -340,7 +344,7 @@
             font-size: 1.75rem;
             font-weight: 700;
             letter-spacing: 0.15em;
-            color: var(--mercur-text);
+            color: var(--mercure-text);
             margin-bottom: 0.5rem;
             text-transform: uppercase;
         }
@@ -349,7 +353,7 @@
             font-family: var(--font-serif);
             font-size: 1.05rem;
             font-style: italic;
-            color: var(--mercur-text-secondary);
+            color: var(--mercure-text-secondary);
         }
 
         /* --- CONTÊINER DE FILTRAGEM (9:16) --- */
@@ -363,8 +367,8 @@
 
         .filter-btn {
             background: transparent;
-            color: var(--mercur-text);
-            border: 1px solid var(--mercur-border);
+            color: var(--mercure-text);
+            border: 1px solid var(--mercure-border);
             padding: 0.6rem 1.5rem;
             font-size: 0.75rem;
             font-weight: 600;
@@ -375,14 +379,14 @@
         }
 
         .filter-btn:hover {
-            border-color: var(--mercur-accent);
-            color: var(--mercur-accent);
+            border-color: var(--mercure-accent);
+            color: var(--mercure-accent);
         }
 
         .filter-btn.active {
-            background: var(--mercur-accent);
-            color: var(--mercur-bg);
-            border-color: var(--mercur-accent);
+            background: var(--mercure-accent);
+            color: var(--mercure-bg);
+            border-color: var(--mercure-accent);
         }
 
         /* --- SEÇÕES DE VÍDEOS GUMLET --- */
@@ -395,16 +399,16 @@
             position: relative;
             width: 100%;
             aspect-ratio: 16/9;
-            background: var(--mercur-card-bg); 
+            background: var(--mercure-card-bg); 
             overflow: hidden;
             cursor: pointer;
-            border: 1px solid var(--mercur-border);
+            border: 1px solid var(--mercure-border);
             transition: var(--transition-smooth);
         }
 
         /* Destaque do vídeo Hero Showreel com bordas em Índigo */
         .video-hero .video-wrapper {
-            border: 2px solid var(--mercur-border);
+            border: 2px solid var(--mercure-border);
             box-shadow: 0 12px 30px rgba(77, 73, 153, 0.25);
         }
 
@@ -426,7 +430,7 @@
             transform: translate(-50%, -50%);
             width: 54px;
             height: 54px;
-            border: 2px solid var(--mercur-text);
+            border: 2px solid var(--mercure-text);
             border-radius: 50% !important; 
             background: rgba(18, 23, 58, 0.35);
             display: flex;
@@ -453,7 +457,7 @@
             text-align: center;
             margin-top: 1rem;
             padding: 0;
-            color: var(--mercur-text);
+            color: var(--mercure-text);
         }
 
         .video-hero-title {
@@ -463,7 +467,7 @@
             letter-spacing: 0.1em;
             text-transform: uppercase;
             margin-bottom: 0.75rem;
-            color: var(--mercur-text);
+            color: var(--mercure-text);
         }
 
         .card-caption h3 {
@@ -472,21 +476,21 @@
             letter-spacing: 0.1em;
             text-transform: uppercase;
             margin-bottom: 0.15rem;
-            color: var(--mercur-text);
+            color: var(--mercure-text);
         }
 
         .card-caption p {
             font-family: var(--font-serif);
             font-size: 0.8rem;
             font-style: italic;
-            color: var(--mercur-accent); /* Destaque da Categoria do Vídeo */
+            color: var(--mercure-accent); /* Destaque da Categoria do Vídeo */
         }
 
         /* Transição em hover: Destaque para Turquesa */
         .video-wrapper:hover {
             transform: translateY(-4px);
             box-shadow: 0 12px 30px rgba(31, 194, 155, 0.15);
-            border-color: var(--mercur-accent);
+            border-color: var(--mercure-accent);
         }
 
         .video-wrapper:hover .video-thumbnail,
@@ -495,8 +499,8 @@
         }
 
         .video-wrapper:hover .play-button {
-            background: var(--mercur-accent);
-            border-color: var(--mercur-accent);
+            background: var(--mercure-accent);
+            border-color: var(--mercure-accent);
             transform: translate(-50%, -50%) scale(1.1);
             opacity: 1;
         }
@@ -567,8 +571,8 @@
             font-size: 0.75rem;
             font-weight: 700;
             letter-spacing: 0.15em;
-            color: var(--mercur-accent); 
-            border: 2px solid var(--mercur-accent);
+            color: var(--mercure-accent); 
+            border: 2px solid var(--mercure-accent);
             background: transparent;
             text-decoration: none;
             transition: var(--transition-smooth);
@@ -577,19 +581,19 @@
         }
 
         .btn-ver-todos:hover {
-            background: var(--mercur-accent);
-            color: var(--mercur-bg);
-            border-color: var(--mercur-accent);
+            background: var(--mercure-accent);
+            color: var(--mercure-bg);
+            border-color: var(--mercure-accent);
             transform: translateY(-2px);
         }
 
-        /* Badge Mercur Verified (Fundo Turquesa com texto em Azul-marinho) */
-        .mercur-badge {
+        /* Badge Mercure Verified (Fundo Turquesa com texto em Azul-marinho) */
+        .mercure-badge {
             position: absolute;
             top: 16px;
             left: 16px;
-            background-color: var(--mercur-accent);
-            color: var(--mercur-bg); 
+            background-color: var(--mercure-accent);
+            color: var(--mercure-bg); 
             font-size: 10px;
             font-weight: 700;
             padding: 5px 10px;
@@ -601,7 +605,7 @@
         /* --- SEÇÃO 3: SOBRE MIM --- */
         .about-section {
             padding: 5rem 0;
-            border-top: 1px solid var(--mercur-border);
+            border-top: 1px solid var(--mercure-border);
         }
 
         .about-grid {
@@ -621,8 +625,8 @@
         .about-avatar {
             width: 250px;
             height: 250px;
-            background: var(--mercur-card-bg);
-            border: 2px solid var(--mercur-border);
+            background: var(--mercure-card-bg);
+            border: 2px solid var(--mercure-border);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -631,7 +635,7 @@
             position: relative;
         }
 
-        /* Moldura deslocada marcante que segue o padrão estético Mercur */
+        /* Moldura deslocada marcante que segue o padrão estético Mercure */
         .about-avatar::before {
             content: '';
             position: absolute;
@@ -639,7 +643,7 @@
             left: 10px;
             width: 100%;
             height: 100%;
-            border: 2px solid var(--mercur-accent);
+            border: 2px solid var(--mercure-accent);
             z-index: -1;
         }
 
@@ -673,10 +677,10 @@
         .brand-badge {
             font-size: 0.75rem;
             font-weight: 600;
-            color: var(--mercur-text);
-            border: 1px solid var(--mercur-border);
+            color: var(--mercure-text);
+            border: 1px solid var(--mercure-border);
             padding: 4px 10px;
-            background: var(--mercur-card-bg);
+            background: var(--mercure-card-bg);
         }
 
         .about-name {
@@ -685,7 +689,7 @@
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 0.1em;
-            color: var(--mercur-text);
+            color: var(--mercure-text);
             margin-bottom: 0.25rem;
         }
 
@@ -693,13 +697,13 @@
             font-family: var(--font-serif);
             font-style: italic;
             font-size: 1.05rem;
-            color: var(--mercur-accent);
+            color: var(--mercure-accent);
             margin-bottom: 1.5rem;
         }
 
         .about-text {
             font-size: 0.95rem;
-            color: var(--mercur-text-secondary);
+            color: var(--mercure-text-secondary);
             margin-bottom: 1.2rem;
             line-height: 1.6;
         }
@@ -710,7 +714,7 @@
             font-style: italic;
             font-size: 1.1rem;
             color: #ffffff;
-            border-left: 2px solid var(--mercur-accent);
+            border-left: 2px solid var(--mercure-accent);
             padding-left: 15px;
             margin: 20px 0;
             line-height: 1.5;
@@ -725,21 +729,21 @@
         }
 
         .service-item {
-            background: var(--mercur-card-bg);
-            border: 1px solid var(--mercur-border);
+            background: var(--mercure-card-bg);
+            border: 1px solid var(--mercure-border);
             padding: 1rem;
             transition: var(--transition-smooth);
         }
 
         .service-item:hover {
-            border-color: var(--mercur-accent);
+            border-color: var(--mercure-accent);
         }
 
         .service-item h5 {
             font-family: var(--font-sans);
             font-size: 0.85rem;
             font-weight: 700;
-            color: var(--mercur-text);
+            color: var(--mercure-text);
             text-transform: uppercase;
             margin-bottom: 4px;
             letter-spacing: 0.05em;
@@ -747,7 +751,7 @@
 
         .service-item p {
             font-size: 0.75rem;
-            color: var(--mercur-text-secondary);
+            color: var(--mercure-text-secondary);
             line-height: 1.4;
         }
 
@@ -760,15 +764,15 @@
         }
 
         .stat-card {
-            background: var(--mercur-card-bg);
-            border: 1px solid var(--mercur-border);
+            background: var(--mercure-card-bg);
+            border: 1px solid var(--mercure-border);
             padding: 1.2rem;
             text-align: center;
             transition: var(--transition-smooth);
         }
 
         .stat-card:hover {
-            border-color: var(--mercur-accent);
+            border-color: var(--mercure-accent);
             transform: translateY(-2px);
         }
 
@@ -776,14 +780,14 @@
             font-family: var(--font-sans);
             font-size: 1.25rem;
             font-weight: 700;
-            color: var(--mercur-accent);
+            color: var(--mercure-accent);
             margin-bottom: 0.25rem;
             text-transform: uppercase;
         }
 
         .stat-card p {
             font-size: 0.725rem;
-            color: var(--mercur-text-secondary);
+            color: var(--mercure-text-secondary);
             text-transform: uppercase;
             letter-spacing: 0.05em;
             line-height: 1.3;
@@ -793,7 +797,7 @@
         .technical-footnote {
             margin-top: 2.5rem;
             padding-top: 1.5rem;
-            border-top: 1px solid var(--mercur-border);
+            border-top: 1px solid var(--mercure-border);
             font-size: 0.75rem;
             color: #C1BDE2; /* Tom lilás claro de alto contraste, garantindo leitura perfeita no fundo escuro */
             letter-spacing: 0.05em;
@@ -910,19 +914,19 @@
         /* Botão Currículo - Sem preenchimento / Borda Índigo */
         .btn-secondary {
             background: transparent;
-            color: var(--mercur-text) !important;
-            border-color: var(--mercur-border);
+            color: var(--mercure-text) !important;
+            border-color: var(--mercure-border);
         }
 
         .btn-secondary:hover {
-            background: var(--mercur-card-bg);
-            border-color: var(--mercur-accent);
+            background: var(--mercure-card-bg);
+            border-color: var(--mercure-accent);
             transform: translateY(-2px);
         }
 
         /* --- FOOTER --- */
         footer {
-            border-top: 1px solid var(--mercur-border);
+            border-top: 1px solid var(--mercure-border);
             padding: 4rem 0;
             text-align: center;
         }
@@ -934,7 +938,7 @@
         .cta-title {
             font-size: 1.5rem;
             font-weight: 600;
-            color: var(--mercur-text);
+            color: var(--mercure-text);
             margin-bottom: 1.5rem;
         }
 
@@ -947,7 +951,7 @@
 
         .footer-copyright {
             font-size: 0.75rem;
-            color: var(--mercur-text-secondary);
+            color: var(--mercure-text-secondary);
             line-height: 1.6;
         }
 
@@ -959,7 +963,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: var(--mercur-backdrop); 
+            background: var(--mercure-backdrop); 
             z-index: 1000;
             justify-content: center;
             align-items: center;
@@ -987,8 +991,8 @@
             position: absolute;
             top: 25px;
             right: 25px;
-            background: var(--mercur-accent); 
-            color: var(--mercur-bg); 
+            background: var(--mercure-accent); 
+            color: var(--mercure-bg); 
             border: 1px solid rgba(255, 255, 255, 0.3);
             padding: 0.6rem 1.2rem;
             cursor: pointer;
@@ -999,7 +1003,7 @@
 
         .lightbox-close:hover {
             background: var(--color-lilas);
-            color: var(--mercur-text);
+            color: var(--mercure-text);
             border-color: white;
         }
     </style>
@@ -1030,8 +1034,8 @@
         <div class="header-container">
             <div class="header-left">
                 <!-- Logotipo Oficial Integrado com posicionamento recomendado -->
-                <img src="input_file_3.png" class="logo-img" alt="Mercur Logo">
-                <span class="logo-text">MERCUR — POST-PRODUCTION SPECIALIST</span>
+                <img src="input_file_3.png" class="logo-img" alt="Mercure — Marcos Soares Santos, editor de vídeo e motion designer" onerror="this.style.display='none';">
+                <span class="logo-text">MERCURE — POST-PRODUCTION SPECIALIST</span>
             </div>
             <div class="header-right">
                 <nav class="header-nav">
@@ -1059,11 +1063,11 @@
                 <!-- 1. VÍDEO HERO (Destaque Principal do Portfólio / Think Plastic Brazil Summit 2025) -->
                 <div class="video-hero" style="margin-bottom: 4rem;">
                     <h3 class="video-hero-title" data-translate-key="showcase_title">Think Plastic Brazil Summit 2025</h3>
-                    <p data-translate-key="showcase_desc" style="text-align: center; font-size: 0.9rem; color: var(--mercur-text-secondary); margin-bottom: 1.5rem; max-width: 800px; margin-left: auto; margin-right: auto; line-height: 1.5;">
+                    <p data-translate-key="showcase_desc" style="text-align: center; font-size: 0.9rem; color: var(--mercure-text-secondary); margin-bottom: 1.5rem; max-width: 800px; margin-left: auto; margin-right: auto; line-height: 1.5;">
                         Abertura oficial do evento global, com motion design e animações desenvolvidos inteiramente no DaVinci Resolve Fusion.
                     </p>
                     <div class="video-wrapper" data-video-id="6a45bf80e4e7cc890ee34095">
-                        <span class="mercur-badge">✓ Mercur Showcase</span>
+                        <span class="mercure-badge">✓ Mercure Showcase</span>
                         <!-- Inicializador Neutro Válido em Base64 (0ms LCP) -->
                         <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Think Plastic Brazil Summit 2025" class="video-thumbnail">
                         <div class="play-button"></div>
@@ -1440,7 +1444,7 @@
                     <div class="about-left">
                         <div class="about-avatar">
                             <!-- Foto de Perfil Atualizada (input_file_8.png) -->
-                            <img src="input_file_8.png" alt="Marcos Soares Santos">
+                            <img src="input_file_8.png" alt="Marcos Soares Santos, editor de vídeo e motion designer sênior" onerror="this.style.display='none';">
                         </div>
                         <!-- Bloco de Clientes e Credibilidade -->
                         <div class="about-brands">
@@ -1546,14 +1550,14 @@
                 </div>
             </div>
             <p class="footer-copyright" data-translate-key="copyright">
-                © 2026 Mercur | Marcos Edição & Motion
+                © 2026 Mercure | Marcos Edição & Motion
             </p>
         </footer>
     </div>
 
     <!-- LIGHTBOX MODAL -->
-    <div class="lightbox-modal" id="videoModal">
-        <button class="lightbox-close" id="closeBtn" data-translate-key="close_btn">Fechar [X]</button>
+    <div class="lightbox-modal" id="videoModal" role="dialog" aria-modal="true" aria-label="Player de vídeo em destaque">
+        <button class="lightbox-close" id="closeBtn" data-translate-key="close_btn" aria-label="Fechar vídeo">Fechar [X]</button>
         <div class="lightbox-content" id="modalContent">
             <!-- Player do Gumlet injetado dinamicamente -->
         </div>
@@ -1637,7 +1641,7 @@
                 "foot_ia": "IA & Teste: ElevenLabs, Sora, DeepSeek, Gemini",
                 "cta_title": "Quer conversar sobre um projeto?",
                 "btn_cv": "Currículo",
-                "copyright": "© 2026 Mercur | Marcos Edição & Motion",
+                "copyright": "© 2026 Mercure | Marcos Edição & Motion",
                 "close_btn": "Fechar [X]"
             },
             en: {
@@ -1685,7 +1689,7 @@
                 "foot_ia": "AI & Testing: ElevenLabs, Sora, DeepSeek, Gemini",
                 "cta_title": "Want to talk about a project?",
                 "btn_cv": "Resume",
-                "copyright": "© 2026 Mercur | Marcos Editing & Motion",
+                "copyright": "© 2026 Mercure | Marcos Editing & Motion",
                 "close_btn": "Close [X]"
             }
         };
@@ -1832,7 +1836,7 @@
             cachedBaseCenterX = -(cachedVideoWidth - cachedContainerWidth) / 2;
         }
 
-        // 1. SISTEMA DE SEGURANÇA: Desenha cartaz da Mercur na cor Grafite apenas se o carregamento da miniatura real falhar
+        // 1. SISTEMA DE SEGURANÇA: Desenha cartaz da Mercure na cor Grafite apenas se o carregamento da miniatura real falhar
         document.querySelectorAll('img').forEach(img => {
             img.addEventListener('error', function errorHandler() {
                 img.removeEventListener('error', errorHandler);
@@ -1844,111 +1848,36 @@
                 const circleX = isVertical ? 450 : 800;
                 const circleY = isVertical ? 800 : 450;
 
-                this.src = `data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${svgWidth} ${svgHeight}"><rect width="100%" height="100%" fill="%2317151F"/><circle cx="${circleX}" cy="${circleY}" r="110" fill="%23ffffff" opacity="0.08"/><text x="50%" y="${textY}" font-family="sans-serif" font-size="34" fill="%23ffffff" font-weight="700" text-anchor="middle" letter-spacing="4">MERCUR</text></svg>`;
+                this.src = `data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${svgWidth} ${svgHeight}"><rect width="100%" height="100%" fill="%2317151F"/><circle cx="${circleX}" cy="${circleY}" r="110" fill="%23ffffff" opacity="0.08"/><text x="50%" y="${textY}" font-family="sans-serif" font-size="34" fill="%23ffffff" font-weight="700" text-anchor="middle" letter-spacing="4">MERCURE</text></svg>`;
             });
         });
 
-        // 2. SISTEMA DE CAPAS DINÂMICAS: Resolve as URLs dinamicamente de forma integrada com a API do Gumlet
-        const GUMLET_API_KEY = "gumlet_d6d0a15715a1a69c91e111025cbcec73"; 
-        let cachedWorkspaceId = localStorage.getItem('mercur_workspace_id');
+        // 2. SISTEMA DE CAPAS: workspace ID do Gumlet FIXO no código.
+        // Antes, isso era resolvido em tempo real via fetch() a APIs de terceiros e proxies
+        // públicos (allorigins, codetabs, corsproxy) — mas fetch() a domínios cross-origin
+        // esbarra em bloqueios de CORS e de Tracking Prevention (Edge bloqueia proxies genéricos
+        // por padrão) e falha por completo ao abrir o arquivo direto via file:// (origem 'null').
+        // Como o workspace ID do Gumlet é sempre o mesmo pra todos os seus vídeos, fixá-lo aqui
+        // elimina qualquer chamada de rede extra: a thumbnail carrega como uma <img> comum, direto
+        // da CDN do Gumlet — sem CORS, sem proxy, funciona em qualquer navegador e até local.
+        const GUMLET_WORKSPACE_ID = "6a45b78918d11bffd503ee1a";
 
         function initThumbnails() {
-            if (cachedWorkspaceId) {
-                wrappers.forEach(wrapper => {
-                    const videoId = wrapper.getAttribute('data-video-id');
-                    const img = wrapper.querySelector('img');
-                    if (videoId && img) {
-                        img.src = `https://video.gumlet.io/${cachedWorkspaceId}/${videoId}/thumbnail-1-0.png?time=3&width=800`;
-                    }
-                });
-
-                const bannerContainer = document.getElementById('parallaxVideo');
-                if (bannerContainer) {
-                    const bannerVideoId = bannerContainer.getAttribute('data-video-id');
-                    if (bannerVideoId) {
-                        bannerContainer.style.backgroundImage = `url('https://video.gumlet.io/${cachedWorkspaceId}/${bannerVideoId}/thumbnail-1-0.png?time=3&width=1920')`;
-                        bannerContainer.style.backgroundSize = "cover";
-                        bannerContainer.style.backgroundPosition = "center";
-                    }
-                }
-                return;
-            }
-
-            let resolved = false;
-
             wrappers.forEach(wrapper => {
                 const videoId = wrapper.getAttribute('data-video-id');
                 const img = wrapper.querySelector('img');
-                
                 if (videoId && img) {
-                    if (GUMLET_API_KEY) {
-                        fetch(`https://api.gumlet.com/v1/video/assets/${videoId}`, {
-                            headers: {
-                                'Authorization': `Bearer ${GUMLET_API_KEY}`,
-                                'Accept': 'application/json'
-                            }
-                        })
-                        .then(res => {
-                            if (!res.ok) throw new Error('API Rejeitada');
-                            return res.json();
-                        })
-                        .then(data => {
-                            if (resolved) return;
-                            extractAndApplyWorkspaceId(JSON.stringify(data));
-                        })
-                        .catch(() => {
-                            fallbackToProxies(videoId, img);
-                        });
-                    } else {
-                        fallbackToProxies(videoId, img);
-                    }
+                    img.src = `https://video.gumlet.io/${GUMLET_WORKSPACE_ID}/${videoId}/thumbnail-1-0.png?time=3&width=800`;
                 }
             });
 
-            function fallbackToProxies(videoId, img) {
-                if (resolved) return;
-                const targetApi = `https://api.gumlet.com/v1/oembed?url=https://play.gumlet.io/embed/${videoId}`;
-                
-                fetch(`https://api.allorigins.win/get?url=${encodeURIComponent(targetApi)}`)
-                    .then(res => {
-                        if (!res.ok) throw new Error();
-                        return res.json();
-                    })
-                    .then(data => {
-                        if (resolved) return;
-                        const oembed = JSON.parse(data.contents);
-                        if (oembed && oembed.thumbnail_url) {
-                            extractAndApplyWorkspaceId(oembed.thumbnail_url);
-                        }
-                    })
-                    .catch(() => {
-                        if (resolved) return;
-                        fetch(`https://api.codetabs.com/v1/proxy/?quest=${encodeURIComponent(targetApi)}`)
-                            .then(res => {
-                                if (!res.ok) throw new Error();
-                                return res.json();
-                            })
-                            .then(oembed => {
-                                if (resolved) return;
-                                if (oembed && oembed.thumbnail_url) {
-                                    extractAndApplyWorkspaceId(oembed.thumbnail_url);
-                                }
-                            })
-                            .catch(() => {
-                                if (!resolved) {
-                                    img.dispatchEvent(new Event('error'));
-                                }
-                            });
-                    });
-            }
-
-            function extractAndApplyWorkspaceId(targetString) {
-                const match = targetString.match(/video\.gumlet\.io\/([a-f0-9]{24})/i);
-                if (match && match[1]) {
-                    resolved = true;
-                    cachedWorkspaceId = match[1];
-                    localStorage.setItem('mercur_workspace_id', cachedWorkspaceId);
-                    initThumbnails();
+            const bannerContainer = document.getElementById('parallaxVideo');
+            if (bannerContainer) {
+                const bannerVideoId = bannerContainer.getAttribute('data-video-id');
+                if (bannerVideoId) {
+                    bannerContainer.style.backgroundImage = `url('https://video.gumlet.io/${GUMLET_WORKSPACE_ID}/${bannerVideoId}/thumbnail-1-0.png?time=3&width=1920')`;
+                    bannerContainer.style.backgroundSize = "cover";
+                    bannerContainer.style.backgroundPosition = "center";
                 }
             }
         }
@@ -2555,4 +2484,3 @@
     </script>
 </body>
 </html>
-```
