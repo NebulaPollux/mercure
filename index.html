@@ -43,7 +43,7 @@
             --mercure-backdrop: rgba(18, 23, 58, 0.94);
             --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             --font-serif: 'IBM Plex Sans', var(--font-sans);
-            --transition-smooth: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            --transition-smooth: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         * {
@@ -60,11 +60,42 @@
 
         body {
             background-color: var(--mercure-bg);
+            /* Grade sutil que evoca softwares de edição profissionais */
+            background-image: radial-gradient(rgba(77, 73, 153, 0.08) 1px, transparent 1px);
+            background-size: 24px 24px;
             color: var(--mercure-text);
             font-family: var(--font-sans);
             line-height: 1.5;
             padding: 0;
             -webkit-font-smoothing: antialiased;
+        }
+
+        /* --- MODERN SCROLLBAR --- */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--mercure-bg);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--mercure-border);
+            border: 2px solid var(--mercure-bg);
+            transition: var(--transition-smooth);
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--mercure-accent);
+        }
+
+        /* --- ANIMATED SCROLL REVEAL --- */
+        .reveal {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+            will-change: opacity, transform;
+        }
+        .reveal.revealed {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         .container {
@@ -97,7 +128,7 @@
         }
 
         header.scrolled {
-            background: rgba(18, 23, 58, 0.9);
+            background: rgba(18, 23, 58, 0.95);
             border-bottom: 1px solid rgba(255, 255, 255, 0.15);
         }
 
@@ -267,20 +298,28 @@
             z-index: 1;
         }
 
-        /* Iframe Gumlet de Segundo Plano */
-        #backgroundBannerPlayer {
+        .parallax-video-container iframe {
             position: absolute;
             top: 50%;
             left: 50%;
+            width: 100vw;
+            height: 100vh;
+            min-width: 177.77vh; /* Ajuste preciso para evitar bordas pretas nas laterais em telas altas */
+            min-height: 56.25vw; /* Ajuste para cobrir a área em telas muito largas */
+            transform: translate(-50%, -50%);
+            border: none;
+            pointer-events: none;
+        }
+
+        /* Vídeo nativo HTML5 */
+        .hero-video {
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
-            min-width: 100%;
-            min-height: 100%;
-            transform: translate(-50%, -50%) scale(1.15); /* Escala de 1.15 para corte e preenchimento (object-fit) perfeito */
-            border: none;
-            opacity: 1;
+            object-fit: cover;
             z-index: 1;
-            pointer-events: none;
         }
 
         .parallax-overlay {
@@ -362,8 +401,8 @@
             background: rgba(31, 194, 155, 0.85) !important; /* Sólido no hover */
             color: var(--color-marinho) !important;
             border-color: var(--mercure-accent) !important;
-            transform: translateY(-1px);
-            box-shadow: 0 6px 20px rgba(31, 194, 155, 0.4);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 24px rgba(31, 194, 155, 0.4);
         }
 
         .btn-hero-secondary {
@@ -387,8 +426,8 @@
         }
         .btn-hero-secondary:hover {
             background: rgba(255, 255, 255, 0.2) !important;
-            transform: translateY(-1px);
-            box-shadow: 0 6px 20px rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 24px rgba(255, 255, 255, 0.1);
         }
 
         /* Ajustes de Escala para Evitar Amontoamento no Mobile */
@@ -441,34 +480,58 @@
             -webkit-mask-image: linear-gradient(to bottom, transparent, #000000);
         }
 
-        /* --- TRUST BAR --- */
+        /* --- TRUST BAR MARQUEE (Efeito Infinito Contínuo) --- */
         .trust-bar {
             padding: 2.5rem 0;
             border-bottom: 1px solid var(--mercure-border);
             text-align: center;
+            overflow: hidden;
+            position: relative;
         }
         .trust-bar-label {
-            font-size: 0.7rem;
-            letter-spacing: 0.15em;
+            font-size: 0.725rem;
+            letter-spacing: 0.18em;
             color: #C1BDE2;
             text-transform: uppercase;
-            margin-bottom: 14px;
+            margin-bottom: 18px;
+            font-weight: 600;
         }
-        .trust-bar-list {
+        .marquee-container {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
             display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-            justify-content: center;
-            padding: 0 1rem;
+            mask-image: linear-gradient(to right, transparent, #000 15%, #000 85%, transparent);
+            -webkit-mask-image: linear-gradient(to right, transparent, #000 15%, #000 85%, transparent);
+        }
+        .marquee-track {
+            display: flex;
+            gap: 16px;
+            animation: marquee-scroll 30s linear infinite;
+            width: max-content;
+            padding: 4px 0;
+        }
+        .marquee-track:hover {
+            animation-play-state: paused;
         }
         .brand-badge {
             font-size: 0.75rem;
             font-weight: 600;
             color: var(--mercure-text);
             border: 1px solid var(--mercure-border);
-            padding: 4px 10px;
+            padding: 6px 14px;
             background: var(--mercure-card-bg);
             white-space: nowrap; 
+            letter-spacing: 0.05em;
+            transition: var(--transition-smooth);
+        }
+        .brand-badge:hover {
+            border-color: var(--mercure-accent);
+            color: var(--mercure-accent);
+        }
+        @keyframes marquee-scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
         }
 
         /* --- ENVELOPADOR DE CONTEÚDO --- */
@@ -589,6 +652,37 @@
             border-bottom: 8px solid transparent;
             border-left: 14px solid white;
             margin-left: 4px;
+            transition: opacity 0.3s ease;
+        }
+
+        /* --- PROGRESSIVE PREVIEW LOADING FEEDBACK --- */
+        .video-wrapper::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(18, 23, 58, 0.35);
+            opacity: 0;
+            z-index: 4;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+        .video-wrapper.loading-preview::before {
+            opacity: 1;
+        }
+        .video-wrapper.loading-preview .play-button {
+            border-color: var(--mercure-accent);
+            border-top-color: transparent !important;
+            animation: play-button-spin 0.8s linear infinite;
+        }
+        .video-wrapper.loading-preview .play-button::after {
+            opacity: 0;
+        }
+        @keyframes play-button-spin {
+            0% { transform: translate(-50%, -50%) rotate(0deg); }
+            100% { transform: translate(-50%, -50%) rotate(360deg); }
         }
 
         .card-caption {
@@ -809,11 +903,28 @@
         .service-item {
             background: var(--mercure-card-bg);
             border: 1px solid var(--mercure-border);
-            padding: 1.2rem;
+            padding: 1.5rem;
+            position: relative;
             transition: var(--transition-smooth);
+            overflow: hidden;
+        }
+        .service-item::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 3px;
+            height: 0;
+            background: var(--mercure-accent);
+            transition: height 0.3s ease;
         }
         .service-item:hover {
-            border-color: var(--mercure-accent);
+            border-color: rgba(31, 194, 155, 0.4);
+            background: rgba(23, 21, 31, 0.8);
+            transform: translateX(4px);
+        }
+        .service-item:hover::after {
+            height: 100%;
         }
         .service-item h5 {
             font-family: var(--font-sans);
@@ -1125,29 +1236,31 @@
     <!-- ENVELOPADOR DE CONTEÚDO -->
     <div class="content-wrapper">
 
-        <!-- TRUST BAR: prova social imediata, logo após o vídeo -->
-        <div class="trust-bar container">
+        <!-- TRUST BAR: Marquee Infinito de Alta Performance -->
+        <div class="trust-bar container reveal">
             <p class="trust-bar-label" data-translate-key="trust_bar_label">Marcas que já confiaram na entrega</p>
-            <div class="trust-bar-list">
-                <span class="brand-badge">Dior</span>
-                <span class="brand-badge">Santander</span>
-                <span class="brand-badge">P&G</span>
-                <span class="brand-badge">TRANSPETRO</span>
-                <span class="brand-badge">Record News</span>
+            <div class="marquee-container">
+                <div class="marquee-track" id="marqueeTrack">
+                    <span class="brand-badge">Dior</span>
+                    <span class="brand-badge">Santander</span>
+                    <span class="brand-badge">P&G</span>
+                    <span class="brand-badge">TRANSPETRO</span>
+                    <span class="brand-badge">Record News</span>
+                </div>
             </div>
         </div>
 
         <main class="container">
             
             <!-- SEÇÃO 1: PRODUÇÕES CORPORATIVAS, TV & SAME-DAY -->
-            <section class="video-section" id="video">
+            <section class="video-section reveal" id="video">
                 <div class="section-header">
                     <h2 class="section-title" data-translate-key="sec1_title">PRODUÇÕES CORPORATIVAS, TV & SAME-DAY</h2>
                     <p class="section-subtitle" data-translate-key="sec1_subtitle">Campanhas publicitárias, coberturas de alto impacto e jornalismo broadcast.</p>
                 </div>
 
                 <!-- VÍDEO HERO (Destaque Principal Dior) -->
-                <div class="video-hero" style="margin-bottom: 4rem;">
+                <div class="video-hero reveal" style="margin-bottom: 4rem;">
                     <h3 class="video-hero-title" data-translate-key="showcase_title">Making-Of Dior</h3>
                     <p data-translate-key="showcase_desc" style="text-align: center; font-size: 0.9rem; color: var(--mercure-text-secondary); margin-bottom: 1.5rem; max-width: 800px; margin-left: auto; margin-right: auto; line-height: 1.5;">
                         Aftermovie exclusivo documentando os bastidores e o desfile de lançamento da grife de luxo Dior, com montagem cinematográfica e finalização de cor de alto nível.
@@ -1159,12 +1272,12 @@
                     </div>
                 </div>
 
-                <div class="section-header" style="margin: 3rem 0 2.5rem 0;">
+                <div class="section-header reveal" style="margin: 3rem 0 2.5rem 0;">
                     <h3 class="section-title" data-translate-key="other_projects" style="font-size: 1.25rem;">Outros Projetos</h3>
                 </div>
 
                 <!-- GRUPO 1: HIGHLIGHTS (3 visíveis) -->
-                <div class="video-grid-horizontal">
+                <div class="video-grid-horizontal reveal">
                     <div class="horizontal-card">
                         <div class="video-wrapper" data-video-id="6a471f53e81b019c974c3eed">
                             <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="O Imponderável - Record News" class="video-thumbnail">
@@ -1337,7 +1450,7 @@
                 </div>
 
                 <!-- Botão Ver Mais -->
-                <div style="text-align: center; margin-top: 3rem;">
+                <div class="reveal" style="text-align: center; margin-top: 3rem;">
                     <button class="btn-ver-todos" id="toggleArchiveBtn" data-translate-key="toggle_more">Ver Mais Projetos</button>
                 </div>
             </section>
@@ -1347,13 +1460,13 @@
         <main class="container">
 
             <!-- SEÇÃO 2: REELS, SHORTS & CAMPANHAS DIGITAIS -->
-            <section class="video-section" id="reels">
+            <section class="video-section reveal" id="reels">
                 <div class="section-header">
                     <h2 class="section-title" data-translate-key="sec2_title">REELS, SHORTS & CAMPANHAS DIGITAIS</h2>
                     <p class="section-subtitle" data-translate-key="sec2_subtitle">Edição dinâmica vertical para social media, lançamentos e tráfego pago.</p>
                 </div>
 
-                <div class="filter-container">
+                <div class="filter-container reveal">
                     <button class="filter-btn active" data-filter="all" data-translate-key="filter_all">Todos</button>
                     <button class="filter-btn" data-filter="campanhas" data-translate-key="filter_campanhas">Campanhas Tattoo</button>
                     <button class="filter-btn" data-filter="institucionais" data-translate-key="filter_institucionais">Institucionais</button>
@@ -1361,7 +1474,7 @@
                     <button class="filter-btn" data-filter="apas" data-translate-key="filter_apas">Same Day (APAS)</button>
                 </div>
 
-                <div class="reels-grid" id="reelsGrid">
+                <div class="reels-grid reveal" id="reelsGrid">
                     
                     <!-- CAMPANHAS TATTOO -->
                     <div class="vertical-card" data-category="campanhas">
@@ -1503,7 +1616,7 @@
             </section>
 
             <!-- SEÇÃO 3: SOBRE MIM -->
-            <section class="about-section" id="about">
+            <section class="about-section reveal" id="about">
                 <div class="section-header">
                     <h2 class="section-title" data-translate-key="sec3_title">POST-PRODUCTION SPECIALIST</h2>
                     <p class="section-subtitle" data-translate-key="sec3_subtitle">Liderança, ritmo narrativo e consistência sob forte pressão operacional.</p>
@@ -1590,7 +1703,7 @@
         </main>
 
         <!-- FOOTER -->
-        <footer class="container">
+        <footer class="container reveal">
             <div class="cta-container">
                 <h3 class="cta-title" data-translate-key="cta_title">Quer conversar sobre um projeto?</h3>
                 <div class="btn-group">
@@ -1674,7 +1787,7 @@
                 "sec1_title": "PRODUÇÕES CORPORATIVAS, TV & SAME-DAY",
                 "sec1_subtitle": "Campanhas publicitárias, coberturas de alto impacto e jornalismo broadcast.",
                 "showcase_title": "Making-Of Dior",
-                "showcase_desc": "Aftermovie exclusivo documentando os bastidores e o desfile de lançamento da grife de luxo Dior, com montagem cinematográfica e finalização de cor de alto nível.",
+                "showcase_desc": "Aftermovie exclusivo documentando os bastidores e o desfile de lançamento da grife de luxo Dior, com montagem cinematográfica e finalização de col de alto nível.",
                 "other_projects": "Outros Projetos",
                 "toggle_more": "Ver Mais Projetos",
                 "toggle_less": "Mostrar Menos",
@@ -1943,6 +2056,10 @@
                 if (isModalOpen) return;
                 hoverTimeout = setTimeout(() => {
                     if (wrapper.querySelector('.hover-player')) return;
+                    
+                    // Adiciona o estado de carregamento visual
+                    wrapper.classList.add('loading-preview');
+
                     const hoverIframe = document.createElement('iframe');
                     hoverIframe.src = `https://play.gumlet.io/embed/${videoId}?autoplay=true&muted=true&loop=true&background=true`;
                     hoverIframe.className = "hover-player";
@@ -1958,8 +2075,11 @@
                     hoverIframe.style.transition = "opacity 0.4s ease-in-out";
                     hoverIframe.setAttribute('allow', 'autoplay');
                     wrapper.appendChild(hoverIframe);
+                    
                     hoverIframe.addEventListener('load', () => {
                         hoverIframe.style.opacity = "1";
+                        // Remove o feedback de carregamento após renderização
+                        wrapper.classList.remove('loading-preview');
                     });
                 }, 180);
             });
@@ -1968,6 +2088,7 @@
                 clearTimeout(hoverTimeout);
                 const hoverPlayer = wrapper.querySelector('.hover-player');
                 if (hoverPlayer) hoverPlayer.remove();
+                wrapper.classList.remove('loading-preview');
             });
 
             wrapper.addEventListener('click', () => {
@@ -2072,6 +2193,54 @@
 
         // --- DOM CONTENT LOADED (Injeta configurações com segurança) ---
         document.addEventListener('DOMContentLoaded', () => {
+            // Duplicação automática de elementos do Marquee de Marcas
+            const marqueeTrack = document.getElementById('marqueeTrack');
+            if (marqueeTrack) {
+                const originalItems = marqueeTrack.innerHTML;
+                marqueeTrack.innerHTML = originalItems + originalItems;
+            }
+
+            // Ativa o Scroll Reveal usando Intersection Observer
+            if ('IntersectionObserver' in window) {
+                const revealObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('revealed');
+                            revealObserver.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+                document.querySelectorAll('.reveal').forEach(elem => {
+                    revealObserver.observe(elem);
+                });
+            } else {
+                // Fallback para navegadores legados
+                document.querySelectorAll('.reveal').forEach(elem => {
+                    elem.classList.add('revealed');
+                });
+            }
+
+            // Otimização de GPU/Bateria: Pausa o vídeo do Hero quando fora de tela
+            if ('IntersectionObserver' in window) {
+                const backgroundVideoObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        const bgPlayer = document.getElementById('backgroundBannerPlayer');
+                        if (bgPlayer && bgPlayer.contentWindow) {
+                            if (entry.isIntersecting && !isModalOpen) {
+                                bgPlayer.contentWindow.postMessage(JSON.stringify({method: 'play'}), '*');
+                                bgPlayer.contentWindow.postMessage(JSON.stringify({event: 'command', func: 'play'}), '*');
+                            } else {
+                                bgPlayer.contentWindow.postMessage(JSON.stringify({method: 'pause'}), '*');
+                                bgPlayer.contentWindow.postMessage(JSON.stringify({event: 'command', func: 'pause'}), '*');
+                            }
+                        }
+                    });
+                }, { threshold: 0.1 });
+                
+                backgroundVideoObserver.observe(parallaxBanner);
+            }
+
             // Traduz elementos básicos imediatamente no load
             document.querySelectorAll('[data-translate-key]').forEach(elem => {
                 const key = elem.getAttribute('data-translate-key');
