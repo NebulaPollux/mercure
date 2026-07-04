@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marcos Soares Santos — Currículo Técnico</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=IBM+Plex+Sans:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Inter', sans-serif; color: #17151F; background-color: #f3f4f6; line-height: 1.45; padding: 40px 0; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+        .print-header { max-width: 800px; margin: 0 auto 20px auto; display: flex; justify-content: space-between; align-items: center; background: #12173A; padding: 15px 25px; border-left: 4px solid #1FC29B; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+        .print-header span { color: #F5F4FA; font-size: 0.85rem; font-weight: 500; }
+        .print-btn { background: #1FC29B; color: #12173A; border: none; padding: 8px 18px; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; cursor: pointer; transition: 0.2s ease; }
+        .print-btn:hover { background: #4D4999; color: #F5F4FA; }
+        .resume-page { width: 210mm; min-height: 297mm; background: #ffffff; margin: 0 auto; padding: 22mm 20mm; box-shadow: 0 4px 20px rgba(0,0,0,0.08); position: relative; }
+        header { border-bottom: 2px solid #4D4999; padding-bottom: 12px; margin-bottom: 18px; }
+        .name { font-family: 'IBM Plex Sans', sans-serif; font-size: 1.85rem; font-weight: 600; text-transform: uppercase; color: #12173A; letter-spacing: 0.05em; }
+        .title { font-family: 'IBM Plex Sans', sans-serif; font-style: italic; font-size: 1.05rem; color: #4D4999; margin-top: 2px; font-weight: 500; }
+        .contacts { display: flex; flex-wrap: wrap; gap: 15px; font-size: 0.75rem; color: #555; margin-top: 8px; font-weight: 500; }
+        .contacts a { color: #17151F; text-decoration: none; }
+        h2 { font-family: 'IBM Plex Sans', sans-serif; font-size: 0.95rem; font-weight: 600; text-transform: uppercase; color: #12173A; letter-spacing: 0.1em; border-bottom: 1px solid #e5e7eb; padding-bottom: 4px; margin-top: 18px; margin-bottom: 10px; }
+        p { font-size: 0.8rem; color: #333; text-align: justify; }
+        .experience-item { margin-bottom: 12px; }
+        .exp-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 3px; }
+        .exp-role { font-size: 0.825rem; font-weight: 700; color: #17151F; }
+        .exp-date { font-size: 0.725rem; font-weight: 600; color: #4D4999; white-space: nowrap; }
+        .exp-bullets { list-style-type: none; padding-left: 0; }
+        .exp-bullets li { font-size: 0.775rem; color: #444; position: relative; padding-left: 12px; margin-bottom: 3px; text-align: justify; }
+        .exp-bullets li::before { content: "•"; position: absolute; left: 0; color: #1FC29B; font-weight: bold; }
+        .grid-two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .skill-group { margin-bottom: 6px; }
+        .skill-group strong { font-size: 0.75rem; color: #12173A; text-transform: uppercase; letter-spacing: 0.03em; }
+        .skill-group span { font-size: 0.775rem; color: #444; }
+        @media print { body { background-color: #ffffff; padding: 0; } .print-header { display: none; } .resume-page { box-shadow: none; padding: 0; width: 100%; height: 100%; } }
+    </style>
+</head>
+<body>
+    <div class="print-header">
+        <span>Marcos Soares Santos — Visualização de Impressão de Currículo</span>
+        <button class="print-btn" onclick="window.print()">Salvar como PDF</button>
+    </div>
+    <div class="resume-page">
+        <header>
+            <div class="name">Marcos Soares Santos</div>
+            <div class="title">Editor de Vídeo Sênior · Motion Graphics · Estrategista de Conteúdo</div>
+            <div class="contacts">
+                <span>São Paulo, SP</span>
+                <span>• (11) 96303-3573</span>
+                <span>• <a href="mailto:marcoscpc@outlook.com">marcoscpc@outlook.com</a></span>
+                <span>• <a href="https://linkedin.com/in/marcos-soares-santos-91a281163" target="_blank">linkedin.com/in/marcos-soares-santos-91a281163</a></span>
+                <span>• Portfólio: mercurevideo.vercel.app</span>
+            </div>
+        </header>
+        <section>
+            <h2>Resumo Profissional</h2>
+            <p>Editor de vídeo sênior com 7 anos de sólida experiência no mercado audiovisual, atuando no fluxo de pós-produção completo: montagem, colorização, motion design dinâmico e tratamento de áudio. Especialista em estruturar narrativas de alto impacto voltadas para conversão, retenção de público e vendas, com expertise técnica no desenvolvimento de criativos de alta performance para tráfego pago (Meta Ads e Google Ads). Experiência comprovada em TV broadcast, documentários de longo formato, materiais institucionais para marcas globais (Dior, P&G, Santander e TRANSPETRO) e fluxos ultra-rápidos de same-day editing.</p>
+        </section>
+        
+        <h2>Números & Resultados</h2>
+        <table style="width: 100%; border-collapse: collapse; margin-bottom: 15px; font-size: 0.8rem;">
+            <thead>
+                <tr style="border-bottom: 2px solid #12173A; text-align: left;">
+                    <th style="padding: 6px; font-weight: 700;">Indicador de Sucesso</th>
+                    <th style="padding: 6px; font-weight: 700;">Resultado Comprovado</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr style="border-bottom: 1px solid #e5e7eb;">
+                    <td style="padding: 6px;">Média de visualizações por publicação (Tuzinho Academy)</td>
+                    <td style="padding: 6px; font-weight: 600; color: #1FC29B;">22.000</td>
+                </tr>
+                <tr style="border-bottom: 1px solid #e5e7eb;">
+                    <td style="padding: 6px;">Episódios editados para televisão (Record News)</td>
+                    <td style="padding: 6px; font-weight: 600; color: #1FC29B;">40+</td>
+                </tr>
+                <tr style="border-bottom: 1px solid #e5e7eb;">
+                    <td style="padding: 6px;">Inscritos acumulados em canais atendidos (Aero - Por Trás da Aviação)</td>
+                    <td style="padding: 6px; font-weight: 600; color: #1FC29B;">1,5 Milhão+</td>
+                </tr>
+                <tr style="border-bottom: 1px solid #e5e7eb;">
+                    <td style="padding: 6px;">Evolução de faturamento autônomo (Intervalo de 7 meses)</td>
+                    <td style="padding: 6px; font-weight: 600; color: #1FC29B;">R$ 20.750</td>
+                </tr>
+                <tr style="border-bottom: 1px solid #e5e7eb;">
+                    <td style="padding: 6px;">Tempo médio de entrega em fluxo Same-day (APAS Show)</td>
+                    <td style="padding: 6px; font-weight: 600; color: #1FC29B;">Até 4 horas</td>
+                </tr>
+                <tr style="border-bottom: 1px solid #e5e7eb;">
+                    <td style="padding: 6px;">Aumento de ticket médio em pós-produção (6 meses)</td>
+                    <td style="padding: 6px; font-weight: 600; color: #1FC29B;">+46% (R$650 para R$950)</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <section>
+            <h2>Experiência Profissional</h2>
+            <div class="experience-item">
+                <div class="exp-header">
+                    <span class="exp-role">Editor de Vídeo e Estrategista de Conteúdo | Tuzinho Academy & Original SP Tattoo</span>
+                    <span class="exp-date">2024 – 2025 (CLT)</span>
+                </div>
+                <ul class="exp-bullets">
+                    <li>Atuação estratégica na produção e pós-produção de materiais, gerando uma média consolidada de 22 mil visualizações por publicação.</li>
+                    <li>Crescimento orgânico de audiência, elevando a base de seguidores de 55k para 61k (+11%).</li>
+                    <li>Roteirização de criativos para Meta Ads e Google Ads integrando fluxos de IA para máxima retenção e engajamento.</li>
+                </ul>
+            </div>
+            <div class="experience-item">
+                <div class="exp-header">
+                    <span class="exp-role">Editor de Vídeo Sênior Freelancer | Performance, TV e Marcas Globais</span>
+                    <span class="exp-date">2020 – Presente</span>
+                </div>
+                <ul class="exp-bullets">
+                    <li>Pós-produção estrita para marcas como Dior, P&G, Santander, TRANSPETRO, Gree, Think Plastic e Qualicert.</li>
+                    <li>Montagem de criativos dinâmicos de alta performance para canais de tráfego pago (Facebook Ads, YouTube Ads) e formatos de VSL.</li>
+                    <li>Validação de ideias, ganchos e testes A/B de criativos de vídeo, resultando em melhoria consistente de CTR e retenção de público.</li>
+                </ul>
+            </div>
+            <div class="experience-item">
+                <div class="exp-header">
+                    <span class="exp-role">Editor de Vídeo Same-Day | APAS Show 2024</span>
+                    <span class="exp-date">mai/2024 | Freelancer</span>
+                </div>
+                <ul class="exp-bullets">
+                    <li>Edição ágil no local durante a maior feira de varejo da América Latina por 6 dias consecutivos (12 horas de jornada diária).</li>
+                    <li>Prazos críticos cumpridos com rigor, realizando entregas complexas em até 4 horas com taxa de zero retrabalho.</li>
+                </ul>
+            </div>
+            <div class="experience-item">
+                <div class="exp-header">
+                    <span class="exp-role">Editor de Vídeo e Coordenador de Pós-Produção | Singular Filmes</span>
+                    <span class="exp-date">2021 – 2022 (CLT/PJ)</span>
+                </div>
+                <ul class="exp-bullets">
+                    <li>Montagem do canal Aero - Por Trás da Aviação, premiado pelo Prêmio ABEAR de Jornalismo e com mais de 1,5 milhão de inscritos.</li>
+                    <li>Promovido a Coordenador de Pós-Produção: liderança de equipe de 2 editores adicionais, controle de qualidade e gestão de dados do servidor.</li>
+                    <li>Pós-produção do projeto de turismo nacional "As Capitais do Brasil" (Programa Sonho e Destino).</li>
+                </ul>
+            </div>
+            <div class="experience-item">
+                <div class="exp-header">
+                    <span class="exp-role">Editor de Vídeo Independente | O Imponderável – Record News</span>
+                    <span class="exp-date">2022 – 2023 (Freelancer)</span>
+                </div>
+                <ul class="exp-bullets">
+                    <li>Edição regular e ágil de mais de 40 episódios do talk show focado em inovação, tecnologia e negócios.</li>
+                    <li>Prazos de entrega rigorosos de 2 a 4 dias respeitados sem incidentes, alcançando evolução de ticket unitário em +46%.</li>
+                </ul>
+            </div>
+        </section>
+
+        <div class="grid-two-col">
+            <div>
+                <h2>Habilidades Técnicas</h2>
+                <div class="skill-group">
+                    <strong>Edição e Motion:</strong>
+                    <span>Premiere Pro, DaVinci Resolve, After Effects, CapCut Pro, Fusion, Blender (básico).</span>
+                </div>
+                <div class="skill-group">
+                    <strong>Design & Vetorização:</strong>
+                    <span>Photoshop, Illustrator, CorelDRAW.</span>
+                </div>
+                <div class="skill-group">
+                    <strong>IA Generativa:</strong>
+                    <span>ElevenLabs, ChatGPT, Runway, Sora, Gemini, DeepSeek.</span>
+                </div>
+                <div class="skill-group">
+                    <strong>Performance:</strong>
+                    <span>VSLs, testes A/B, otimização de retenção, ganchos comerciais para Meta/Google Ads.</span>
+                </div>
+            </div>
+            <div>
+                <h2>Perfil e Formação</h2>
+                <div class="skill-group">
+                    <strong>Técnico em Multimídia (Incompleto)</strong>
+                    <p style="font-size: 0.725rem; color:#4D4999; font-weight:600;">ETEC Jornalista Roberto Marinho | 2017 – 2018</p>
+                    <p style="font-size: 0.7rem; color: #555; margin-top: 2px;">Destaque acadêmico: idealização, logotipo e propaganda em vídeo da revista "8 Polegadas".</p>
+                </div>
+                <div class="skill-group" style="margin-top: 8px;">
+                    <strong>Competências Comportamentais:</strong>
+                    <p style="font-size: 0.7rem; color: #444; line-height: 1.3;">Alta resiliência sob prazos exíguos; adaptabilidade extrema entre TV, documentários e tráfego pago; comunicação ágil bilíngue; autonomia em ambientes desestruturados.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

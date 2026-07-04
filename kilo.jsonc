@@ -1,0 +1,11 @@
+{
+  "$schema": "https://app.kilo.ai/config.json",
+  "agent": {
+    "code": {
+      "model": "lmstudio/qwen2.5-coder-7b-instruct"
+    },
+    "plan": {
+      "model": "lmstudio/oreal-deepseek-r1-distill-qwen-7b"
+    }
+  }
+}
