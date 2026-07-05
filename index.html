@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mercure — Marcos Edição & Motion | Portfolio</title>
+    <title>Mercure — Marcos Soares Santos | Editor de Vídeo Sênior & Motion Designer</title>
     
-    <meta name="description" content="Mercure é um estúdio de pós-produção liderado por Marcos Soares. Especialista em edição de vídeo, broadcast e motion design sob pressão de prazos.">
+    <meta name="description" content="Marcos Soares Santos (Mercure) é editor de vídeo sênior e motion designer com 7 anos de experiência em broadcast, campanhas e conteúdo para redes sociais.">
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Mercure — Post-Production Specialist">
-    <meta property="og:description" content="Portfólio de pós-produção audiovisual, edição de vídeo sênior e motion design.">
+    <meta property="og:title" content="Mercure — Marcos Soares Santos | Editor de Vídeo Sênior & Motion Designer">
+    <meta property="og:description" content="Portfólio de Marcos Soares Santos: edição de vídeo sênior, motion graphics e estratégia de conteúdo para marcas como Dior, P&G, Santander e TRANSPETRO.">
     <meta property="og:url" content="https://mercure.com.br">
-    <meta property="og:image" content="input_file_3.png">
+    <meta property="og:image" content="images/icon.svg">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="theme-color" content="#12173A">
 
@@ -18,7 +18,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
 
-    <link rel="icon" type="image/png" href="input_file_3.png">
+    <link rel="icon" type="image/svg+xml" href="images/icon.svg">
 
     <!-- Carrega a Configuração Centralizada de Vídeos -->
     <script src="config.js" defer></script>
@@ -41,21 +41,33 @@
             --mercure-text-secondary: rgba(245, 244, 250, 0.7);
             --mercure-text-muted: var(--color-indigo);
             --mercure-backdrop: rgba(18, 23, 58, 0.94);
+            --glass-highlight: inset 0 2px 0 rgba(255, 255, 255, 0.5);
+            --glass-highlight-strong: inset 0 2px 0 rgba(255, 255, 255, 0.6);
+            --glass-inner-border: inset 0 0 0 1.5px rgba(255, 255, 255, 0.18);
             --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             --font-serif: 'IBM Plex Sans', var(--font-sans);
             --transition-smooth: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        /* Fallback de emergência para garantir exibição do conteúdo */
+        .content-wrapper {
+            display: block !important;
+            visibility: visible !important;
+            opacity: 1 !important;
+        }
+        .parallax-banner {
+            display: block !important;
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            border-radius: 0 !important;
         }
 
         html {
             scroll-behavior: smooth;
-            scroll-padding-top: 80px;
+            scroll-padding-top: 96px;
         }
 
         body {
@@ -107,181 +119,419 @@
 
         @media (max-width: 768px) {
             .container {
-                padding: 0 1rem;
+                padding: 0 0.5rem;
             }
         }
 
         /* --- HEADER TRANSLÚCIDO COM MENU HAMBÚRGUER --- */
         header {
-            position: sticky;
-            top: 0;
-            margin-top: 0;
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: calc(100% - 60px);
+            max-width: 1400px;
             height: 80px;
-            left: 0;
-            width: 100%;
+            padding: 0 5px;
             z-index: 100;
-            background: rgba(18, 23, 58, 0.55);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(77, 73, 153, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            border-radius: 20px;
+            backdrop-filter: blur(24px) saturate(180%);
+            -webkit-backdrop-filter: blur(24px) saturate(180%);
+            box-shadow: var(--glass-highlight), var(--glass-inner-border), 0 8px 32px rgba(0, 0, 0, 0.25);
+            isolation: isolate;
             transition: var(--transition-smooth);
         }
 
         header.scrolled {
-            background: rgba(18, 23, 58, 0.95);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+            background: rgba(77, 73, 153, 0.32);
+            backdrop-filter: blur(28px) saturate(180%);
+            -webkit-backdrop-filter: blur(28px) saturate(180%);
+            box-shadow: var(--glass-highlight-strong), var(--glass-inner-border), 0 8px 32px rgba(0, 0, 0, 0.35);
         }
 
+        /* --- LAYOUT INTERNO DO HEADER --- */
         .header-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 2rem;
-            height: 100%;
             display: flex;
-            justify-content: space-between;
             align-items: center;
+            justify-content: space-between;
+            height: 100%;
+            padding: 0 1.5rem;
+            position: relative;
         }
 
         .header-left {
             display: flex;
             align-items: center;
-            gap: 12px;
-            color: #ffffff;
+            gap: 0.65rem;
+            min-width: 0; /* evita que a imagem force overflow no flex */
         }
 
         .logo-img {
-            height: 45px; 
+            height: 76px;
             width: auto;
+            max-width: 160px;
             object-fit: contain;
             display: block;
+            flex-shrink: 0;
+            transition: var(--transition-smooth), filter 0.3s ease;
+            filter: drop-shadow(0 0 6px rgba(110, 74, 142, 0.45)) drop-shadow(0 0 16px rgba(31, 194, 155, 0.35)) drop-shadow(0 0 32px rgba(110, 74, 142, 0.2));
+        }
+        .logo-img:hover {
+            filter: drop-shadow(0 0 8px rgba(110, 74, 142, 0.6)) drop-shadow(0 0 20px rgba(31, 194, 155, 0.5)) drop-shadow(0 0 40px rgba(110, 74, 142, 0.3));
         }
 
         .logo-text {
+            font-family: var(--font-sans);
             font-weight: 700;
-            letter-spacing: 0.15em;
-            font-size: 0.95rem;
+            font-size: 1.2rem;
+            letter-spacing: 0.16em;
+            color: var(--mercure-text);
+            white-space: nowrap;
         }
 
-        /* Botão hambúrguer */
-        .hamburger {
-            display: none;
+        .logo-text-group {
+            display: flex;
             flex-direction: column;
-            gap: 5px;
-            cursor: pointer;
-            padding: 8px 4px;
-            z-index: 110;
-            background: transparent;
-            border: none;
+            justify-content: center;
+            line-height: 1.15;
         }
-        .hamburger span {
-            display: block;
-            width: 28px;
-            height: 2px;
-            background: #ffffff;
-            transition: var(--transition-smooth);
-            transform-origin: center;
-        }
-        .hamburger.active span:nth-child(1) {
-            transform: rotate(45deg) translate(5px, 5px);
-        }
-        .hamburger.active span:nth-child(2) {
-            opacity: 0;
-        }
-        .hamburger.active span:nth-child(3) {
-            transform: rotate(-45deg) translate(5px, -5px);
+        .logo-subtitle {
+            font-family: var(--font-sans);
+            font-weight: 500;
+            font-size: 0.8rem;
+            letter-spacing: 0.08em;
+            color: var(--mercure-text-secondary);
+            white-space: nowrap;
         }
 
-        /* Navegação desktop */
+        .header-center {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .header-play-btn {
+            width: 56px;
+            height: 56px;
+            transform-origin: center;
+            position: relative;
+            overflow: hidden;
+            border-radius: 50%;
+            background: rgba(77, 73, 153, 0.2);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            box-shadow: var(--glass-highlight), var(--glass-inner-border), 0 4px 16px rgba(0,0,0,0.25);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        .header-play-btn:hover {
+            background: rgba(77, 73, 153, 0.32);
+            transform: scale(0.95);
+            transition: transform 0.15s cubic-bezier(0.2, 0, 0, 1), background 0.3s ease;
+            box-shadow: var(--glass-highlight), var(--glass-inner-border), 0 0 20px rgba(31, 194, 155, 0.4), 0 0 60px rgba(31, 194, 155, 0.15);
+        }
+        .header-play-btn:active {
+            transform: scale(0.90);
+            transition: transform 0.08s ease;
+        }
+        .header-play-btn svg {
+            fill: none;
+            stroke: #fff;
+            stroke-width: 2;
+            margin-left: 2px;
+            position: relative;
+            z-index: 2;
+        }
+        .header-play-btn::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 30%, rgba(31, 194, 155, 0.35), transparent 70%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+            z-index: 1;
+        }
+        .header-play-btn:hover svg {
+            filter: drop-shadow(0 0 8px rgba(31, 194, 155, 0.6));
+            transition: filter 0.3s ease;
+        }
+        .header-play-btn:hover::after {
+            opacity: 1;
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 1.25rem;
+        }
+
         .header-nav {
             display: flex;
-            gap: 25px;
             align-items: center;
+            gap: 1.5rem;
         }
+
         .header-nav a {
-            color: #ffffff;
-            text-decoration: none;
-            font-size: 0.75rem;
+            color: var(--mercure-text-secondary);
+            font-size: 0.7rem;
             font-weight: 600;
-            letter-spacing: 0.15em;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            text-decoration: none;
+            white-space: nowrap;
             transition: var(--transition-smooth);
         }
+
         .header-nav a:hover {
             color: var(--mercure-accent);
         }
 
         .lang-btn {
-            background: transparent;
-            border: 1px solid var(--mercure-border);
-            color: #ffffff;
-            font-size: 0.7rem;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            border-radius: 999px;
+            padding: 0.35rem 0.75rem;
+            font-size: 0.65rem;
             font-weight: 700;
-            padding: 5px 12px;
+            letter-spacing: 0.08em;
+            color: var(--mercure-text);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
             cursor: pointer;
             transition: var(--transition-smooth);
-            letter-spacing: 0.1em;
-        }
-        .lang-btn:hover {
-            border-color: var(--mercure-accent);
-            color: var(--mercure-accent);
         }
 
-        /* Menu mobile (dropdown) */
-        .mobile-menu {
-            display: none;
-            position: absolute;
-            top: 80px;
-            left: 0;
-            width: 100%;
-            background: rgba(18, 23, 58, 0.98);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            padding: 2rem;
+        .lang-btn:hover {
+            background: rgba(255, 255, 255, 0.18);
+            box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.25);
+        }
+
+        /* --- BOTÃO HAMBÚRGUER LIQUID GLASS --- */
+        .hamburger {
+            display: none; /* visível apenas no mobile, via media query abaixo */
+            position: relative;
+            width: 44px;
+            height: 44px;
             flex-direction: column;
-            gap: 1.5rem;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 12px 30px rgba(0,0,0,0.4);
-            z-index: 99;
-        }
-        .mobile-menu.open {
-            display: flex;
-        }
-        .mobile-menu a {
-            color: #ffffff;
-            text-decoration: none;
-            font-size: 1rem;
-            font-weight: 600;
-            letter-spacing: 0.1em;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+            padding: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            box-shadow: var(--glass-highlight), var(--glass-inner-border), 0 4px 16px rgba(0, 0, 0, 0.25);
+            cursor: pointer;
             transition: var(--transition-smooth);
-            padding: 0.4rem 0;
+            flex-shrink: 0;
         }
+
+        .hamburger:hover {
+            background: rgba(255, 255, 255, 0.14);
+            transform: scale(1.06);
+            box-shadow: var(--glass-highlight-strong), var(--glass-inner-border), 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .hamburger span {
+            display: block;
+            width: 18px;
+            height: 2px;
+            border-radius: 2px;
+            background: var(--mercure-text);
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.25s ease, width 0.3s ease;
+        }
+
+        /* Estado ativo: linhas viram X, vidro ganha um leve tingimento turquesa */
+        .hamburger.active {
+            background: rgba(31, 194, 155, 0.14);
+            border-color: rgba(31, 194, 155, 0.35);
+            box-shadow: var(--glass-highlight), var(--glass-inner-border), 0 0 0 3px rgba(31, 194, 155, 0.12), 0 4px 16px rgba(0, 0, 0, 0.3);
+        }
+        .hamburger.active span:nth-child(1) {
+            transform: translateY(7px) rotate(45deg);
+        }
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+            width: 0;
+        }
+        .hamburger.active span:nth-child(3) {
+            transform: translateY(-7px) rotate(-45deg);
+        }
+
+        /* --- MENU MOBILE --- */
+        .mobile-menu {
+            position: fixed;
+            bottom: calc(90px + var(--safe-bottom, 0px));
+            right: 10px;
+            top: auto;
+            left: auto;
+            min-width: 0;
+            width: max-content;
+            max-width: calc(100vw - 40px);
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            padding: 0.5rem 1.5rem 1rem 1.25rem;
+            background: rgba(77, 73, 153, 0.28);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            border-radius: 18px;
+            backdrop-filter: blur(28px) saturate(180%);
+            -webkit-backdrop-filter: blur(28px) saturate(180%);
+            box-shadow: var(--glass-highlight-strong), var(--glass-inner-border), 0 12px 40px rgba(0, 0, 0, 0.4);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(12px) scale(0.97);
+            transform-origin: bottom right;
+            pointer-events: none;
+            transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+                        transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+                        visibility 0.4s;
+            z-index: 150;
+        }
+
+        .mobile-menu.open {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0) scale(1);
+            pointer-events: auto;
+        }
+
+        .mobile-menu a {
+            color: var(--mercure-text);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            padding: 0.85rem 0.25rem;
+            transition: var(--transition-smooth);
+        }
+
         .mobile-menu a:hover {
             color: var(--mercure-accent);
+            padding-left: 0.5rem;
         }
+
         .mobile-menu .lang-btn {
             align-self: flex-start;
-            margin-top: 0.2rem;
+            margin-top: 0.75rem;
+            padding: 0.55rem 1.2rem;
+            font-size: 0.85rem;
+        }
+
+        /* --- OVERLAY DE DESFOQUE --- */
+        .menu-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 90; /* abaixo do header (100) e do mobile-menu (99), acima do resto */
+            background: rgba(18, 23, 58, 0.35);
+            backdrop-filter: blur(6px) saturate(140%);
+            -webkit-backdrop-filter: blur(6px) saturate(140%);
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+            transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+                        backdrop-filter 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+                        visibility 0.4s;
+        }
+
+        .menu-overlay.active {
+            opacity: 1;
+            visibility: visible;
+            pointer-events: auto; /* clicar fora do menu fecha */
         }
 
         @media (max-width: 768px) {
+            header {
+                height: 60px;
+                top: 10px;
+                width: calc(100% - 20px);
+                border-radius: 16px;
+                background: transparent;
+                border: none;
+                box-shadow: none;
+                backdrop-filter: none;
+                -webkit-backdrop-filter: none;
+            }
+            header.scrolled {
+                background: transparent;
+                box-shadow: none;
+                backdrop-filter: none;
+                -webkit-backdrop-filter: none;
+            }
+            .header-left {
+                width: 56px;
+                height: 56px;
+                justify-content: center;
+                gap: 0;
+                border-radius: 50%;
+                background: rgba(77, 73, 153, 0.2);
+                backdrop-filter: blur(16px) saturate(180%);
+                -webkit-backdrop-filter: blur(16px) saturate(180%);
+                border: 1px solid rgba(255, 255, 255, 0.18);
+                box-shadow: var(--glass-highlight), var(--glass-inner-border), 0 4px 16px rgba(0, 0, 0, 0.25);
+            }
+            .header-container {
+                padding: 0 1rem;
+            }
             .hamburger {
                 display: flex;
             }
             .header-nav {
                 display: none;
             }
-            .logo-text {
+            .logo-text-group {
                 display: none;
             }
             .logo-img {
-                height: 38px;
+                height: 30px;
+                filter: drop-shadow(0 0 6px rgba(110, 74, 142, 0.45)) drop-shadow(0 0 16px rgba(31, 194, 155, 0.35)) drop-shadow(0 0 32px rgba(110, 74, 142, 0.2));
+            }
+            .logo-img:hover {
+                filter: drop-shadow(0 0 8px rgba(110, 74, 142, 0.6)) drop-shadow(0 0 20px rgba(31, 194, 155, 0.5)) drop-shadow(0 0 40px rgba(110, 74, 142, 0.3));
+            }
+            .parallax-banner {
+                height: 55vh; /* Ajustado de 70vh para 55vh para eliminar vão */
+                min-height: 320px;
+                width: calc(100% - 20px);
+                margin: 10px auto;
+                border-radius: 16px;
+            }
+            .trust-bar {
+                padding-top: 2rem;
+                padding-bottom: 1rem;
+            }
+            .header-play-btn {
+                width: 48px;
+                height: 48px;
+            }
+            .header-play-btn svg {
+                width: 18px;
+                height: 18px;
             }
         }
 
-        /* --- BANNER HERO PARALLAX (Proporção Responsiva Otimizada 16:9) --- */
+        /* --- BANNER HERO PARALLAX --- */
         .parallax-banner {
             position: relative;
-            width: 100%;
-            aspect-ratio: 16/9; /* Strict 16:9 Aspect Ratio */
+            width: calc(100% - 40px);
+            max-width: 1400px;
+            margin: 10px auto 5px auto;
+            height: 75vh; /* Ajustado de 80vh para 65vh para enquadrar melhor */
+            min-height: 400px;
+            max-height: 900px;
+            border-radius: 24px;
             overflow: hidden;
             background: var(--mercure-bg);
             z-index: 1;
@@ -294,32 +544,52 @@
             left: 0;
             width: 100%;
             height: 100%;
-            pointer-events: none;
+            overflow: hidden;
             z-index: 1;
+            pointer-events: none;
+            background: var(--mercure-bg);
         }
 
+        /* Efeito de Corte Proporcional "Object-Fit: Cover" para Iframe de Fundo */
         .parallax-video-container iframe {
             position: absolute;
             top: 50%;
             left: 50%;
-            width: 100vw;
-            height: 100vh;
-            min-width: 177.77vh; /* Ajuste preciso para evitar bordas pretas nas laterais em telas altas */
-            min-height: 56.25vw; /* Ajuste para cobrir a área em telas muito largas */
             transform: translate(-50%, -50%);
             border: none;
             pointer-events: none;
+            opacity: 0;
+            transition: opacity 1.2s ease;
         }
 
-        /* Vídeo nativo HTML5 */
-        .hero-video {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            z-index: 1;
+        /* Dimensionamento para Vídeo 16:9 Landscape (Desktop) */
+        @media (min-aspect-ratio: 16/9) {
+            .parallax-video-container iframe {
+                width: 100vw;
+                height: 56.25vw; /* 9/16 * 100 */
+            }
+        }
+        @media (max-aspect-ratio: 16/9) {
+            .parallax-video-container iframe {
+                width: 177.78vh; /* 16/9 * 100 */
+                height: 100vh;
+            }
+        }
+
+        /* Dimensionamento para Vídeo 9:16 Vertical (Mobile) */
+        @media (max-width: 768px) {
+            @media (min-aspect-ratio: 9/16) {
+                .parallax-video-container iframe {
+                    width: 100vw;
+                    height: 177.78vw; /* 16/9 * 100 */
+                }
+            }
+            @media (max-aspect-ratio: 9/16) {
+                .parallax-video-container iframe {
+                    width: 56.25vh; /* 9/16 * 100 */
+                    height: 100vh;
+                }
+            }
         }
 
         .parallax-overlay {
@@ -328,7 +598,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(18, 23, 58, 0.40); /* Opacidade para excelente leitura sobre frames claros */
+            background-color: rgba(18, 23, 58, 0.40); /* Opacidade para excelente leitura */
             z-index: 2;
             cursor: default;
             pointer-events: none;
@@ -341,7 +611,7 @@
             left: 50%;
             transform: translate(-50%, -50%);
             text-align: center;
-            width: 85%; /* Menor largura útil no desktop para desobstruir o vídeo */
+            width: 90%;
             max-width: 800px;
             padding: 0;
             z-index: 3;
@@ -349,9 +619,9 @@
         }
 
         .hero-title {
-            font-size: clamp(1rem, 2.5vw, 1.85rem); /* Diminuído para visual minimalista que preserva o vídeo de fundo */
+            font-size: clamp(1rem, 2.5vw, 1.85rem); 
             font-weight: 700;
-            letter-spacing: 0.12em; /* Maior espaçamento elegante */
+            letter-spacing: 0.12em; /* Espaçamento elegante */
             margin-bottom: 0.6rem;
             text-transform: uppercase;
             line-height: 1.3; 
@@ -363,7 +633,7 @@
 
         .hero-subtitle {
             font-family: var(--font-serif);
-            font-size: clamp(0.75rem, 1.3vw, 1rem); /* Proporcionalmente menor */
+            font-size: clamp(0.75rem, 1.3vw, 1rem); 
             font-style: italic;
             opacity: 0.9;
             line-height: 1.4;
@@ -371,116 +641,7 @@
             text-shadow: 0px 2px 8px rgba(18, 23, 58, 0.8);
         }
 
-        /* Botões com Efeito de Glassmorphism Avançado */
-        .hero-cta-group {
-            display: flex;
-            justify-content: center;
-            gap: 12px;
-            margin-top: 1.5rem; /* Menor espaçamento vertical */
-        }
-        .btn-hero-primary {
-            background: rgba(31, 194, 155, 0.15) !important; /* Turquesa translúcido */
-            color: #ffffff !important;
-            border: 1px solid rgba(31, 194, 155, 0.45) !important;
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            font-weight: 700;
-            font-size: clamp(0.65rem, 1vw, 0.75rem); /* Compacto e limpo */
-            padding: 0.75rem 1.8rem; /* Padding reduzido para diagramação equilibrada */
-            letter-spacing: 0.12em;
-            box-shadow: 0 4px 30px rgba(31, 194, 155, 0.1);
-            transition: var(--transition-smooth);
-            text-transform: uppercase;
-            text-decoration: none !important;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-        }
-        .btn-hero-primary:hover {
-            background: rgba(31, 194, 155, 0.85) !important; /* Sólido no hover */
-            color: var(--color-marinho) !important;
-            border-color: var(--mercure-accent) !important;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 24px rgba(31, 194, 155, 0.4);
-        }
-
-        .btn-hero-secondary {
-            background: rgba(255, 255, 255, 0.05) !important; /* Branco translúcido */
-            color: #ffffff !important;
-            border: 1px solid rgba(255, 255, 255, 0.2) !important;
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            font-weight: 700;
-            font-size: clamp(0.65rem, 1vw, 0.75rem);
-            padding: 0.75rem 1.8rem;
-            letter-spacing: 0.12em;
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
-            transition: var(--transition-smooth);
-            text-transform: uppercase;
-            text-decoration: none !important;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-        }
-        .btn-hero-secondary:hover {
-            background: rgba(255, 255, 255, 0.2) !important;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 24px rgba(255, 255, 255, 0.1);
-        }
-
-        /* Ajustes de Escala para Evitar Amontoamento no Mobile */
-        @media (max-width: 768px) {
-            .hero-content {
-                width: 95%; /* Ocupa mais largura para evitar quebras excessivas de linha */
-            }
-            .hero-title {
-                font-size: clamp(0.7rem, 3.2vw, 1.1rem) !important; /* Escala menor para caber no 16:9 vertical */
-                margin-bottom: 0.3rem;
-                line-height: 1.25;
-            }
-            .hero-subtitle {
-                font-size: clamp(0.55rem, 2.2vw, 0.7rem) !important;
-                line-height: 1.3;
-            }
-            .hero-cta-group {
-                flex-direction: row !important; /* Força os dois botões a ficarem lado a lado (horizontal) */
-                gap: 8px;
-                margin-top: 0.6rem;
-            }
-            .btn-hero-primary, .btn-hero-secondary {
-                font-size: 0.55rem !important; /* Botões ultracompactos no mobile */
-                padding: 0.4rem 0.8rem !important; /* Padding reduzido para economizar espaço vertical */
-                letter-spacing: 0.05em;
-            }
-        }
-
-        /* Envidraçamento (Glassmorphic Blur) fundido no final do Banner Hero */
-        .bottom-feather {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 100px;
-            background: linear-gradient(to bottom, rgba(18, 23, 58, 0) 0%, var(--mercure-bg) 100%);
-            z-index: 5;
-            pointer-events: none;
-        }
-        .bottom-feather::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            mask-image: linear-gradient(to bottom, transparent, #000000);
-            -webkit-mask-image: linear-gradient(to bottom, transparent, #000000);
-        }
-
-        /* --- TRUST BAR MARQUEE (Efeito Infinito Contínuo) --- */
+/* --- TRUST BAR MARQUEE (Efeito Infinito Contínuo) --- */
         .trust-bar {
             padding: 2.5rem 0;
             border-bottom: 1px solid var(--mercure-border);
@@ -506,13 +667,17 @@
         }
         .marquee-track {
             display: flex;
-            gap: 16px;
+            gap: 32px;
             animation: marquee-scroll 30s linear infinite;
             width: max-content;
             padding: 4px 0;
+            flex-wrap: nowrap;
+            will-change: transform;
+            backface-visibility: hidden;
+            transform: translateZ(0);
         }
-        .marquee-track:hover {
-            animation-play-state: paused;
+        .marquee-track > * {
+            flex-shrink: 0;
         }
         .brand-badge {
             font-size: 0.75rem;
@@ -529,6 +694,12 @@
             border-color: var(--mercure-accent);
             color: var(--mercure-accent);
         }
+        .brand-logo {
+            height: 28px;
+            width: auto;
+            filter: brightness(0) saturate(100%) invert(100%);
+            flex-shrink: 0;
+        }
         @keyframes marquee-scroll {
             0% { transform: translateX(0); }
             100% { transform: translateX(-50%); }
@@ -538,9 +709,9 @@
         .content-wrapper {
             position: relative;
             z-index: 10;
-            margin-top: 0;
+            margin-top: -1px;
             background: var(--mercure-bg);
-            padding-top: 0.5rem;
+            padding-top: 10px; /* Reduzido de 100px para aproximar o trust bar ao banner */
             box-shadow: 0 -15px 35px rgba(0, 0, 0, 0.15);
         }
 
@@ -575,13 +746,14 @@
         .filter-btn {
             background: transparent;
             color: var(--mercure-text);
-            border: 1px solid var(--mercure-border);
+            border: 2px solid var(--mercure-border);
             padding: 0.6rem 1.5rem;
             font-size: 0.75rem;
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 0.1em;
             cursor: pointer;
+            border-radius: 12px;
             transition: var(--transition-smooth);
         }
         .filter-btn:hover {
@@ -603,11 +775,13 @@
             position: relative;
             width: 100%;
             aspect-ratio: 16/9;
-            background: var(--mercure-card-bg);
+            background: linear-gradient(135deg, rgba(77, 73, 153, 0.15), rgba(110, 74, 142, 0.10));
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
             overflow: hidden;
             cursor: pointer;
-            border: 1px solid var(--mercure-border);
-            transition: var(--transition-smooth);
+            transition: all 0.3s ease;
         }
 
         .video-hero .video-wrapper {
@@ -699,6 +873,7 @@
             text-transform: uppercase;
             margin-bottom: 0.75rem;
             color: var(--mercure-text);
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
         }
         .card-caption h3 {
             font-size: 0.875rem;
@@ -707,18 +882,21 @@
             text-transform: uppercase;
             margin-bottom: 0.15rem;
             color: var(--mercure-text);
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
         }
         .card-caption p {
             font-family: var(--font-serif);
             font-size: 0.8rem;
             font-style: italic;
             color: var(--mercure-accent);
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
         }
 
         .video-wrapper:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 12px 30px rgba(31, 194, 155, 0.15);
-            border-color: var(--mercure-accent);
+            transform: translateY(-2px);
+            background: linear-gradient(135deg, rgba(77, 73, 153, 0.25), rgba(110, 74, 142, 0.20));
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+            border-color: rgba(255, 255, 255, 0.2);
         }
         .video-wrapper:hover .video-thumbnail,
         .video-wrapper:hover .video-thumbnail-reel {
@@ -789,11 +967,12 @@
             font-weight: 700;
             letter-spacing: 0.15em;
             color: var(--mercure-accent);
-            border: 2px solid var(--mercure-accent);
+            border: 3px solid var(--mercure-accent);
             background: transparent;
             text-decoration: none;
             transition: var(--transition-smooth);
             cursor: pointer;
+            border-radius: 24px;
             text-transform: uppercase;
         }
         .btn-ver-todos:hover {
@@ -899,13 +1078,20 @@
             grid-template-columns: repeat(2, 1fr);
             gap: 15px;
             margin-top: 2rem;
+            position: relative;
+            border-radius: 16px;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            isolation: isolate;
         }
         .service-item {
-            background: var(--mercure-card-bg);
-            border: 1px solid var(--mercure-border);
+            background: linear-gradient(135deg, rgba(77, 73, 153, 0.15), rgba(110, 74, 142, 0.10));
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            box-shadow: var(--glass-highlight), var(--glass-inner-border), 0 8px 32px rgba(0, 0, 0, 0.15);
+            transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
             padding: 1.5rem;
             position: relative;
-            transition: var(--transition-smooth);
             overflow: hidden;
         }
         .service-item::after {
@@ -917,11 +1103,12 @@
             height: 0;
             background: var(--mercure-accent);
             transition: height 0.3s ease;
+            border-radius: inherit;
         }
         .service-item:hover {
-            border-color: rgba(31, 194, 155, 0.4);
-            background: rgba(23, 21, 31, 0.8);
-            transform: translateX(4px);
+            border-color: rgba(255, 255, 255, 0.25);
+            background: linear-gradient(135deg, rgba(77, 73, 153, 0.32), rgba(110, 74, 142, 0.26));
+            box-shadow: var(--glass-highlight-strong), var(--glass-inner-border), 0 12px 30px rgba(0, 0, 0, 0.25);
         }
         .service-item:hover::after {
             height: 100%;
@@ -931,6 +1118,7 @@
             font-size: 0.85rem;
             font-weight: 700;
             color: var(--mercure-text);
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
             text-transform: uppercase;
             margin-bottom: 4px;
             letter-spacing: 0.05em;
@@ -939,24 +1127,48 @@
             font-size: 0.75rem;
             color: var(--mercure-text-secondary);
             line-height: 1.4;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
         }
 
         .about-stats {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
+            grid-template-columns: repeat(5, 1fr);
             gap: 16px;
             margin-top: 2.5rem;
+            position: relative;
+            border-radius: 16px;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            isolation: isolate;
         }
         .stat-card {
-            background: var(--mercure-card-bg);
-            border: 1px solid var(--mercure-border);
+            background: linear-gradient(135deg, rgba(77, 73, 153, 0.12), rgba(110, 74, 142, 0.08));
+            border: 1px solid rgba(31, 194, 155, 0.3);
+            border-radius: 16px;
+            box-shadow: var(--glass-highlight), var(--glass-inner-border), 0 8px 32px rgba(0, 0, 0, 0.15);
+            transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
             padding: 1.2rem;
             text-align: center;
-            transition: var(--transition-smooth);
+            position: relative;
+            overflow: hidden;
+        }
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(to right, var(--color-indigo), var(--color-lilas), var(--color-turquesa));
+            border-radius: inherit;
+            border-top-left-radius: 16px;
+            border-top-right-radius: 16px;
+            z-index: 1;
         }
         .stat-card:hover {
+            background: linear-gradient(135deg, rgba(77, 73, 153, 0.3), rgba(110, 74, 142, 0.22));
             border-color: var(--mercure-accent);
-            transform: translateY(-2px);
+            box-shadow: var(--glass-highlight-strong), var(--glass-inner-border), 0 12px 30px rgba(31, 194, 155, 0.3);
         }
         .stat-card h4 {
             font-family: var(--font-sans);
@@ -965,6 +1177,7 @@
             color: var(--mercure-accent);
             margin-bottom: 0.25rem;
             text-transform: uppercase;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
         }
         .stat-card p {
             font-size: 0.725rem;
@@ -972,6 +1185,7 @@
             text-transform: uppercase;
             letter-spacing: 0.05em;
             line-height: 1.3;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
         }
 
         .technical-footnote {
@@ -1016,12 +1230,24 @@
             }
         }
         @media (max-width: 768px) {
+            .video-section {
+                margin-bottom: 1rem;
+            }
+            .video-section#reels {
+                margin-bottom: 1rem !important;
+            }
             .video-grid-horizontal {
                 grid-template-columns: 1fr;
                 gap: 24px;
             }
             .reels-grid {
-                grid-template-columns: repeat(2, 1fr);
+                grid-template-columns: 1fr;
+                margin-bottom: 1.5rem;
+            }
+            .about-section {
+                padding: 2rem 0;
+                padding-top: 1rem !important;
+                margin-top: 0 !important;
             }
             .about-grid {
                 grid-template-columns: 1fr;
@@ -1038,6 +1264,32 @@
             .services-subgrid {
                 grid-template-columns: 1fr;
             }
+            .section-header {
+                margin: 1.5rem 0 1rem 0;
+                margin-top: 1rem !important;
+                margin-bottom: 1rem !important;
+            }
+            .expandable-wrapper:not(.expanded) {
+                margin-top: 0;
+            }
+            .expandable-wrapper.expanded {
+                margin-top: 12px;
+            }
+            .reels-expand-wrapper {
+                max-height: 0;
+                overflow: hidden;
+                opacity: 0;
+                transition: max-height 0.8s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.6s ease-in-out;
+                margin-top: 0;
+            }
+            .reels-expand-wrapper.expanded {
+                max-height: 9999px;
+                opacity: 1;
+                margin-top: 20px;
+            }
+            .reels-expand-wrapper.expanded .vertical-card {
+                display: block;
+            }
         }
         @media (max-width: 480px) {
             .reels-grid {
@@ -1045,6 +1297,23 @@
             }
             .about-stats {
                 grid-template-columns: 1fr;
+            }
+        }
+
+        @media (min-width: 769px) {
+            .reels-expand-wrapper {
+                display: contents;
+                max-height: none;
+                opacity: 1;
+                overflow: visible;
+            }
+            .reels-expand-wrapper.expanded {
+                max-height: none;
+                opacity: 1;
+                margin-top: 0;
+            }
+            .reels-grid {
+                grid-template-columns: repeat(4, 1fr);
             }
         }
 
@@ -1065,6 +1334,7 @@
             cursor: pointer;
             background: transparent;
             font-family: var(--font-sans);
+            border-radius: 24px;
         }
         .btn svg {
             flex-shrink: 0;
@@ -1169,10 +1439,11 @@
             right: 25px;
             background: var(--mercure-accent);
             color: var(--mercure-bg);
-            border: 1px solid rgba(255, 255, 255, 0.3);
+            border: 2px solid rgba(255, 255, 255, 0.3);
             padding: 0.6rem 1.2rem;
             cursor: pointer;
             font-weight: 600;
+            border-radius: 24px;
             transition: var(--transition-smooth);
             z-index: 1002;
         }
@@ -1180,6 +1451,163 @@
             background: var(--color-lilas);
             color: var(--mercure-text);
             border-color: white;
+        }
+
+        /* ============================================
+           BARRA INFERIOR MOBILE (Liquid Glass)
+           ============================================ */
+        .bottom-bar {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: calc(100% - 20px);
+            max-width: 600px;
+            height: 60px;
+            z-index: 100;
+            background: rgba(77, 73, 153, 0.25);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            border-radius: 30px;
+            backdrop-filter: blur(24px) saturate(180%);
+            -webkit-backdrop-filter: blur(24px) saturate(180%);
+            box-shadow: var(--glass-highlight), var(--glass-inner-border), 0 8px 32px rgba(0, 0, 0, 0.25);
+            isolation: isolate;
+            transition: var(--transition-smooth);
+            padding: 0 0.75rem;
+            bottom: calc(20px + var(--safe-bottom, 0px));
+        }
+
+        .bottom-bar-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.5rem;
+            height: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .bottom-bar-left,
+        .bottom-bar-right {
+            display: flex;
+            align-items: center;
+            min-width: 40px;
+            flex: 0 0 auto;
+        }
+
+        .bottom-bar-center {
+            flex: 1;
+            text-align: center;
+        }
+
+        .bottom-play-btn {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: rgba(77, 73, 153, 0.2);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            box-shadow: var(--glass-highlight), var(--glass-inner-border), 0 4px 16px rgba(0,0,0,0.25);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        .bottom-play-btn:hover {
+            background: rgba(77, 73, 153, 0.32);
+            transform: scale(0.95);
+        }
+        .bottom-play-btn svg {
+            fill: none;
+            stroke: #fff;
+            stroke-width: 2;
+            margin-left: 2px;
+        }
+
+        .mobile-hamburger {
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.18);
+            border-radius: 50%;
+            width: 44px;
+            height: 44px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+            padding: 0;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            box-shadow: var(--glass-highlight), var(--glass-inner-border), 0 4px 16px rgba(0,0,0,0.25);
+            cursor: pointer;
+        }
+        .mobile-hamburger span {
+            display: block;
+            width: 18px;
+            height: 2px;
+            background: var(--mercure-text);
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+        .mobile-hamburger.active span:nth-child(1) {
+            transform: translateY(6px) rotate(45deg);
+        }
+        .mobile-hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+        .mobile-hamburger.active span:nth-child(3) {
+            transform: translateY(-6px) rotate(-45deg);
+        }
+
+        .content-wrapper {
+            padding-bottom: calc(80px + var(--safe-bottom, 0px));
+        }
+
+        @media (max-width: 768px) {
+            #mainHeader {
+                display: none !important;
+            }
+
+            .bottom-bar {
+                display: flex;
+                width: calc(100% - 20px);
+                bottom: calc(10px + var(--safe-bottom, 0px));
+                height: 60px;
+                border-radius: 24px;
+            }
+
+            .bottom-play-btn {
+                width: 44px;
+                height: 44px;
+            }
+            .bottom-play-btn svg {
+                width: 18px;
+                height: 18px;
+            }
+
+            .mobile-hamburger {
+                width: 40px;
+                height: 40px;
+            }
+
+            .content-wrapper {
+                padding-bottom: calc(70px + var(--safe-bottom, 0px));
+            }
+
+            .bottom-logo {
+                height: 44px;
+                width: auto;
+                filter: drop-shadow(0 0 16px rgba(255, 255, 255, 0.25));
+            }
+        }
+
+        @media (min-width: 769px) {
+            .bottom-bar {
+                display: none !important;
+            }
         }
     </style>
 </head>
@@ -1194,21 +1622,25 @@
         <div class="hero-content" id="heroContent">
             <h1 class="hero-title" data-translate-key="hero_title">EVERY FRAME HAS A PURPOSE. EVERY DEADLINE GETS MET.</h1>
             <p class="hero-subtitle" data-translate-key="hero_subtitle">Broadcast. Campanhas. Eventos. Conteúdo entregue no prazo.</p>
-            <div class="hero-cta-group">
-                <a href="#video" class="btn btn-hero-primary" data-translate-key="hero_cta_work">Ver Portfólio ↓</a>
-                <button id="openReelBtn" class="btn btn-hero-secondary" data-translate-key="hero_cta_reel">Assistir Reel</button>
-            </div>
         </div>
-        
-        <div class="bottom-feather"></div>
     </section>
 
     <!-- HEADER COM MENU HAMBÚRGUER -->
     <header id="mainHeader">
-        <div class="header-container">
+<div class="header-container">
             <div class="header-left">
-                <img src="input_file_3.png" class="logo-img" alt="Mercure — Marcos Soares Santos, editor de vídeo e motion designer" onerror="this.style.display='none';">
-                <span class="logo-text">MERCURE — POST-PRODUCTION SPECIALIST</span>
+                <img src="images/outline.svg" alt="Mercure — Marcos Soares Santos, editor de vídeo e motion designer" class="logo-img" aria-label="Mercure — Marcos Soares Santos, editor de vídeo e motion designer">
+                <div class="logo-text-group">
+                    <span class="logo-text">MERCURE</span>
+                    <span class="logo-subtitle">Marcos Soares Santos</span>
+                </div>
+            </div>
+            <div class="header-center">
+                <button id="headerPlayBtn" class="header-play-btn" aria-label="Assistir vídeo do banner">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polygon points="5,3 19,12 5,21 5,3"></polygon>
+                    </svg>
+                </button>
             </div>
             <div class="header-right">
                 <!-- Navegação Desktop -->
@@ -1225,13 +1657,42 @@
                 </button>
             </div>
         </div>
-        <!-- Menu Mobile (dropdown) -->
-        <div class="mobile-menu" id="mobileMenu">
-            <a href="#about" data-translate-key="nav_about" onclick="closeMobileMenu()">SOBRE MIM</a>
-            <a href="https://linkedin.com/in/marcos-soares-santos-91a281163" target="_blank" rel="noopener" onclick="closeMobileMenu()">LINKEDIN ↗</a>
-            <button id="langToggleBtnMobile" onclick="toggleLang(); closeMobileMenu();" class="lang-btn">EN</button>
-        </div>
     </header>
+
+    <!-- Menu Mobile (dropdown) -->
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="#about" data-translate-key="nav_about" onclick="closeMobileMenu()">SOBRE MIM</a>
+        <a href="https://linkedin.com/in/marcos-soares-santos-91a281163" target="_blank" rel="noopener" onclick="closeMobileMenu()">LINKEDIN ↗</a>
+        <button id="langToggleBtnMobile" onclick="toggleLang(); closeMobileMenu();" class="lang-btn">EN</button>
+    </div>
+
+    <!-- Overlay de desfoque atrás do menu mobile -->
+    <div class="menu-overlay" id="menuOverlay"></div>
+
+    <!-- BARRA INFERIOR MOBILE (visível apenas em telas pequenas) -->
+    <div class="bottom-bar" id="bottomBar" aria-label="Barra de navegação inferior">
+        <div class="bottom-bar-container">
+            <div class="bottom-bar-left">
+                <svg class="bottom-logo" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Mercure">
+                    <path d="M477.75,132.78c-.71,12.22-10.16,122.31-16,189.92-2.5,28.92-26.7,51.11-55.72,51.11h-25.05s13.32-114.92,15.68-132.59l-63.37,105.46c-10.11,16.83-28.31,27.13-47.95,27.13h-44.83s15.6-110.71,17.74-125.03c-19.52,31.98-28.32,46.61-60.23,99.73-10.79,17.96-10.23,25.72-34.03,25.72-56,0-74.19-77.9-65.49-82.35.08-.04.17-.06.27-.06,2,0,8.06,8.02,24.78,8.02,10.85,0,26.19-3.37,47.84-14.5-16.21,7.54-30.02,10.18-41.41,10.18-20.79,0-33.55-8.77-38.34-12.57-15.22-12.07-39.59-80.14-33.18-80.14.28,0,.61.13,1,.39,8.33,5.56,17.35,18.56,59.91,18.56,15.9,0,36.48-1.81,63.47-6.51-19.7,2.68-36.18,3.81-50.03,3.81-48.4,0-64.67-13.81-74.36-23.49-25.07-25.07-36.75-47.97-4.75-47.97,52.29,0,170.33-6.82,222.62-7.77,16.21-.13,29.15-.73,38.99-.73,19.68,0,27.03,2.39,23.66,15.7-9.75,38.42-16.27,64.6-24.3,98.51,6.23,0,26.71-45.96,36.12-66.38,13.68-29.7,24.24-50.71,59.99-51.8,34.18-1.05,56.72-1.98,66.97-2.34M504.3,106.83l-27.42.96c-2.64.09-6.09.22-10.35.38-12.42.47-31.18,1.18-56.52,1.95-21.14.65-38.09,6.91-51.66,19.1-.16-.21-.31-.42-.47-.62-11.3-14.52-30.87-14.52-42.57-14.52-5.09,0-10.67.14-17.12.31-6.53.17-13.92.36-22.07.42h-.13s-.13,0-.13,0c-22.88.42-57.66,1.92-94.49,3.51-48.42,2.09-98.48,4.26-127.66,4.26-8.71,0-15.98,1.23-22.22,3.77-9.14,3.72-16.11,10.45-19.63,18.95-4.94,11.92-2.93,25.38,5.97,40.01,3.59,5.91,8.48,12.3,14.57,19.09-.11,5.26.99,11.47,3.37,19.89,2.22,7.86,5.54,17.39,9.34,26.82,8.9,22.12,17.74,37.91,26.33,47.07-.07,5.69.77,12.18,2.48,19.28,4.45,18.47,13.82,37.02,25.71,50.89,17.32,20.2,39.58,30.88,64.36,30.88,10.08,0,23.06-1,34.08-8.81,8.75-6.2,13.07-14.09,17.24-21.72.3-.55.6-1.1.91-1.66-.25,1.76-.41,2.89-.46,3.28l-4.01,28.49h73.6c13.94,0,27.72-3.63,39.86-10.49,12.13-6.86,22.34-16.81,29.52-28.76l3.4-5.65c-1.11,9.53-1.86,15.97-1.98,17.03l-3.23,27.88h53.12c20.31,0,39.74-7.56,54.71-21.29,14.97-13.73,24.17-32.44,25.92-52.67,6.94-80.41,15.36-178.75,16.05-190.62l1.59-27.39h0Z" fill="#4e4999" stroke="#000000" stroke-opacity="0.5" stroke-width="3"/>
+                </svg>
+            </div>
+            <div class="bottom-bar-center">
+                <button id="headerPlayBtnMobile" class="bottom-play-btn" aria-label="Assistir vídeo do banner">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polygon points="5,3 19,12 5,21 5,3"></polygon>
+                    </svg>
+                </button>
+            </div>
+            <div class="bottom-bar-right">
+                <button class="hamburger mobile-hamburger" id="hamburgerBtnMobile" aria-label="Menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </div>
 
     <!-- ENVELOPADOR DE CONTEÚDO -->
     <div class="content-wrapper">
@@ -1241,11 +1702,12 @@
             <p class="trust-bar-label" data-translate-key="trust_bar_label">Marcas que já confiaram na entrega</p>
             <div class="marquee-container">
                 <div class="marquee-track" id="marqueeTrack">
-                    <span class="brand-badge">Dior</span>
-                    <span class="brand-badge">Santander</span>
-                    <span class="brand-badge">P&G</span>
-                    <span class="brand-badge">TRANSPETRO</span>
-                    <span class="brand-badge">Record News</span>
+                    <img src="/logos/dior.svg" alt="Dior" class="brand-logo" style="height: 28px; width: auto; filter: brightness(0) saturate(100%) invert(100%);">
+                    <img src="/logos/santander.svg" alt="Santander" class="brand-logo" style="height: 28px; width: auto; filter: brightness(0) saturate(100%) invert(100%);">
+                    <img src="/logos/procter-gamble-1.svg" alt="P&G" class="brand-logo" style="height: 28px; width: auto; filter: brightness(0) saturate(100%) invert(100%);">
+                    <img src="/logos/transpetro.png" alt="TRANSPETRO" class="brand-logo" style="height: 28px; width: auto; filter: brightness(0) saturate(100%) invert(100%);">
+                    <img src="/logos/record_news.svg" alt="Record News" class="brand-logo" style="height: 28px; width: auto; filter: brightness(0) saturate(100%) invert(100%);">
+                    <img src="/logos/gree.svg" alt="Gree" class="brand-logo" style="height: 28px; width: auto; filter: brightness(0) saturate(100%) invert(100%);">
                 </div>
             </div>
         </div>
@@ -1259,15 +1721,15 @@
                     <p class="section-subtitle" data-translate-key="sec1_subtitle">Campanhas publicitárias, coberturas de alto impacto e jornalismo broadcast.</p>
                 </div>
 
-                <!-- VÍDEO HERO (Destaque Principal Dior) -->
+                <!-- VÍDEO HERO (Destaque Principal Think Plastic) -->
                 <div class="video-hero reveal" style="margin-bottom: 4rem;">
-                    <h3 class="video-hero-title" data-translate-key="showcase_title">Making-Of Dior</h3>
+                    <h3 class="video-hero-title" data-translate-key="showcase_title">Think Plastic Brazil – Abertura do Seminário</h3>
                     <p data-translate-key="showcase_desc" style="text-align: center; font-size: 0.9rem; color: var(--mercure-text-secondary); margin-bottom: 1.5rem; max-width: 800px; margin-left: auto; margin-right: auto; line-height: 1.5;">
-                        Aftermovie exclusivo documentando os bastidores e o desfile de lançamento da grife de luxo Dior, com montagem cinematográfica e finalização de cor de alto nível.
+                        Vídeo de abertura do seminário Think Plastic Brazil, destacando a importância da economia circular e da inovação no setor de plásticos, com uma montagem dinâmica e uma mensagem inspiradora sobre sustentabilidade e futuro.
                     </p>
-                    <div class="video-wrapper" data-video-id="6a45b9d818d11bffd5041f0a">
+                    <div class="video-wrapper" data-video-id="6a45bf80e4e7cc890ee34095">
                         <span class="mercure-badge">✓ Mercure Showcase</span>
-                        <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Making-Of Dior" class="video-thumbnail">
+                        <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Think Plastic Brazil – Abertura do Seminário" class="video-thumbnail" loading="lazy">
                         <div class="play-button"></div>
                     </div>
                 </div>
@@ -1280,7 +1742,7 @@
                 <div class="video-grid-horizontal reveal">
                     <div class="horizontal-card">
                         <div class="video-wrapper" data-video-id="6a471f53e81b019c974c3eed">
-                            <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="O Imponderável - Record News" class="video-thumbnail">
+                            <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="O Imponderável - Record News" class="video-thumbnail" loading="lazy">
                             <div class="play-button"></div>
                         </div>
                         <div class="card-caption">
@@ -1291,7 +1753,7 @@
 
                     <div class="horizontal-card">
                         <div class="video-wrapper" data-video-id="6a45babde81b019c9723eb60">
-                            <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="BodyAction na Arnold Expo" class="video-thumbnail">
+                            <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="BodyAction na Arnold Expo" class="video-thumbnail" loading="lazy">
                             <div class="play-button"></div>
                         </div>
                         <div class="card-caption">
@@ -1302,7 +1764,7 @@
 
                     <div class="horizontal-card">
                         <div class="video-wrapper" data-video-id="6a45bb7f18d11bffd504439a">
-                            <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Same-day TRANSPETRO - Jd. Hollywood" class="video-thumbnail">
+                            <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Same-day TRANSPETRO - Jd. Hollywood" class="video-thumbnail" loading="lazy">
                             <div class="play-button"></div>
                         </div>
                         <div class="card-caption">
@@ -1317,7 +1779,7 @@
                     <div class="video-grid-horizontal">
                         <div class="horizontal-card">
                             <div class="video-wrapper" data-video-id="6a45b9b7e81b019c9723d6d3">
-                                <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Gree Senai" class="video-thumbnail">
+                                <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Gree Senai" class="video-thumbnail" loading="lazy">
                                 <div class="play-button"></div>
                             </div>
                             <div class="card-caption">
@@ -1328,7 +1790,7 @@
 
                         <div class="horizontal-card">
                             <div class="video-wrapper" data-video-id="6a45b92318d11bffd5040e32">
-                                <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="HTI Longevidade Saudável 2023" class="video-thumbnail">
+                                <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="HTI Longevidade Saudável 2023" class="video-thumbnail" loading="lazy">
                                 <div class="play-button"></div>
                             </div>
                             <div class="card-caption">
@@ -1339,7 +1801,7 @@
 
                         <div class="horizontal-card">
                             <div class="video-wrapper" data-video-id="6a45bb92e4e7cc890ee2fa22">
-                                <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Same-day TRANSPETRO - Salesópolis" class="video-thumbnail">
+                                <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Same-day TRANSPETRO - Salesópolis" class="video-thumbnail" loading="lazy">
                                 <div class="play-button"></div>
                             </div>
                             <div class="card-caption">
@@ -1349,8 +1811,19 @@
                         </div>
 
                         <div class="horizontal-card">
+                            <div class="video-wrapper" data-video-id="6a45b8a618d11bffd50405b6">
+                                <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Aftermovie Escola Eugenio Montale" class="video-thumbnail" loading="lazy">
+                                <div class="play-button"></div>
+                            </div>
+                            <div class="card-caption">
+                                <h3 data-translate-key="Aftermovie Escola Eugenio Montale">Aftermovie Escola Eugenio Montale</h3>
+                                <p data-translate-key="Aftermovie / Institucional">Aftermovie / Institucional</p>
+                            </div>
+                        </div>
+
+                        <div class="horizontal-card">
                             <div class="video-wrapper" data-video-id="6a45b89018d11bffd50404a1">
-                                <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Institucional Rapha Filmes" class="video-thumbnail">
+                                <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Institucional Rapha Filmes" class="video-thumbnail" loading="lazy">
                                 <div class="play-button"></div>
                             </div>
                             <div class="card-caption">
@@ -1361,7 +1834,7 @@
 
                         <div class="horizontal-card">
                             <div class="video-wrapper" data-video-id="6a45bef418d11bffd5048073">
-                                <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Institucional Logpark - motion graphics" class="video-thumbnail">
+                                <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Institucional Logpark - motion graphics" class="video-thumbnail" loading="lazy">
                                 <div class="play-button"></div>
                             </div>
                             <div class="card-caption">
@@ -1372,7 +1845,7 @@
 
                         <div class="horizontal-card">
                             <div class="video-wrapper" data-video-id="6a45b9a0e81b019c9723d556">
-                                <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Coleções G91 - Pai e Filho" class="video-thumbnail">
+                                <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Coleções G91 - Pai e Filho" class="video-thumbnail" loading="lazy">
                                 <div class="play-button"></div>
                             </div>
                             <div class="card-caption">
@@ -1383,7 +1856,7 @@
 
                         <div class="horizontal-card">
                             <div class="video-wrapper" data-video-id="6a45b97818d11bffd50415eb">
-                                <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Aftermovie P&G" class="video-thumbnail">
+                                <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Aftermovie P&G" class="video-thumbnail" loading="lazy">
                                 <div class="play-button"></div>
                             </div>
                             <div class="card-caption">
@@ -1393,19 +1866,8 @@
                         </div>
 
                         <div class="horizontal-card">
-                            <div class="video-wrapper" data-video-id="6a45b8a618d11bffd50405b6">
-                                <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Aftermovie Escola Eugenio Montale" class="video-thumbnail">
-                                <div class="play-button"></div>
-                            </div>
-                            <div class="card-caption">
-                                <h3 data-translate-key="Aftermovie Escola Eugenio Montale">Aftermovie Escola Eugenio Montale</h3>
-                                <p data-translate-key="Aftermovie / Institucional">Aftermovie / Institucional</p>
-                            </div>
-                        </div>
-
-                        <div class="horizontal-card">
                             <div class="video-wrapper" data-video-id="6a45ba55e81b019c9723e28f">
-                                <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="MANDIC CAMESP Ouro" class="video-thumbnail">
+                                <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="MANDIC CAMESP Ouro" class="video-thumbnail" loading="lazy">
                                 <div class="play-button"></div>
                             </div>
                             <div class="card-caption">
@@ -1416,7 +1878,7 @@
 
                         <div class="horizontal-card">
                             <div class="video-wrapper" data-video-id="6a45be3e18d11bffd50473aa">
-                                <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="TuzinhoAcademy e Original SP Tattoo na TattooWeek 2024" class="video-thumbnail">
+                                <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="TuzinhoAcademy e Original SP Tattoo na TattooWeek 2024" class="video-thumbnail" loading="lazy">
                                 <div class="play-button"></div>
                             </div>
                             <div class="card-caption">
@@ -1427,7 +1889,7 @@
 
                         <div class="horizontal-card">
                             <div class="video-wrapper" data-video-id="6a45bbf6e4e7cc890ee300aa">
-                                <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Institucional VATECH" class="video-thumbnail">
+                                <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Institucional VATECH" class="video-thumbnail" loading="lazy">
                                 <div class="play-button"></div>
                             </div>
                             <div class="card-caption">
@@ -1438,7 +1900,7 @@
 
                         <div class="horizontal-card">
                             <div class="video-wrapper" data-video-id="6a45b87be81b019c9723bc54">
-                                <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Sequoia - dia do motorista" class="video-thumbnail">
+                                <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Sequoia - dia do motorista" class="video-thumbnail" loading="lazy">
                                 <div class="play-button"></div>
                             </div>
                             <div class="card-caption">
@@ -1450,14 +1912,10 @@
                 </div>
 
                 <!-- Botão Ver Mais -->
-                <div class="reveal" style="text-align: center; margin-top: 3rem;">
+                <div class="reveal" style="text-align: center; margin-top: 1.5rem; margin-bottom: 0;">
                     <button class="btn-ver-todos" id="toggleArchiveBtn" data-translate-key="toggle_more">Ver Mais Projetos</button>
                 </div>
             </section>
-
-        </main>
-
-        <main class="container">
 
             <!-- SEÇÃO 2: REELS, SHORTS & CAMPANHAS DIGITAIS -->
             <section class="video-section reveal" id="reels">
@@ -1479,7 +1937,7 @@
                     <!-- CAMPANHAS TATTOO -->
                     <div class="vertical-card" data-category="campanhas">
                         <div class="video-wrapper" data-video-id="6a45be3ee4e7cc890ee3284d">
-                            <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Campanha Tattoo — ShenLong" class="video-thumbnail-reel">
+                            <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Campanha Tattoo — ShenLong" class="video-thumbnail-reel" loading="lazy">
                             <div class="play-button"></div>
                         </div>
                         <div class="card-caption">
@@ -1488,130 +1946,137 @@
                         </div>
                     </div>
 
-                    <div class="vertical-card" data-category="campanhas">
-                        <div class="video-wrapper" data-video-id="6a45be3de81b019c97242b4e">
-                            <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="NumbFlow - Por que ainda sofre pra se tatuar?" class="video-thumbnail-reel">
-                            <div class="play-button"></div>
+                    <div class="reels-expand-wrapper" id="reelsExpandWrapper">
+                        <div class="vertical-card" data-category="campanhas">
+                            <div class="video-wrapper" data-video-id="6a45be3de81b019c97242b4e">
+                                <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="NumbFlow - Por que ainda sofre pra se tatuar?" class="video-thumbnail-reel" loading="lazy">
+                                <div class="play-button"></div>
+                            </div>
+                            <div class="card-caption">
+                                <h3 data-translate-key="NumbFlow">NumbFlow</h3>
+                                <p data-translate-key="Campanha para Redes Sociais / Motion">Campanha para Redes Sociais / Motion</p>
+                            </div>
                         </div>
-                        <div class="card-caption">
-                            <h3 data-translate-key="NumbFlow">NumbFlow</h3>
-                            <p data-translate-key="Campanha para Redes Sociais / Motion">Campanha para Redes Sociais / Motion</p>
+
+                        <div class="vertical-card" data-category="campanhas">
+                            <div class="video-wrapper" data-video-id="6a45be3de81b019c97242b46">
+                                <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Cobra viva — Original SP Tattoo" class="video-thumbnail-reel" loading="lazy">
+                                <div class="play-button"></div>
+                            </div>
+                            <div class="card-caption">
+                                <h3 data-translate-key="Cobra Viva">Cobra Viva</h3>
+                                <p data-translate-key="Campanha para Redes Sociais">Campanha para Redes Sociais</p>
+                            </div>
+                        </div>
+
+                        <div class="vertical-card" data-category="campanhas">
+                            <div class="video-wrapper" data-video-id="6a45be3d18d11bffd5047388">
+                                <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Batman — Original SP Tattoo" class="video-thumbnail-reel" loading="lazy">
+                                <div class="play-button"></div>
+                            </div>
+                            <div class="card-caption">
+                                <h3 data-translate-key="Batman">Batman</h3>
+                                <p data-translate-key="Redes Sociais / Edição Conceitual">Redes Sociais / Edição Conceitual</p>
+                            </div>
+                        </div>
+
+                        <!-- INSTITUCIONAIS -->
+                        <div class="vertical-card" data-category="institucionais">
+                            <div class="video-wrapper" data-video-id="6a45bb6ee4e7cc890ee2f7a9">
+                                <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="QualityCert" class="video-thumbnail-reel" loading="lazy">
+                                <div class="play-button"></div>
+                            </div>
+                            <div class="card-caption">
+                                <h3 data-translate-key="QualityCert">QualityCert</h3>
+                                <p data-translate-key="Edição Comercial / Negócios">Edição Comercial / Negócios</p>
+                            </div>
+                        </div>
+
+                        <div class="vertical-card" data-category="institucionais">
+                            <div class="video-wrapper" data-video-id="6a45bb13e81b019c9723f308">
+                                <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Missão Contador" class="video-thumbnail-reel" loading="lazy">
+                                <div class="play-button"></div>
+                            </div>
+                            <div class="card-caption">
+                                <h3 data-translate-key="Missão Contador">Missão Contador</h3>
+                                <p data-translate-key="Edição Comercial / Infoproduto">Edição Comercial / Infoproduto</p>
+                            </div>
+                        </div>
+
+                        <!-- INTERNACIONAIS -->
+                        <div class="vertical-card" data-category="internacionais">
+                            <div class="video-wrapper" data-video-id="6a45bafa18d11bffd5043ad5">
+                                <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="The Pad Sarasota" class="video-thumbnail-reel" loading="lazy">
+                                <div class="play-button"></div>
+                            </div>
+                            <div class="card-caption">
+                                <h3 data-translate-key="The Pad Sarasota">The Pad Sarasota</h3>
+                                <p data-translate-key="Campanha para Redes Sociais / Imobiliário">Campanha para Redes Sociais / Imobiliário</p>
+                            </div>
+                        </div>
+
+                        <div class="vertical-card" data-category="internacionais">
+                            <div class="video-wrapper" data-video-id="6a45badb18d11bffd5043858">
+                                <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Pettingell Professionals" class="video-thumbnail-reel" loading="lazy">
+                                <div class="play-button"></div>
+                            </div>
+                            <div class="card-caption">
+                                <h3 data-translate-key="Pettingell Professionals">Pettingell Professionals</h3>
+                                 <p data-translate-key="Tour de Imóvel de Luxo / Sarabande 340">Tour de Imóvel de Luxo / Sarabande 340</p>
+                            </div>
+                        </div>
+
+                        <!-- SAME DAY APAS -->
+                        <div class="vertical-card" data-category="apas">
+                            <div class="video-wrapper" data-video-id="6a45ba33e81b019c9723df2b">
+                                <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="APAS Show 2024 - Cerimonia solene de abertura" class="video-thumbnail-reel" loading="lazy">
+                                <div class="play-button"></div>
+                            </div>
+                            <div class="card-caption">
+                                <h3 data-translate-key="Abertura Solene">Abertura Solene</h3>
+                                <p data-translate-key="Same-Day Event Coverage">Same-Day Event Coverage</p>
+                            </div>
+                        </div>
+
+                        <div class="vertical-card" data-category="apas">
+                            <div class="video-wrapper" data-video-id="6a45ba3318d11bffd50426cf">
+                                <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="APAS Show 2024 - Coletiva" class="video-thumbnail-reel" loading="lazy">
+                                <div class="play-button"></div>
+                            </div>
+                            <div class="card-caption">
+                                <h3 data-translate-key="Coletiva de Imprensa">Coletiva de Imprensa</h3>
+                                <p data-translate-key="Same-Day Event Coverage / Press">Same-Day Event Coverage / Press</p>
+                            </div>
+                        </div>
+
+                        <div class="vertical-card" data-category="apas">
+                            <div class="video-wrapper" data-video-id="6a45ba3318d11bffd504269d">
+                                <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="APAS Show 2024 - Destaques" class="video-thumbnail-reel" loading="lazy">
+                                <div class="play-button"></div>
+                            </div>
+                            <div class="card-caption">
+                                <h3 data-translate-key="Destaques APAS Show">Destaques APAS Show</h3>
+                                <p data-translate-key="Same-Day Event Coverage">Same-Day Event Coverage</p>
+                            </div>
+                        </div>
+
+                        <div class="vertical-card" data-category="apas">
+                            <div class="video-wrapper" data-video-id="6a45ba3318d11bffd50426a0">
+                                <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="APAS Show 2024 - Entrevista com expositores" class="video-thumbnail-reel" loading="lazy">
+                                <div class="play-button"></div>
+                            </div>
+                            <div class="card-caption">
+                                <h3 data-translate-key="Expositores">Expositores</h3>
+                                <p data-translate-key="Same-Day Event Coverage / Interviews">Same-Day Event Coverage / Interviews</p>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="vertical-card" data-category="campanhas">
-                        <div class="video-wrapper" data-video-id="6a45be3de81b019c97242b46">
-                            <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Cobra viva — Original SP Tattoo" class="video-thumbnail-reel">
-                            <div class="play-button"></div>
-                        </div>
-                        <div class="card-caption">
-                            <h3 data-translate-key="Cobra Viva">Cobra Viva</h3>
-                            <p data-translate-key="Campanha para Redes Sociais">Campanha para Redes Sociais</p>
-                        </div>
-                    </div>
+                </div>
 
-                    <div class="vertical-card" data-category="campanhas">
-                        <div class="video-wrapper" data-video-id="6a45be3d18d11bffd5047388">
-                            <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Batman — Original SP Tattoo" class="video-thumbnail-reel">
-                            <div class="play-button"></div>
-                        </div>
-                        <div class="card-caption">
-                            <h3 data-translate-key="Batman">Batman</h3>
-                            <p data-translate-key="Redes Sociais / Edição Conceitual">Redes Sociais / Edição Conceitual</p>
-                        </div>
-                    </div>
-
-                    <!-- INSTITUCIONAIS -->
-                    <div class="vertical-card" data-category="institucionais">
-                        <div class="video-wrapper" data-video-id="6a45bb6ee4e7cc890ee2f7a9">
-                            <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="QualityCert" class="video-thumbnail-reel">
-                            <div class="play-button"></div>
-                        </div>
-                        <div class="card-caption">
-                            <h3 data-translate-key="QualityCert">QualityCert</h3>
-                            <p data-translate-key="Edição Comercial / Negócios">Edição Comercial / Negócios</p>
-                        </div>
-                    </div>
-
-                    <div class="vertical-card" data-category="institucionais">
-                        <div class="video-wrapper" data-video-id="6a45bb13e81b019c9723f308">
-                            <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Missão Contador" class="video-thumbnail-reel">
-                            <div class="play-button"></div>
-                        </div>
-                        <div class="card-caption">
-                            <h3 data-translate-key="Missão Contador">Missão Contador</h3>
-                            <p data-translate-key="Edição Comercial / Infoproduto">Edição Comercial / Infoproduto</p>
-                        </div>
-                    </div>
-
-                    <!-- INTERNACIONAIS -->
-                    <div class="vertical-card" data-category="internacionais">
-                        <div class="video-wrapper" data-video-id="6a45bafa18d11bffd5043ad5">
-                            <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="The Pad Sarasota" class="video-thumbnail-reel">
-                            <div class="play-button"></div>
-                        </div>
-                        <div class="card-caption">
-                            <h3 data-translate-key="The Pad Sarasota">The Pad Sarasota</h3>
-                            <p data-translate-key="Campanha para Redes Sociais / Imobiliário">Campanha para Redes Sociais / Imobiliário</p>
-                        </div>
-                    </div>
-
-                    <div class="vertical-card" data-category="internacionais">
-                        <div class="video-wrapper" data-video-id="6a45badb18d11bffd5043858">
-                            <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Pettingell Professionals" class="video-thumbnail-reel">
-                            <div class="play-button"></div>
-                        </div>
-                        <div class="card-caption">
-                            <h3 data-translate-key="Pettingell Professionals">Pettingell Professionals</h3>
-                            <p style="font-size: 0.75rem; color: #444; line-height: 1.3;" data-translate-key="srv_sup_desc">Edição em tempo real durante eventos com entrega em até 4 horas. Desempenho comprovado sob alta pressão operacional.</p>
-                        </div>
-                    </div>
-
-                    <!-- SAME DAY APAS -->
-                    <div class="vertical-card" data-category="apas">
-                        <div class="video-wrapper" data-video-id="6a45ba33e81b019c9723df2b">
-                            <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="APAS Show 2024 - Cerimonia solene de abertura" class="video-thumbnail-reel">
-                            <div class="play-button"></div>
-                        </div>
-                        <div class="card-caption">
-                            <h3 data-translate-key="Abertura Solene">Abertura Solene</h3>
-                            <p data-translate-key="Same-Day Event Coverage">Same-Day Event Coverage</p>
-                        </div>
-                    </div>
-
-                    <div class="vertical-card" data-category="apas">
-                        <div class="video-wrapper" data-video-id="6a45ba3318d11bffd50426cf">
-                            <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="APAS Show 2024 - Coletiva" class="video-thumbnail-reel">
-                            <div class="play-button"></div>
-                        </div>
-                        <div class="card-caption">
-                            <h3 data-translate-key="Coletiva de Imprensa">Coletiva de Imprensa</h3>
-                            <p data-translate-key="Same-Day Event Coverage / Press">Same-Day Event Coverage / Press</p>
-                        </div>
-                    </div>
-
-                    <div class="vertical-card" data-category="apas">
-                        <div class="video-wrapper" data-video-id="6a45ba3318d11bffd504269d">
-                            <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="APAS Show 2024 - Destaques" class="video-thumbnail-reel">
-                            <div class="play-button"></div>
-                        </div>
-                        <div class="card-caption">
-                            <h3 data-translate-key="Destaques APAS Show">Destaques APAS Show</h3>
-                            <p data-translate-key="Same-Day Event Coverage">Same-Day Event Coverage</p>
-                        </div>
-                    </div>
-
-                    <div class="vertical-card" data-category="apas">
-                        <div class="video-wrapper" data-video-id="6a45ba3318d11bffd50426a0">
-                            <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="APAS Show 2024 - Entrevista com expositores" class="video-thumbnail-reel">
-                            <div class="play-button"></div>
-                        </div>
-                        <div class="card-caption">
-                            <h3 data-translate-key="Expositores">Expositores</h3>
-                            <p data-translate-key="Same-Day Event Coverage / Interviews">Same-Day Event Coverage / Interviews</p>
-                        </div>
-                    </div>
-
+                <!-- Botão Ver Mais Reels -->
+                <div class="reveal" style="text-align: center; margin-top: 1.5rem; margin-bottom: 0;">
+                    <button class="btn-ver-todos" id="toggleReelsBtn" data-translate-key="toggle_reels_more">Ver mais Reels</button>
                 </div>
             </section>
 
@@ -1621,37 +2086,22 @@
                     <h2 class="section-title" data-translate-key="sec3_title">POST-PRODUCTION SPECIALIST</h2>
                     <p class="section-subtitle" data-translate-key="sec3_subtitle">Liderança, ritmo narrativo e consistência sob forte pressão operacional.</p>
                 </div>
+
                 <div class="about-grid">
                     <div class="about-left">
                         <div class="about-avatar">
-                            <img src="input_file_8.png" alt="Marcos Soares Santos, editor de vídeo e motion designer sênior" onerror="this.style.display='none';">
+                            <img src="images/input_file_8.png" alt="Marcos Soares Santos — Mercure" onerror="this.style.display='none';">
                         </div>
-                        <div class="about-brands">
-                            <h5 data-translate-key="brands_heading">Marcas e Projetos Atendidos</h5>
-                            <div class="brands-list">
-                                <span class="brand-badge">Dior</span>
-                                <span class="brand-badge">Santander</span>
-                                <span class="brand-badge">P&G</span>
-                                <span class="brand-badge">TRANSPETRO</span>
-                                <span class="brand-badge">Record News</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="about-right">
-                        <h3 class="about-name">Marcos Soares Santos</h3>
+                        <h3 class="about-name">MARCOS SOARES SANTOS</h3>
                         <p class="about-headline" data-translate-key="about_headline">Editor de vídeo sênior · Motion graphics · Estrategista de conteúdo</p>
-                        
-                        <p class="about-text" data-translate-key="about_p1">
-                            Editor de vídeo com 7 anos de experiência, especializado em transformar material bruto em narrativas que prendem, comunicam e convertem. Já editei documentários de aviação para canais de 1,5 milhão de inscritos, talk shows semanais na Record News, aftermovies para a Dior, anúncios de alta conversão para o Santander e conteúdos de tráfego pago otimizados para retenção.
-                        </p>
+                    </div>
 
-                        <div class="about-quote" data-translate-key="about_quote">
-                            "Sou apaixonado por música, ler ficção e filosofia. No fundo, sou um contador de histórias que busca criar conexões reais. Reparo nos detalhes de cada frame para garantir que o corte aconteça no tempo certo do ritmo e da música."
-                        </div>
+                    <div class="about-right">
+                        <p class="about-text" data-translate-key="about_p1">Editor de vídeo com 7 anos de experiência, especializado em transformar material bruto em narrativas que prendem, comunicam e convertem. Já editei documentários de aviação premiados pelo Prêmio ABEAR de Jornalismo para canais com mais de 1,5 milhão de inscritos, talk shows semanais na Record News, aftermovies para a Dior, anúncios de alta conversão para o Santander e conteúdos de tráfego pago otimizados para retenção. Também atuei como Coordenador de Pós-Produção, liderando equipe de editores e otimizando fluxos de entrega.</p>
 
-                        <p class="about-text" data-translate-key="about_p2">
-                            No dia a dia utilizo Premiere Pro, After Effects, DaVinci Resolve (Fusion) e CapCut Pro — integrando ferramentas de inteligência artificial no fluxo de trabalho para acelerar entregas sem abrir mão do controle de qualidade.
-                        </p>
+                        <blockquote class="about-quote" data-translate-key="about_quote">"Sou apaixonado por música, ler ficção e filosofia. No fundo, sou um contador de histórias que busca criar conexões reais. Reparo nos detalhes de cada frame para garantir que o corte aconteça no tempo certo do ritmo e da música."</blockquote>
+
+                        <p class="about-text" data-translate-key="about_p2">No dia a dia utilizo Premiere Pro, After Effects, DaVinci Resolve (Fusion), CapCut Pro, Photoshop, Illustrator e Blender — integrando ferramentas de inteligência artificial no fluxo de trabalho para acelerar entregas sem abrir mão do controle de qualidade.</p>
 
                         <div class="services-subgrid">
                             <div class="service-item">
@@ -1689,16 +2139,14 @@
                                 <h4 data-translate-key="stat_sameday_title">Same-Day</h4>
                                 <p data-translate-key="stat_sameday_desc">em até 4 horas</p>
                             </div>
-                        </div>
-
-                        <!-- Rodapé Técnico centralizado em mobile -->
-                        <div class="technical-footnote">
-                            <span data-translate-key="foot_tools">Softwares & Ferramentas: Adobe Premiere Pro, After Effects, DaVinci Resolve, CapCut Pro</span>
-                            <span data-translate-key="foot_ia">IA & Teste: ElevenLabs, Sora, DeepSeek, Gemini</span>
+                            <div class="stat-card">
+                                <h4 data-translate-key="stat_ticket_title">+46%</h4>
+                                <p data-translate-key="stat_ticket_desc">Ticket médio em 6 meses</p>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </section>
+        </section>
 
         </main>
 
@@ -1745,27 +2193,85 @@
         const parallaxVideo = document.getElementById('parallaxVideo');
         const parallaxOverlay = document.getElementById('parallaxOverlay');
         const heroContent = document.getElementById('heroContent');
+        const archiveContainer = document.getElementById('archiveContainer');
+        const toggleArchiveBtn = document.getElementById('toggleArchiveBtn');
+        const reelsExpandWrapper = document.getElementById('reelsExpandWrapper');
+        const toggleReelsBtn = document.getElementById('toggleReelsBtn');
+        const playBtnMobile = document.getElementById('headerPlayBtnMobile');
+        const hamburgerMobile = document.getElementById('hamburgerBtnMobile');
+        let isModalOpen = false;
         const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        let bannerVideoId = null;
 
         // --- MENU HAMBÚRGUER ---
         const hamburgerBtn = document.getElementById('hamburgerBtn');
         const mobileMenu = document.getElementById('mobileMenu');
+        const menuOverlay = document.getElementById('menuOverlay');
 
         function toggleMobileMenu() {
             hamburgerBtn.classList.toggle('active');
+            if (hamburgerMobile) hamburgerMobile.classList.toggle('active');
             mobileMenu.classList.toggle('open');
+            menuOverlay.classList.toggle('active');
         }
 
         function closeMobileMenu() {
             hamburgerBtn.classList.remove('active');
+            if (hamburgerMobile) hamburgerMobile.classList.remove('active');
             mobileMenu.classList.remove('open');
+            menuOverlay.classList.remove('active');
         }
 
         hamburgerBtn.addEventListener('click', toggleMobileMenu);
+        menuOverlay.addEventListener('click', closeMobileMenu);
+
+        toggleArchiveBtn.addEventListener('click', () => {
+            archiveContainer.classList.toggle('expanded');
+            const isExpanded = archiveContainer.classList.contains('expanded');
+            toggleArchiveBtn.textContent = translations[currentLang][isExpanded ? 'toggle_less' : 'toggle_more'];
+        });
+
+        if (toggleReelsBtn && reelsExpandWrapper) {
+            toggleReelsBtn.addEventListener('click', () => {
+                reelsExpandWrapper.classList.toggle('expanded');
+                const isExpanded = reelsExpandWrapper.classList.contains('expanded');
+                toggleReelsBtn.textContent = translations[currentLang][isExpanded ? 'toggle_reels_less' : 'toggle_reels_more'];
+            });
+        }
+
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const verticalCards = document.querySelectorAll('#reelsGrid .vertical-card');
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const filterValue = btn.dataset.filter;
+                verticalCards.forEach(card => {
+                    const cardCategory = card.dataset.category;
+                    card.style.display = (filterValue === 'all' || cardCategory === filterValue) ? 'block' : 'none';
+                });
+                if (filterValue !== 'all' && reelsExpandWrapper && !reelsExpandWrapper.classList.contains('expanded')) {
+                    reelsExpandWrapper.classList.add('expanded');
+                    if (toggleReelsBtn) {
+                        toggleReelsBtn.textContent = translations[currentLang]['toggle_reels_less'];
+                    }
+                }
+            });
+        });
+
+        // ---- Botão Play da barra inferior ----
+        if (playBtnMobile) {
+            playBtnMobile.addEventListener('click', function(e) {
+                const originalPlay = document.getElementById('headerPlayBtn');
+                if (originalPlay) originalPlay.click();
+            });
+        }
+
+        if (hamburgerMobile) {
+            hamburgerMobile.addEventListener('click', toggleMobileMenu);
+        }
 
         // Fechar menu ao clicar fora
         document.addEventListener('click', (e) => {
-            if (!e.target.closest('.header-container') && !e.target.closest('.mobile-menu')) {
+            if (!e.target.closest('.header-container') && !e.target.closest('.mobile-menu') && !e.target.closest('.bottom-bar')) {
                 closeMobileMenu();
             }
         });
@@ -1778,19 +2284,19 @@
                 "nav_about": "SOBRE MIM",
                 "hero_title": "EVERY FRAME HAS A PURPOSE. EVERY DEADLINE GETS MET.",
                 "hero_subtitle": "Broadcast. Campanhas. Eventos. Conteúdo entregue no prazo.",
-                "hero_cta_work": "Ver Portfólio ↓",
-                "hero_cta_reel": "Assistir Reel",
                 "nav_contact_wa": "WHATSAPP ↗",
                 "hero_volume_unmute": "Ouvir som",
                 "hero_volume_mute": "Mudo",
                 "trust_bar_label": "Marcas que já confiaram na entrega",
                 "sec1_title": "PRODUÇÕES CORPORATIVAS, TV & SAME-DAY",
                 "sec1_subtitle": "Campanhas publicitárias, coberturas de alto impacto e jornalismo broadcast.",
-                "showcase_title": "Making-Of Dior",
-                "showcase_desc": "Aftermovie exclusivo documentando os bastidores e o desfile de lançamento da grife de luxo Dior, com montagem cinematográfica e finalização de col de alto nível.",
+                "showcase_title": "Think Plastic Brazil – Abertura do Seminário",
+                "showcase_desc": "Vídeo de abertura do seminário Think Plastic Brazil, destacando a importância da economia circular e da inovação no setor de plásticos, com uma montagem dinâmica e uma mensagem inspiradora sobre sustentabilidade e futuro.",
                 "other_projects": "Outros Projetos",
                 "toggle_more": "Ver Mais Projetos",
                 "toggle_less": "Mostrar Menos",
+                "toggle_reels_more": "Ver mais Reels",
+                "toggle_reels_less": "Mostrar menos",
                 "sec2_title": "REELS, SHORTS & CAMPANHAS DIGITAIS",
                 "sec2_subtitle": "Edição dinâmica vertical para social media, lançamentos e tráfego pago.",
                 "filter_all": "Todos",
@@ -1800,11 +2306,10 @@
                 "filter_apas": "Same Day (APAS)",
                 "sec3_title": "POST-PRODUCTION SPECIALIST",
                 "sec3_subtitle": "Liderança, ritmo narrativo e consistência sob forte pressão operacional.",
-                "brands_heading": "Marcas e Projetos Atendidos",
                 "about_headline": "Editor de vídeo sênior · Motion graphics · Estrategista de conteúdo",
-                "about_p1": "Editor de vídeo com 7 anos de experiência, especializado em transformar material bruto em narrativas que prendem, comunicam e convertem. Já editei documentários de aviação para canais de 1,5 milhão de inscritos, talk shows semanais na Record News, aftermovies para a Dior, anúncios de alta conversão para o Santander e conteúdos de tráfego pago otimizados para retenção.",
+                "about_p1": "Editor de vídeo com 7 anos de experiência, especializado em transformar material bruto em narrativas que prendem, comunicam e convertem. Já editei documentários de aviação premiados pelo Prêmio ABEAR de Jornalismo para canais com mais de 1,5 milhão de inscritos, talk shows semanais na Record News, aftermovies para a Dior, anúncios de alta conversão para o Santander e conteúdos de tráfego pago otimizados para retenção. Também atuei como Coordenador de Pós-Produção, liderando equipe de editores e otimizando fluxos de entrega.",
                 "about_quote": '"Sou apaixonado por música, ler ficção e filosofia. No fundo, sou um contador de histórias que busca criar conexões reais. Reparo nos detalhes de cada frame para garantir que o corte aconteça no tempo certo do ritmo e da música."',
-                "about_p2": "No dia a dia utilizo Premiere Pro, After Effects, DaVinci Resolve (Fusion) e CapCut Pro — integrando ferramentas de inteligência artificial no fluxo de trabalho para acelerar entregas sem abrir mão do controle de qualidade.",
+                "about_p2": "No dia a dia utilizo Premiere Pro, After Effects, DaVinci Resolve (Fusion), CapCut Pro, Photoshop, Illustrator e Blender — integrando ferramentas de inteligência artificial no fluxo de trabalho para acelerar entregas sem abrir mão do controle de qualidade.",
                 "srv_broadcast_title": "Edição & Finalização",
                 "srv_broadcast_desc": "Comerciais de TV, institucionais, aftermovies, YouTube de longa duração e Reels/Shorts de alta retenção.",
                 "srv_comercial_title": "Motion Graphics & VFX",
@@ -1820,30 +2325,32 @@
                 "stat_subs_desc": "Inscritos em canais atendidos",
                 "stat_sameday_title": "Same-Day",
                 "stat_sameday_desc": "em até 4 horas",
-                "foot_tools": "Softwares & Ferramentas: Adobe Premiere Pro, After Effects, DaVinci Resolve, CapCut Pro",
-                "foot_ia": "IA & Teste: ElevenLabs, Sora, DeepSeek, Gemini",
+                "stat_ticket_title": "+46%",
+                "stat_ticket_desc": "Ticket médio em 6 meses",
+                "foot_tools": "Softwares & Ferramentas: Adobe Premiere Pro, After Effects, DaVinci Resolve, CapCut Pro, Photoshop, Illustrator, CorelDRAW",
+                "foot_ia": "IA & Teste: ElevenLabs, Sora, ChatGPT, DeepSeek, Gemini, Runway",
                 "cta_title": "Quer conversar sobre um projeto?",
                 "btn_cv": "Currículo",
                 "copyright": "© 2026 Mercure | Marcos Edição & Motion",
                 "close_btn": "Fechar [X]"
             },
-            en: {
+en: {
                 "nav_about": "ABOUT ME",
                 "hero_title": "EVERY FRAME HAS A PURPOSE. EVERY DEADLINE GETS MET.",
                 "hero_subtitle": "Broadcast. Campaigns. Events. Content delivered on time.",
-                "hero_cta_work": "View Portfolio ↓",
-                "hero_cta_reel": "Watch Reel",
                 "nav_contact_wa": "WHATSAPP ↗",
                 "hero_volume_unmute": "Tap to unmute",
                 "hero_volume_mute": "Mute",
                 "trust_bar_label": "Brands that have trusted our delivery",
                 "sec1_title": "CORPORATE PRODUCTIONS, TV & SAME-DAY",
                 "sec1_subtitle": "Advertising campaigns, high-impact coverage, and broadcast journalism.",
-                "showcase_title": "Making-Of Dior",
-                "showcase_desc": "Exclusive aftermovie documenting the behind-the-scenes and launch of the luxury fashion brand Dior, featuring cinematic editing and high-tier color grading.",
+                "showcase_title": "Think Plastic Brazil – Opening of the Seminar",
+                "showcase_desc": "Opening video of the Think Plastic Brazil seminar, highlighting the importance of the circular economy and innovation in the plastics sector, with dynamic editing and an inspiring message about sustainability and the future.",
                 "other_projects": "Other Projects",
                 "toggle_more": "See More Projects",
                 "toggle_less": "Show Less",
+                "toggle_reels_more": "Show more Reels",
+                "toggle_reels_less": "Show less",
                 "sec2_title": "REELS, SHORTS & DIGITAL CAMPAIGNS",
                 "sec2_subtitle": "Dynamic vertical editing for social media, launches, and paid traffic.",
                 "filter_all": "All",
@@ -1853,11 +2360,10 @@
                 "filter_apas": "Same Day (APAS)",
                 "sec3_title": "POST-PRODUCTION SPECIALIST",
                 "sec3_subtitle": "Leadership, narrative rhythm, and consistency under heavy operational pressure.",
-                "brands_heading": "Brands & Projects Served",
                 "about_headline": "Senior Video Editor · Motion Graphics · Content Strategist",
-                "about_p1": "Video editor with 7 years of experience, specialized in turning raw footage into narratives that capture, communicate, and convert. I have edited aviation documentaries for channels with 1.5 million subscribers, weekly talk shows on Record News, aftermovies for Dior, high-converting ads for Santander, and paid traffic assets optimized for retention.",
+                "about_p1": "Video editor with 7 years of experience, specialized in turning raw footage into narratives that capture, communicate, and convert. I have edited aviation documentaries awarded the ABEAR Journalism Prize for channels with over 1.5 million subscribers, weekly talk shows on Record News, aftermovies for Dior, high-converting ads for Santander, and paid traffic assets optimized for retention. I also worked as Post-Production Coordinator, leading a team of editors and streamlining delivery workflows.",
                 "about_quote": '"I am passionate about music, reading fiction and philosophy. At heart, I am a storyteller who seeks to build genuine connections. I pay attention to the details of every single frame to ensure each cut lands perfectly on the beat and pace of the music."',
-                "about_p2": "Daily, I work with Premiere Pro, After Effects, DaVinci Resolve (Fusion), and CapCut Pro — seamlessly integrating AI tools into my post-production pipeline to speed up delivery times while maintaining strict quality control.",
+                "about_p2": "Daily, I work with Premiere Pro, After Effects, DaVinci Resolve (Fusion), CapCut Pro, Photoshop, Illustrator, and Blender — seamlessly integrating AI tools into my post-production pipeline to speed up delivery times while maintaining strict quality control.",
                 "srv_broadcast_title": "Editing & Finishing",
                 "srv_broadcast_desc": "TV commercials, corporate videos, aftermovies, long-form YouTube content, and high-retention Reels/Shorts.",
                 "srv_comercial_title": "Motion Graphics & VFX",
@@ -1873,8 +2379,10 @@
                 "stat_subs_desc": "Subscribers on served channels",
                 "stat_sameday_title": "Same-Day",
                 "stat_sameday_desc": "within 4 hours",
-                "foot_tools": "Software & Tools: Adobe Premiere Pro, After Effects, DaVinci Resolve, CapCut Pro",
-                "foot_ia": "AI & Testing: ElevenLabs, Sora, DeepSeek, Gemini",
+                "stat_ticket_title": "+46%",
+                "stat_ticket_desc": "Average rate in 6 months",
+                "foot_tools": "Software & Tools: Adobe Premiere Pro, After Effects, DaVinci Resolve, CapCut Pro, Photoshop, Illustrator, CorelDRAW",
+                "foot_ia": "AI & Testing: ElevenLabs, Sora, ChatGPT, DeepSeek, Gemini, Runway",
                 "cta_title": "Want to talk about a project?",
                 "btn_cv": "Resume",
                 "copyright": "© 2026 Mercure | Marcos Editing & Motion",
@@ -1929,6 +2437,7 @@
                 "The Pad Sarasota": "The Pad Sarasota",
                 "Campanha para Redes Sociais / Imobiliário": "Campanha para Redes Sociais / Imobiliário",
                 "Pettingell Professionals": "Pettingell Professionals",
+                "Tour de Imóvel de Luxo / Sarabande 340": "Tour de Imóvel de Luxo / Sarabande 340",
                 "Campanha para Redes Sociais / Negócios": "Campanha para Redes Sociais / Negócios",
                 "Abertura Solene": "Abertura Solene",
                 "Same-Day Event Coverage": "Same-Day Event Coverage",
@@ -1984,6 +2493,7 @@
                 "The Pad Sarasota": "The Pad Sarasota",
                 "Campanha para Redes Sociais / Imobiliário": "Social Media Campaign / Real Estate",
                 "Pettingell Professionals": "Pettingell Professionals",
+                "Tour de Imóvel de Luxo / Sarabande 340": "Luxury Real Estate Tour / Sarabande 340",
                 "Campanha para Redes Sociais / Negócios": "Social Media Campaign / Business",
                 "Abertura Solene": "Solemn Opening",
                 "Same-Day Event Coverage": "Same-Day Event Coverage",
@@ -2041,7 +2551,8 @@
                 const textY = isVertical ? 820 : 470;
                 const circleX = isVertical ? 450 : 800;
                 const circleY = isVertical ? 800 : 450;
-                this.src = `data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${svgWidth} ${svgHeight}"><rect width="100%" height="100%" fill="%2317151F"/><circle cx="${circleX}" cy="${circleY}" r="110" fill="%23ffffff" opacity="0.08"/><text x="50%" y="${textY}" font-family="sans-serif" font-size="34" fill="%23ffffff" font-weight="700" text-anchor="middle" letter-spacing="4">MERCURE</text></svg>`;
+                const graphiteColor = getComputedStyle(document.documentElement).getPropertyValue('--color-grafite').trim().replace('#', '%23');
+                this.src = `data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${svgWidth} ${svgHeight}"><rect width="100%" height="100%" fill="${graphiteColor}"/><circle cx="${circleX}" cy="${circleY}" r="110" fill="%23ffffff" opacity="0.08"/><text x="50%" y="${textY}" font-family="sans-serif" font-size="34" fill="%23ffffff" font-weight="700" text-anchor="middle" letter-spacing="4">MERCURE</text></svg>`;
             });
         });
 
@@ -2057,8 +2568,11 @@
                 hoverTimeout = setTimeout(() => {
                     if (wrapper.querySelector('.hover-player')) return;
                     
-                    // Adiciona o estado de carregamento visual
                     wrapper.classList.add('loading-preview');
+
+                    document.querySelectorAll('.hover-player').forEach(player => {
+                        if (player.closest('.video-wrapper') !== wrapper) player.remove();
+                    });
 
                     const hoverIframe = document.createElement('iframe');
                     hoverIframe.src = `https://play.gumlet.io/embed/${videoId}?autoplay=true&muted=true&loop=true&background=true`;
@@ -2078,7 +2592,6 @@
                     
                     hoverIframe.addEventListener('load', () => {
                         hoverIframe.style.opacity = "1";
-                        // Remove o feedback de carregamento após renderização
                         wrapper.classList.remove('loading-preview');
                     });
                 }, 180);
@@ -2094,7 +2607,6 @@
             wrapper.addEventListener('click', () => {
                 isModalOpen = true;
                 
-                // Envia comandos de pausa para o player de fundo do Gumlet
                 const bgPlayer = document.getElementById('backgroundBannerPlayer');
                 if (bgPlayer && bgPlayer.contentWindow) {
                     bgPlayer.contentWindow.postMessage(JSON.stringify({method: 'pause'}), '*');
@@ -2108,6 +2620,7 @@
                 iframe.setAttribute('referrerpolicy', 'origin');
                 iframe.setAttribute('allow', 'accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture; fullscreen; clipboard-write;');
                 iframe.setAttribute('allowfullscreen', 'true');
+                iframe.title = "Player de vídeo em destaque";
                 iframe.id = "activeGumletPlayer";
 
                 if (wrapper.closest('.reels-grid')) {
@@ -2128,9 +2641,64 @@
             });
         });
 
+        function closeVideoModal() {
+            isModalOpen = false;
+            modal.style.display = 'none';
+            modalContent.innerHTML = '';
+
+            const bgPlayer = document.getElementById('backgroundBannerPlayer');
+            if (bgPlayer && bgPlayer.contentWindow) {
+                bgPlayer.contentWindow.postMessage(JSON.stringify({method: 'play'}), '*');
+                bgPlayer.contentWindow.postMessage(JSON.stringify({event: 'command', func: 'play'}), '*');
+            }
+        }
+
+        closeBtn.addEventListener('click', closeVideoModal);
+
+        // --- BOTÃO PLAY DO HEADER ---
+        const headerPlayBtn = document.getElementById('headerPlayBtn');
+        headerPlayBtn.addEventListener('click', () => {
+            isModalOpen = true;
+            
+            const bgPlayer = document.getElementById('backgroundBannerPlayer');
+            if (bgPlayer && bgPlayer.contentWindow) {
+                bgPlayer.contentWindow.postMessage(JSON.stringify({method: 'pause'}), '*');
+                bgPlayer.contentWindow.postMessage(JSON.stringify({event: 'command', func: 'pause'}), '*');
+            }
+
+            document.querySelectorAll('.hover-player').forEach(player => player.remove());
+
+            const videoIdToOpen = bannerVideoId || '6a45bf80e4e7cc890ee34095';
+            
+            const iframe = document.createElement('iframe');
+            iframe.src = `https://play.gumlet.io/embed/${videoIdToOpen}?autoplay=true&preload=true`;
+            iframe.setAttribute('referrerpolicy', 'origin');
+            iframe.setAttribute('allow', 'accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture; fullscreen; clipboard-write;');
+            iframe.setAttribute('allowfullscreen', 'true');
+            iframe.title = "Player de vídeo em destaque";
+            iframe.id = "activeGumletPlayer";
+
+            modalContent.style.aspectRatio = "16/9";
+            modalContent.style.width = "90%";
+            modalContent.style.maxWidth = "1100px";
+
+            const oldPlayer = document.getElementById('activeGumletPlayer');
+            if (oldPlayer) oldPlayer.remove();
+
+            modal.style.display = 'flex';
+            modalContent.appendChild(iframe);
+        });
+
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) closeVideoModal();
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && modal.style.display === 'flex') closeVideoModal();
+        });
+
         // --- PARALLAX E ANIMAÇÃO ---
         let ticking = false;
-        let isModalOpen = false;
         let lastTime = 0;
         const BANNER_COVER_THRESHOLD = 350;
         let bannerVisible = true;
@@ -2165,7 +2733,7 @@
                 const scrollFraction = Math.min(scrollY / bannerHeight, 1);
 
                 if (scrollY < bannerHeight) {
-                    const finalX = 0; // Travado horizontalmente para evitar corte responsivo
+                    const finalX = 0; 
                     const posY = scrollY * 0.35;
                     parallaxVideo.style.transform = `translate3d(${finalX}px, ${posY}px, 0)`;
                     const overlayOpacity = 0.35 + (scrollFraction * 0.55);
@@ -2191,226 +2759,115 @@
             }
         });
 
-        // --- DOM CONTENT LOADED (Injeta configurações com segurança) ---
+        // --- DOM CONTENT LOADED ---
         document.addEventListener('DOMContentLoaded', () => {
-            // Duplicação automática de elementos do Marquee de Marcas
-            const marqueeTrack = document.getElementById('marqueeTrack');
-            if (marqueeTrack) {
-                const originalItems = marqueeTrack.innerHTML;
-                marqueeTrack.innerHTML = originalItems + originalItems;
-            }
-
-            // Ativa o Scroll Reveal usando Intersection Observer
-            if ('IntersectionObserver' in window) {
-                const revealObserver = new IntersectionObserver((entries) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            entry.target.classList.add('revealed');
-                            revealObserver.unobserve(entry.target);
-                        }
-                    });
-                }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
-
-                document.querySelectorAll('.reveal').forEach(elem => {
-                    revealObserver.observe(elem);
-                });
-            } else {
-                // Fallback para navegadores legados
-                document.querySelectorAll('.reveal').forEach(elem => {
-                    elem.classList.add('revealed');
-                });
-            }
-
-            // Otimização de GPU/Bateria: Pausa o vídeo do Hero quando fora de tela
-            if ('IntersectionObserver' in window) {
-                const backgroundVideoObserver = new IntersectionObserver((entries) => {
-                    entries.forEach(entry => {
-                        const bgPlayer = document.getElementById('backgroundBannerPlayer');
-                        if (bgPlayer && bgPlayer.contentWindow) {
-                            if (entry.isIntersecting && !isModalOpen) {
-                                bgPlayer.contentWindow.postMessage(JSON.stringify({method: 'play'}), '*');
-                                bgPlayer.contentWindow.postMessage(JSON.stringify({event: 'command', func: 'play'}), '*');
-                            } else {
-                                bgPlayer.contentWindow.postMessage(JSON.stringify({method: 'pause'}), '*');
-                                bgPlayer.contentWindow.postMessage(JSON.stringify({event: 'command', func: 'pause'}), '*');
-                            }
-                        }
-                    });
-                }, { threshold: 0.1 });
-                
-                backgroundVideoObserver.observe(parallaxBanner);
-            }
-
-            // Traduz elementos básicos imediatamente no load
-            document.querySelectorAll('[data-translate-key]').forEach(elem => {
-                const key = elem.getAttribute('data-translate-key');
-                if (translations[currentLang][key]) {
-                    elem.textContent = translations[currentLang][key];
-                } else if (projectTranslations[currentLang][key]) {
-                    elem.textContent = projectTranslations[currentLang][key];
-                }
-            });
-
-            if (typeof VIDEO_CONFIG === 'undefined') {
-                console.warn('⚠️ config.js não carregou. Usando mídias fallback estáticas do HTML.');
-                return;
-            }
-
             try {
-                // 1. Configurar o Vídeo de Fundo do Hero (Iframe do Gumlet com Autoplay nativo e mudo)
-                const container = document.getElementById('parallaxVideo');
-                if (container) {
-                    // Configura o poster de fallback como plano de fundo do container enquanto o iframe carrega
-                    if (VIDEO_CONFIG.backgroundPoster && VIDEO_CONFIG.backgroundPoster.trim() !== '') {
-                        container.style.backgroundImage = `url('${VIDEO_CONFIG.backgroundPoster}')`;
-                        container.style.backgroundSize = "cover";
-                        container.style.backgroundPosition = "center";
-                    }
+                // Duplicação automática de elementos do Marquee de Marcas
+                const marqueeTrack = document.getElementById('marqueeTrack');
+                if (marqueeTrack) {
+                    const originalItems = marqueeTrack.innerHTML;
+                    marqueeTrack.innerHTML = originalItems + originalItems;
+                }
 
+                // --- VÍDEO DE FUNDO DO BANNER HERO RESPONSIVO ---
+                const config = {
+                    backgroundPoster: (typeof VIDEO_CONFIG !== 'undefined' && VIDEO_CONFIG.backgroundPoster)
+                        ? VIDEO_CONFIG.backgroundPoster
+                        : '',
+                    backgroundVideoPool: (typeof VIDEO_CONFIG !== 'undefined' && Array.isArray(VIDEO_CONFIG.backgroundVideoPool) && VIDEO_CONFIG.backgroundVideoPool.length > 0)
+                        ? VIDEO_CONFIG.backgroundVideoPool
+                        : ['6a45b9d818d11bffd5041f0a'],
+                    backgroundVideoPoolMobile: ['6a45be3ee4e7cc890ee3284d', '6a45be3de81b019c97242b46'], // Pool de Vídeos Verticais Dinâmicos
+                    gumletWorkspaceId: (typeof VIDEO_CONFIG !== 'undefined' && VIDEO_CONFIG.gumletWorkspaceId)
+                        ? VIDEO_CONFIG.gumletWorkspaceId
+                        : '6a45b78918d11bffd503ee1a',
+                    reelEmbed: (typeof VIDEO_CONFIG !== 'undefined' && VIDEO_CONFIG.reelEmbed)
+                        ? VIDEO_CONFIG.reelEmbed
+                        : 'https://play.gumlet.io/embed/6a45bf80e4e7cc890ee34095?autoplay=true'
+                };
+
+                // Identifica se é dispositivo móvel para carregar um vídeo vertical nativo
+                const isMobile = window.innerWidth <= 768;
+                const pool = isMobile ? config.backgroundVideoPoolMobile : config.backgroundVideoPool;
+                const videoId = pool[Math.floor(Math.random() * pool.length)];
+                bannerVideoId = videoId;
+
+                const parallaxVideoContainer = document.getElementById('parallaxVideo');
+                if (parallaxVideoContainer) {
                     const iframe = document.createElement('iframe');
-                    iframe.id = "backgroundBannerPlayer";
+                    iframe.src = `https://play.gumlet.io/embed/${videoId}?autoplay=true&muted=true&loop=true&background=true&preload=true&fit=cover&v=1`;
+                    iframe.id = 'backgroundBannerPlayer';
                     iframe.setAttribute('allow', 'autoplay');
-                    iframe.setAttribute('referrerpolicy', 'origin');
-                    
-                    // Converte e usa a URL de embed direta do config.js
-                    let embedUrl = (VIDEO_CONFIG.backgroundEmbed && VIDEO_CONFIG.backgroundEmbed.trim() !== '')
-                        ? VIDEO_CONFIG.backgroundEmbed.trim()
-                        : `https://play.gumlet.io/embed/6a45bf80e4e7cc890ee34095?autoplay=true&muted=true&loop=true&background=true&preload=true`;
+                    parallaxVideoContainer.appendChild(iframe);
 
-                    iframe.src = embedUrl;
-                    container.appendChild(iframe);
-                    bannerIframe = iframe;
-                }
-
-                // 2. Aplicar thumbnails customizadas se configuradas (Caso contrário, usa time=8 configurado no Gumlet)
-                const caseImages = document.querySelectorAll('.case-thumb img');
-                const thumbs = VIDEO_CONFIG.caseThumbs;
-                const keys = ['aviacao', 'record', 'dior', 'sameDay'];
-                
-                if (thumbs) {
-                    caseImages.forEach((img, index) => {
-                        if (keys[index] && thumbs[keys[index]] && thumbs[keys[index]].trim() !== '') {
-                            img.src = thumbs[keys[index]];
+                    const loadTimeout = setTimeout(() => {
+                        if (iframe.style.opacity === '0') {
+                            console.warn('[Hero Background] Timeout: iframe não carregou em 8s');
+                            iframe.remove();
                         }
+                    }, 8000);
+
+                    iframe.addEventListener('load', () => {
+                        clearTimeout(loadTimeout);
+                        iframe.style.opacity = '1';
                     });
                 }
 
-                // 3. Lógica do Botão de Abertura do Reel (Modal)
-                const openReelBtn = document.getElementById('openReelBtn');
-                if (openReelBtn) {
-                    openReelBtn.addEventListener('click', () => {
-                        isModalOpen = true;
-                        
-                        // Envia comandos de pausa para o player de fundo do Gumlet
-                        const bgPlayer = document.getElementById('backgroundBannerPlayer');
-                        if (bgPlayer && bgPlayer.contentWindow) {
-                            bgPlayer.contentWindow.postMessage(JSON.stringify({method: 'pause'}), '*');
-                            bgPlayer.contentWindow.postMessage(JSON.stringify({event: 'command', func: 'pause'}), '*');
-                        }
+                // Ativa o Scroll Reveal usando Intersection Observer
+                if ('IntersectionObserver' in window) {
+                    const revealObserver = new IntersectionObserver((entries) => {
+                        entries.forEach(entry => {
+                            if (entry.isIntersecting) {
+                                entry.target.classList.add('revealed');
+                                revealObserver.unobserve(entry.target);
+                            }
+                        });
+                    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
 
-                        let src = VIDEO_CONFIG.reelEmbed || "https://play.gumlet.io/embed/6a45bf80e4e7cc890ee34095?autoplay=true";
-                        
-                        if (src.trim() === '') {
-                            alert('URL do Reel não configurada no config.js.');
-                            return;
-                        }
-
-                        if (!src.includes('autoplay=1') && !src.includes('autoplay=true')) {
-                            src = src.includes('?') ? src + '&autoplay=true' : src + '?autoplay=true';
-                        }
-
-                        const iframe = document.createElement('iframe');
-                        iframe.src = src;
-                        iframe.id = "activeGumletPlayer";
-                        iframe.setAttribute('allow', 'autoplay; fullscreen');
-                        iframe.setAttribute('allowfullscreen', 'true');
-                        iframe.style.width = "100%";
-                        iframe.style.height = "100%";
-                        iframe.style.border = "none";
-
-                        modalContent.style.aspectRatio = "16/9";
-                        modalContent.style.width = "90%";
-                        modalContent.style.maxWidth = "1100px";
-
-                        const oldPlayer = document.getElementById('activeGumletPlayer');
-                        if (oldPlayer) oldPlayer.remove();
-
-                        modal.style.display = 'flex';
-                        modalContent.appendChild(iframe);
+                    document.querySelectorAll('.reveal').forEach(elem => {
+                        revealObserver.observe(elem);
+                    });
+                } else {
+                    document.querySelectorAll('.reveal').forEach(elem => {
+                        elem.classList.add('revealed');
                     });
                 }
 
-            } catch (error) {
-                console.error('❌ Erro inesperado ao carregar configurações do config.js:', error);
-            }
-        });
+                // Otimização de GPU/Bateria: Pausa o vídeo do Hero quando fora de tela
+                if ('IntersectionObserver' in window) {
+                    const backgroundVideoObserver = new IntersectionObserver((entries) => {
+                        entries.forEach(entry => {
+                            const bgPlayer = document.getElementById('backgroundBannerPlayer');
+                            if (bgPlayer && bgPlayer.contentWindow) {
+                                if (entry.isIntersecting && !isModalOpen) {
+                                    bgPlayer.contentWindow.postMessage(JSON.stringify({method: 'play'}), '*');
+                                    bgPlayer.contentWindow.postMessage(JSON.stringify({event: 'command', func: 'play'}), '*');
+                                } else {
+                                    bgPlayer.contentWindow.postMessage(JSON.stringify({method: 'pause'}), '*');
+                                    bgPlayer.contentWindow.postMessage(JSON.stringify({event: 'command', func: 'pause'}), '*');
+                                }
+                            }
+                        });
+                    });
 
-        // --- MODAL CONTROLS ---
-        function closeModal() {
-            modal.style.display = 'none';
-            isModalOpen = false;
-            const activePlayer = document.getElementById('activeGumletPlayer');
-            if (activePlayer) activePlayer.remove();
-            
-            // Retoma a execução do player de fundo do Gumlet se o modal for fechado
-            const bgPlayer = document.getElementById('backgroundBannerPlayer');
-            if (bgPlayer && bgPlayer.contentWindow && window.pageYOffset < parallaxBanner.offsetHeight) {
-                bgPlayer.contentWindow.postMessage(JSON.stringify({method: 'play'}), '*');
-                bgPlayer.contentWindow.postMessage(JSON.stringify({event: 'command', func: 'play'}), '*');
-            }
-        }
-
-        closeBtn.addEventListener('click', closeModal);
-        modal.addEventListener('click', (e) => {
-            if (e.target === modal) closeModal();
-        });
-        window.addEventListener('keydown', (e) => {
-            if (e.key === "Escape" && isModalOpen) closeModal();
-        });
-
-        // --- EXPANSÃO DO ACERVO ---
-        const toggleArchiveBtn = document.getElementById('toggleArchiveBtn');
-        const archiveContainer = document.getElementById('archiveContainer');
-
-        toggleArchiveBtn.addEventListener('click', () => {
-            const isExpanded = archiveContainer.classList.contains('expanded');
-            if (isExpanded) {
-                archiveContainer.classList.remove('expanded');
-                toggleArchiveBtn.textContent = translations[currentLang]['toggle_more'];
-                document.getElementById('video').scrollIntoView({ behavior: 'smooth' });
-            } else {
-                archiveContainer.classList.add('expanded');
-                toggleArchiveBtn.textContent = translations[currentLang]['toggle_less'];
-            }
-        });
-
-        // --- FILTROS REELS ---
-        const filterBtns = document.querySelectorAll('.filter-btn');
-        const verticalCards = document.querySelectorAll('.vertical-card');
-
-        filterBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                filterBtns.forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-                const filterValue = btn.getAttribute('data-filter');
-                verticalCards.forEach(card => {
-                    const cardCategory = card.getAttribute('data-category');
-                    if (filterValue === 'all' || cardCategory === filterValue) {
-                        card.style.display = 'block';
-                        setTimeout(() => { card.style.opacity = '1'; }, 10);
-                    } else {
-                        card.style.opacity = '0';
-                        card.style.display = 'none';
+                    const parallaxBanner = document.querySelector('.parallax-banner');
+                    if (parallaxBanner) {
+                        backgroundVideoObserver.observe(parallaxBanner);
                     }
+                }
+            } catch (error) {
+                console.warn('Aviso: erro no bloco principal do DOMContentLoaded:', error);
+                document.querySelectorAll('.reveal').forEach(el => {
+                    el.classList.add('revealed');
                 });
-            });
-        });
+            }
 
-        // --- CURRÍCULO (Abre arquivos externos bilingues) ---
-        function openResume() {
-            const file = currentLang === 'pt' ? 'curriculo.html' : 'resume.html';
-            window.open(file, '_blank');
-        }
+            const emergencyWrapper = document.querySelector('.content-wrapper');
+            if (emergencyWrapper) {
+                emergencyWrapper.style.display = 'block';
+                emergencyWrapper.style.opacity = '1';
+            }
+        });
     </script>
 </body>
 </html>
