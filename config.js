@@ -10,10 +10,25 @@ const VIDEO_CONFIG = {
   backgroundVideoMp4: '',
 
   // Stream HLS (.m3u8) do Gumlet usado no fundo do Hero — tocado via hls.js (ou nativo no Safari/iOS)
-  backgroundVideoHls: 'https://video.gumlet.io/6a45b78918d11bffd503ee1a/6a45bf80e4e7cc890ee34095/main.m3u8',
+  backgroundVideoHls: 'https://video.gumlet.io/6a45b78918d11bffd503ee1a/6a45b9d818d11bffd5041f0a/main.m3u8',
   
   // Imagem de poster (placeholder) mostrada enquanto o vídeo de fundo carrega (Capturado no 8º frame)
-  backgroundPoster: 'https://video.gumlet.io/6a45b78918d11bffd503ee1a/6a45bf80e4e7cc890ee34095/thumbnail-1-0.png?time=8&width=1920',
+  backgroundPoster: 'https://video.gumlet.io/6a45b78918d11bffd503ee1a/6a45b9d818d11bffd5041f0a/thumbnail-1-0.png?time=8&width=1920',
+  
+  // URL de embed do vídeo de fundo do banner hero
+  backgroundEmbed: 'https://play.gumlet.io/embed/6a45b9d818d11bffd5041f0a?autoplay=true&muted=true&loop=true&background=true&preload=true&t=120',
+  
+  // Pool de IDs de vídeo para seleção aleatória no banner hero
+  backgroundVideoPool: [
+    "6a471f53e81b019c974c3eed",
+    "6a45bf80e4e7cc890ee34095",
+    "6a45bef418d11bffd5048073",
+    "6a45bbf6e4e7cc890ee300aa",
+    "6a45babde81b019c9723eb60",
+    "6a45b9d818d11bffd5041f0a",
+    "6a45b89018d11bffd50404a1",
+    "6a45b92318d11bffd5040e32"
+  ],
   
   // URL de embed do Showreel principal aberto no Lightbox pelo botão "Assistir Reel"
   reelEmbed: 'https://play.gumlet.io/embed/6a45bf80e4e7cc890ee34095?autoplay=true',
