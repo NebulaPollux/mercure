@@ -9,16 +9,27 @@
     <meta property="og:type" content="website">
     <meta property="og:title" content="Mercure — Marcos Soares Santos | Editor de Vídeo Sênior & Motion Designer">
     <meta property="og:description" content="Portfólio de Marcos Soares Santos: edição de vídeo sênior, motion graphics e estratégia de conteúdo para marcas como Dior, P&G, Santander e TRANSPETRO.">
-    <meta property="og:url" content="https://mercure.com.br">
-    <meta property="og:image" content="icon.svg">
+    <meta property="og:url" content="https://mercurevideo.com.br">
+    <link rel="canonical" href="https://mercurevideo.com.br/">
+    <meta property="og:image:alt" content="Logo Mercure — Marcos Soares Santos">
+    <meta property="og:image" content="https://mercurevideo.com.br/images/icon.svg">
     <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Mercure — Marcos Soares Santos | Editor de Vídeo Sênior &amp; Motion Designer">
+    <meta name="twitter:description" content="Portfólio de Marcos Soares Santos: edição de vídeo sênior, motion graphics e estratégia de conteúdo para marcas como Dior, P&amp;G, Santander e TRANSPETRO.">
+    <meta name="twitter:image" content="https://mercurevideo.com.br/images/icon.svg">
+    <meta name="twitter:image:alt" content="Logo Mercure — Marcos Soares Santos">
     <meta name="theme-color" content="#12173A">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
 
-    <link rel="icon" type="image/svg+xml" href="icon.svg">
+    <link rel="icon" type="image/svg+xml" href="images/icon.svg">
+    <!-- Vercel Web Analytics -->
+    <script>
+        window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+    </script>
+    <script defer src="/_vercel/insights/script.js"></script>
 
     <!-- Carrega a Configuração Centralizada de Vídeos -->
     <script src="config.js" defer></script>
@@ -619,12 +630,13 @@
         }
 
         .hero-title {
-            font-size: clamp(1rem, 2.5vw, 1.85rem); 
+            font-size: clamp(1rem, 2.3vw, 1.65rem);
             font-weight: 700;
             letter-spacing: 0.12em; /* Espaçamento elegante */
             margin-bottom: 0.6rem;
             text-transform: uppercase;
-            line-height: 1.3; 
+            line-height: 1.3;
+            white-space: pre-line;
             max-width: 750px;
             margin: 0 auto 0.6rem auto;
             color: #ffffff; 
@@ -633,7 +645,7 @@
 
         .hero-subtitle {
             font-family: var(--font-serif);
-            font-size: clamp(0.75rem, 1.3vw, 1rem); 
+            font-size: clamp(0.75rem, 1.3vw, 1rem);
             font-style: italic;
             opacity: 0.9;
             line-height: 1.4;
@@ -662,13 +674,16 @@
             width: 100%;
             overflow: hidden;
             display: flex;
+            padding: 4px 0;
+            box-sizing: border-box;
             mask-image: linear-gradient(to right, transparent, #000 15%, #000 85%, transparent);
             -webkit-mask-image: linear-gradient(to right, transparent, #000 15%, #000 85%, transparent);
         }
         .marquee-track {
             display: flex;
-            gap: 32px;
-            animation: marquee-scroll 30s linear infinite;
+            align-items: center;
+            gap: 48px;
+            animation: marquee-scroll 40s linear infinite;
             width: max-content;
             padding: 4px 0;
             flex-wrap: nowrap;
@@ -695,14 +710,49 @@
             color: var(--mercure-accent);
         }
         .brand-logo {
-            height: 28px;
-            width: auto;
+            width: 112px;
+            height: 36px;
+            object-fit: contain;
+            object-position: center;
             filter: brightness(0) saturate(100%) invert(100%);
-            flex-shrink: 0;
+            flex: 0 0 112px;
+        }
+        .brand-logo--santander {
+            width: 150px;
+            height: 40px;
+            flex-basis: 150px;
+        }
+        .brand-logo--pg {
+            width: 148px;
+            height: 52px;
+            flex-basis: 148px;
+            margin-inline: -12px;
+        }
+        .brand-logo--transpetro {
+            width: 150px;
+            height: 42px;
+            flex-basis: 150px;
+        }
+        .brand-logo--caixa {
+            width: 128px;
+            height: 42px;
+            flex-basis: 128px;
         }
         @keyframes marquee-scroll {
             0% { transform: translateX(0); }
             100% { transform: translateX(-50%); }
+        }
+
+        .visually-hidden {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
         }
 
         /* --- ENVELOPADOR DE CONTEÚDO --- */
@@ -958,6 +1008,9 @@
             transition: opacity 0.3s ease-in-out;
         }
 
+        .btn-ver-todos[hidden] {
+            display: none !important;
+        }
         .btn-ver-todos {
             display: inline-flex;
             align-items: center;
@@ -1302,12 +1355,13 @@
 
         @media (min-width: 769px) {
             .reels-expand-wrapper {
-                display: contents;
+                display: none;
                 max-height: none;
                 opacity: 1;
                 overflow: visible;
             }
             .reels-expand-wrapper.expanded {
+                display: contents;
                 max-height: none;
                 opacity: 1;
                 margin-top: 0;
@@ -1479,10 +1533,11 @@
         }
 
         .bottom-bar-container {
-            display: flex;
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
             align-items: center;
-            justify-content: space-between;
-            gap: 0.5rem;
+            gap: 0.75rem;
+            width: 100%;
             height: 100%;
             max-width: 1400px;
             margin: 0 auto;
@@ -1492,13 +1547,21 @@
         .bottom-bar-right {
             display: flex;
             align-items: center;
-            min-width: 40px;
-            flex: 0 0 auto;
+            min-width: 0;
+        }
+
+        .bottom-bar-left {
+            justify-content: flex-start;
+        }
+
+        .bottom-bar-right {
+            justify-content: flex-end;
         }
 
         .bottom-bar-center {
-            flex: 1;
-            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
         .bottom-play-btn {
@@ -1598,8 +1661,12 @@
             }
 
             .bottom-logo {
+                display: none;
+            }
+            .bottom-logo-img {
                 height: 44px;
                 width: auto;
+                object-fit: contain;
                 filter: drop-shadow(0 0 16px rgba(255, 255, 255, 0.25));
             }
         }
@@ -1607,6 +1674,27 @@
         @media (min-width: 769px) {
             .bottom-bar {
                 display: none !important;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                scroll-behavior: auto !important;
+                transition-duration: 0.01ms !important;
+            }
+
+            .marquee-track {
+                animation: none !important;
+                transform: none;
+                will-change: auto;
             }
         }
     </style>
@@ -1620,7 +1708,8 @@
         </div>
         <div class="parallax-overlay" id="parallaxOverlay"></div>
         <div class="hero-content" id="heroContent">
-            <h1 class="hero-title" data-translate-key="hero_title">EVERY FRAME HAS A PURPOSE. EVERY DEADLINE GETS MET.</h1>
+            <h1 class="hero-title" data-translate-key="hero_title">CADA FRAME TEM UM PROPÓSITO.
+CADA PRAZO É CUMPRIDO.</h1>
             <p class="hero-subtitle" data-translate-key="hero_subtitle">Broadcast. Campanhas. Eventos. Conteúdo entregue no prazo.</p>
         </div>
     </section>
@@ -1629,7 +1718,7 @@
     <header id="mainHeader">
 <div class="header-container">
             <div class="header-left">
-                <img src="outline.svg" alt="Mercure — Marcos Soares Santos, editor de vídeo e motion designer" class="logo-img" aria-label="Mercure — Marcos Soares Santos, editor de vídeo e motion designer">
+                <img src="images/infill_white_4x.png" alt="Mercure — Marcos Soares Santos, editor de vídeo e motion designer" class="logo-img" aria-label="Mercure — Marcos Soares Santos, editor de vídeo e motion designer">
                 <div class="logo-text-group">
                     <span class="logo-text">MERCURE</span>
                     <span class="logo-subtitle">Marcos Soares Santos</span>
@@ -1650,7 +1739,7 @@
                     <button id="langToggleBtn" onclick="toggleLang()" class="lang-btn">EN</button>
                 </nav>
                 <!-- Botão Hambúrguer (mobile) -->
-                <button class="hamburger" id="hamburgerBtn" aria-label="Menu">
+                <button class="hamburger" id="hamburgerBtn" aria-label="Menu" aria-controls="mobileMenu" aria-expanded="false">
                     <span></span>
                     <span></span>
                     <span></span>
@@ -1660,7 +1749,7 @@
     </header>
 
     <!-- Menu Mobile (dropdown) -->
-    <div class="mobile-menu" id="mobileMenu">
+    <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
         <a href="#about" data-translate-key="nav_about" onclick="closeMobileMenu()">SOBRE MIM</a>
         <a href="https://linkedin.com/in/marcos-soares-santos-91a281163" target="_blank" rel="noopener" onclick="closeMobileMenu()">LINKEDIN ↗</a>
         <button id="langToggleBtnMobile" onclick="toggleLang(); closeMobileMenu();" class="lang-btn">EN</button>
@@ -1676,6 +1765,7 @@
                 <svg class="bottom-logo" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Mercure">
                     <path d="M477.75,132.78c-.71,12.22-10.16,122.31-16,189.92-2.5,28.92-26.7,51.11-55.72,51.11h-25.05s13.32-114.92,15.68-132.59l-63.37,105.46c-10.11,16.83-28.31,27.13-47.95,27.13h-44.83s15.6-110.71,17.74-125.03c-19.52,31.98-28.32,46.61-60.23,99.73-10.79,17.96-10.23,25.72-34.03,25.72-56,0-74.19-77.9-65.49-82.35.08-.04.17-.06.27-.06,2,0,8.06,8.02,24.78,8.02,10.85,0,26.19-3.37,47.84-14.5-16.21,7.54-30.02,10.18-41.41,10.18-20.79,0-33.55-8.77-38.34-12.57-15.22-12.07-39.59-80.14-33.18-80.14.28,0,.61.13,1,.39,8.33,5.56,17.35,18.56,59.91,18.56,15.9,0,36.48-1.81,63.47-6.51-19.7,2.68-36.18,3.81-50.03,3.81-48.4,0-64.67-13.81-74.36-23.49-25.07-25.07-36.75-47.97-4.75-47.97,52.29,0,170.33-6.82,222.62-7.77,16.21-.13,29.15-.73,38.99-.73,19.68,0,27.03,2.39,23.66,15.7-9.75,38.42-16.27,64.6-24.3,98.51,6.23,0,26.71-45.96,36.12-66.38,13.68-29.7,24.24-50.71,59.99-51.8,34.18-1.05,56.72-1.98,66.97-2.34M504.3,106.83l-27.42.96c-2.64.09-6.09.22-10.35.38-12.42.47-31.18,1.18-56.52,1.95-21.14.65-38.09,6.91-51.66,19.1-.16-.21-.31-.42-.47-.62-11.3-14.52-30.87-14.52-42.57-14.52-5.09,0-10.67.14-17.12.31-6.53.17-13.92.36-22.07.42h-.13s-.13,0-.13,0c-22.88.42-57.66,1.92-94.49,3.51-48.42,2.09-98.48,4.26-127.66,4.26-8.71,0-15.98,1.23-22.22,3.77-9.14,3.72-16.11,10.45-19.63,18.95-4.94,11.92-2.93,25.38,5.97,40.01,3.59,5.91,8.48,12.3,14.57,19.09-.11,5.26.99,11.47,3.37,19.89,2.22,7.86,5.54,17.39,9.34,26.82,8.9,22.12,17.74,37.91,26.33,47.07-.07,5.69.77,12.18,2.48,19.28,4.45,18.47,13.82,37.02,25.71,50.89,17.32,20.2,39.58,30.88,64.36,30.88,10.08,0,23.06-1,34.08-8.81,8.75-6.2,13.07-14.09,17.24-21.72.3-.55.6-1.1.91-1.66-.25,1.76-.41,2.89-.46,3.28l-4.01,28.49h73.6c13.94,0,27.72-3.63,39.86-10.49,12.13-6.86,22.34-16.81,29.52-28.76l3.4-5.65c-1.11,9.53-1.86,15.97-1.98,17.03l-3.23,27.88h53.12c20.31,0,39.74-7.56,54.71-21.29,14.97-13.73,24.17-32.44,25.92-52.67,6.94-80.41,15.36-178.75,16.05-190.62l1.59-27.39h0Z" fill="#4e4999" stroke="#000000" stroke-opacity="0.5" stroke-width="3"/>
                 </svg>
+                <img src="images/infill_white_4x.png" class="bottom-logo-img" alt="Mercure">
             </div>
             <div class="bottom-bar-center">
                 <button id="headerPlayBtnMobile" class="bottom-play-btn" aria-label="Assistir vídeo do banner">
@@ -1685,7 +1775,7 @@
                 </button>
             </div>
             <div class="bottom-bar-right">
-                <button class="hamburger mobile-hamburger" id="hamburgerBtnMobile" aria-label="Menu">
+                <button class="hamburger mobile-hamburger" id="hamburgerBtnMobile" aria-label="Menu" aria-controls="mobileMenu" aria-expanded="false">
                     <span></span>
                     <span></span>
                     <span></span>
@@ -1702,12 +1792,15 @@
             <p class="trust-bar-label" data-translate-key="trust_bar_label">Marcas que já confiaram na entrega</p>
             <div class="marquee-container">
                 <div class="marquee-track" id="marqueeTrack">
-                    <img src="logos/dior.svg" alt="Dior" class="brand-logo" style="height: 28px; width: auto; filter: brightness(0) saturate(100%) invert(100%);">
-                    <img src="logos/santander.svg" alt="Santander" class="brand-logo" style="height: 28px; width: auto; filter: brightness(0) saturate(100%) invert(100%);">
-                    <img src="logos/procter-gamble-1.svg" alt="P&G" class="brand-logo" style="height: 28px; width: auto; filter: brightness(0) saturate(100%) invert(100%);">
-                    <img src="logos/transpetro.png" alt="TRANSPETRO" class="brand-logo" style="height: 28px; width: auto; filter: brightness(0) saturate(100%) invert(100%);">
-                    <img src="logos/record_news.svg" alt="Record News" class="brand-logo" style="height: 28px; width: auto; filter: brightness(0) saturate(100%) invert(100%);">
-                    <img src="logos/gree.svg" alt="Gree" class="brand-logo" style="height: 28px; width: auto; filter: brightness(0) saturate(100%) invert(100%);">
+                    <img src="logos/dior.svg" alt="Dior" class="brand-logo" onerror="this.style.display='none';">
+                    <img src="logos/santander.svg" alt="Santander" class="brand-logo brand-logo--santander" onerror="this.style.display='none';">
+                    <img src="logos/procter-gamble-1.svg" alt="P&amp;G" class="brand-logo brand-logo--pg" onerror="this.style.display='none';">
+                    <img src="logos/transpetro.png" alt="TRANSPETRO" class="brand-logo brand-logo--transpetro" onerror="this.style.display='none';">
+                    <img src="logos/record_news.svg" alt="Record News" class="brand-logo" onerror="this.style.display='none';">
+                    <img src="logos/5era.png" alt="5era" class="brand-logo" onerror="this.style.display='none';">
+                    <img src="logos/gree.svg" alt="Gree" class="brand-logo" onerror="this.style.display='none';">
+                    <img src="logos/sesc.png" alt="SESC" class="brand-logo brand-logo--sesc" onerror="this.style.display='none';">
+                    <img src="logos/caixa_consorcio.png" alt="Caixa Consórcio" class="brand-logo brand-logo--caixa" onerror="this.style.display='none';">
                 </div>
             </div>
         </div>
@@ -1925,11 +2018,11 @@
                 </div>
 
                 <div class="filter-container reveal">
-                    <button class="filter-btn active" data-filter="all" data-translate-key="filter_all">Todos</button>
-                    <button class="filter-btn" data-filter="campanhas" data-translate-key="filter_campanhas">Campanhas Tattoo</button>
-                    <button class="filter-btn" data-filter="institucionais" data-translate-key="filter_institucionais">Institucionais</button>
-                    <button class="filter-btn" data-filter="internacionais" data-translate-key="filter_internacionais">Internacionais</button>
-                    <button class="filter-btn" data-filter="apas" data-translate-key="filter_apas">Same Day (APAS)</button>
+                    <button class="filter-btn active" data-filter="all" data-translate-key="filter_all" aria-pressed="true">Todos</button>
+                    <button class="filter-btn" data-filter="campanhas" data-translate-key="filter_campanhas" aria-pressed="false">Campanhas Tattoo</button>
+                    <button class="filter-btn" data-filter="institucionais" data-translate-key="filter_institucionais" aria-pressed="false">Institucionais</button>
+                    <button class="filter-btn" data-filter="internacionais" data-translate-key="filter_internacionais" aria-pressed="false">Internacionais</button>
+                    <button class="filter-btn" data-filter="apas" data-translate-key="filter_apas" aria-pressed="false">Same Day (APAS)</button>
                 </div>
 
                 <div class="reels-grid reveal" id="reelsGrid">
@@ -2076,21 +2169,21 @@
 
                 <!-- Botão Ver Mais Reels -->
                 <div class="reveal" style="text-align: center; margin-top: 1.5rem; margin-bottom: 0;">
-                    <button class="btn-ver-todos" id="toggleReelsBtn" data-translate-key="toggle_reels_more">Ver mais Reels</button>
+                    <button class="btn-ver-todos" id="toggleReelsBtn" data-translate-key="toggle_reels_more" aria-expanded="false">Ver mais Reels</button>
                 </div>
             </section>
 
             <!-- SEÇÃO 3: SOBRE MIM -->
             <section class="about-section reveal" id="about">
                 <div class="section-header">
-                    <h2 class="section-title" data-translate-key="sec3_title">POST-PRODUCTION SPECIALIST</h2>
+                    <h2 class="section-title" data-translate-key="sec3_title">ESPECIALISTA EM PÓS-PRODUÇÃO</h2>
                     <p class="section-subtitle" data-translate-key="sec3_subtitle">Liderança, ritmo narrativo e consistência sob forte pressão operacional.</p>
                 </div>
 
                 <div class="about-grid">
                     <div class="about-left">
                         <div class="about-avatar">
-                            <img src="input_file_8.png" alt="Marcos Soares Santos — Mercure" onerror="this.style.display='none';">
+                            <img src="images/profile_photo_2.jpg" alt="Marcos Soares Santos — Mercure" onerror="this.style.display='none';">
                         </div>
                         <h3 class="about-name">MARCOS SOARES SANTOS</h3>
                         <p class="about-headline" data-translate-key="about_headline">Editor de vídeo sênior · Motion graphics · Estrategista de conteúdo</p>
@@ -2159,7 +2252,7 @@
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
                         Email
                     </a>
-                    <a href="https://wa.me/5511963033573" target="_blank" class="btn btn-primary-whatsapp">
+                    <a href="https://wa.me/5511963033573" target="_blank" rel="noopener" class="btn btn-primary-whatsapp">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12.012 2c-5.506 0-9.989 4.478-9.99 9.984a9.96 9.96 0 0 0 1.333 4.993L2 22l5.135-1.347a9.94 9.94 0 0 0 4.877 1.331h.005c5.505 0 9.99-4.478 9.99-9.985 0-2.667-1.037-5.176-2.922-7.062A9.919 9.919 0 0 0 12.012 2zm5.835 14.123c-.254.715-1.48 1.402-2.035 1.484-.509.075-1.173.137-3.41-.79-2.859-1.183-4.693-4.085-4.836-4.275-.143-.19-1.157-1.537-1.157-2.93 0-1.393.73-2.074 1.015-2.361.254-.254.666-.372 1.077-.372.174 0 .327.009.453.016.372.016.559.038.805.483.254.46.872 2.123.951 2.282.079.158.133.348.026.554-.105.206-.164.333-.327.523-.164.19-.344.425-.492.571-.164.158-.333.333-.143.626.19.294.842 1.382 1.802 2.183.916.762 1.691 1.001 1.931 1.113.238.111.378.092.52-.07.143-.164.602-.73.762-.977.159-.248.318-.206.539-.124.222.082 1.402.66 1.64.778.238.117.396.174.454.271.058.098.058.557-.196 1.272z"/></svg>
                         WhatsApp
                     </a>
@@ -2176,8 +2269,9 @@
     </div>
 
     <!-- LIGHTBOX MODAL -->
-    <div class="lightbox-modal" id="videoModal" role="dialog" aria-modal="true" aria-label="Player de vídeo em destaque">
-        <button class="lightbox-close" id="closeBtn" data-translate-key="close_btn" aria-label="Fechar vídeo">Fechar [X]</button>
+    <div class="lightbox-modal" id="videoModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-hidden="true" tabindex="-1">
+        <span id="modalTitle" class="visually-hidden" data-translate-key="modal_title">Vídeo em destaque</span>
+        <button class="lightbox-close" id="closeBtn" data-translate-key="close_btn">Fechar [X]</button>
         <div class="lightbox-content" id="modalContent"></div>
     </div>
 
@@ -2188,6 +2282,14 @@
         const modal = document.getElementById('videoModal');
         const modalContent = document.getElementById('modalContent');
         const closeBtn = document.getElementById('closeBtn');
+        const backgroundRegions = [
+            document.getElementById('home'),
+            document.getElementById('mainHeader'),
+            document.getElementById('mobileMenu'),
+            document.getElementById('menuOverlay'),
+            document.getElementById('bottomBar'),
+            document.querySelector('.content-wrapper')
+        ].filter(Boolean);
         const mainHeader = document.getElementById('mainHeader');
         const parallaxBanner = document.getElementById('home');
         const parallaxVideo = document.getElementById('parallaxVideo');
@@ -2200,7 +2302,9 @@
         const playBtnMobile = document.getElementById('headerPlayBtnMobile');
         const hamburgerMobile = document.getElementById('hamburgerBtnMobile');
         let isModalOpen = false;
+        let modalTrigger = null;
         const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        const canHoverPreview = window.matchMedia('(hover: hover) and (pointer: fine)').matches && !reduceMotion;
         let bannerVideoId = null;
 
         // --- MENU HAMBÚRGUER ---
@@ -2208,18 +2312,24 @@
         const mobileMenu = document.getElementById('mobileMenu');
         const menuOverlay = document.getElementById('menuOverlay');
 
+        function setMobileMenuOpen(isOpen) {
+            hamburgerBtn.classList.toggle('active', isOpen);
+            hamburgerBtn.setAttribute('aria-expanded', String(isOpen));
+            if (hamburgerMobile) {
+                hamburgerMobile.classList.toggle('active', isOpen);
+                hamburgerMobile.setAttribute('aria-expanded', String(isOpen));
+            }
+            mobileMenu.classList.toggle('open', isOpen);
+            mobileMenu.setAttribute('aria-hidden', String(!isOpen));
+            menuOverlay.classList.toggle('active', isOpen);
+        }
+
         function toggleMobileMenu() {
-            hamburgerBtn.classList.toggle('active');
-            if (hamburgerMobile) hamburgerMobile.classList.toggle('active');
-            mobileMenu.classList.toggle('open');
-            menuOverlay.classList.toggle('active');
+            setMobileMenuOpen(!mobileMenu.classList.contains('open'));
         }
 
         function closeMobileMenu() {
-            hamburgerBtn.classList.remove('active');
-            if (hamburgerMobile) hamburgerMobile.classList.remove('active');
-            mobileMenu.classList.remove('open');
-            menuOverlay.classList.remove('active');
+            setMobileMenuOpen(false);
         }
 
         hamburgerBtn.addEventListener('click', toggleMobileMenu);
@@ -2236,6 +2346,7 @@
                 reelsExpandWrapper.classList.toggle('expanded');
                 const isExpanded = reelsExpandWrapper.classList.contains('expanded');
                 toggleReelsBtn.textContent = translations[currentLang][isExpanded ? 'toggle_reels_less' : 'toggle_reels_more'];
+                toggleReelsBtn.setAttribute('aria-expanded', String(isExpanded));
             });
         }
 
@@ -2244,15 +2355,26 @@
         filterBtns.forEach(btn => {
             btn.addEventListener('click', () => {
                 const filterValue = btn.dataset.filter;
+                const isFiltered = filterValue !== 'all';
+
+                filterBtns.forEach(filterBtn => {
+                    const isActive = filterBtn === btn;
+                    filterBtn.classList.toggle('active', isActive);
+                    filterBtn.setAttribute('aria-pressed', String(isActive));
+                });
+
                 verticalCards.forEach(card => {
                     const cardCategory = card.dataset.category;
-                    card.style.display = (filterValue === 'all' || cardCategory === filterValue) ? 'block' : 'none';
+                    card.style.display = (!isFiltered || cardCategory === filterValue) ? '' : 'none';
                 });
-                if (filterValue !== 'all' && reelsExpandWrapper && !reelsExpandWrapper.classList.contains('expanded')) {
-                    reelsExpandWrapper.classList.add('expanded');
-                    if (toggleReelsBtn) {
-                        toggleReelsBtn.textContent = translations[currentLang]['toggle_reels_less'];
-                    }
+
+                if (reelsExpandWrapper) {
+                    reelsExpandWrapper.classList.toggle('expanded', isFiltered);
+                }
+                if (toggleReelsBtn) {
+                    toggleReelsBtn.hidden = isFiltered;
+                    toggleReelsBtn.textContent = translations[currentLang][isFiltered ? 'toggle_reels_less' : 'toggle_reels_more'];
+                    toggleReelsBtn.setAttribute('aria-expanded', String(isFiltered));
                 }
             });
         });
@@ -2282,7 +2404,7 @@
         const translations = {
             pt: {
                 "nav_about": "SOBRE MIM",
-                "hero_title": "EVERY FRAME HAS A PURPOSE. EVERY DEADLINE GETS MET.",
+                "hero_title": "CADA FRAME TEM UM PROPÓSITO.\nCADA PRAZO É CUMPRIDO.",
                 "hero_subtitle": "Broadcast. Campanhas. Eventos. Conteúdo entregue no prazo.",
                 "nav_contact_wa": "WHATSAPP ↗",
                 "hero_volume_unmute": "Ouvir som",
@@ -2304,7 +2426,7 @@
                 "filter_institucionais": "Institucionais",
                 "filter_internacionais": "Internacionais",
                 "filter_apas": "Same Day (APAS)",
-                "sec3_title": "POST-PRODUCTION SPECIALIST",
+                "sec3_title": "ESPECIALISTA EM PÓS-PRODUÇÃO",
                 "sec3_subtitle": "Liderança, ritmo narrativo e consistência sob forte pressão operacional.",
                 "about_headline": "Editor de vídeo sênior · Motion graphics · Estrategista de conteúdo",
                 "about_p1": "Editor de vídeo com 7 anos de experiência, especializado em transformar material bruto em narrativas que prendem, comunicam e convertem. Já editei documentários de aviação premiados pelo Prêmio ABEAR de Jornalismo para canais com mais de 1,5 milhão de inscritos, talk shows semanais na Record News, aftermovies para a Dior, anúncios de alta conversão para o Santander e conteúdos de tráfego pago otimizados para retenção. Também atuei como Coordenador de Pós-Produção, liderando equipe de editores e otimizando fluxos de entrega.",
@@ -2332,11 +2454,12 @@
                 "cta_title": "Quer conversar sobre um projeto?",
                 "btn_cv": "Currículo",
                 "copyright": "© 2026 Mercure | Marcos Edição & Motion",
-                "close_btn": "Fechar [X]"
+                "close_btn": "Fechar [X]",
+                "modal_title": "Vídeo em destaque"
             },
 en: {
                 "nav_about": "ABOUT ME",
-                "hero_title": "EVERY FRAME HAS A PURPOSE. EVERY DEADLINE GETS MET.",
+                "hero_title": "EVERY FRAME HAS A PURPOSE.\nEVERY DEADLINE GETS MET.",
                 "hero_subtitle": "Broadcast. Campaigns. Events. Content delivered on time.",
                 "nav_contact_wa": "WHATSAPP ↗",
                 "hero_volume_unmute": "Tap to unmute",
@@ -2386,7 +2509,8 @@ en: {
                 "cta_title": "Want to talk about a project?",
                 "btn_cv": "Resume",
                 "copyright": "© 2026 Mercure | Marcos Editing & Motion",
-                "close_btn": "Close [X]"
+                "close_btn": "Close [X]",
+                "modal_title": "Featured video"
             }
         };
 
@@ -2412,7 +2536,7 @@ en: {
                 "Edição Comercial / Campanha de E-Commerce": "Edição Comercial / Campanha de E-Commerce",
                 "Aftermovie P&G": "Aftermovie P&G",
                 "Aftermovie de Evento Corporativo": "Aftermovie de Evento Corporativo",
-                "Escola Eugenio Montale": "Escola Eugenio Montale",
+                "Aftermovie Escola Eugenio Montale": "Aftermovie Escola Eugenio Montale",
                 "Aftermovie / Institucional": "Aftermovie / Institucional",
                 "MANDIC CAMESP Ouro": "MANDIC CAMESP Ouro",
                 "Cobertura de Torneio Universitário": "Cobertura de Torneio Universitário",
@@ -2468,7 +2592,7 @@ en: {
                 "Edição Comercial / Campanha de E-Commerce": "Commercial Editing / E-Commerce Campaign",
                 "Aftermovie P&G": "P&G Aftermovie",
                 "Aftermovie de Evento Corporativo": "Corporate Event Aftermovie",
-                "Escola Eugenio Montale": "Eugenio Montale School",
+                "Aftermovie Escola Eugenio Montale": "Eugenio Montale School Aftermovie",
                 "Aftermovie / Institucional": "Aftermovie / Institutional",
                 "MANDIC CAMESP Ouro": "MANDIC CAMESP Ouro",
                 "Cobertura de Torneio Universitário": "University Tournament Coverage",
@@ -2505,6 +2629,11 @@ en: {
             }
         };
 
+        function openResume() {
+            const resumeFile = currentLang === 'pt' ? 'curriculo.html' : 'resume.html';
+            window.open(resumeFile, '_blank', 'noopener');
+        }
+
         function toggleLang() {
             currentLang = currentLang === 'pt' ? 'en' : 'pt';
             document.getElementById('langToggleBtn').textContent = currentLang === 'pt' ? 'EN' : 'PT';
@@ -2522,6 +2651,11 @@ en: {
 
             const isExpanded = archiveContainer.classList.contains('expanded');
             toggleArchiveBtn.textContent = translations[currentLang][isExpanded ? 'toggle_less' : 'toggle_more'];
+            const reelsExpanded = reelsExpandWrapper && reelsExpandWrapper.classList.contains('expanded');
+            if (toggleReelsBtn) {
+                toggleReelsBtn.textContent = translations[currentLang][reelsExpanded ? 'toggle_reels_less' : 'toggle_reels_more'];
+                toggleReelsBtn.setAttribute('aria-expanded', String(reelsExpanded));
+            }
         }
 
         // --- THUMBNAILS GUMLET ---
@@ -2561,10 +2695,16 @@ en: {
             const videoId = wrapper.getAttribute('data-video-id');
             if (!videoId) return;
 
+            const thumbnail = wrapper.querySelector('img[alt]');
+            const projectName = thumbnail ? thumbnail.alt : 'vídeo';
+            wrapper.setAttribute('role', 'button');
+            wrapper.setAttribute('tabindex', '0');
+            wrapper.setAttribute('aria-label', `Assistir: ${projectName}`);
+
             let hoverTimeout;
 
             wrapper.addEventListener('mouseenter', () => {
-                if (isModalOpen) return;
+                if (!canHoverPreview || isModalOpen) return;
                 hoverTimeout = setTimeout(() => {
                     if (wrapper.querySelector('.hover-player')) return;
                     
@@ -2604,7 +2744,15 @@ en: {
                 wrapper.classList.remove('loading-preview');
             });
 
+            wrapper.addEventListener('keydown', event => {
+                if (event.key === 'Enter' || event.key === ' ') {
+                    event.preventDefault();
+                    wrapper.click();
+                }
+            });
+
             wrapper.addEventListener('click', () => {
+                modalTrigger = wrapper;
                 isModalOpen = true;
                 
                 const bgPlayer = document.getElementById('backgroundBannerPlayer');
@@ -2636,15 +2784,24 @@ en: {
                 const oldPlayer = document.getElementById('activeGumletPlayer');
                 if (oldPlayer) oldPlayer.remove();
 
-                modal.style.display = 'flex';
+                setVideoModalOpen(true);
                 modalContent.appendChild(iframe);
+                closeBtn.focus();
             });
         });
 
+        function setVideoModalOpen(isOpen) {
+            isModalOpen = isOpen;
+            modal.style.display = isOpen ? 'flex' : 'none';
+            modal.setAttribute('aria-hidden', String(!isOpen));
+            backgroundRegions.forEach(region => { region.inert = isOpen; });
+        }
+
         function closeVideoModal() {
-            isModalOpen = false;
-            modal.style.display = 'none';
+            setVideoModalOpen(false);
             modalContent.innerHTML = '';
+            if (modalTrigger && modalTrigger.isConnected) modalTrigger.focus();
+            modalTrigger = null;
 
             const bgPlayer = document.getElementById('backgroundBannerPlayer');
             if (bgPlayer && bgPlayer.contentWindow) {
@@ -2658,8 +2815,9 @@ en: {
         // --- BOTÃO PLAY DO HEADER ---
         const headerPlayBtn = document.getElementById('headerPlayBtn');
         headerPlayBtn.addEventListener('click', () => {
+            modalTrigger = headerPlayBtn;
             isModalOpen = true;
-            
+
             const bgPlayer = document.getElementById('backgroundBannerPlayer');
             if (bgPlayer && bgPlayer.contentWindow) {
                 bgPlayer.contentWindow.postMessage(JSON.stringify({method: 'pause'}), '*');
@@ -2669,7 +2827,7 @@ en: {
             document.querySelectorAll('.hover-player').forEach(player => player.remove());
 
             const videoIdToOpen = bannerVideoId || '6a45bf80e4e7cc890ee34095';
-            
+
             const iframe = document.createElement('iframe');
             iframe.src = `https://play.gumlet.io/embed/${videoIdToOpen}?autoplay=true&preload=true`;
             iframe.setAttribute('referrerpolicy', 'origin');
@@ -2685,8 +2843,9 @@ en: {
             const oldPlayer = document.getElementById('activeGumletPlayer');
             if (oldPlayer) oldPlayer.remove();
 
-            modal.style.display = 'flex';
+            setVideoModalOpen(true);
             modalContent.appendChild(iframe);
+            closeBtn.focus();
         });
 
         modal.addEventListener('click', (e) => {
@@ -2694,7 +2853,20 @@ en: {
         });
 
         document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && modal.style.display === 'flex') closeVideoModal();
+            if (e.key === 'Escape' && isModalOpen) closeVideoModal();
+            if (e.key === 'Escape' && mobileMenu.classList.contains('open')) closeMobileMenu();
+
+            if (e.key === 'Tab' && isModalOpen) {
+                const player = document.getElementById('activeGumletPlayer');
+                if (e.shiftKey && document.activeElement === closeBtn) {
+                    e.preventDefault();
+                    if (player) player.focus();
+                    else closeBtn.focus();
+                } else if (!e.shiftKey && document.activeElement === player) {
+                    e.preventDefault();
+                    closeBtn.focus();
+                }
+            }
         });
 
         // --- PARALLAX E ANIMAÇÃO ---
@@ -2733,7 +2905,7 @@ en: {
                 const scrollFraction = Math.min(scrollY / bannerHeight, 1);
 
                 if (scrollY < bannerHeight) {
-                    const finalX = 0; 
+                    const finalX = 0;
                     const posY = scrollY * 0.35;
                     parallaxVideo.style.transform = `translate3d(${finalX}px, ${posY}px, 0)`;
                     const overlayOpacity = 0.35 + (scrollFraction * 0.55);
@@ -2744,10 +2916,19 @@ en: {
                 }
             }
 
-            requestAnimationFrame(animationLoop);
+            if (!reduceMotion) requestAnimationFrame(animationLoop);
         }
 
-        requestAnimationFrame(animationLoop);
+        if (!reduceMotion) requestAnimationFrame(animationLoop);
+        else {
+            const updateHeaderState = () => {
+                const scrollY = window.pageYOffset;
+                const bannerHeight = parallaxBanner.offsetHeight;
+                mainHeader.classList.toggle('scrolled', scrollY >= Math.max(bannerHeight - 80, 50));
+            };
+            window.addEventListener('scroll', updateHeaderState, { passive: true });
+            updateHeaderState();
+        }
 
         window.addEventListener('resize', () => {
             if (!ticking) {
@@ -2765,8 +2946,11 @@ en: {
                 // Duplicação automática de elementos do Marquee de Marcas
                 const marqueeTrack = document.getElementById('marqueeTrack');
                 if (marqueeTrack) {
-                    const originalItems = marqueeTrack.innerHTML;
-                    marqueeTrack.innerHTML = originalItems + originalItems;
+                    Array.from(marqueeTrack.children).forEach(item => {
+                        const clone = item.cloneNode(true);
+                        clone.setAttribute('aria-hidden', 'true');
+                        marqueeTrack.appendChild(clone);
+                    });
                 }
 
                 // --- VÍDEO DE FUNDO DO BANNER HERO RESPONSIVO ---
