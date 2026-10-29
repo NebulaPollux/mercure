@@ -1,0 +1,27 @@
+{
+  "name": "mercure",
+  "version": "1.0.0",
+  "description": "Mercure Portfolio - Video Editor & Motion Designer",
+  "main": "config.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NebulaPollux/mercure.git"
+  },
+  "keywords": [
+    "portfolio",
+    "video-editing",
+    "motion-design"
+  ],
+  "author": "Marcos Soares Santos",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/NebulaPollux/mercure/issues"
+  },
+  "homepage": "https://github.com/NebulaPollux/mercure#readme",
+  "dependencies": {
+    "@vercel/analytics": "^2.0.1"
+  }
+}
