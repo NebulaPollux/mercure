@@ -1868,7 +1868,7 @@ CADA PRAZO É CUMPRIDO.</h1>
                 </div>
 
                 <!-- GRUPO 2: MAIS PROJETOS (expansível) -->
-                <div class="expandable-wrapper" id="archiveContainer">
+                <div class="expandable-wrapper" id="archiveContainer" inert>
                     <div class="video-grid-horizontal">
                         <div class="horizontal-card">
                             <div class="video-wrapper" data-video-id="6a45b9b7e81b019c9723d6d3">
@@ -2006,7 +2006,7 @@ CADA PRAZO É CUMPRIDO.</h1>
 
                 <!-- Botão Ver Mais -->
                 <div class="reveal" style="text-align: center; margin-top: 1.5rem; margin-bottom: 0;">
-                    <button class="btn-ver-todos" id="toggleArchiveBtn" data-translate-key="toggle_more">Ver Mais Projetos</button>
+                    <button class="btn-ver-todos" id="toggleArchiveBtn" data-translate-key="toggle_more" aria-expanded="false">Ver Mais Projetos</button>
                 </div>
             </section>
 
@@ -2039,7 +2039,7 @@ CADA PRAZO É CUMPRIDO.</h1>
                         </div>
                     </div>
 
-                    <div class="reels-expand-wrapper" id="reelsExpandWrapper">
+                    <div class="reels-expand-wrapper" id="reelsExpandWrapper" inert>
                         <div class="vertical-card" data-category="campanhas">
                             <div class="video-wrapper" data-video-id="6a45be3de81b019c97242b4e">
                                 <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="NumbFlow - Por que ainda sofre pra se tatuar?" class="video-thumbnail-reel" loading="lazy">
@@ -2338,13 +2338,16 @@ CADA PRAZO É CUMPRIDO.</h1>
         toggleArchiveBtn.addEventListener('click', () => {
             archiveContainer.classList.toggle('expanded');
             const isExpanded = archiveContainer.classList.contains('expanded');
+            archiveContainer.inert = !isExpanded;
             toggleArchiveBtn.textContent = translations[currentLang][isExpanded ? 'toggle_less' : 'toggle_more'];
+            toggleArchiveBtn.setAttribute('aria-expanded', String(isExpanded));
         });
 
         if (toggleReelsBtn && reelsExpandWrapper) {
             toggleReelsBtn.addEventListener('click', () => {
                 reelsExpandWrapper.classList.toggle('expanded');
                 const isExpanded = reelsExpandWrapper.classList.contains('expanded');
+                reelsExpandWrapper.inert = !isExpanded;
                 toggleReelsBtn.textContent = translations[currentLang][isExpanded ? 'toggle_reels_less' : 'toggle_reels_more'];
                 toggleReelsBtn.setAttribute('aria-expanded', String(isExpanded));
             });
@@ -2370,6 +2373,7 @@ CADA PRAZO É CUMPRIDO.</h1>
 
                 if (reelsExpandWrapper) {
                     reelsExpandWrapper.classList.toggle('expanded', isFiltered);
+                    reelsExpandWrapper.inert = !isFiltered;
                 }
                 if (toggleReelsBtn) {
                     toggleReelsBtn.hidden = isFiltered;
@@ -2383,7 +2387,10 @@ CADA PRAZO É CUMPRIDO.</h1>
         if (playBtnMobile) {
             playBtnMobile.addEventListener('click', function(e) {
                 const originalPlay = document.getElementById('headerPlayBtn');
-                if (originalPlay) originalPlay.click();
+                if (originalPlay) {
+                    originalPlay.click();
+                    modalTrigger = e.currentTarget;
+                }
             });
         }
 
@@ -2650,8 +2657,11 @@ en: {
             });
 
             const isExpanded = archiveContainer.classList.contains('expanded');
+            archiveContainer.inert = !isExpanded;
             toggleArchiveBtn.textContent = translations[currentLang][isExpanded ? 'toggle_less' : 'toggle_more'];
+            toggleArchiveBtn.setAttribute('aria-expanded', String(isExpanded));
             const reelsExpanded = reelsExpandWrapper && reelsExpandWrapper.classList.contains('expanded');
+            if (reelsExpandWrapper) reelsExpandWrapper.inert = !reelsExpanded;
             if (toggleReelsBtn) {
                 toggleReelsBtn.textContent = translations[currentLang][reelsExpanded ? 'toggle_reels_less' : 'toggle_reels_more'];
                 toggleReelsBtn.setAttribute('aria-expanded', String(reelsExpanded));
@@ -2706,7 +2716,7 @@ en: {
             wrapper.addEventListener('mouseenter', () => {
                 if (!canHoverPreview || isModalOpen) return;
                 hoverTimeout = setTimeout(() => {
-                    if (wrapper.querySelector('.hover-player')) return;
+                    if (isModalOpen || wrapper.querySelector('.hover-player')) return;
                     
                     wrapper.classList.add('loading-preview');
 
