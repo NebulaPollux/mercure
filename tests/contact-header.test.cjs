@@ -8,7 +8,9 @@ test('header contact replaces the standalone LinkedIn action and exposes all cha
     assert.match(html, /id="contactTrigger"[^>]+aria-controls="contactPanel"[^>]+aria-expanded="false"/);
     assert.doesNotMatch(html, /id="contactTrigger"[^>]+title="Contato"/);
     assert.match(html, /id="contactPanel"[^>]+hidden/);
-    assert.equal((html.match(/https:\/\/linkedin\.com\/in\/marcos-soares-santos/g) || []).length, 2);
+    const visibleHtml = html.replace(/<script type="application\/ld\+json">[\s\S]*?<\/script>/, '');
+    assert.equal((visibleHtml.match(/href="https:\/\/linkedin\.com\/in\/marcos-soares-santos"/g) || []).length, 2);
+    assert.match(html, /"sameAs": \["https:\/\/linkedin\.com\/in\/marcos-soares-santos"\]/);
     assert.match(html, /https:\/\/wa\.me\/5511963033573/);
     assert.match(html, /mailto:marcoscpc@outlook\.com/);
 });
@@ -48,4 +50,17 @@ test('contact panel is moved outside the isolated header for page-level backdrop
     assert.match(html, /padding: 1rem 0\.75rem 0\.75rem/);
     assert.match(html, /const right = Math\.max\(16, window\.innerWidth - triggerRect\.right\)/);
     assert.match(html, /header-nav > a\[data-translate-key="nav_about"\][\s\S]*?background: rgba\(255, 255, 255, 0\.08\)/);
+    assert.match(html, /\.trust-bar \{\s*display: none !important;/);
+    assert.match(html, /\.about-stats \{[\s\S]*?grid-template-columns: repeat\(3, minmax\(0, 220px\)\)[\s\S]*?justify-content: center/);
+    assert.equal((html.match(/class="stat-card"/g) || []).length, 3);
+    assert.equal((html.match(/data-video-id=/g) || []).length, 28);
+    assert.doesNotMatch(html, /data-video-id="6a45b87be81b019c9723bc54"/);
+    assert.equal((html.match(/class="project-accordion"/g) || []).length, 4);
+    assert.match(html, /data-video-id="6a45bf80e4e7cc890ee34095"/);
+    assert.match(html, /data-video-id="6a471f53e81b019c974c3eed"/);
+    assert.match(html, /data-video-id="6a45bb7f18d11bffd504439a"/);
+    assert.equal((html.match(/data-translate-key="case_imponderavel_title"/g) || []).length, 0);
+    assert.match(html, /id="selected-projects"/);
+    assert.equal((html.match(/class="project-accordion"/g) || []).length, 4);
+    assert.match(html, /selected_caixa_desc/);
 });

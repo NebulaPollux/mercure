@@ -9,7 +9,7 @@
     <meta property="og:type" content="website">
     <meta property="og:title" content="Mercure — Marcos Soares Santos | Editor de Vídeo Sênior & Motion Designer">
     <meta property="og:description" content="Portfólio de Marcos Soares Santos: edição de vídeo sênior, motion graphics e estratégia de conteúdo para marcas como Dior, P&G, Santander e TRANSPETRO.">
-    <meta property="og:url" content="https://mercurevideo.com.br">
+    <meta property="og:url" content="https://mercurevideo.com.br/">
     <link rel="canonical" href="https://mercurevideo.com.br/">
     <meta property="og:image:alt" content="Mercure Vídeo — Marcos Soares Santos, editor de vídeo sênior e motion designer">
     <meta property="og:image" content="https://mercurevideo.com.br/images/social-share.png">
@@ -832,31 +832,148 @@
             color: #ffffff; 
             text-shadow: 0px 2px 8px rgba(18, 23, 58, 0.8);
         }
-        .hero-cta {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.55rem;
-            margin-top: 1.15rem;
-            min-height: 44px;
-            padding: 0.65rem 1rem;
-            border: 1px solid rgba(165, 255, 231, 0.7);
-            border-radius: 999px;
-            background: var(--mercure-accent);
-            color: var(--mercure-bg);
-            font: inherit;
-            font-weight: 700;
-            text-decoration: none;
-            cursor: pointer;
+        .about-accordion {
+            margin: 0 0 0.75rem;
+            border: 1px solid rgba(255, 255, 255, 0.14);
+            border-radius: 12px;
+            background: rgba(77, 73, 153, 0.1);
+            overflow: hidden;
         }
-        .hero-cta:hover { background: #43d8b5; }
-        .hero-cta:focus-visible { outline: 3px solid var(--mercure-text); outline-offset: 3px; }
-        .case-details { margin: 0.75rem 0 1.25rem; }
-        .case-details summary { cursor: pointer; color: var(--mercure-accent); font-weight: 650; }
-        .case-details p { margin-top: 0.5rem; color: var(--mercure-text-secondary); }
+        .about-accordion summary {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            cursor: pointer;
+            padding: 0.9rem 1rem;
+            color: var(--mercure-text);
+            font-weight: 700;
+            list-style: none;
+        }
+        .about-accordion summary::-webkit-details-marker { display: none; }
+        .about-accordion summary::after { content: '+'; color: var(--mercure-accent); font-size: 1.2rem; }
+        .about-accordion[open] summary::after { content: '−'; }
+        .about-accordion > :not(summary) { margin-left: 1rem; margin-right: 1rem; }
+        .about-accordion > .about-text, .about-accordion > .about-quote { margin-top: 0.25rem; margin-bottom: 1rem; }
+        .about-accordion .services-subgrid { margin-bottom: 1rem; }
+        .about-accordion summary:focus-visible { outline: 2px solid var(--mercure-accent); outline-offset: -2px; }
+        .project-accordion-section { margin: 2rem 0 3rem; }
+        .project-accordion-list { display: grid; gap: 0.75rem; max-width: 900px; margin: 0 auto; }
+        .project-accordion-grid {
+            max-width: none;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            align-items: start;
+        }
+        .project-accordion-grid .project-accordion-body {
+            display: grid;
+            grid-template-columns: minmax(150px, 0.72fr) minmax(0, 1.28fr);
+            align-items: center;
+            gap: 1rem;
+            padding: 0 0.85rem 0.85rem;
+        }
+        .project-accordion-grid .project-accordion-body .video-wrapper { aspect-ratio: 16 / 9; }
+        .project-accordion-grid .project-accordion-body p {
+            min-height: 0;
+            margin: 0;
+            padding: 0.9rem;
+            border-left: 2px solid var(--mercure-accent);
+            background: rgba(0, 0, 0, 0.12);
+            border-radius: 0 8px 8px 0;
+            line-height: 1.5;
+        }
+        .project-accordion-grid .project-accordion-placeholder { grid-column: 1 / -1; }
+        .project-accordion[open] {
+            grid-column: 1 / -1;
+        }
+        .project-accordion[open] .project-accordion-body {
+            grid-template-columns: minmax(260px, 0.8fr) minmax(0, 1.2fr);
+            gap: 1.5rem;
+            padding: 0 1.25rem 1.25rem;
+            animation: projectAccordionReveal 0.32s ease-out both;
+        }
+        .project-accordion[open] .project-accordion-body p {
+            padding: 1.25rem;
+            font-size: 1rem;
+        }
+        .project-accordion[open] .project-accordion-body .video-wrapper {
+            min-height: 280px;
+        }
+        @keyframes projectAccordionReveal {
+            from { opacity: 0; transform: translateY(-6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @media (max-width: 900px) {
+            .project-accordion-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        }
+        @media (max-width: 560px) {
+            .project-accordion-grid { grid-template-columns: 1fr; }
+            .project-accordion summary { min-height: 3.5rem; }
+            .project-accordion[open] {
+                grid-column: 1;
+            }
+            .project-accordion-grid .project-accordion-body,
+            .project-accordion[open] .project-accordion-body {
+                grid-template-columns: 1fr;
+                gap: 0.85rem;
+                padding: 0 0.85rem 0.85rem;
+            }
+            .project-accordion-grid .project-accordion-body p { order: 1; }
+            .project-accordion-grid .project-accordion-body .video-wrapper { order: 2; }
+            .project-accordion[open] .project-accordion-body .video-wrapper { min-height: 0; }
+        }
+        .project-accordion {
+            border: 1px solid rgba(255, 255, 255, 0.16);
+            border-radius: 12px;
+            background: rgba(77, 73, 153, 0.1);
+            overflow: hidden;
+        }
+        .project-accordion summary {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.75rem;
+            min-height: 4.25rem;
+            cursor: pointer;
+            padding: 0.85rem 1rem;
+            color: var(--mercure-text);
+            font-weight: 700;
+            line-height: 1.25;
+            text-wrap: balance;
+            list-style: none;
+        }
+        .project-accordion summary::-webkit-details-marker { display: none; }
+        .project-accordion summary::after { content: '+'; color: var(--mercure-accent); font-size: 1.25rem; }
+        .project-accordion[open] summary::after { content: '−'; }
+        .project-accordion summary:focus-visible { outline: 2px solid var(--mercure-accent); outline-offset: -2px; }
+        .project-accordion-body { padding: 0 1rem 1rem; }
+        .project-accordion-body .video-wrapper { margin-top: 0.25rem; }
+        .project-accordion-body p { color: var(--mercure-text-secondary); margin: 0.5rem 0 0.9rem; }
+        .project-accordion-placeholder { color: var(--mercure-text-secondary); font-style: italic; }
+        .legacy-projects-section { display: none !important; }
+        .project-card-accordion .card-caption h3 {
+            cursor: pointer;
+            outline: none;
+        }
+        .project-card-accordion .card-caption h3::after {
+            content: '+';
+            display: inline-block;
+            margin-left: 0.45rem;
+            color: var(--mercure-accent);
+            font-size: 0.9em;
+            transition: transform 0.25s ease;
+        }
+        .project-card-accordion.is-open .card-caption h3::after { content: '−'; }
+        .project-card-accordion:not(.is-open) .video-wrapper { display: none; }
+        .project-card-accordion:not(.is-open) .card-caption p { display: none; }
+        .project-card-accordion .card-caption h3:focus-visible {
+            outline: 2px solid var(--mercure-accent);
+            outline-offset: 4px;
+            border-radius: 3px;
+        }
 
 
 /* --- TRUST BAR MARQUEE (Efeito Infinito Contínuo) --- */
         .trust-bar {
+            display: none !important;
             padding: 2.5rem 0;
             border-bottom: 1px solid var(--mercure-border);
             text-align: center;
@@ -1387,7 +1504,12 @@
 
         .about-stats {
             display: grid;
-            grid-template-columns: repeat(5, 1fr);
+            grid-template-columns: repeat(3, minmax(0, 220px));
+            width: 100%;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            justify-content: center;
             gap: 16px;
             margin-top: 2.5rem;
             position: relative;
@@ -1492,9 +1614,14 @@
                 margin-bottom: 1rem !important;
             }
             .video-grid-horizontal {
-                grid-template-columns: 1fr;
-                gap: 24px;
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 16px;
             }
+            .project-accordion-grid .project-accordion-body {
+                grid-template-columns: minmax(120px, 0.8fr) minmax(0, 1.2fr);
+                gap: 0.75rem;
+            }
+            .project-accordion-grid .project-accordion-body p { min-height: 0; padding: 0.7rem; }
             .reels-grid {
                 grid-template-columns: 1fr;
                 margin-bottom: 1.5rem;
@@ -1514,7 +1641,8 @@
                 height: 200px;
             }
             .about-stats {
-                grid-template-columns: repeat(2, 1fr);
+                grid-template-columns: repeat(2, minmax(0, 220px));
+                justify-content: center;
             }
             .services-subgrid {
                 grid-template-columns: 1fr;
@@ -1554,7 +1682,8 @@
                 grid-template-columns: 1fr;
             }
             .about-stats {
-                grid-template-columns: 1fr;
+                grid-template-columns: minmax(0, 300px);
+                justify-content: center;
             }
         }
 
@@ -1929,7 +2058,6 @@
         <div class="hero-content" id="heroContent">
             <h1 class="hero-title" data-translate-key="hero_title">Editor de vídeo sênior e motion designer em São Paulo</h1>
             <p class="hero-subtitle" data-translate-key="hero_subtitle">Broadcast, campanhas e edição same-day para agências, produtoras e clientes diretos.</p>
-            <button class="hero-cta" id="heroShowreelBtn" type="button" data-translate-key="hero_showreel_cta">Assistir showreel</button>
         </div>
     </section>
 
@@ -1944,7 +2072,7 @@
                 </div>
             </div>
             <div class="header-center">
-                <button id="headerPlayBtn" class="header-play-btn" aria-label="Assistir showreel" data-translate-aria-label="play_button" title="Assistir showreel" data-translate-title="play_button">
+                <button id="headerPlayBtn" class="header-play-btn" aria-label="Assistir um trabalho" data-translate-aria-label="play_button" title="Assistir um trabalho" data-translate-title="play_button">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <polygon points="5,3 19,12 5,21 5,3"></polygon>
                     </svg>
@@ -2004,7 +2132,7 @@
                 <span class="bottom-brand-text">MERCURE VÍDEO</span>
             </div>
             <div class="bottom-bar-center">
-                <button id="headerPlayBtnMobile" class="bottom-play-btn" aria-label="Assistir showreel" title="Assistir showreel" data-translate-aria-label="play_button" data-translate-title="play_button">
+                <button id="headerPlayBtnMobile" class="bottom-play-btn" aria-label="Assistir um trabalho" title="Assistir um trabalho" data-translate-aria-label="play_button" data-translate-title="play_button">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <polygon points="5,3 19,12 5,21 5,3"></polygon>
                     </svg>
@@ -2050,20 +2178,40 @@
                     <p class="section-subtitle" data-translate-key="sec1_subtitle">Campanhas publicitárias, coberturas de alto impacto e jornalismo broadcast.</p>
                 </div>
 
-                <!-- VÍDEO HERO (Destaque Principal Think Plastic) -->
-                <div class="video-hero reveal" style="margin-bottom: 4rem;">
-                    <h3 class="video-hero-title" data-translate-key="showcase_title">Think Plastic Brazil – Abertura do Seminário</h3>
-                    <p data-translate-key="showcase_desc" style="text-align: center; font-size: 0.9rem; color: var(--mercure-text-secondary); margin-bottom: 1.5rem; max-width: 800px; margin-left: auto; margin-right: auto; line-height: 1.5;">
-                        Vídeo de abertura do seminário Think Plastic Brazil, destacando a importância da economia circular e da inovação no setor de plásticos, com uma montagem dinâmica e uma mensagem inspiradora sobre sustentabilidade e futuro.
-                    </p>
-                    <details class="case-details">
-                        <summary data-translate-key="case_details_label">Ver contexto do projeto</summary>
-                        <p data-translate-key="case_think_plastic">Peça de abertura de seminário, apresentada como destaque do portfólio.</p>
-                    </details>
-                    <div class="video-wrapper" data-video-id="6a45bf80e4e7cc890ee34095">
-                        <span class="mercure-badge">✓ Mercure Showcase</span>
-                        <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Think Plastic Brazil – Abertura do Seminário" class="video-thumbnail" loading="lazy">
-                        <div class="play-button"></div>
+                <!-- PROJETOS SELECIONADOS: acordeão horizontal -->
+                <div class="project-accordion-section reveal" id="selected-projects">
+                    <div class="project-accordion-list project-accordion-grid">
+                        <details class="project-accordion" open>
+                            <summary data-translate-key="selected_think_title">Think Plastic Brazil — Abertura do Seminário</summary>
+                            <div class="project-accordion-body">
+                                <p><strong data-translate-key="selected_think_role">Vídeo de abertura de seminário</strong><br><span data-translate-key="selected_think_desc">Vídeo de abertura do seminário Think Plastic Brazil, sobre economia circular e inovação no setor de plásticos.</span></p>
+                                <div class="video-wrapper" data-video-id="6a45bf80e4e7cc890ee34095"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Think Plastic Brazil — Abertura do Seminário" class="video-thumbnail" loading="lazy"><div class="play-button"></div></div>
+                            </div>
+                        </details>
+                        <details class="project-accordion" open>
+                            <summary data-translate-key="selected_imponderavel_title">O Imponderável — Record News</summary>
+                            <div class="project-accordion-body">
+                                <p><strong data-translate-key="selected_imponderavel_role">Talk show de inovação · TV</strong><br><span data-translate-key="selected_imponderavel_desc">Talk show de inovação da Record News. Faz parte dos mais de 40 episódios que editei para a emissora.</span></p>
+                                <div class="video-wrapper" data-video-id="6a471f53e81b019c974c3eed"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="O Imponderável — Record News" class="video-thumbnail" loading="lazy"><div class="play-button"></div></div>
+                            </div>
+                        </details>
+                        <details class="project-accordion" open>
+                            <summary data-translate-key="selected_transpetro_title">TRANSPETRO — Jd. Hollywood</summary>
+                            <div class="project-accordion-body">
+                                <p><strong data-translate-key="selected_transpetro_role">Cobertura e edição same-day</strong><br><span data-translate-key="selected_transpetro_desc">Conteúdo da cobertura da TRANSPETRO editado para entrega no mesmo dia, enquanto o evento acontecia.</span></p>
+                                <div class="video-wrapper" data-video-id="6a45bb7f18d11bffd504439a"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="TRANSPETRO — Jd. Hollywood" class="video-thumbnail" loading="lazy"><div class="play-button"></div></div>
+                            </div>
+                        </details>
+                        <details class="project-accordion" open>
+                            <summary data-translate-key="selected_caixa_title">Hackathon CAIXA Consórcio</summary>
+                            <div class="project-accordion-body">
+                                <p><strong data-translate-key="selected_caixa_role">Same-day · 3 dias · 1 vídeo por dia</strong><br><span data-translate-key="selected_caixa_desc">Hackathon da CAIXA Consórcio, no Guarujá, ao longo de três dias. Editei um vídeo ao final de cada dia com os principais momentos.</span></p>
+                                <div class="video-wrapper" data-video-id="6ae508c834bee2c4e82840c1">
+                                    <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Hackathon CAIXA Consórcio" class="video-thumbnail" loading="lazy">
+                                    <div class="play-button"></div>
+                                </div>
+                            </div>
+                        </details>
                     </div>
                 </div>
 
@@ -2071,19 +2219,8 @@
                     <h3 class="section-title" data-translate-key="other_projects" style="font-size: 1.25rem;">Outros Projetos</h3>
                 </div>
 
-                <!-- GRUPO 1: HIGHLIGHTS (3 visíveis) -->
+                <!-- GRUPO 1: HIGHLIGHTS (demais projetos) -->
                 <div class="video-grid-horizontal reveal">
-                    <div class="horizontal-card">
-                        <div class="video-wrapper" data-video-id="6a471f53e81b019c974c3eed">
-                            <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="O Imponderável - Record News" class="video-thumbnail" loading="lazy">
-                            <div class="play-button"></div>
-                        </div>
-                        <div class="card-caption">
-                            <h3 data-translate-key="O Imponderável — Record News">O Imponderável — Record News</h3>
-                            <p data-translate-key="Broadcast de Televisão / Talk Show de Inovação">Broadcast de Televisão / Talk Show de Inovação</p>
-                        </div>
-                    </div>
-
                     <div class="horizontal-card">
                         <div class="video-wrapper" data-video-id="6a45babde81b019c9723eb60">
                             <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="BodyAction na Arnold Expo" class="video-thumbnail" loading="lazy">
@@ -2094,15 +2231,24 @@
                             <p data-translate-key="Cobertura de Evento / Esportivo">Cobertura de Evento / Esportivo</p>
                         </div>
                     </div>
-
                     <div class="horizontal-card">
-                        <div class="video-wrapper" data-video-id="6a45bb7f18d11bffd504439a">
-                            <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Same-day TRANSPETRO - Jd. Hollywood" class="video-thumbnail" loading="lazy">
+                        <div class="video-wrapper" data-video-id="6a45b9b7e81b019c9723d6d3">
+                            <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Gree Senai" class="video-thumbnail" loading="lazy">
                             <div class="play-button"></div>
                         </div>
                         <div class="card-caption">
-                            <h3 data-translate-key="TRANSPETRO - Jd. Hollywood">TRANSPETRO - Jd. Hollywood</h3>
-                            <p data-translate-key="Cobertura e Edição Same-Day">Cobertura e Edição Same-Day</p>
+                            <h3 data-translate-key="Gree Senai">Gree Senai</h3>
+                            <p data-translate-key="Edição Comercial / Motion Graphics">Edição Comercial / Motion Graphics</p>
+                        </div>
+                    </div>
+                    <div class="horizontal-card">
+                        <div class="video-wrapper" data-video-id="6a45b92318d11bffd5040e32">
+                            <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="HTI Longevidade Saudável 2023" class="video-thumbnail" loading="lazy">
+                            <div class="play-button"></div>
+                        </div>
+                        <div class="card-caption">
+                            <h3 data-translate-key="HTI Longevidade 2023">HTI Longevidade 2023</h3>
+                            <p data-translate-key="Cobertura e Edição Same-day">Cobertura e Edição Same-day</p>
                         </div>
                     </div>
                 </div>
@@ -2110,27 +2256,6 @@
                 <!-- GRUPO 2: MAIS PROJETOS (expansível) -->
                 <div class="expandable-wrapper" id="archiveContainer" inert>
                     <div class="video-grid-horizontal">
-                        <div class="horizontal-card">
-                            <div class="video-wrapper" data-video-id="6a45b9b7e81b019c9723d6d3">
-                                <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Gree Senai" class="video-thumbnail" loading="lazy">
-                                <div class="play-button"></div>
-                            </div>
-                            <div class="card-caption">
-                                <h3 data-translate-key="Gree Senai">Gree Senai</h3>
-                                <p data-translate-key="Edição Comercial / Motion Graphics">Edição Comercial / Motion Graphics</p>
-                            </div>
-                        </div>
-
-                        <div class="horizontal-card">
-                            <div class="video-wrapper" data-video-id="6a45b92318d11bffd5040e32">
-                                <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="HTI Longevidade Saudável 2023" class="video-thumbnail" loading="lazy">
-                                <div class="play-button"></div>
-                            </div>
-                            <div class="card-caption">
-                                <h3 data-translate-key="HTI Longevidade 2023">HTI Longevidade 2023</h3>
-                                <p data-translate-key="Cobertura e Edição Same-Day">Cobertura e Edição Same-Day</p>
-                            </div>
-                        </div>
 
                         <div class="horizontal-card">
                             <div class="video-wrapper" data-video-id="6a45bb92e4e7cc890ee2fa22">
@@ -2139,7 +2264,7 @@
                             </div>
                             <div class="card-caption">
                                 <h3 data-translate-key="TRANSPETRO - Salesópolis">TRANSPETRO - Salesópolis</h3>
-                                <p data-translate-key="Cobertura e Edição Same-Day">Cobertura e Edição Same-Day</p>
+                                <p data-translate-key="Cobertura e Edição Same-day">Cobertura e Edição Same-day</p>
                             </div>
                         </div>
 
@@ -2216,7 +2341,7 @@
                             </div>
                             <div class="card-caption">
                                 <h3 data-translate-key="TattooWeek 2024">TattooWeek 2024</h3>
-                                <p data-translate-key="Cobertura Same-Day de Convenção">Cobertura Same-Day de Convenção</p>
+                                <p data-translate-key="Cobertura Same-day de Convenção">Cobertura Same-day de Convenção</p>
                             </div>
                         </div>
 
@@ -2231,16 +2356,6 @@
                             </div>
                         </div>
 
-                        <div class="horizontal-card">
-                            <div class="video-wrapper" data-video-id="6a45b87be81b019c9723bc54">
-                                <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Sequoia - dia do motorista" class="video-thumbnail" loading="lazy">
-                                <div class="play-button"></div>
-                            </div>
-                            <div class="card-caption">
-                                <h3 data-translate-key="Sequoia - Dia do Motorista">Sequoia - Dia do Motorista</h3>
-                                <p data-translate-key="Campanha Interna Corporativa">Campanha Interna Corporativa</p>
-                            </div>
-                        </div>
                     </div>
                 </div>
 
@@ -2262,7 +2377,7 @@
                     <button class="filter-btn" data-filter="campanhas" data-translate-key="filter_campanhas" aria-pressed="false">Campanhas Tattoo</button>
                     <button class="filter-btn" data-filter="institucionais" data-translate-key="filter_institucionais" aria-pressed="false">Institucionais</button>
                     <button class="filter-btn" data-filter="internacionais" data-translate-key="filter_internacionais" aria-pressed="false">Internacionais</button>
-                    <button class="filter-btn" data-filter="apas" data-translate-key="filter_apas" aria-pressed="false">Same Day (APAS)</button>
+                    <button class="filter-btn" data-filter="apas" data-translate-key="filter_apas" aria-pressed="false">Same-day (APAS)</button>
                 </div>
 
                 <div class="reels-grid reveal" id="reelsGrid">
@@ -2362,12 +2477,12 @@
                         <!-- SAME DAY APAS -->
                         <div class="vertical-card" data-category="apas">
                             <div class="video-wrapper" data-video-id="6a45ba33e81b019c9723df2b">
-                                <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="APAS Show 2024 - Cerimonia solene de abertura" class="video-thumbnail-reel" loading="lazy">
+                                <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="APAS Show 2024 - Cerimônia solene de abertura" class="video-thumbnail-reel" loading="lazy">
                                 <div class="play-button"></div>
                             </div>
                             <div class="card-caption">
                                 <h3 data-translate-key="Abertura Solene">Abertura Solene</h3>
-                                <p data-translate-key="Same-Day Event Coverage">Same-Day Event Coverage</p>
+                                <p data-translate-key="Same-day Event Coverage">Same-day Event Coverage</p>
                             </div>
                         </div>
 
@@ -2378,7 +2493,7 @@
                             </div>
                             <div class="card-caption">
                                 <h3 data-translate-key="Coletiva de Imprensa">Coletiva de Imprensa</h3>
-                                <p data-translate-key="Same-Day Event Coverage / Press">Same-Day Event Coverage / Press</p>
+                                <p data-translate-key="Same-day Event Coverage / Press">Same-day Event Coverage / Press</p>
                             </div>
                         </div>
 
@@ -2389,7 +2504,7 @@
                             </div>
                             <div class="card-caption">
                                 <h3 data-translate-key="Destaques APAS Show">Destaques APAS Show</h3>
-                                <p data-translate-key="Same-Day Event Coverage">Same-Day Event Coverage</p>
+                                <p data-translate-key="Same-day Event Coverage">Same-day Event Coverage</p>
                             </div>
                         </div>
 
@@ -2400,7 +2515,7 @@
                             </div>
                             <div class="card-caption">
                                 <h3 data-translate-key="Expositores">Expositores</h3>
-                                <p data-translate-key="Same-Day Event Coverage / Interviews">Same-Day Event Coverage / Interviews</p>
+                                <p data-translate-key="Same-day Event Coverage / Interviews">Same-day Event Coverage / Interviews</p>
                             </div>
                         </div>
                     </div>
@@ -2430,39 +2545,39 @@
                     </div>
 
                     <div class="about-right">
-                        <p class="about-text" data-translate-key="about_p1">Sou Marcos Soares Santos, editor de vídeo e motion designer com 7 anos de experiência em televisão, documentários, campanhas, vídeos institucionais, eventos e conteúdo digital. Trabalho da construção narrativa à finalização, com atenção ao ritmo, à clareza da mensagem e às necessidades de cada entrega. Ao longo da minha trajetória, editei mais de 40 episódios para a Record News, participei de projetos para marcas e instituições como Dior, Santander, P&amp;G, TRANSPETRO, CAIXA Consórcio, CNP Assurances e SESC Brasil, e também atuei na coordenação de pós-produção e na organização de fluxos de trabalho. Entre as entregas recentes, editei um vídeo institucional de 11 minutos para a ação “Sentir para Transformar”, da CNP Assurances, a partir de mais de 1h50 de gravações, e produzo Reels e Shorts para os canais digitais do SESC Brasil.</p>
-
-                        <blockquote class="about-quote" data-translate-key="about_quote">Tenho experiência em edição same-day, com entregas feitas enquanto o evento acontece. Na cobertura da TRANSPETRO, editei conteúdo para entrega no mesmo dia. No Hackathon CAIXA Consórcio, realizado ao longo de três dias, editei um vídeo ao final de cada dia para divulgação dos principais momentos.</blockquote>
-
-                        <p class="about-text" data-translate-key="about_p2">Gosto de unir narrativa e organização: entender o que cada história precisa, fazer escolhas claras na montagem e deixar o material pronto para sua próxima etapa. Trabalho com Premiere Pro, After Effects, DaVinci Resolve/Fusion, CapCut Pro, Photoshop, Illustrator e Blender. Integro ferramentas de inteligência artificial quando contribuem para o processo, mantendo a revisão técnica e criativa das entregas.</p>
-
-                        <div class="services-subgrid">
-                            <div class="service-item">
-                                <h3 data-translate-key="srv_broadcast_title">Edição & Finalização</h3>
-                                <p data-translate-key="srv_broadcast_desc">Comerciais de TV, institucionais, aftermovies, YouTube de longa duração e Reels/Shorts de alta retenção.</p>
-                            </div>
-                            <div class="service-item">
-                                <h3 data-translate-key="srv_comercial_title">Motion Graphics & VFX</h3>
-                                <p data-translate-key="srv_comercial_desc">Vinhetas, intros, legendas dinâmicas, lower thirds, animação 2D e composição complexa no Fusion e After Effects.</p>
-                            </div>
-                            <div class="service-item">
-                                <h3 data-translate-key="srv_sameday_title">Performance & Estratégia</h3>
-                                <p data-translate-key="srv_sameday_desc">VSLs, roteiros para tráfego pago (Meta/Google Ads), testes A/B de criativos e retenção de público.</p>
-                            </div>
-                            <div class="service-item">
-                                <h3 data-translate-key="srv_sup_title">Same-day Editing</h3>
-                                <p data-translate-key="srv_sup_desc">Edição em tempo real durante eventos com entrega em até 4 horas. Desempenho comprovado sob alta pressão operacional.</p>
-                            </div>
-                        </div>
-
-                        <details class="case-details">
-                            <summary data-translate-key="case_caixa_title">Hackathon CAIXA Consórcio</summary>
-                            <p data-translate-key="case_caixa_desc">Durante três dias, um vídeo foi editado ao final de cada dia para divulgação dos principais momentos.</p>
+                        <details class="about-accordion" open>
+                            <summary data-translate-key="about_profile_title">Perfil profissional</summary>
+                            <p class="about-text" data-translate-key="about_p1">Sou Marcos Soares Santos, editor de vídeo e motion designer com 7 anos de experiência em televisão, documentários, campanhas, vídeos institucionais, eventos e conteúdo digital. Trabalho da construção narrativa à finalização, com atenção ao ritmo, à clareza da mensagem e às necessidades de cada entrega. Ao longo da minha trajetória, editei mais de 40 episódios para a Record News, participei de projetos para marcas e instituições como Dior, Santander, P&amp;G, TRANSPETRO, CAIXA Consórcio, CNP Assurances e SESC Brasil, e também atuei na coordenação de pós-produção e na organização de fluxos de trabalho. Entre as entregas recentes, editei um vídeo institucional de 11 minutos para a ação “Sentir para Transformar”, da CNP Assurances, a partir de mais de 1h50 de gravações, e produzo Reels e Shorts para os canais digitais do SESC Brasil.</p>
                         </details>
-                        <details class="case-details">
-                            <summary data-translate-key="case_imponderavel_title">O Imponderável — Record News</summary>
-                            <p data-translate-key="case_imponderavel_desc">Projeto de televisão que integra o acervo de trabalhos apresentados no portfólio.</p>
+
+                        <details class="about-accordion" open>
+                            <summary data-translate-key="about_sameday_title">Same-day e entregas</summary>
+                            <blockquote class="about-quote" data-translate-key="about_quote">Tenho experiência em edição same-day, com entregas feitas enquanto o evento acontece. Na cobertura da TRANSPETRO, editei conteúdo para entrega no mesmo dia. No Hackathon CAIXA Consórcio, realizado ao longo de três dias, editei um vídeo ao final de cada dia para divulgação dos principais momentos.</blockquote>
                         </details>
+
+                        <details class="about-accordion" open>
+                            <summary data-translate-key="about_tools_title">Ferramentas e especialidades</summary>
+                            <p class="about-text" data-translate-key="about_p2">Gosto de unir narrativa e organização: entender o que cada história precisa, fazer escolhas claras na montagem e deixar o material pronto para sua próxima etapa. Trabalho com Premiere Pro, After Effects, DaVinci Resolve/Fusion, CapCut Pro, Photoshop, Illustrator e Blender. Integro ferramentas de inteligência artificial quando contribuem para o processo, mantendo a revisão técnica e criativa das entregas.</p>
+                            <div class="services-subgrid">
+                                <div class="service-item">
+                                    <h3 data-translate-key="srv_broadcast_title">Edição &amp; Finalização</h3>
+                                    <p data-translate-key="srv_broadcast_desc">Comerciais de TV, institucionais, aftermovies, YouTube de longa duração e Reels/Shorts de alta retenção.</p>
+                                </div>
+                                <div class="service-item">
+                                    <h3 data-translate-key="srv_comercial_title">Motion Graphics &amp; VFX</h3>
+                                    <p data-translate-key="srv_comercial_desc">Vinhetas, intros, legendas dinâmicas, lower thirds, animação 2D e composição complexa no Fusion e After Effects.</p>
+                                </div>
+                                <div class="service-item">
+                                    <h3 data-translate-key="srv_sameday_title">Performance &amp; Estratégia</h3>
+                                    <p data-translate-key="srv_sameday_desc">VSLs, roteiros para tráfego pago (Meta/Google Ads), testes A/B de criativos e retenção de público.</p>
+                                </div>
+                                <div class="service-item">
+                                    <h3 data-translate-key="srv_sup_title">Same-day Editing</h3>
+                                    <p data-translate-key="srv_sup_desc">Edição em tempo real durante eventos com entrega em até 4 horas. Desempenho comprovado sob alta pressão operacional.</p>
+                                </div>
+                            </div>
+                        </details>
+
 
                         <div class="about-stats">
                             <div class="stat-card">
@@ -2474,7 +2589,7 @@
                                 <p data-translate-key="stat_episodes_desc">editados para TV</p>
                             </div>
                             <div class="stat-card">
-                                <h4 data-translate-key="stat_sameday_title">Same-Day</h4>
+                                <h4 data-translate-key="stat_sameday_title">Same-day</h4>
                                 <p data-translate-key="stat_sameday_desc">em até 4 horas</p>
                             </div>
                         </div>
@@ -2504,7 +2619,7 @@
                 </div>
             </div>
             <p class="footer-copyright" data-translate-key="copyright">
-                © 2026 Mercure | Marcos Edição & Motion
+                © 2026 Mercure | Marcos Soares Santos
             </p>
         </footer>
     </div>
@@ -2709,20 +2824,27 @@
                 "nav_about": "SOBRE MIM",
                 "hero_title": "Editor de vídeo sênior e motion designer em São Paulo",
                 "hero_subtitle": "Broadcast, campanhas e edição same-day para agências, produtoras e clientes diretos.",
-                "hero_showreel_cta": "Assistir showreel",
-                "case_details_label": "Ver contexto do projeto",
-                "case_think_plastic": "Peça de abertura de seminário, apresentada como destaque do portfólio.",
-                "case_caixa_title": "Hackathon CAIXA Consórcio",
-                "case_caixa_desc": "Durante três dias, um vídeo foi editado ao final de cada dia para divulgação dos principais momentos.",
-                "case_imponderavel_title": "O Imponderável — Record News",
-                "case_imponderavel_desc": "Projeto de televisão que integra o acervo de trabalhos apresentados no portfólio.",
+                "selected_projects_title": "PROJETOS SELECIONADOS",
+                "selected_projects_subtitle": "Uma seleção curta de trabalhos para agências e clientes diretos.",
+                "selected_think_title": "Think Plastic Brazil — Abertura do Seminário",
+                "selected_think_role": "Vídeo de abertura de seminário",
+                "selected_think_desc": "Vídeo de abertura do seminário Think Plastic Brazil, sobre economia circular e inovação no setor de plásticos.",
+                "selected_imponderavel_title": "O Imponderável — Record News",
+                "selected_imponderavel_role": "Talk show de inovação · TV",
+                "selected_imponderavel_desc": "Talk show de inovação da Record News. Faz parte dos mais de 40 episódios que editei para a emissora.",
+                "selected_transpetro_title": "TRANSPETRO — Jd. Hollywood",
+                "selected_transpetro_role": "Cobertura e edição same-day",
+                "selected_transpetro_desc": "Conteúdo da cobertura da TRANSPETRO editado para entrega no mesmo dia, enquanto o evento acontecia.",
+                "selected_caixa_title": "Hackathon CAIXA Consórcio",
+                "selected_caixa_role": "Same-day · 3 dias · 1 vídeo por dia",
+                "selected_caixa_desc": "Hackathon da CAIXA Consórcio, no Guarujá, ao longo de três dias. Editei um vídeo ao final de cada dia com os principais momentos.",
                 "nav_contact_wa": "WHATSAPP ↗",
                 "contact_button": "Contato",
                 "contact_panel_title": "Fale sobre seu projeto",
                 "contact_whatsapp": "WhatsApp",
                 "contact_email": "E-mail",
                 "contact_linkedin": "LinkedIn",
-                "play_button": "Assistir showreel",
+                "play_button": "Assistir um trabalho",
                 "hero_volume_unmute": "Ouvir som",
                 "hero_volume_mute": "Mudo",
                 "trust_bar_label": "Trabalhos entregues para",
@@ -2741,10 +2863,13 @@
                 "filter_campanhas": "Campanhas Tattoo",
                 "filter_institucionais": "Institucionais",
                 "filter_internacionais": "Internacionais",
-                "filter_apas": "Same Day (APAS)",
+                "filter_apas": "Same-day (APAS)",
                 "sec3_title": "ESPECIALISTA EM PÓS-PRODUÇÃO",
                 "sec3_subtitle": "Liderança, ritmo narrativo e consistência sob forte pressão operacional.",
                 "about_headline": "Editor de vídeo sênior · Motion graphics · Estrategista de conteúdo",
+                "about_profile_title": "Perfil profissional",
+                "about_sameday_title": "Same-day e entregas",
+                "about_tools_title": "Ferramentas e especialidades",
                 "about_p1": "Sou Marcos Soares Santos, editor de vídeo e motion designer com 7 anos de experiência em televisão, documentários, campanhas, vídeos institucionais, eventos e conteúdo digital. Trabalho da construção narrativa à finalização, com atenção ao ritmo, à clareza da mensagem e às necessidades de cada entrega. Ao longo da minha trajetória, editei mais de 40 episódios para a Record News e participei de projetos para marcas e instituições como Dior, Santander, P&G, TRANSPETRO, CAIXA Consórcio e SESC Brasil. Também atuei na coordenação de pós-produção e na organização de fluxos de trabalho.",
                 "about_quote": "Tenho experiência em edição same-day, com entregas feitas enquanto o evento acontece. Na cobertura da TRANSPETRO, editei conteúdo para entrega no mesmo dia. No Hackathon CAIXA Consórcio, realizado ao longo de três dias em Guarujá, editei um vídeo ao final de cada dia para divulgação dos principais momentos.",
                 "about_quote_projects": "Para o projeto ‘Sentir para Transformar’, da CNP Assurances, montei um vídeo institucional de 11 minutos a partir de mais de 1h50 de gravações. Fiz a decupagem, estruturei os blocos narrativos, corrigi cor, tratei o áudio e organizei a timeline para a etapa posterior de motion graphics.",
@@ -2762,13 +2887,13 @@
                 "stat_years_desc": "em pós-produção",
                 "stat_episodes_title": "40+ Episódios",
                 "stat_episodes_desc": "editados para TV",
-                "stat_sameday_title": "Same-Day",
+                "stat_sameday_title": "Same-day",
                 "stat_sameday_desc": "em até 4 horas",
                 "foot_tools": "Softwares & Ferramentas: Adobe Premiere Pro, After Effects, DaVinci Resolve, CapCut Pro, Photoshop, Illustrator, CorelDRAW",
                 "foot_ia": "IA & Teste: ElevenLabs, Sora, ChatGPT, DeepSeek, Gemini, Runway",
                 "cta_title": "Quer conversar sobre um projeto?",
                 "btn_cv": "Currículo",
-                "copyright": "© 2026 Mercure | Marcos Edição & Motion",
+                "copyright": "© 2026 Mercure | Marcos Soares Santos",
                 "close_btn": "Fechar [X]",
                 "modal_title": "Vídeo em destaque",
                  "modal_player_title": "Player de vídeo em destaque",
@@ -2779,20 +2904,27 @@ en: {
                 "nav_about": "ABOUT ME",
                 "hero_title": "Senior video editor and motion designer in São Paulo",
                 "hero_subtitle": "Broadcast, campaigns, and same-day editing for agencies, production companies, and direct clients.",
-                "hero_showreel_cta": "Watch the showreel",
-                "case_details_label": "View project context",
-                "case_think_plastic": "Seminar opening piece, presented as a portfolio highlight.",
-                "case_caixa_title": "CAIXA Consórcio Hackathon",
-                "case_caixa_desc": "Over three days, one video was edited at the end of each day to share the key moments.",
-                "case_imponderavel_title": "O Imponderável — Record News",
-                "case_imponderavel_desc": "Television project included in the portfolio work archive.",
+                "selected_projects_title": "SELECTED PROJECTS",
+                "selected_projects_subtitle": "A short selection of work for agencies and direct clients.",
+                "selected_think_title": "Think Plastic Brazil — Seminar Opening",
+                "selected_think_role": "Seminar opening video",
+                "selected_think_desc": "Opening video for the Think Plastic Brazil seminar, on the circular economy and innovation in the plastics sector.",
+                "selected_imponderavel_title": "The Imponderable — Record News",
+                "selected_imponderavel_role": "Innovation talk show · TV",
+                "selected_imponderavel_desc": "Innovation talk show on Record News, part of the 40+ episodes I edited for the network.",
+                "selected_transpetro_title": "TRANSPETRO — Jd. Hollywood",
+                "selected_transpetro_role": "Same-day coverage and editing",
+                "selected_transpetro_desc": "Content from the TRANSPETRO coverage, edited for same-day delivery while the event was still happening.",
+                "selected_caixa_title": "CAIXA Consórcio Hackathon",
+                "selected_caixa_role": "Same-day · 3 days · 1 video per day",
+                "selected_caixa_desc": "CAIXA Consórcio hackathon in Guarujá, over three days. I edited one video at the end of each day with the key moments.",
                 "nav_contact_wa": "WHATSAPP ↗",
                 "contact_button": "Contact",
                 "contact_panel_title": "Talk about your project",
                 "contact_whatsapp": "WhatsApp",
                 "contact_email": "Email",
                 "contact_linkedin": "LinkedIn",
-                "play_button": "Watch showreel",
+                "play_button": "Watch a project",
                 "hero_volume_unmute": "Tap to unmute",
                 "hero_volume_mute": "Mute",
                 "trust_bar_label": "Work delivered for",
@@ -2811,10 +2943,13 @@ en: {
                 "filter_campanhas": "Tattoo Campaigns",
                 "filter_institucionais": "Institutional",
                 "filter_internacionais": "International",
-                "filter_apas": "Same Day (APAS)",
+                "filter_apas": "Same-day (APAS)",
                 "sec3_title": "POST-PRODUCTION SPECIALIST",
                 "sec3_subtitle": "Leadership, narrative rhythm, and consistency under heavy operational pressure.",
                 "about_headline": "Senior Video Editor · Motion Graphics · Content Strategist",
+                "about_profile_title": "Professional profile",
+                "about_sameday_title": "Same-day and delivery",
+                "about_tools_title": "Tools and specialties",
                 "about_p1": "I am Marcos Soares Santos, a video editor and motion designer with 7 years of experience in television, documentaries, campaigns, corporate films, events, and digital content. I work from story construction through finishing, with attention to pacing, clarity, and each project's delivery needs. My work includes more than 40 episodes for Record News and projects for brands and organizations such as Dior, Santander, P&G, TRANSPETRO, CAIXA Consórcio, CNP Assurances, and SESC Brasil. I have also worked in post-production coordination and workflow organization. Recent work includes an 11-minute corporate film for CNP Assurances’ ‘Sentir para Transformar’, edited from over 1 hour and 50 minutes of footage, and recurring Reels and Shorts for SESC Brasil’s digital channels.",
                 "about_quote": "I have same-day editing experience, delivering content while events are underway. For TRANSPETRO coverage, I edited content for same-day delivery. At the three-day CAIXA Consórcio Hackathon, I edited a video at the end of each day for immediate sharing.",
                 "about_quote_projects": "For CNP Assurances’ ‘Sentir para Transformar’, I edited an 11-minute corporate film from over 1 hour and 50 minutes of footage. I logged and structured the narrative, corrected color, treated audio, and organized the timeline for the subsequent motion graphics stage.",
@@ -2832,7 +2967,7 @@ en: {
                 "stat_years_desc": "in post-production",
                 "stat_episodes_title": "40+ Episodes",
                 "stat_episodes_desc": "edited for TV",
-                "stat_sameday_title": "Same-Day",
+                "stat_sameday_title": "Same-day",
                 "stat_sameday_desc": "within 4 hours",
                 "foot_tools": "Software & Tools: Adobe Premiere Pro, After Effects, DaVinci Resolve, CapCut Pro, Photoshop, Illustrator, CorelDRAW",
                 "foot_ia": "AI & Testing: ElevenLabs, Sora, ChatGPT, DeepSeek, Gemini, Runway",
@@ -2854,7 +2989,7 @@ en: {
                 "BodyAction na Arnold Expo": "BodyAction na Arnold Expo",
                 "Cobertura de Evento / Esportivo": "Cobertura de Evento / Esportivo",
                 "TRANSPETRO - Jd. Hollywood": "TRANSPETRO - Jd. Hollywood",
-                "Cobertura e Edição Same-Day": "Cobertura e Edição Same-Day",
+                "Cobertura e Edição Same-day": "Cobertura e Edição Same-day",
                 "Gree Senai": "Gree Senai",
                 "Edição Comercial / Motion Graphics": "Edição Comercial / Motion Graphics",
                 "HTI Longevidade 2023": "HTI Longevidade 2023",
@@ -2874,7 +3009,7 @@ en: {
                 "MANDIC CAMESP Ouro": "MANDIC CAMESP Ouro",
                 "Cobertura de Torneio Universitário": "Cobertura de Torneio Universitário",
                 "TattooWeek 2024": "TattooWeek 2024",
-                "Cobertura Same-Day de Convenção": "Cobertura Same-Day de Convenção",
+                "Cobertura Same-day de Convenção": "Cobertura Same-day de Convenção",
                 "Institucional VATECH": "Institucional VATECH",
                 "Edição Comercial de Produto": "Edição Comercial de Produto",
                 "Sequoia - Dia do Motorista": "Sequoia - Dia do Motorista",
@@ -2897,12 +3032,12 @@ en: {
                 "Tour de Imóvel de Luxo / Sarabande 340": "Tour de Imóvel de Luxo / Sarabande 340",
                 "Campanha para Redes Sociais / Negócios": "Campanha para Redes Sociais / Negócios",
                 "Abertura Solene": "Abertura Solene",
-                "Same-Day Event Coverage": "Same-Day Event Coverage",
+                "Same-day Event Coverage": "Same-day Event Coverage",
                 "Coletiva de Imprensa": "Coletiva de Imprensa",
-                "Same-Day Event Coverage / Press": "Same-Day Event Coverage / Press",
+                "Same-day Event Coverage / Press": "Same-day Event Coverage / Press",
                 "Destaques APAS Show": "Destaques APAS Show",
                 "Expositores": "Expositores",
-                "Same-Day Event Coverage / Interviews": "Same-Day Event Coverage / Interviews"
+                "Same-day Event Coverage / Interviews": "Same-day Event Coverage / Interviews"
             },
             en: {
                 "O Imponderável — Record News": "O Imponderável — Record News",
@@ -2910,7 +3045,7 @@ en: {
                 "BodyAction na Arnold Expo": "BodyAction at Arnold Expo",
                 "Cobertura de Evento / Esportivo": "Event Coverage / Sports",
                 "TRANSPETRO - Jd. Hollywood": "TRANSPETRO - Jd. Hollywood",
-                "Cobertura e Edição Same-Day": "Same-Day Coverage & Editing",
+                "Cobertura e Edição Same-day": "Same-day Coverage & Editing",
                 "Gree Senai": "Gree Senai",
                 "Edição Comercial / Motion Graphics": "Commercial Editing / Motion Graphics",
                 "HTI Longevidade 2023": "HTI Longevidade 2023",
@@ -2930,7 +3065,7 @@ en: {
                 "MANDIC CAMESP Ouro": "MANDIC CAMESP Ouro",
                 "Cobertura de Torneio Universitário": "University Tournament Coverage",
                 "TattooWeek 2024": "TattooWeek 2024",
-                "Cobertura Same-Day de Convenção": "Same-Day Convention Coverage",
+                "Cobertura Same-day de Convenção": "Same-day Convention Coverage",
                 "Institucional VATECH": "VATECH Institutional",
                 "Edição Comercial de Produto": "Commercial Product Editing",
                 "Sequoia - Dia do Motorista": "Sequoia - Driver's Day",
@@ -2953,12 +3088,12 @@ en: {
                 "Tour de Imóvel de Luxo / Sarabande 340": "Luxury Real Estate Tour / Sarabande 340",
                 "Campanha para Redes Sociais / Negócios": "Social Media Campaign / Business",
                 "Abertura Solene": "Solemn Opening",
-                "Same-Day Event Coverage": "Same-Day Event Coverage",
+                "Same-day Event Coverage": "Same-day Event Coverage",
                 "Coletiva de Imprensa": "Press Conference",
-                "Same-Day Event Coverage / Press": "Same-Day Event Coverage / Press",
+                "Same-day Event Coverage / Press": "Same-day Event Coverage / Press",
                 "Destaques APAS Show": "APAS Show Highlights",
                 "Expositores": "Exhibitors",
-                "Same-Day Event Coverage / Interviews": "Same-Day Event Coverage / Interviews"
+                "Same-day Event Coverage / Interviews": "Same-day Event Coverage / Interviews"
             }
         };
 
@@ -3159,7 +3294,6 @@ en: {
 
         // --- BOTÕES DE SHOWREEL ---
         const headerPlayBtn = document.getElementById('headerPlayBtn');
-        const heroShowreelBtn = document.getElementById('heroShowreelBtn');
         function openRandomShowreel(trigger) {
             modalTrigger = trigger;
             isModalOpen = true;
@@ -3201,7 +3335,6 @@ en: {
             closeBtn.focus();
         }
         headerPlayBtn.addEventListener('click', () => openRandomShowreel(headerPlayBtn));
-        if (heroShowreelBtn) heroShowreelBtn.addEventListener('click', () => openRandomShowreel(heroShowreelBtn));
 
         modal.addEventListener('click', (e) => {
             if (e.target === modal) closeVideoModal();

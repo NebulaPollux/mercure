@@ -8,8 +8,8 @@ const pt = fs.readFileSync(path.join(root, 'curriculo.html'), 'utf8');
 const en = fs.readFileSync(path.join(root, 'resume.html'), 'utf8');
 
 test('about section has distinct Portuguese and English translations for every paragraph', () => {
-    const expectedKeys = ['about_p1', 'about_p2', 'about_quote'];
-    const keys = [...site.matchAll(/data-translate-key="(about_(?:p1|p2|quote))"/g)].map(m => m[1]);
+    const expectedKeys = ['about_p1', 'about_p2', 'about_quote', 'about_profile_title', 'about_sameday_title', 'about_tools_title'];
+    const keys = [...site.matchAll(/data-translate-key="(about_(?:p1|p2|quote|profile_title|sameday_title|tools_title))"/g)].map(m => m[1]);
     assert.deepEqual([...new Set(keys)].sort(), expectedKeys.sort());
     for (const key of expectedKeys) {
         assert.equal((site.match(new RegExp('"' + key + '":', 'g')) || []).length, 2, `${key} must exist in PT and EN dictionaries`);

@@ -30,15 +30,19 @@ test('social sharing metadata uses the approved raster image', () => {
     assert.match(html, /og:image:height" content="630"/);
 });
 
-test('approved portfolio copy, showreel CTA, and uncertain metrics are handled', () => {
+test('approved portfolio copy, hidden metrics, and project context are handled', () => {
     const html = fs.readFileSync(path.join(__dirname, '..', 'index.html'), 'utf8');
     assert.match(html, /Senior video editor and motion designer in São Paulo/);
     assert.match(html, /agencies, production companies, and direct clients/);
-    assert.match(html, /heroShowreelBtn/);
-    assert.match(html, /Work delivered for/);
+    assert.doesNotMatch(html, /heroShowreelBtn|hero_showreel_cta|class="hero-cta"/);
+    assert.match(html, /Trabalhos entregues para/);
+    assert.match(html, /\.trust-bar \{\s*display: none !important;/);
     assert.doesNotMatch(html, /1\.5M\+|\+46%|stat_subs_title|stat_ticket_title/);
-    assert.match(html, /case_caixa_desc/);
-    assert.match(html, /case_imponderavel_desc/);
+    assert.match(html, /selected_caixa_desc/);
+    assert.match(html, /selected_imponderavel_desc/);
+    assert.match(html, /selected_think_role/);
+    assert.match(html, /selected_transpetro_role/);
+    assert.match(html, /"selected_imponderavel_title": "The Imponderable — Record News"/);
 });
 
 test('service headings preserve semantic hierarchy', () => {

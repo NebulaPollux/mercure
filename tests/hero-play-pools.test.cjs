@@ -18,6 +18,5 @@ test('Play picks random horizontal or vertical videos by screen orientation', ()
     assert.match(html, /const playPool = isPortrait \? config\.backgroundVideoPoolMobile : config\.backgroundVideoPool/);
     assert.match(html, /const chooseFromPool = pool => pool\[Math\.floor\(Math\.random\(\) \* pool\.length\)\]/);
     assert.match(html, /const videoIdToOpen = window\.choosePlayVideo \? window\.choosePlayVideo\(\)/);
-    assert.match(html, /id="heroShowreelBtn"[^>]+data-translate-key="hero_showreel_cta"/);
-    assert.match(html, /heroShowreelBtn\.addEventListener\('click', \(\) => openRandomShowreel\(heroShowreelBtn\)\)/);
+    assert.doesNotMatch(html, /heroShowreelBtn|hero_showreel_cta|\.hero-cta/);
 });
