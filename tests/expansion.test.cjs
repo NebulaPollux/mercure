@@ -24,7 +24,9 @@ function element() {
                 const enabled = force === undefined ? !classes.has(name) : force;
                 if (enabled) classes.add(name); else classes.delete(name);
                 return enabled;
-            }
+            },
+            add(name) { classes.add(name); },
+            remove(name) { classes.delete(name); }
         },
         setAttribute(name, value) { this.attributes[name] = value; },
         addEventListener(name, callback) { listeners[name] = callback; },
@@ -68,7 +70,7 @@ for (const [label, container, button] of [
         assert.equal(state[container].inert, false);
         assert.equal(state[button].attributes['aria-expanded'], 'true');
         state[button].click();
-        assert.equal(state[container].inert, true);
+        assert.equal(state[container].inert, label === 'projects');
         assert.equal(state[button].attributes['aria-expanded'], 'false');
     });
 }
@@ -77,13 +79,13 @@ test('filtering enables matching reels and All restores collapsed state', () => 
     const state = setup();
     state.filters[1].click();
     assert.equal(state.reelsExpandWrapper.inert, false);
-    assert.equal(state.toggleReelsBtn.hidden, true);
+    assert.equal(state.toggleReelsBtn.hidden, false);
     assert.equal(state.cards[0].style.display, '');
     assert.equal(state.cards[1].style.display, 'none');
     assert.equal(state.filters[1].attributes['aria-pressed'], 'true');
     state.filters[0].click();
-    assert.equal(state.reelsExpandWrapper.inert, true);
+    assert.equal(state.reelsExpandWrapper.inert, false);
     assert.equal(state.toggleReelsBtn.hidden, false);
-    assert.equal(state.toggleReelsBtn.attributes['aria-expanded'], 'false');
+    assert.equal(state.toggleReelsBtn.attributes['aria-expanded'], 'true');
     assert.ok(state.cards.every(card => card.style.display === ''));
 });

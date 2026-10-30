@@ -12,13 +12,16 @@ const VIDEO_CONFIG = {
   // Stream HLS (.m3u8) do Gumlet usado no fundo do Hero — tocado via hls.js (ou nativo no Safari/iOS)
   backgroundVideoHls: 'https://video.gumlet.io/6a45b78918d11bffd503ee1a/6a45b9d818d11bffd5041f0a/main.m3u8',
   
-  // Imagem de poster (placeholder) mostrada enquanto o vídeo de fundo carrega (Capturado no 8º frame)
-  backgroundPoster: 'https://video.gumlet.io/6a45b78918d11bffd503ee1a/6a45b9d818d11bffd5041f0a/thumbnail-1-0.png?time=8&width=1920',
+  // Imagem de poster (placeholder) do vídeo fixo do hero
+  backgroundPoster: 'https://video.gumlet.io/6a45b78918d11bffd503ee1a/6a489a8fe4e7cc890e357e65/thumbnail-1-0.png?time=8&width=1920',
   
   // URL de embed do vídeo de fundo do banner hero
-  backgroundEmbed: 'https://play.gumlet.io/embed/6a45b9d818d11bffd5041f0a?autoplay=true&muted=true&loop=true&background=true&preload=true&t=120',
+  backgroundEmbed: 'https://play.gumlet.io/embed/6a489a8fe4e7cc890e357e65?autoplay=true&muted=true&loop=true&background=true&preload=true',
   
-  // Pool de IDs de vídeo para seleção aleatória no banner hero
+  // Vídeo fixo usado como fundo do hero
+  heroVideoId: '6a489a8fe4e7cc890e357e65',
+
+  // Pool horizontal usado aleatoriamente pelo botão Play
   backgroundVideoPool: [
     "6a471f53e81b019c974c3eed",
     "6a45bf80e4e7cc890ee34095",

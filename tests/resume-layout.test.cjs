@@ -3,7 +3,7 @@ const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const path = require('node:path');
 for (const file of ['curriculo.html', 'resume.html']) {
-    test.skip(`${file}: pending mobile layout improvement; screen-only rules preserve print`, () => {
+    test(`${file}: mobile rules are screen-only and leave print overrides intact`, () => {
         const html = fs.readFileSync(path.join(__dirname, '..', file), 'utf8');
         const start = html.indexOf('@media screen and (max-width: 800px)');
         const end = html.indexOf('@media print', start);
