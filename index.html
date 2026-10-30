@@ -1119,6 +1119,29 @@
             margin-bottom: 1.2rem;
             line-height: 1.6;
         }
+        .about-case {
+            margin: 1.5rem 0;
+            border: 1px solid rgba(255, 255, 255, 0.14);
+            border-radius: 12px;
+            background: rgba(18, 23, 58, 0.42);
+            overflow: hidden;
+        }
+        .about-case summary {
+            cursor: pointer;
+            padding: 1rem 1.1rem;
+            color: var(--mercure-text);
+            font-weight: 700;
+            list-style-position: inside;
+        }
+        .about-case summary::marker { color: var(--mercure-accent); }
+        .about-case-content {
+            padding: 0 1.1rem 1rem;
+            color: var(--mercure-text-secondary);
+            line-height: 1.6;
+        }
+        .about-case-content p { margin: 0.65rem 0 0; }
+        .about-case-content strong { color: var(--mercure-text); }
+
         .about-quote {
             font-family: var(--font-serif);
             font-style: italic;
@@ -2208,8 +2231,15 @@ CADA PRAZO É CUMPRIDO.</h1>
                     <div class="about-right">
                         <p class="about-text" data-translate-key="about_p1">Sou Marcos Soares Santos, editor de vídeo e motion designer com 7 anos de experiência em televisão, documentários, campanhas, vídeos institucionais, eventos e conteúdo digital. Trabalho da construção narrativa à finalização, com atenção ao ritmo, à clareza da mensagem e às necessidades de cada entrega. Ao longo da minha trajetória, editei mais de 40 episódios para a Record News e participei de projetos para marcas e instituições como Dior, Santander, P&amp;G, TRANSPETRO, CAIXA Consórcio e SESC Brasil. Também atuei na coordenação de pós-produção e na organização de fluxos de trabalho.</p>
 
-                        <blockquote class="about-quote" data-translate-key="about_quote">Tenho experiência em edição same-day, com entregas feitas enquanto o evento acontece. Na cobertura da TRANSPETRO, editei conteúdo para entrega no mesmo dia. No Hackathon CAIXA Consórcio, realizado ao longo de três dias em editei um vídeo ao final de cada dia para divulgação dos principais momentos.</blockquote>
-                        <p class="about-text" data-translate-key="about_quote_projects">Para o projeto “Sentir para Transformar”, da CNP Assurances, montei um vídeo institucional de 11 minutos a partir de mais de 1h50 de gravações. Fiz a decupagem, estruturei os blocos narrativos, corrigi cor, tratei o áudio e organizei a timeline para a etapa posterior de motion graphics.</p>
+                        <blockquote class="about-quote" data-translate-key="about_quote">Tenho experiência em edição same-day, com entregas feitas enquanto o evento acontece. Na cobertura da TRANSPETRO, editei conteúdo para entrega no mesmo dia. No Hackathon CAIXA Consórcio, realizado ao longo de três dias, editei um vídeo ao final de cada dia para divulgação dos principais momentos.</blockquote>
+                        <details class="about-case">
+                            <summary data-translate-key="case_cnp_summary">Case: Sentir para Transformar — CNP Assurances</summary>
+                            <div class="about-case-content">
+                                <p><strong data-translate-key="case_challenge_label">Desafio:</strong> <span data-translate-key="case_cnp_challenge">Transformar entrevistas e reações espontâneas em uma narrativa institucional clara sobre uma iniciativa de experiência do cliente.</span></p>
+                                <p><strong data-translate-key="case_solution_label">Solução:</strong> <span data-translate-key="case_cnp_solution">Organizei os depoimentos por temas — compreensão, emoção, confiança e clareza — conectando o contexto da ação às percepções dos participantes.</span></p>
+                                <p><strong data-translate-key="case_result_label">Resultado:</strong> <span data-translate-key="case_cnp_result">Vídeo institucional de 11 minutos, com mais de 1h50 de gravações decupadas, narrativa estruturada, cor corrigida, áudio tratado e projeto aberto preparado para motion graphics.</span></p>
+                            </div>
+                        </details>
                         <p class="about-text" data-translate-key="about_sesc">Também edito Reels e Shorts para os canais digitais do SESC Brasil, incluindo montagem, legendas, tratamento de áudio, correção de cor e adaptação para o formato vertical.</p>
 
                         <p class="about-text" data-translate-key="about_p2">Gosto de unir narrativa e organização: entender o que cada história precisa, fazer escolhas claras na montagem e deixar o material pronto para sua próxima etapa. Trabalho com Premiere Pro, After Effects, DaVinci Resolve/Fusion, CapCut Pro, Photoshop, Illustrator e Blender. Integro ferramentas de inteligência artificial quando contribuem para o processo, mantendo a revisão técnica e criativa das entregas.</p>
@@ -2460,9 +2490,16 @@ CADA PRAZO É CUMPRIDO.</h1>
                 "sec3_subtitle": "Liderança, ritmo narrativo e consistência sob forte pressão operacional.",
                 "about_headline": "Editor de vídeo sênior · Motion graphics · Estrategista de conteúdo",
                 "about_p1": "Sou Marcos Soares Santos, editor de vídeo e motion designer com 7 anos de experiência em televisão, documentários, campanhas, vídeos institucionais, eventos e conteúdo digital. Trabalho da construção narrativa à finalização, com atenção ao ritmo, à clareza da mensagem e às necessidades de cada entrega. Ao longo da minha trajetória, editei mais de 40 episódios para a Record News e participei de projetos para marcas e instituições como Dior, Santander, P&G, TRANSPETRO, CAIXA Consórcio e SESC Brasil. Também atuei na coordenação de pós-produção e na organização de fluxos de trabalho.",
-                "about_quote": "Tenho experiência em edição same-day, com entregas feitas enquanto o evento acontece. Na cobertura da TRANSPETRO, editei conteúdo para entrega no mesmo dia. No Hackathon CAIXA Consórcio, realizado ao longo de três dias em editei um vídeo ao final de cada dia para divulgação dos principais momentos.",
+                "about_quote": "Tenho experiência em edição same-day, com entregas feitas enquanto o evento acontece. Na cobertura da TRANSPETRO, editei conteúdo para entrega no mesmo dia. No Hackathon CAIXA Consórcio, realizado ao longo de três dias, editei um vídeo ao final de cada dia para divulgação dos principais momentos.",
                 "about_quote_projects": "Para o projeto ‘Sentir para Transformar’, da CNP Assurances, montei um vídeo institucional de 11 minutos a partir de mais de 1h50 de gravações. Fiz a decupagem, estruturei os blocos narrativos, corrigi cor, tratei o áudio e organizei a timeline para a etapa posterior de motion graphics.",
-                "about_sesc": "Também edito Reels e Shorts para os canais digitais do SESC Brasil, incluindo montagem, legendas, tratamento de áudio, correção de cor e adaptação para o formato vertical.",
+                "case_cnp_summary": "Case: Sentir para Transformar — CNP Assurances",
+                 "case_challenge_label": "Desafio:",
+                 "case_solution_label": "Solução:",
+                 "case_result_label": "Resultado:",
+                 "case_cnp_challenge": "Transformar entrevistas e reações espontâneas em uma narrativa institucional clara sobre uma iniciativa de experiência do cliente.",
+                 "case_cnp_solution": "Organizei os depoimentos por temas — compreensão, emoção, confiança e clareza — conectando o contexto da ação às percepções dos participantes.",
+                 "case_cnp_result": "Vídeo institucional de 11 minutos, com mais de 1h50 de gravações decupadas, narrativa estruturada, cor corrigida, áudio tratado e projeto aberto preparado para motion graphics.",
+                 "about_sesc": "Também edito Reels e Shorts para os canais digitais do SESC Brasil, incluindo montagem, legendas, tratamento de áudio, correção de cor e adaptação para o formato vertical.",
                 "about_p2": "Gosto de unir narrativa e organização: entender o que cada história precisa, fazer escolhas claras na montagem e deixar o material pronto para sua próxima etapa. Trabalho com Premiere Pro, After Effects, DaVinci Resolve/Fusion, CapCut Pro, Photoshop, Illustrator e Blender. Integro ferramentas de inteligência artificial quando contribuem para o processo, mantendo a revisão técnica e criativa das entregas.",
                 "srv_broadcast_title": "Edição & Finalização",
                 "srv_broadcast_desc": "Comerciais de TV, institucionais, aftermovies, YouTube de longa duração e Reels/Shorts de alta retenção.",
@@ -2517,9 +2554,16 @@ en: {
                 "sec3_subtitle": "Leadership, narrative rhythm, and consistency under heavy operational pressure.",
                 "about_headline": "Senior Video Editor · Motion Graphics · Content Strategist",
                 "about_p1": "I am Marcos Soares Santos, a video editor and motion designer with 7 years of experience in television, documentaries, campaigns, corporate films, events, and digital content. I work from story construction through finishing, with attention to pacing, clarity, and each project's delivery needs. My work includes more than 40 episodes for Record News and projects for brands and organizations such as Dior, Santander, P&G, TRANSPETRO, CAIXA Consórcio, and SESC Brasil. I have also worked in post-production coordination and workflow organization.",
-                "about_quote": "I have same-day editing experience, delivering content while events are underway. For TRANSPETRO coverage, I edited content for same-day delivery. At the three-day CAIXA Consórcio Hackathon in I edited a video at the end of each day for immediate sharing.",
+                "about_quote": "I have same-day editing experience, delivering content while events are underway. For TRANSPETRO coverage, I edited content for same-day delivery. At the three-day CAIXA Consórcio Hackathon, I edited a video at the end of each day for immediate sharing.",
                 "about_quote_projects": "For CNP Assurances’ ‘Sentir para Transformar’, I edited an 11-minute corporate film from over 1 hour and 50 minutes of footage. I logged and structured the narrative, corrected color, treated audio, and organized the timeline for the subsequent motion graphics stage.",
-                "about_sesc": "I also edit Reels and Shorts for SESC Brasil’s digital channels, including editing, captions, audio treatment, color correction, and vertical format adaptation.",
+                "case_cnp_summary": "Case: Sentir para Transformar — CNP Assurances",
+                 "case_challenge_label": "Challenge:",
+                 "case_solution_label": "Approach:",
+                 "case_result_label": "Result:",
+                 "case_cnp_challenge": "Turn interviews and spontaneous reactions into a clear institutional narrative about a customer-experience initiative.",
+                 "case_cnp_solution": "I organized the testimonials around comprehension, emotion, trust, and clarity, connecting the initiative's context to the participants' perceptions.",
+                 "case_cnp_result": "An 11-minute corporate film built from more than 1 hour and 50 minutes of footage, with structured narrative, color correction, audio treatment, and an open project prepared for motion graphics.",
+                 "about_sesc": "I also edit Reels and Shorts for SESC Brasil’s digital channels, including editing, captions, audio treatment, color correction, and vertical format adaptation.",
                 "about_p2": "I combine storytelling with organization: understanding what each story needs, making clear editorial choices, and preparing each project for its next stage. I work with Premiere Pro, After Effects, DaVinci Resolve/Fusion, CapCut Pro, Photoshop, Illustrator, and Blender. I integrate AI tools when they serve the process, while maintaining technical and creative review of each delivery.",
                 "srv_broadcast_title": "Editing & Finishing",
                 "srv_broadcast_desc": "TV commercials, corporate videos, aftermovies, long-form YouTube content, and high-retention Reels/Shorts.",
