@@ -3484,13 +3484,24 @@ en: {
                     parallaxVideoContainer.style.backgroundSize = 'cover';
                     parallaxVideoContainer.style.backgroundPosition = 'center';
                 }
-                if (parallaxVideoContainer && !reduceMotion) {
+                const updateHeroBackground = () => {
+                    if (!parallaxVideoContainer || reduceMotion) return;
+                    const portrait = window.matchMedia('(orientation: portrait)').matches;
+                    const nextVideoId = portrait ? chooseFromPool(config.backgroundVideoPoolMobile) : config.heroVideoId;
+                    const nextPoster = portrait
+                        ? `https://video.gumlet.io/${config.gumletWorkspaceId || ''}/${nextVideoId}/thumbnail-1-0.png?time=8&width=900`
+                        : config.backgroundPoster;
+                    const current = document.getElementById('backgroundBannerPlayer');
+                    if (current && current.getAttribute && current.getAttribute('data-orientation') === (portrait ? 'portrait' : 'landscape')) return;
+                    if (current && typeof current.remove === 'function') current.remove();
+                    if (nextPoster) parallaxVideoContainer.style.backgroundImage = `url("${nextPoster}")`;
                     const iframe = document.createElement('iframe');
+                    iframe.setAttribute('data-orientation', portrait ? 'portrait' : 'landscape');
                     iframe.style.opacity = '0';
                     iframe.title = 'Vídeo decorativo de fundo';
                     iframe.setAttribute('aria-hidden', 'true');
                     iframe.setAttribute('tabindex', '-1');
-                    iframe.src = `https://play.gumlet.io/embed/${videoId}?autoplay=true&muted=true&loop=true&background=true&preload=true&fit=cover&v=1`;
+                    iframe.src = `https://play.gumlet.io/embed/${nextVideoId}?autoplay=true&muted=true&loop=true&background=true&preload=true&fit=cover&v=1`;
                     iframe.id = 'backgroundBannerPlayer';
                     iframe.setAttribute('allow', 'autoplay');
                     parallaxVideoContainer.appendChild(iframe);
@@ -3507,6 +3518,13 @@ en: {
                         iframe.style.opacity = '1';
                     });
                 }
+
+                updateHeroBackground();
+                if (typeof window.addEventListener === 'function') {
+                    window.addEventListener('orientationchange', updateHeroBackground);
+                }
+                const orientationQuery = window.matchMedia('(orientation: portrait)');
+                orientationQuery.addEventListener?.('change', updateHeroBackground);
 
                 // Ativa o Scroll Reveal usando Intersection Observer
                 if ('IntersectionObserver' in window) {

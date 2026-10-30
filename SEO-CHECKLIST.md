@@ -1,14 +1,31 @@
-# SEO, busca e Analytics — auditoria de 29/10/2026
+# SEO, busca e Analytics — auditoria de 30/10/2026
+
+## Estado verificado em 30/10/2026
+
+- Estado local e publicado: a home contém JSON-LD Person, copy de posicionamento, imagem social raster `images/social-share.png` e nomenclatura Mercure Vídeo.
+- A suíte atual cobre 32 testes aprovados; validação visual/browser e previews externos ainda não foram executadas.
+
+- `https://mercurevideo.com.br/` responde 200 e declara canonical sem www. `https://www.mercurevideo.com.br/` responde 308; confirmar o destino exato no painel Vercel caso queira rever o redirect.
+- `robots.txt` e `sitemap.xml` respondem 200 no domínio canônico; sitemap lista as três páginas públicas.
+- Home, currículos e loader de Analytics respondem 200. Isso não comprova coleta de visitas nem indexação.
+- A home contém JSON-LD Person e os textos atuais de perfil. Busca web `site:mercurevideo.com.br` sem resultados não comprova desindexação; consultar cobertura e Inspeção de URL no Search Console.
+- A imagem social raster está referenciada pela home; a validação externa de preview no LinkedIn e WhatsApp continua pendente.
+- Revisão visual/browser, acessibilidade e impressão ainda precisam de validação dedicada.
+
+## Último loop local
+
+- Currículos PT/EN agora têm layout screen-only até 800px e 480px: folha fluida, habilidades em coluna única, cabeçalhos/datas quebráveis, contatos com quebra de linha e impressão preservada por `@media print`. `tests/resume-layout.test.cjs` deixou de ser skipped; os dois casos passaram.
+- `tests/profile-content.test.cjs` agora cobre a chave `about_sesc` PT/EN, além das chaves de perfil existentes. Suíte completa reportou 15 testes aprovados, sem falhas ou skips. Alterações locais não foram publicadas.
 
 ## Confirmado no site público
 
 - Home HTTPS retorna 200; título, descrição, idioma pt-BR e canonical estão no HTML inicial.
 - HTTP retorna 308 (destino ainda não inspecionado nesta auditoria).
-- www retorna 200 mantendo www: configurar redirecionamento permanente para https://mercurevideo.com.br/ no painel Vercel, preservando caminhos.
-- robots.txt e sitemap.xml retornam 404. Arquivos agora preparados localmente; ainda precisam de publicação.
-- Não há JSON-LD na home. Adicionar Person/ProfilePage apenas com informações verificadas; não inventar avaliações/endereço.
-- OG/Twitter usam images/icon.svg: preferir PNG/JPEG existente apropriado ou exportação fornecida pelo usuário. Não foi criada imagem.
-- Currículos têm títulos distintos, mas faltam descrição e canonical próprios.
+- `www` responde 308; o apex canônico responde 200. Canonical sem www está coerente com o sitemap.
+- `robots.txt` e `sitemap.xml` publicados e respondendo 200 no domínio canônico.
+- JSON-LD Person está presente na home com informações verificadas; ProfilePage permanece fora do escopo.
+- OG/Twitter usam `images/social-share.png`; dimensões e tamanho foram validados localmente. Preview externo ainda pendente.
+- Currículos publicados têm descrições e canonicals próprios; conferir nos HTMLs públicos ao mudar metadados.
 - Site tem PT/EN por JavaScript na mesma URL: não declarar hreflang para URLs inexistentes. Uma versão inglesa indexável separada seria decisão posterior.
 
 ## Prioridade 1 — descoberta e indexação

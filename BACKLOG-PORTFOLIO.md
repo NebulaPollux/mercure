@@ -4,7 +4,7 @@ Atualizado em 2026-10-30 a partir da auditoria de posicionamento, código e SEO.
 
 ## Estado atual
 
-- Onda autônoma desta rodada aplicada localmente: JSON-LD Person, imagem social raster 1200x630, CTA textual do showreel, copy de posicionamento, métricas sem contexto removidas, faixa de marcas neutralizada e blocos de contexto para três projetos aprovados.
+- Onda autônoma desta rodada publicada: JSON-LD Person, imagem social raster 1200x630, rótulo factual para o botão de trabalhos, copy de posicionamento, métricas sem contexto removidas, faixa de marcas neutralizada e destaques de projetos com papel e contexto em PT/EN.
 - Medição Lighthouse/browser não executada: o workspace não possui Lighthouse, Playwright, Puppeteer nem navegador CLI disponível.
 - Produção publicada em `https://mercurevideo.com.br/`.
 - Vercel Analytics, Google Search Console e redirect do domínio já configurados pelo proprietário.
@@ -12,14 +12,14 @@ Atualizado em 2026-10-30 a partir da auditoria de posicionamento, código e SEO.
 - Botão Play escolhe vídeos horizontais ou verticais conforme a orientação atual.
 - Contato desktop/mobile com WhatsApp, e-mail, LinkedIn, SVGs, tradução PT/EN e painel responsivo.
 - Modal vertical usa proporção 9:16; modal horizontal usa 16:9.
-- Suíte local atual: 28 testes aprovados.
+- Suíte local atual: 32 testes aprovados.
 - Não há revisão visual pendente neste backlog: a versão publicada foi aprovada visualmente.
 
 ## Onda 1: maior retorno e baixo risco
 
 ### 1. Imagem social raster
 
-**Status:** concluído localmente. **Prioridade:** P0
+**Status:** publicado na home. **Prioridade:** P0
 
 `og:image` e `twitter:image` usam `images/social-share.png` (1200x630, 40 KB) com dimensões e alt. Ainda falta validar previews no LinkedIn Post Inspector e WhatsApp.
 
@@ -32,7 +32,7 @@ Critérios de aceite:
 
 ### 2. Posicionamento no topo
 
-**Status:** copy aprovada implementada localmente. **Prioridade:** P0
+**Status:** copy aprovada publicada. **Prioridade:** P0
 
 Adicionar perto do nome uma frase objetiva, por exemplo:
 
@@ -44,20 +44,11 @@ Padronizar o uso de:
 - marca: Mercure Vídeo;
 - cargo: Editor de vídeo sênior · Motion graphics · Estrategista de conteúdo.
 
-### 3. CTA textual para o showreel
+### 3. Controle Play de trabalhos
 
-**Status:** implementado localmente em PT/EN e conectado ao fluxo aleatório do Play. **Prioridade:** P0
+**Status:** publicado com rótulo factual em PT/EN e conectado ao fluxo aleatório do Play. **Prioridade:** P0
 
-Adicionar no hero um botão com texto, mantendo o botão circular do header como controle secundário.
-
-Exemplo: `Assistir showreel`.
-
-Critérios de aceite:
-
-- visível acima da dobra;
-- funciona em desktop e mobile;
-- mantém foco, Escape e retorno de foco do modal;
-- texto traduzido em PT/EN.
+O controle circular do header abre um trabalho selecionado aleatoriamente conforme a orientação da tela. Um showreel curado permanece fora do escopo até existir um ID Gumlet dedicado.
 
 ### 4. Contexto dos números
 
@@ -72,7 +63,7 @@ Cada número mantido precisa identificar período, contexto e origem. Sem compro
 
 ### 5. Copy da faixa de marcas
 
-**Status:** chamada neutralizada para `Trabalhos entregues para` localmente. **Prioridade:** P1
+**Status:** chamada neutralizada para `Trabalhos entregues para` e publicada. **Prioridade:** P1
 
 Reavaliar `Marcas que já confiaram na entrega`. Quando não houver endosso direto, usar uma formulação factual, como `Trabalhos entregues para` ou `Projetos realizados para`.
 
@@ -82,7 +73,7 @@ Registrar para cada marca se o trabalho foi direto, via agência ou sob NDA.
 
 ### 6. Bloco de créditos por projeto
 
-**Status:** contexto expansível inicial adicionado localmente para Think Plastic, Hackathon CAIXA e O Imponderável. Créditos de agência, ano, ferramentas, autorização e resultados continuam pendentes por falta de dados confirmados. **Prioridade:** P1
+**Status:** destaques publicados com papel e contexto factual em PT/EN para Think Plastic, Hackathon CAIXA, O Imponderável e TRANSPETRO. Créditos de agência, ano, ferramentas, autorização e resultados continuam pendentes por falta de dados confirmados. **Prioridade:** P1
 
 Adicionar aos cards e/ou páginas:
 
