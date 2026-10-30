@@ -11,14 +11,27 @@
     <meta property="og:description" content="Portfólio de Marcos Soares Santos: edição de vídeo sênior, motion graphics e estratégia de conteúdo para marcas como Dior, P&G, Santander e TRANSPETRO.">
     <meta property="og:url" content="https://mercurevideo.com.br">
     <link rel="canonical" href="https://mercurevideo.com.br/">
-    <meta property="og:image:alt" content="Logo Mercure — Marcos Soares Santos">
-    <meta property="og:image" content="https://mercurevideo.com.br/images/icon.svg">
+    <meta property="og:image:alt" content="Mercure Vídeo — Marcos Soares Santos, editor de vídeo sênior e motion designer">
+    <meta property="og:image" content="https://mercurevideo.com.br/images/social-share.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Mercure — Marcos Soares Santos | Editor de Vídeo Sênior &amp; Motion Designer">
     <meta name="twitter:description" content="Portfólio de Marcos Soares Santos: edição de vídeo sênior, motion graphics e estratégia de conteúdo para marcas como Dior, P&amp;G, Santander e TRANSPETRO.">
-    <meta name="twitter:image" content="https://mercurevideo.com.br/images/icon.svg">
-    <meta name="twitter:image:alt" content="Logo Mercure — Marcos Soares Santos">
+    <meta name="twitter:image" content="https://mercurevideo.com.br/images/social-share.png">
+    <meta name="twitter:image:alt" content="Mercure Vídeo — Marcos Soares Santos, editor de vídeo sênior e motion designer">
     <meta name="theme-color" content="#12173A">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Marcos Soares Santos",
+        "jobTitle": "Editor de vídeo sênior e motion designer",
+        "url": "https://mercurevideo.com.br/",
+        "image": "https://mercurevideo.com.br/images/profile_photo_2.jpg",
+        "sameAs": ["https://linkedin.com/in/marcos-soares-santos"]
+    }
+    </script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -819,6 +832,28 @@
             color: #ffffff; 
             text-shadow: 0px 2px 8px rgba(18, 23, 58, 0.8);
         }
+        .hero-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.55rem;
+            margin-top: 1.15rem;
+            min-height: 44px;
+            padding: 0.65rem 1rem;
+            border: 1px solid rgba(165, 255, 231, 0.7);
+            border-radius: 999px;
+            background: var(--mercure-accent);
+            color: var(--mercure-bg);
+            font: inherit;
+            font-weight: 700;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .hero-cta:hover { background: #43d8b5; }
+        .hero-cta:focus-visible { outline: 3px solid var(--mercure-text); outline-offset: 3px; }
+        .case-details { margin: 0.75rem 0 1.25rem; }
+        .case-details summary { cursor: pointer; color: var(--mercure-accent); font-weight: 650; }
+        .case-details p { margin-top: 0.5rem; color: var(--mercure-text-secondary); }
+
 
 /* --- TRUST BAR MARQUEE (Efeito Infinito Contínuo) --- */
         .trust-bar {
@@ -1333,7 +1368,7 @@
         .service-item:hover::after {
             height: 100%;
         }
-        .service-item h5 {
+        .service-item h3 {
             font-family: var(--font-sans);
             font-size: 0.85rem;
             font-weight: 700;
@@ -1892,9 +1927,9 @@
         </div>
         <div class="parallax-overlay" id="parallaxOverlay"></div>
         <div class="hero-content" id="heroContent">
-            <h1 class="hero-title" data-translate-key="hero_title">CADA FRAME TEM UM PROPÓSITO.
-CADA PRAZO É CUMPRIDO.</h1>
-            <p class="hero-subtitle" data-translate-key="hero_subtitle">Broadcast. Campanhas. Eventos. Conteúdo entregue no prazo.</p>
+            <h1 class="hero-title" data-translate-key="hero_title">Editor de vídeo sênior e motion designer em São Paulo</h1>
+            <p class="hero-subtitle" data-translate-key="hero_subtitle">Broadcast, campanhas e edição same-day para agências, produtoras e clientes diretos.</p>
+            <button class="hero-cta" id="heroShowreelBtn" type="button" data-translate-key="hero_showreel_cta">Assistir showreel</button>
         </div>
     </section>
 
@@ -1990,7 +2025,7 @@ CADA PRAZO É CUMPRIDO.</h1>
 
         <!-- TRUST BAR: Marquee Infinito de Alta Performance -->
         <div class="trust-bar container reveal">
-            <p class="trust-bar-label" data-translate-key="trust_bar_label">Marcas que já confiaram na entrega</p>
+            <p class="trust-bar-label" data-translate-key="trust_bar_label">Trabalhos entregues para</p>
             <div class="marquee-container">
                 <div class="marquee-track" id="marqueeTrack">
                     <img src="logos/dior.svg" alt="Dior" class="brand-logo" onerror="this.style.display='none';">
@@ -2021,6 +2056,10 @@ CADA PRAZO É CUMPRIDO.</h1>
                     <p data-translate-key="showcase_desc" style="text-align: center; font-size: 0.9rem; color: var(--mercure-text-secondary); margin-bottom: 1.5rem; max-width: 800px; margin-left: auto; margin-right: auto; line-height: 1.5;">
                         Vídeo de abertura do seminário Think Plastic Brazil, destacando a importância da economia circular e da inovação no setor de plásticos, com uma montagem dinâmica e uma mensagem inspiradora sobre sustentabilidade e futuro.
                     </p>
+                    <details class="case-details">
+                        <summary data-translate-key="case_details_label">Ver contexto do projeto</summary>
+                        <p data-translate-key="case_think_plastic">Peça de abertura de seminário, apresentada como destaque do portfólio.</p>
+                    </details>
                     <div class="video-wrapper" data-video-id="6a45bf80e4e7cc890ee34095">
                         <span class="mercure-badge">✓ Mercure Showcase</span>
                         <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Think Plastic Brazil – Abertura do Seminário" class="video-thumbnail" loading="lazy">
@@ -2399,22 +2438,31 @@ CADA PRAZO É CUMPRIDO.</h1>
 
                         <div class="services-subgrid">
                             <div class="service-item">
-                                <h5 data-translate-key="srv_broadcast_title">Edição & Finalização</h5>
+                                <h3 data-translate-key="srv_broadcast_title">Edição & Finalização</h3>
                                 <p data-translate-key="srv_broadcast_desc">Comerciais de TV, institucionais, aftermovies, YouTube de longa duração e Reels/Shorts de alta retenção.</p>
                             </div>
                             <div class="service-item">
-                                <h5 data-translate-key="srv_comercial_title">Motion Graphics & VFX</h5>
+                                <h3 data-translate-key="srv_comercial_title">Motion Graphics & VFX</h3>
                                 <p data-translate-key="srv_comercial_desc">Vinhetas, intros, legendas dinâmicas, lower thirds, animação 2D e composição complexa no Fusion e After Effects.</p>
                             </div>
                             <div class="service-item">
-                                <h5 data-translate-key="srv_sameday_title">Performance & Estratégia</h5>
+                                <h3 data-translate-key="srv_sameday_title">Performance & Estratégia</h3>
                                 <p data-translate-key="srv_sameday_desc">VSLs, roteiros para tráfego pago (Meta/Google Ads), testes A/B de criativos e retenção de público.</p>
                             </div>
                             <div class="service-item">
-                                <h5 data-translate-key="srv_sup_title">Same-day Editing</h5>
+                                <h3 data-translate-key="srv_sup_title">Same-day Editing</h3>
                                 <p data-translate-key="srv_sup_desc">Edição em tempo real durante eventos com entrega em até 4 horas. Desempenho comprovado sob alta pressão operacional.</p>
                             </div>
                         </div>
+
+                        <details class="case-details">
+                            <summary data-translate-key="case_caixa_title">Hackathon CAIXA Consórcio</summary>
+                            <p data-translate-key="case_caixa_desc">Durante três dias, um vídeo foi editado ao final de cada dia para divulgação dos principais momentos.</p>
+                        </details>
+                        <details class="case-details">
+                            <summary data-translate-key="case_imponderavel_title">O Imponderável — Record News</summary>
+                            <p data-translate-key="case_imponderavel_desc">Projeto de televisão que integra o acervo de trabalhos apresentados no portfólio.</p>
+                        </details>
 
                         <div class="about-stats">
                             <div class="stat-card">
@@ -2426,16 +2474,8 @@ CADA PRAZO É CUMPRIDO.</h1>
                                 <p data-translate-key="stat_episodes_desc">editados para TV</p>
                             </div>
                             <div class="stat-card">
-                                <h4>1.5M+</h4>
-                                <p data-translate-key="stat_subs_desc">Inscritos em canais atendidos</p>
-                            </div>
-                            <div class="stat-card">
                                 <h4 data-translate-key="stat_sameday_title">Same-Day</h4>
                                 <p data-translate-key="stat_sameday_desc">em até 4 horas</p>
-                            </div>
-                            <div class="stat-card">
-                                <h4 data-translate-key="stat_ticket_title">+46%</h4>
-                                <p data-translate-key="stat_ticket_desc">Ticket médio em 6 meses</p>
                             </div>
                         </div>
                     </div>
@@ -2667,8 +2707,15 @@ CADA PRAZO É CUMPRIDO.</h1>
         const translations = {
             pt: {
                 "nav_about": "SOBRE MIM",
-                "hero_title": "CADA FRAME TEM UM PROPÓSITO.\nCADA PRAZO É CUMPRIDO.",
-                "hero_subtitle": "Broadcast. Campanhas. Eventos. Conteúdo entregue no prazo.",
+                "hero_title": "Editor de vídeo sênior e motion designer em São Paulo",
+                "hero_subtitle": "Broadcast, campanhas e edição same-day para agências, produtoras e clientes diretos.",
+                "hero_showreel_cta": "Assistir showreel",
+                "case_details_label": "Ver contexto do projeto",
+                "case_think_plastic": "Peça de abertura de seminário, apresentada como destaque do portfólio.",
+                "case_caixa_title": "Hackathon CAIXA Consórcio",
+                "case_caixa_desc": "Durante três dias, um vídeo foi editado ao final de cada dia para divulgação dos principais momentos.",
+                "case_imponderavel_title": "O Imponderável — Record News",
+                "case_imponderavel_desc": "Projeto de televisão que integra o acervo de trabalhos apresentados no portfólio.",
                 "nav_contact_wa": "WHATSAPP ↗",
                 "contact_button": "Contato",
                 "contact_panel_title": "Fale sobre seu projeto",
@@ -2678,7 +2725,7 @@ CADA PRAZO É CUMPRIDO.</h1>
                 "play_button": "Assistir showreel",
                 "hero_volume_unmute": "Ouvir som",
                 "hero_volume_mute": "Mudo",
-                "trust_bar_label": "Marcas que já confiaram na entrega",
+                "trust_bar_label": "Trabalhos entregues para",
                 "sec1_title": "PRODUÇÕES CORPORATIVAS, TV & SAME-DAY",
                 "sec1_subtitle": "Campanhas publicitárias, coberturas de alto impacto e jornalismo broadcast.",
                 "showcase_title": "Think Plastic Brazil – Abertura do Seminário",
@@ -2715,11 +2762,8 @@ CADA PRAZO É CUMPRIDO.</h1>
                 "stat_years_desc": "em pós-produção",
                 "stat_episodes_title": "40+ Episódios",
                 "stat_episodes_desc": "editados para TV",
-                "stat_subs_desc": "Inscritos em canais atendidos",
                 "stat_sameday_title": "Same-Day",
                 "stat_sameday_desc": "em até 4 horas",
-                "stat_ticket_title": "+46%",
-                "stat_ticket_desc": "Ticket médio em 6 meses",
                 "foot_tools": "Softwares & Ferramentas: Adobe Premiere Pro, After Effects, DaVinci Resolve, CapCut Pro, Photoshop, Illustrator, CorelDRAW",
                 "foot_ia": "IA & Teste: ElevenLabs, Sora, ChatGPT, DeepSeek, Gemini, Runway",
                 "cta_title": "Quer conversar sobre um projeto?",
@@ -2733,8 +2777,15 @@ CADA PRAZO É CUMPRIDO.</h1>
             },
 en: {
                 "nav_about": "ABOUT ME",
-                "hero_title": "EVERY FRAME HAS A PURPOSE.\nEVERY DEADLINE GETS MET.",
-                "hero_subtitle": "Broadcast. Campaigns. Events. Content delivered on time.",
+                "hero_title": "Senior video editor and motion designer in São Paulo",
+                "hero_subtitle": "Broadcast, campaigns, and same-day editing for agencies, production companies, and direct clients.",
+                "hero_showreel_cta": "Watch the showreel",
+                "case_details_label": "View project context",
+                "case_think_plastic": "Seminar opening piece, presented as a portfolio highlight.",
+                "case_caixa_title": "CAIXA Consórcio Hackathon",
+                "case_caixa_desc": "Over three days, one video was edited at the end of each day to share the key moments.",
+                "case_imponderavel_title": "O Imponderável — Record News",
+                "case_imponderavel_desc": "Television project included in the portfolio work archive.",
                 "nav_contact_wa": "WHATSAPP ↗",
                 "contact_button": "Contact",
                 "contact_panel_title": "Talk about your project",
@@ -2744,7 +2795,7 @@ en: {
                 "play_button": "Watch showreel",
                 "hero_volume_unmute": "Tap to unmute",
                 "hero_volume_mute": "Mute",
-                "trust_bar_label": "Brands that have trusted our delivery",
+                "trust_bar_label": "Work delivered for",
                 "sec1_title": "CORPORATE PRODUCTIONS, TV & SAME-DAY",
                 "sec1_subtitle": "Advertising campaigns, high-impact coverage, and broadcast journalism.",
                 "showcase_title": "Think Plastic Brazil – Opening of the Seminar",
@@ -2781,11 +2832,8 @@ en: {
                 "stat_years_desc": "in post-production",
                 "stat_episodes_title": "40+ Episodes",
                 "stat_episodes_desc": "edited for TV",
-                "stat_subs_desc": "Subscribers on served channels",
                 "stat_sameday_title": "Same-Day",
                 "stat_sameday_desc": "within 4 hours",
-                "stat_ticket_title": "+46%",
-                "stat_ticket_desc": "Average rate in 6 months",
                 "foot_tools": "Software & Tools: Adobe Premiere Pro, After Effects, DaVinci Resolve, CapCut Pro, Photoshop, Illustrator, CorelDRAW",
                 "foot_ia": "AI & Testing: ElevenLabs, Sora, ChatGPT, DeepSeek, Gemini, Runway",
                 "cta_title": "Want to talk about a project?",
@@ -3109,10 +3157,11 @@ en: {
 
         closeBtn.addEventListener('click', closeVideoModal);
 
-        // --- BOTÃO PLAY DO HEADER ---
+        // --- BOTÕES DE SHOWREEL ---
         const headerPlayBtn = document.getElementById('headerPlayBtn');
-        headerPlayBtn.addEventListener('click', () => {
-            modalTrigger = headerPlayBtn;
+        const heroShowreelBtn = document.getElementById('heroShowreelBtn');
+        function openRandomShowreel(trigger) {
+            modalTrigger = trigger;
             isModalOpen = true;
 
             const bgPlayer = document.getElementById('backgroundBannerPlayer');
@@ -3150,7 +3199,9 @@ en: {
             setVideoModalOpen(true);
             modalContent.appendChild(iframe);
             closeBtn.focus();
-        });
+        }
+        headerPlayBtn.addEventListener('click', () => openRandomShowreel(headerPlayBtn));
+        if (heroShowreelBtn) heroShowreelBtn.addEventListener('click', () => openRandomShowreel(heroShowreelBtn));
 
         modal.addEventListener('click', (e) => {
             if (e.target === modal) closeVideoModal();
