@@ -2232,14 +2232,14 @@ CADA PRAZO É CUMPRIDO.</h1>
                         <p class="about-text" data-translate-key="about_p1">Sou Marcos Soares Santos, editor de vídeo e motion designer com 7 anos de experiência em televisão, documentários, campanhas, vídeos institucionais, eventos e conteúdo digital. Trabalho da construção narrativa à finalização, com atenção ao ritmo, à clareza da mensagem e às necessidades de cada entrega. Ao longo da minha trajetória, editei mais de 40 episódios para a Record News e participei de projetos para marcas e instituições como Dior, Santander, P&amp;G, TRANSPETRO, CAIXA Consórcio e SESC Brasil. Também atuei na coordenação de pós-produção e na organização de fluxos de trabalho.</p>
 
                         <blockquote class="about-quote" data-translate-key="about_quote">Tenho experiência em edição same-day, com entregas feitas enquanto o evento acontece. Na cobertura da TRANSPETRO, editei conteúdo para entrega no mesmo dia. No Hackathon CAIXA Consórcio, realizado ao longo de três dias, editei um vídeo ao final de cada dia para divulgação dos principais momentos.</blockquote>
-                        <details class="about-case">
-                            <summary data-translate-key="case_cnp_summary">Case: Sentir para Transformar — CNP Assurances</summary>
+                        <div class="about-case">
+                            <h4 data-translate-key="case_cnp_summary">Case: Sentir para Transformar — CNP Assurances</h4>
                             <div class="about-case-content">
                                 <p><strong data-translate-key="case_challenge_label">Desafio:</strong> <span data-translate-key="case_cnp_challenge">Transformar entrevistas e reações espontâneas em uma narrativa institucional clara sobre uma iniciativa de experiência do cliente.</span></p>
                                 <p><strong data-translate-key="case_solution_label">Solução:</strong> <span data-translate-key="case_cnp_solution">Organizei os depoimentos por temas — compreensão, emoção, confiança e clareza — conectando o contexto da ação às percepções dos participantes.</span></p>
                                 <p><strong data-translate-key="case_result_label">Resultado:</strong> <span data-translate-key="case_cnp_result">Vídeo institucional de 11 minutos, com mais de 1h50 de gravações decupadas, narrativa estruturada, cor corrigida, áudio tratado e projeto aberto preparado para motion graphics.</span></p>
                             </div>
-                        </details>
+                        </div>
                         <p class="about-text" data-translate-key="about_sesc">Também edito Reels e Shorts para os canais digitais do SESC Brasil, incluindo montagem, legendas, tratamento de áudio, correção de cor e adaptação para o formato vertical.</p>
 
                         <p class="about-text" data-translate-key="about_p2">Gosto de unir narrativa e organização: entender o que cada história precisa, fazer escolhas claras na montagem e deixar o material pronto para sua próxima etapa. Trabalho com Premiere Pro, After Effects, DaVinci Resolve/Fusion, CapCut Pro, Photoshop, Illustrator e Blender. Integro ferramentas de inteligência artificial quando contribuem para o processo, mantendo a revisão técnica e criativa das entregas.</p>
@@ -2425,13 +2425,13 @@ CADA PRAZO É CUMPRIDO.</h1>
                 });
 
                 if (reelsExpandWrapper) {
-                    reelsExpandWrapper.classList.toggle('expanded', isFiltered);
-                    reelsExpandWrapper.inert = !isFiltered;
+                    // “Todos” deve revelar o acervo inteiro; filtros também expandem seus resultados.
+                    reelsExpandWrapper.classList.add('expanded');
+                    reelsExpandWrapper.inert = false;
                 }
                 if (toggleReelsBtn) {
-                    toggleReelsBtn.hidden = isFiltered;
-                    toggleReelsBtn.textContent = translations[currentLang][isFiltered ? 'toggle_reels_less' : 'toggle_reels_more'];
-                    toggleReelsBtn.setAttribute('aria-expanded', String(isFiltered));
+                    toggleReelsBtn.hidden = true;
+                    toggleReelsBtn.setAttribute('aria-expanded', 'true');
                 }
             });
         });
@@ -3053,7 +3053,9 @@ en: {
 
                 // Identifica se é dispositivo móvel para carregar um vídeo vertical nativo
                 const isMobile = window.innerWidth <= 768;
-                const pool = isMobile ? config.backgroundVideoPoolMobile : config.backgroundVideoPool;
+                const isPortrait = window.matchMedia('(orientation: portrait)').matches;
+                // Em telas verticais, inclusive quando não são detectadas como mobile, use o pool 9:16.
+                const pool = (isMobile || isPortrait) ? config.backgroundVideoPoolMobile : config.backgroundVideoPool;
                 const videoId = pool[Math.floor(Math.random() * pool.length)];
                 bannerVideoId = videoId;
 
