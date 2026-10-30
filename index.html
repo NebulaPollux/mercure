@@ -2321,8 +2321,10 @@ CADA PRAZO É CUMPRIDO.</h1>
         const hamburgerMobile = document.getElementById('hamburgerBtnMobile');
         let isModalOpen = false;
         let modalTrigger = null;
+        let mobileMenuTrigger = null;
         const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
         const canHoverPreview = window.matchMedia('(hover: hover) and (pointer: fine)').matches && !reduceMotion;
+        const GUMLET_ORIGIN = 'https://play.gumlet.io';
         let bannerVideoId = null;
 
         // --- MENU HAMBÚRGUER ---
@@ -2331,6 +2333,7 @@ CADA PRAZO É CUMPRIDO.</h1>
         const menuOverlay = document.getElementById('menuOverlay');
 
         function setMobileMenuOpen(isOpen) {
+            if (isOpen) mobileMenuTrigger = document.activeElement;
             hamburgerBtn.classList.toggle('active', isOpen);
             hamburgerBtn.setAttribute('aria-expanded', String(isOpen));
             if (hamburgerMobile) {
@@ -2348,6 +2351,8 @@ CADA PRAZO É CUMPRIDO.</h1>
 
         function closeMobileMenu() {
             setMobileMenuOpen(false);
+            if (mobileMenuTrigger && mobileMenuTrigger.isConnected) mobileMenuTrigger.focus();
+            mobileMenuTrigger = null;
         }
 
         hamburgerBtn.addEventListener('click', toggleMobileMenu);
@@ -2789,8 +2794,8 @@ en: {
                 
                 const bgPlayer = document.getElementById('backgroundBannerPlayer');
                 if (bgPlayer && bgPlayer.contentWindow) {
-                    bgPlayer.contentWindow.postMessage(JSON.stringify({method: 'pause'}), '*');
-                    bgPlayer.contentWindow.postMessage(JSON.stringify({event: 'command', func: 'pause'}), '*');
+                    bgPlayer.contentWindow.postMessage(JSON.stringify({method: 'pause'}), GUMLET_ORIGIN);
+                    bgPlayer.contentWindow.postMessage(JSON.stringify({event: 'command', func: 'pause'}), GUMLET_ORIGIN);
                 }
 
                 document.querySelectorAll('.hover-player').forEach(player => player.remove());
@@ -2798,7 +2803,7 @@ en: {
                 const iframe = document.createElement('iframe');
                 iframe.src = `https://play.gumlet.io/embed/${videoId}?autoplay=true&preload=true`;
                 iframe.setAttribute('referrerpolicy', 'origin');
-                iframe.setAttribute('allow', 'accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture; fullscreen; clipboard-write;');
+                iframe.setAttribute('allow', 'autoplay; encrypted-media; picture-in-picture; fullscreen;');
                 iframe.setAttribute('allowfullscreen', 'true');
                 iframe.title = "Player de vídeo em destaque";
                 iframe.id = "activeGumletPlayer";
@@ -2837,8 +2842,8 @@ en: {
 
             const bgPlayer = document.getElementById('backgroundBannerPlayer');
             if (bgPlayer && bgPlayer.contentWindow) {
-                bgPlayer.contentWindow.postMessage(JSON.stringify({method: 'play'}), '*');
-                bgPlayer.contentWindow.postMessage(JSON.stringify({event: 'command', func: 'play'}), '*');
+                bgPlayer.contentWindow.postMessage(JSON.stringify({method: 'play'}), GUMLET_ORIGIN);
+                bgPlayer.contentWindow.postMessage(JSON.stringify({event: 'command', func: 'play'}), GUMLET_ORIGIN);
             }
         }
 
@@ -2852,8 +2857,8 @@ en: {
 
             const bgPlayer = document.getElementById('backgroundBannerPlayer');
             if (bgPlayer && bgPlayer.contentWindow) {
-                bgPlayer.contentWindow.postMessage(JSON.stringify({method: 'pause'}), '*');
-                bgPlayer.contentWindow.postMessage(JSON.stringify({event: 'command', func: 'pause'}), '*');
+                bgPlayer.contentWindow.postMessage(JSON.stringify({method: 'pause'}), GUMLET_ORIGIN);
+                bgPlayer.contentWindow.postMessage(JSON.stringify({event: 'command', func: 'pause'}), GUMLET_ORIGIN);
             }
 
             document.querySelectorAll('.hover-player').forEach(player => player.remove());
@@ -2863,7 +2868,7 @@ en: {
             const iframe = document.createElement('iframe');
             iframe.src = `https://play.gumlet.io/embed/${videoIdToOpen}?autoplay=true&preload=true`;
             iframe.setAttribute('referrerpolicy', 'origin');
-            iframe.setAttribute('allow', 'accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture; fullscreen; clipboard-write;');
+            iframe.setAttribute('allow', 'autoplay; encrypted-media; picture-in-picture; fullscreen;');
             iframe.setAttribute('allowfullscreen', 'true');
             iframe.title = "Player de vídeo em destaque";
             iframe.id = "activeGumletPlayer";
@@ -3065,11 +3070,11 @@ en: {
                             const bgPlayer = document.getElementById('backgroundBannerPlayer');
                             if (bgPlayer && bgPlayer.contentWindow) {
                                 if (entry.isIntersecting && !isModalOpen) {
-                                    bgPlayer.contentWindow.postMessage(JSON.stringify({method: 'play'}), '*');
-                                    bgPlayer.contentWindow.postMessage(JSON.stringify({event: 'command', func: 'play'}), '*');
+                                    bgPlayer.contentWindow.postMessage(JSON.stringify({method: 'play'}), GUMLET_ORIGIN);
+                                    bgPlayer.contentWindow.postMessage(JSON.stringify({event: 'command', func: 'play'}), GUMLET_ORIGIN);
                                 } else {
-                                    bgPlayer.contentWindow.postMessage(JSON.stringify({method: 'pause'}), '*');
-                                    bgPlayer.contentWindow.postMessage(JSON.stringify({event: 'command', func: 'pause'}), '*');
+                                    bgPlayer.contentWindow.postMessage(JSON.stringify({method: 'pause'}), GUMLET_ORIGIN);
+                                    bgPlayer.contentWindow.postMessage(JSON.stringify({event: 'command', func: 'pause'}), GUMLET_ORIGIN);
                                 }
                             }
                         });
