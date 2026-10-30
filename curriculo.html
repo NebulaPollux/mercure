@@ -23,22 +23,51 @@
         header { border-bottom: 2px solid #4D4999; padding-bottom: 12px; margin-bottom: 18px; }
         .name { font-family: 'IBM Plex Sans', sans-serif; font-size: 1.85rem; font-weight: 600; text-transform: uppercase; color: #12173A; letter-spacing: 0.05em; }
         .title { font-family: 'IBM Plex Sans', sans-serif; font-style: italic; font-size: 1.05rem; color: #4D4999; margin-top: 2px; font-weight: 500; }
-        .contacts { display: flex; flex-wrap: wrap; gap: 15px; font-size: 0.75rem; color: #555; margin-top: 8px; font-weight: 500; }
+        .contacts { display: flex; flex-wrap: wrap; gap: 6px 14px; font-size: 10pt; color: #555; margin-top: 8px; font-weight: 500; }
         .contacts a { color: #17151F; text-decoration: none; }
         h2 { font-family: 'IBM Plex Sans', sans-serif; font-size: 0.95rem; font-weight: 600; text-transform: uppercase; color: #12173A; letter-spacing: 0.1em; border-bottom: 1px solid #e5e7eb; padding-bottom: 4px; margin-top: 18px; margin-bottom: 10px; }
-        p { font-size: 0.8rem; color: #333; text-align: justify; }
-        .experience-item { margin-bottom: 12px; }
-        .exp-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 3px; }
-        .exp-role { font-size: 0.825rem; font-weight: 700; color: #17151F; }
-        .exp-date { font-size: 0.725rem; font-weight: 600; color: #4D4999; white-space: nowrap; }
+        p { font-size: 10.5pt; color: #333; line-height: 1.55; }
+        .experience-item { margin-bottom: 15px; break-inside: avoid; }
+        .exp-header { display: flex; flex-direction: column; align-items: flex-start; gap: 2px; margin-bottom: 5px; break-after: avoid; }
+        .exp-role { font-size: 11pt; font-weight: 700; color: #17151F; line-height: 1.35; }
+        .exp-date { font-size: 10pt; font-weight: 600; color: #4D4999; white-space: nowrap; }
         .exp-bullets { list-style-type: none; padding-left: 0; }
-        .exp-bullets li { font-size: 0.775rem; color: #444; position: relative; padding-left: 12px; margin-bottom: 3px; text-align: justify; }
+        .exp-bullets li { font-size: 10.5pt; color: #444; position: relative; padding-left: 13px; margin-bottom: 4px; line-height: 1.45; }
         .exp-bullets li::before { content: "•"; position: absolute; left: 0; color: #1FC29B; font-weight: bold; }
-        .grid-two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-        .skill-group { margin-bottom: 6px; }
-        .skill-group strong { font-size: 0.75rem; color: #12173A; text-transform: uppercase; letter-spacing: 0.03em; }
-        .skill-group span { font-size: 0.775rem; color: #444; }
-        @media print { body { background-color: #ffffff; padding: 0; } .print-header { display: none; } .resume-page { box-shadow: none; padding: 0; width: 100%; height: 100%; } }
+        .grid-two-col { display: grid; grid-template-columns: 1fr; gap: 0; }
+        .skill-group { margin-bottom: 8px; break-inside: avoid; }
+        .skill-group strong { font-size: 10pt; color: #12173A; text-transform: uppercase; letter-spacing: 0.03em; }
+        .skill-group span { font-size: 10.5pt; color: #444; }
+        @media screen and (max-width: 800px) {
+            body { padding: 16px 12px; }
+            .print-header { width: 100%; padding: 12px 14px; gap: 12px; }
+            .print-header span { min-width: 0; }
+            .print-btn { flex: 0 0 auto; padding: 8px 12px; }
+            .resume-page { width: 100%; min-height: 0; padding: 28px 24px; }
+            .grid-two-col { grid-template-columns: 1fr; gap: 0; }
+            .exp-header { flex-wrap: wrap; gap: 2px 12px; }
+            .exp-role { min-width: 0; overflow-wrap: anywhere; }
+            .exp-date { white-space: normal; }
+            .contacts { gap: 8px 12px; }
+            .contacts span, .contacts a { overflow-wrap: anywhere; }
+            .name { overflow-wrap: anywhere; }
+        }
+        @media screen and (max-width: 480px) {
+            body { padding: 10px 8px; }
+            .print-header { align-items: flex-start; flex-direction: column; }
+            .resume-page { padding: 22px 16px; }
+            .name { font-size: 1.5rem; }
+            .title { font-size: 0.95rem; }
+            p, .exp-bullets li { text-align: left; }
+        }
+        @media print { body { background-color: #ffffff; padding: 0; } .print-header { display: none; } .resume-page { box-shadow: none; padding: 0; width: 100%; min-height: 0; } a { color: inherit; text-decoration: none; } h2 { break-after: avoid; } }
+            .career-highlights { padding-left: 18px; margin-bottom: 16px; font-size: 10.5pt; color: #333; }
+        .career-highlights li { margin-bottom: 4px; break-inside: avoid; }
+        .career-highlights strong { color: #12173A; }
+        .supporting-text { font-size: 10pt; line-height: 1.45; margin-top: 3px; }
+        p, li { orphans: 3; widows: 3; }
+        a:focus-visible, button:focus-visible { outline: 2px solid #4D4999; outline-offset: 3px; }
+        @page { size: A4; margin: 16mm 18mm; }
     </style>
 </head>
 <body>
@@ -48,59 +77,42 @@
     </div>
     <div class="resume-page">
         <header>
-            <div class="name">Marcos Soares Santos</div>
+            <h1 class="name">Marcos Soares Santos</h1>
             <div class="title">Editor de Vídeo Sênior · Motion Graphics · Estrategista de Conteúdo</div>
             <div class="contacts">
                 <span>São Paulo, SP</span>
                 <span>• (11) 96303-3573</span>
                 <span>• <a href="mailto:marcoscpc@outlook.com">marcoscpc@outlook.com</a></span>
                 <span>• <a href="https://linkedin.com/in/marcos-soares-santos-91a281163" target="_blank" rel="noopener">linkedin.com/in/marcos-soares-santos-91a281163</a></span>
-                <span>• Portfólio: mercurevideo.com.br</span>
+                <span>• Portfólio: <a href="https://mercurevideo.com.br/">mercurevideo.com.br</a></span>
             </div>
         </header>
         <section>
             <h2>Resumo Profissional</h2>
-            <p>Editor de vídeo sênior com 7 anos de sólida experiência no mercado audiovisual, atuando no fluxo de pós-produção completo: montagem, colorização, motion design dinâmico e tratamento de áudio. Especialista em estruturar narrativas de alto impacto voltadas para conversão, retenção de público e vendas, com expertise técnica no desenvolvimento de criativos de alta performance para tráfego pago (Meta Ads e Google Ads). Experiência comprovada em TV broadcast, documentários de longo formato, materiais institucionais para marcas globais (Dior, P&G, Santander e TRANSPETRO) e fluxos ultra-rápidos de same-day editing.</p>
+            <p>Editor de vídeo sênior e motion designer com 7 anos de experiência em televisão, documentários, campanhas, vídeos institucionais, eventos e conteúdo digital. Atua em decupagem, montagem, correção de cor, tratamento de áudio, legendagem e adaptação de formatos. Experiência em coordenação de pós-produção, edição same-day, conteúdo vertical e preparação de projetos para continuidade por outras equipes.</p>
         </section>
         
-        <h2>Números & Resultados</h2>
-        <table style="width: 100%; border-collapse: collapse; margin-bottom: 15px; font-size: 0.8rem;">
-            <thead>
-                <tr style="border-bottom: 2px solid #12173A; text-align: left;">
-                    <th style="padding: 6px; font-weight: 700;">Indicador de Sucesso</th>
-                    <th style="padding: 6px; font-weight: 700;">Resultado Comprovado</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr style="border-bottom: 1px solid #e5e7eb;">
-                    <td style="padding: 6px;">Média de visualizações por publicação (Tuzinho Academy)</td>
-                    <td style="padding: 6px; font-weight: 600; color: #1FC29B;">22.000</td>
-                </tr>
-                <tr style="border-bottom: 1px solid #e5e7eb;">
-                    <td style="padding: 6px;">Episódios editados para televisão (Record News)</td>
-                    <td style="padding: 6px; font-weight: 600; color: #1FC29B;">40+</td>
-                </tr>
-                <tr style="border-bottom: 1px solid #e5e7eb;">
-                    <td style="padding: 6px;">Inscritos acumulados em canais atendidos (Aero - Por Trás da Aviação)</td>
-                    <td style="padding: 6px; font-weight: 600; color: #1FC29B;">1,5 Milhão+</td>
-                </tr>
-                <tr style="border-bottom: 1px solid #e5e7eb;">
-                    <td style="padding: 6px;">Evolução de faturamento autônomo (Intervalo de 7 meses)</td>
-                    <td style="padding: 6px; font-weight: 600; color: #1FC29B;">R$ 20.750</td>
-                </tr>
-                <tr style="border-bottom: 1px solid #e5e7eb;">
-                    <td style="padding: 6px;">Tempo médio de entrega em fluxo Same-day (APAS Show)</td>
-                    <td style="padding: 6px; font-weight: 600; color: #1FC29B;">Até 4 horas</td>
-                </tr>
-                <tr style="border-bottom: 1px solid #e5e7eb;">
-                    <td style="padding: 6px;">Aumento de ticket médio em pós-produção (6 meses)</td>
-                    <td style="padding: 6px; font-weight: 600; color: #1FC29B;">+46% (R$650 para R$950)</td>
-                </tr>
-            </tbody>
-        </table>
+        <h2>Destaques da trajetória</h2>
+        <ul class="career-highlights">
+            <li><strong>22.000</strong> — Média de visualizações por publicação (Tuzinho Academy)</li>
+            <li><strong>40+</strong> — Episódios editados para televisão (Record News)</li>
+            <li><strong>1,5 Milhão+</strong> — Inscritos acumulados em canais atendidos (Aero - Por Trás da Aviação)</li>
+            <li><strong>Até 4 horas</strong> — Tempo médio de entrega em fluxo Same-day (APAS Show)</li>
+        </ul>
 
         <section>
             <h2>Experiência Profissional</h2>
+            <div class="experience-item">
+                <div class="exp-header">
+                    <span class="exp-role">Editor de Vídeo Sênior Freelancer | Performance, TV e Marcas Globais</span>
+                    <span class="exp-date">2020 – Presente</span>
+                </div>
+                <ul class="exp-bullets">
+                    <li>Pós-produção estrita para marcas como Dior, P&G, Santander, TRANSPETRO, Gree, Think Plastic e Qualicert.</li>
+                    <li>Montagem de criativos dinâmicos de alta performance para canais de tráfego pago (Facebook Ads, YouTube Ads) e formatos de VSL.</li>
+                    <li>Validação de ideias, ganchos e testes A/B de criativos de vídeo, resultando em melhoria consistente de CTR e retenção de público.</li>
+                </ul>
+            </div>
             <div class="experience-item">
                 <div class="exp-header">
                     <span class="exp-role">Editor de Vídeo e Estrategista de Conteúdo | Tuzinho Academy & Original SP Tattoo</span>
@@ -114,13 +126,46 @@
             </div>
             <div class="experience-item">
                 <div class="exp-header">
-                    <span class="exp-role">Editor de Vídeo Sênior Freelancer | Performance, TV e Marcas Globais</span>
-                    <span class="exp-date">2020 – Presente</span>
+                    <span class="exp-role">Editor de Vídeo Independente | O Imponderável – Record News</span>
+                    <span class="exp-date">2022 – 2023 (Freelancer)</span>
                 </div>
                 <ul class="exp-bullets">
-                    <li>Pós-produção estrita para marcas como Dior, P&G, Santander, TRANSPETRO, Gree, Think Plastic e Qualicert.</li>
-                    <li>Montagem de criativos dinâmicos de alta performance para canais de tráfego pago (Facebook Ads, YouTube Ads) e formatos de VSL.</li>
-                    <li>Validação de ideias, ganchos e testes A/B de criativos de vídeo, resultando em melhoria consistente de CTR e retenção de público.</li>
+                    <li>Edição regular e ágil de mais de 40 episódios do talk show focado em inovação, tecnologia e negócios.</li>
+                    <li>Entregas em prazos de 2 a 4 dias.</li>
+                </ul>
+            </div>
+            <div class="experience-item">
+                <div class="exp-header">
+                    <span class="exp-role">Editor de Vídeo e Coordenador de Pós-Produção | Singular Filmes</span>
+                    <span class="exp-date">2021 – 2022 (CLT/PJ)</span>
+                </div>
+                <ul class="exp-bullets">
+                    <li>Montagem do canal Aero - Por Trás da Aviação, premiado pelo Prêmio ABEAR de Jornalismo e com mais de 1,5 milhão de inscritos.</li>
+                    <li>Promovido a Coordenador de Pós-Produção: liderança de equipe de 2 editores adicionais, controle de qualidade e gestão de dados do servidor.</li>
+                    <li>Pós-produção do projeto de turismo nacional "As Capitais do Brasil" (Programa Sonho e Destino).</li>
+                </ul>
+            </div>
+        </section>
+
+        <section>
+            <h2>Projetos Selecionados</h2>
+            <div class="experience-item">
+                <div class="exp-header">
+                    <span class="exp-role">Editor de Vídeo | CNP Assurances — “Sentir para Transformar”</span>
+                    <span class="exp-date">Freelancer | 2026</span>
+                </div>
+                <ul class="exp-bullets">
+                    <li>Decupagem e montagem de mais de 1h50 de gravações em vídeo institucional de 11 minutos; estruturação narrativa, correção de cor, tratamento de áudio e organização de timeline.</li>
+                    <li>Preparação do projeto aberto, assets e marcadores para inserção posterior de motion graphics pela equipe responsável; entrega em prazo de fim de semana.</li>
+                </ul>
+            </div>
+            <div class="experience-item">
+                <div class="exp-header">
+                    <span class="exp-role">Editor de Vídeo Same-Day | Hackathon CAIXA Consórcio</span>
+                    <span class="exp-date">2026 · Freelancer</span>
+                </div>
+                <ul class="exp-bullets">
+                    <li>Atuação integrada à equipe de cobertura audiovisual, editando um vídeo ao final de cada dia para divulgação dos principais momentos.</li>
                 </ul>
             </div>
             <div class="experience-item">
@@ -135,23 +180,12 @@
             </div>
             <div class="experience-item">
                 <div class="exp-header">
-                    <span class="exp-role">Editor de Vídeo e Coordenador de Pós-Produção | Singular Filmes</span>
-                    <span class="exp-date">2021 – 2022 (CLT/PJ)</span>
+                    <span class="exp-role">Editor de Vídeo | SESC Brasil — Reels e Shorts</span>
+                    <span class="exp-date">2026 · Freelancer</span>
                 </div>
                 <ul class="exp-bullets">
-                    <li>Montagem do canal Aero - Por Trás da Aviação, premiado pelo Prêmio ABEAR de Jornalismo e com mais de 1,5 milhão de inscritos.</li>
-                    <li>Promovido a Coordenador de Pós-Produção: liderança de equipe de 2 editores adicionais, controle de qualidade e gestão de dados do servidor.</li>
-                    <li>Pós-produção do projeto de turismo nacional "As Capitais do Brasil" (Programa Sonho e Destino).</li>
-                </ul>
-            </div>
-            <div class="experience-item">
-                <div class="exp-header">
-                    <span class="exp-role">Editor de Vídeo Independente | O Imponderável – Record News</span>
-                    <span class="exp-date">2022 – 2023 (Freelancer)</span>
-                </div>
-                <ul class="exp-bullets">
-                    <li>Edição regular e ágil de mais de 40 episódios do talk show focado em inovação, tecnologia e negócios.</li>
-                    <li>Prazos de entrega rigorosos de 2 a 4 dias respeitados sem incidentes, alcançando evolução de ticket unitário em +46%.</li>
+                    <li>Edição de vídeos verticais de até 1min30 para os canais digitais do SESC Brasil.</li>
+                    <li>Montagem, legendagem, tratamento de áudio, correção de cor e adaptação de formato; vídeos publicados com boa performance e outros materiais aguardando publicação.</li>
                 </ul>
             </div>
         </section>
@@ -180,12 +214,12 @@
                 <h2>Perfil e Formação</h2>
                 <div class="skill-group">
                     <strong>Técnico em Multimídia (Incompleto)</strong>
-                    <p style="font-size: 0.725rem; color:#4D4999; font-weight:600;">ETEC Jornalista Roberto Marinho | 2017 – 2018</p>
-                    <p style="font-size: 0.7rem; color: #555; margin-top: 2px;">Destaque acadêmico: idealização, logotipo e propaganda em vídeo da revista "8 Polegadas".</p>
+                    <p class="supporting-text">ETEC Jornalista Roberto Marinho | 2017 – 2018</p>
+                    <p class="supporting-text">Destaque acadêmico: idealização, logotipo e propaganda em vídeo da revista "8 Polegadas".</p>
                 </div>
                 <div class="skill-group" style="margin-top: 8px;">
                     <strong>Competências Comportamentais:</strong>
-                    <p style="font-size: 0.7rem; color: #444; line-height: 1.3;">Alta resiliência sob prazos exíguos; adaptabilidade extrema entre TV, documentários e tráfego pago; comunicação ágil bilíngue; autonomia em ambientes desestruturados.</p>
+                    <p class="supporting-text">Alta resiliência sob prazos exíguos; adaptabilidade extrema entre TV, documentários e tráfego pago; comunicação ágil bilíngue; autonomia em ambientes desestruturados.</p>
                 </div>
             </div>
         </div>

@@ -32,7 +32,7 @@
     <script defer src="/_vercel/insights/script.js"></script>
 
     <!-- Carrega a Configuração Centralizada de Vídeos -->
-    <script src="config.js" defer></script>
+    <script src="config.js"></script>
 
     <style>
         /* --- VARIÁVEIS DE ESTILO MERCURE --- */
@@ -481,18 +481,6 @@
                 backdrop-filter: none;
                 -webkit-backdrop-filter: none;
             }
-            .header-left {
-                width: 56px;
-                height: 56px;
-                justify-content: center;
-                gap: 0;
-                border-radius: 50%;
-                background: rgba(77, 73, 153, 0.2);
-                backdrop-filter: blur(16px) saturate(180%);
-                -webkit-backdrop-filter: blur(16px) saturate(180%);
-                border: 1px solid rgba(255, 255, 255, 0.18);
-                box-shadow: var(--glass-highlight), var(--glass-inner-border), 0 4px 16px rgba(0, 0, 0, 0.25);
-            }
             .header-container {
                 padding: 0 1rem;
             }
@@ -502,8 +490,8 @@
             .header-nav {
                 display: none;
             }
-            .logo-text-group {
-                display: none;
+            .header-center, .header-right {
+                flex-shrink: 0;
             }
             .logo-img {
                 height: 30px;
@@ -1534,7 +1522,7 @@
 
         .bottom-bar-container {
             display: grid;
-            grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+            grid-template-columns: minmax(0, 1fr) auto auto;
             align-items: center;
             gap: 0.75rem;
             width: 100%;
@@ -1663,8 +1651,19 @@
             .bottom-logo {
                 display: none;
             }
+            .bottom-bar-left { gap: 8px; }
+            .bottom-brand-text {
+                font-family: var(--font-sans);
+                font-weight: 700;
+                font-size: clamp(0.65rem, 2.8vw, 0.85rem);
+                letter-spacing: 0.06em;
+                color: var(--mercure-text);
+                white-space: nowrap;
+            }
             .bottom-logo-img {
-                height: 44px;
+                flex-shrink: 0;
+                height: 30px;
+                max-width: 36px;
                 width: auto;
                 object-fit: contain;
                 filter: drop-shadow(0 0 16px rgba(255, 255, 255, 0.25));
@@ -1720,7 +1719,7 @@ CADA PRAZO É CUMPRIDO.</h1>
             <div class="header-left">
                 <img src="images/infill_white_4x.png" alt="Mercure — Marcos Soares Santos, editor de vídeo e motion designer" class="logo-img" aria-label="Mercure — Marcos Soares Santos, editor de vídeo e motion designer">
                 <div class="logo-text-group">
-                    <span class="logo-text">MERCURE</span>
+                    <span class="logo-text">MERCURE VÍDEO</span>
                     <span class="logo-subtitle">Marcos Soares Santos</span>
                 </div>
             </div>
@@ -1765,7 +1764,8 @@ CADA PRAZO É CUMPRIDO.</h1>
                 <svg class="bottom-logo" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Mercure">
                     <path d="M477.75,132.78c-.71,12.22-10.16,122.31-16,189.92-2.5,28.92-26.7,51.11-55.72,51.11h-25.05s13.32-114.92,15.68-132.59l-63.37,105.46c-10.11,16.83-28.31,27.13-47.95,27.13h-44.83s15.6-110.71,17.74-125.03c-19.52,31.98-28.32,46.61-60.23,99.73-10.79,17.96-10.23,25.72-34.03,25.72-56,0-74.19-77.9-65.49-82.35.08-.04.17-.06.27-.06,2,0,8.06,8.02,24.78,8.02,10.85,0,26.19-3.37,47.84-14.5-16.21,7.54-30.02,10.18-41.41,10.18-20.79,0-33.55-8.77-38.34-12.57-15.22-12.07-39.59-80.14-33.18-80.14.28,0,.61.13,1,.39,8.33,5.56,17.35,18.56,59.91,18.56,15.9,0,36.48-1.81,63.47-6.51-19.7,2.68-36.18,3.81-50.03,3.81-48.4,0-64.67-13.81-74.36-23.49-25.07-25.07-36.75-47.97-4.75-47.97,52.29,0,170.33-6.82,222.62-7.77,16.21-.13,29.15-.73,38.99-.73,19.68,0,27.03,2.39,23.66,15.7-9.75,38.42-16.27,64.6-24.3,98.51,6.23,0,26.71-45.96,36.12-66.38,13.68-29.7,24.24-50.71,59.99-51.8,34.18-1.05,56.72-1.98,66.97-2.34M504.3,106.83l-27.42.96c-2.64.09-6.09.22-10.35.38-12.42.47-31.18,1.18-56.52,1.95-21.14.65-38.09,6.91-51.66,19.1-.16-.21-.31-.42-.47-.62-11.3-14.52-30.87-14.52-42.57-14.52-5.09,0-10.67.14-17.12.31-6.53.17-13.92.36-22.07.42h-.13s-.13,0-.13,0c-22.88.42-57.66,1.92-94.49,3.51-48.42,2.09-98.48,4.26-127.66,4.26-8.71,0-15.98,1.23-22.22,3.77-9.14,3.72-16.11,10.45-19.63,18.95-4.94,11.92-2.93,25.38,5.97,40.01,3.59,5.91,8.48,12.3,14.57,19.09-.11,5.26.99,11.47,3.37,19.89,2.22,7.86,5.54,17.39,9.34,26.82,8.9,22.12,17.74,37.91,26.33,47.07-.07,5.69.77,12.18,2.48,19.28,4.45,18.47,13.82,37.02,25.71,50.89,17.32,20.2,39.58,30.88,64.36,30.88,10.08,0,23.06-1,34.08-8.81,8.75-6.2,13.07-14.09,17.24-21.72.3-.55.6-1.1.91-1.66-.25,1.76-.41,2.89-.46,3.28l-4.01,28.49h73.6c13.94,0,27.72-3.63,39.86-10.49,12.13-6.86,22.34-16.81,29.52-28.76l3.4-5.65c-1.11,9.53-1.86,15.97-1.98,17.03l-3.23,27.88h53.12c20.31,0,39.74-7.56,54.71-21.29,14.97-13.73,24.17-32.44,25.92-52.67,6.94-80.41,15.36-178.75,16.05-190.62l1.59-27.39h0Z" fill="#4e4999" stroke="#000000" stroke-opacity="0.5" stroke-width="3"/>
                 </svg>
-                <img src="images/infill_white_4x.png" class="bottom-logo-img" alt="Mercure">
+                <img src="images/infill_white_4x.png" class="bottom-logo-img" alt="">
+                <span class="bottom-brand-text">MERCURE VÍDEO</span>
             </div>
             <div class="bottom-bar-center">
                 <button id="headerPlayBtnMobile" class="bottom-play-btn" aria-label="Assistir vídeo do banner">
@@ -2190,11 +2190,13 @@ CADA PRAZO É CUMPRIDO.</h1>
                     </div>
 
                     <div class="about-right">
-                        <p class="about-text" data-translate-key="about_p1">Editor de vídeo com 7 anos de experiência, especializado em transformar material bruto em narrativas que prendem, comunicam e convertem. Já editei documentários de aviação premiados pelo Prêmio ABEAR de Jornalismo para canais com mais de 1,5 milhão de inscritos, talk shows semanais na Record News, aftermovies para a Dior, anúncios de alta conversão para o Santander e conteúdos de tráfego pago otimizados para retenção. Também atuei como Coordenador de Pós-Produção, liderando equipe de editores e otimizando fluxos de entrega.</p>
+                        <p class="about-text" data-translate-key="about_p1">Sou Marcos Soares Santos, editor de vídeo e motion designer com 7 anos de experiência em televisão, documentários, campanhas, vídeos institucionais, eventos e conteúdo digital. Trabalho da construção narrativa à finalização, com atenção ao ritmo, à clareza da mensagem e às necessidades de cada entrega. Ao longo da minha trajetória, editei mais de 40 episódios para a Record News e participei de projetos para marcas e instituições como Dior, Santander, P&amp;G, TRANSPETRO, CAIXA Consórcio e SESC Brasil. Também atuei na coordenação de pós-produção e na organização de fluxos de trabalho.</p>
 
-                        <blockquote class="about-quote" data-translate-key="about_quote">"Sou apaixonado por música, ler ficção e filosofia. No fundo, sou um contador de histórias que busca criar conexões reais. Reparo nos detalhes de cada frame para garantir que o corte aconteça no tempo certo do ritmo e da música."</blockquote>
+                        <blockquote class="about-quote" data-translate-key="about_quote">Tenho experiência em edição same-day, com entregas feitas enquanto o evento acontece. Na cobertura da TRANSPETRO, editei conteúdo para entrega no mesmo dia. No Hackathon CAIXA Consórcio, realizado ao longo de três dias em Guarujá, editei um vídeo ao final de cada dia para divulgação dos principais momentos.</blockquote>
+                        <p class="about-text" data-translate-key="about_quote_projects">Para o projeto “Sentir para Transformar”, da CNP Assurances, montei um vídeo institucional de 11 minutos a partir de mais de 1h50 de gravações. Fiz a decupagem, estruturei os blocos narrativos, corrigi cor, tratei o áudio e organizei a timeline para a etapa posterior de motion graphics.</p>
+                        <p class="about-text" data-translate-key="about_sesc">Também edito Reels e Shorts para os canais digitais do SESC Brasil, incluindo montagem, legendas, tratamento de áudio, correção de cor e adaptação para o formato vertical.</p>
 
-                        <p class="about-text" data-translate-key="about_p2">No dia a dia utilizo Premiere Pro, After Effects, DaVinci Resolve (Fusion), CapCut Pro, Photoshop, Illustrator e Blender — integrando ferramentas de inteligência artificial no fluxo de trabalho para acelerar entregas sem abrir mão do controle de qualidade.</p>
+                        <p class="about-text" data-translate-key="about_p2">Gosto de unir narrativa e organização: entender o que cada história precisa, fazer escolhas claras na montagem e deixar o material pronto para sua próxima etapa. Trabalho com Premiere Pro, After Effects, DaVinci Resolve/Fusion, CapCut Pro, Photoshop, Illustrator e Blender. Integro ferramentas de inteligência artificial quando contribuem para o processo, mantendo a revisão técnica e criativa das entregas.</p>
 
                         <div class="services-subgrid">
                             <div class="service-item">
@@ -2436,9 +2438,11 @@ CADA PRAZO É CUMPRIDO.</h1>
                 "sec3_title": "ESPECIALISTA EM PÓS-PRODUÇÃO",
                 "sec3_subtitle": "Liderança, ritmo narrativo e consistência sob forte pressão operacional.",
                 "about_headline": "Editor de vídeo sênior · Motion graphics · Estrategista de conteúdo",
-                "about_p1": "Editor de vídeo com 7 anos de experiência, especializado em transformar material bruto em narrativas que prendem, comunicam e convertem. Já editei documentários de aviação premiados pelo Prêmio ABEAR de Jornalismo para canais com mais de 1,5 milhão de inscritos, talk shows semanais na Record News, aftermovies para a Dior, anúncios de alta conversão para o Santander e conteúdos de tráfego pago otimizados para retenção. Também atuei como Coordenador de Pós-Produção, liderando equipe de editores e otimizando fluxos de entrega.",
-                "about_quote": '"Sou apaixonado por música, ler ficção e filosofia. No fundo, sou um contador de histórias que busca criar conexões reais. Reparo nos detalhes de cada frame para garantir que o corte aconteça no tempo certo do ritmo e da música."',
-                "about_p2": "No dia a dia utilizo Premiere Pro, After Effects, DaVinci Resolve (Fusion), CapCut Pro, Photoshop, Illustrator e Blender — integrando ferramentas de inteligência artificial no fluxo de trabalho para acelerar entregas sem abrir mão do controle de qualidade.",
+                "about_p1": "Sou Marcos Soares Santos, editor de vídeo e motion designer com 7 anos de experiência em televisão, documentários, campanhas, vídeos institucionais, eventos e conteúdo digital. Trabalho da construção narrativa à finalização, com atenção ao ritmo, à clareza da mensagem e às necessidades de cada entrega. Ao longo da minha trajetória, editei mais de 40 episódios para a Record News e participei de projetos para marcas e instituições como Dior, Santander, P&G, TRANSPETRO, CAIXA Consórcio e SESC Brasil. Também atuei na coordenação de pós-produção e na organização de fluxos de trabalho.",
+                "about_quote": "Tenho experiência em edição same-day, com entregas feitas enquanto o evento acontece. Na cobertura da TRANSPETRO, editei conteúdo para entrega no mesmo dia. No Hackathon CAIXA Consórcio, realizado ao longo de três dias em Guarujá, editei um vídeo ao final de cada dia para divulgação dos principais momentos.",
+                "about_quote_projects": "Para o projeto ‘Sentir para Transformar’, da CNP Assurances, montei um vídeo institucional de 11 minutos a partir de mais de 1h50 de gravações. Fiz a decupagem, estruturei os blocos narrativos, corrigi cor, tratei o áudio e organizei a timeline para a etapa posterior de motion graphics.",
+                "about_sesc": "Também edito Reels e Shorts para os canais digitais do SESC Brasil, incluindo montagem, legendas, tratamento de áudio, correção de cor e adaptação para o formato vertical.",
+                "about_p2": "Gosto de unir narrativa e organização: entender o que cada história precisa, fazer escolhas claras na montagem e deixar o material pronto para sua próxima etapa. Trabalho com Premiere Pro, After Effects, DaVinci Resolve/Fusion, CapCut Pro, Photoshop, Illustrator e Blender. Integro ferramentas de inteligência artificial quando contribuem para o processo, mantendo a revisão técnica e criativa das entregas.",
                 "srv_broadcast_title": "Edição & Finalização",
                 "srv_broadcast_desc": "Comerciais de TV, institucionais, aftermovies, YouTube de longa duração e Reels/Shorts de alta retenção.",
                 "srv_comercial_title": "Motion Graphics & VFX",
@@ -2491,9 +2495,11 @@ en: {
                 "sec3_title": "POST-PRODUCTION SPECIALIST",
                 "sec3_subtitle": "Leadership, narrative rhythm, and consistency under heavy operational pressure.",
                 "about_headline": "Senior Video Editor · Motion Graphics · Content Strategist",
-                "about_p1": "Video editor with 7 years of experience, specialized in turning raw footage into narratives that capture, communicate, and convert. I have edited aviation documentaries awarded the ABEAR Journalism Prize for channels with over 1.5 million subscribers, weekly talk shows on Record News, aftermovies for Dior, high-converting ads for Santander, and paid traffic assets optimized for retention. I also worked as Post-Production Coordinator, leading a team of editors and streamlining delivery workflows.",
-                "about_quote": '"I am passionate about music, reading fiction and philosophy. At heart, I am a storyteller who seeks to build genuine connections. I pay attention to the details of every single frame to ensure each cut lands perfectly on the beat and pace of the music."',
-                "about_p2": "Daily, I work with Premiere Pro, After Effects, DaVinci Resolve (Fusion), CapCut Pro, Photoshop, Illustrator, and Blender — seamlessly integrating AI tools into my post-production pipeline to speed up delivery times while maintaining strict quality control.",
+                "about_p1": "I am Marcos Soares Santos, a video editor and motion designer with 7 years of experience in television, documentaries, campaigns, corporate films, events, and digital content. I work from story construction through finishing, with attention to pacing, clarity, and each project's delivery needs. My work includes more than 40 episodes for Record News and projects for brands and organizations such as Dior, Santander, P&G, TRANSPETRO, CAIXA Consórcio, and SESC Brasil. I have also worked in post-production coordination and workflow organization.",
+                "about_quote": "I have same-day editing experience, delivering content while events are underway. For TRANSPETRO coverage, I edited content for same-day delivery. At the three-day CAIXA Consórcio Hackathon in Guarujá, I edited a video at the end of each day for immediate sharing.",
+                "about_quote_projects": "For CNP Assurances’ ‘Sentir para Transformar’, I edited an 11-minute corporate film from over 1 hour and 50 minutes of footage. I logged and structured the narrative, corrected color, treated audio, and organized the timeline for the subsequent motion graphics stage.",
+                "about_sesc": "I also edit Reels and Shorts for SESC Brasil’s digital channels, including editing, captions, audio treatment, color correction, and vertical format adaptation.",
+                "about_p2": "I combine storytelling with organization: understanding what each story needs, making clear editorial choices, and preparing each project for its next stage. I work with Premiere Pro, After Effects, DaVinci Resolve/Fusion, CapCut Pro, Photoshop, Illustrator, and Blender. I integrate AI tools when they serve the process, while maintaining technical and creative review of each delivery.",
                 "srv_broadcast_title": "Editing & Finishing",
                 "srv_broadcast_desc": "TV commercials, corporate videos, aftermovies, long-form YouTube content, and high-retention Reels/Shorts.",
                 "srv_comercial_title": "Motion Graphics & VFX",
@@ -2987,8 +2993,17 @@ en: {
                 bannerVideoId = videoId;
 
                 const parallaxVideoContainer = document.getElementById('parallaxVideo');
-                if (parallaxVideoContainer) {
+                if (parallaxVideoContainer && config.backgroundPoster) {
+                    parallaxVideoContainer.style.backgroundImage = `url("${config.backgroundPoster}")`;
+                    parallaxVideoContainer.style.backgroundSize = 'cover';
+                    parallaxVideoContainer.style.backgroundPosition = 'center';
+                }
+                if (parallaxVideoContainer && !reduceMotion) {
                     const iframe = document.createElement('iframe');
+                    iframe.style.opacity = '0';
+                    iframe.title = 'Vídeo decorativo de fundo';
+                    iframe.setAttribute('aria-hidden', 'true');
+                    iframe.setAttribute('tabindex', '-1');
                     iframe.src = `https://play.gumlet.io/embed/${videoId}?autoplay=true&muted=true&loop=true&background=true&preload=true&fit=cover&v=1`;
                     iframe.id = 'backgroundBannerPlayer';
                     iframe.setAttribute('allow', 'autoplay');
