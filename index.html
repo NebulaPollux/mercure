@@ -860,7 +860,7 @@
         .project-accordion-list { display: grid; gap: 0.75rem; max-width: 900px; margin: 0 auto; }
         .project-accordion-grid {
             max-width: none;
-            grid-template-columns: repeat(4, minmax(0, 1fr));
+            grid-template-columns: repeat(5, minmax(0, 1fr));
             align-items: start;
         }
         .project-accordion-grid .project-accordion-body {
@@ -904,8 +904,15 @@
             from { opacity: 0; transform: translateY(-6px); }
             to { opacity: 1; transform: translateY(0); }
         }
+        @media (max-width: 1100px) {
+            .project-accordion-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+        }
         @media (max-width: 900px) {
             .project-accordion-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .project-accordion summary::before { transition: none; }
+            .project-accordion summary:hover::before { --project-parallax: 0px; transform: scale(1.06); }
         }
         @media (max-width: 560px) {
             .project-accordion-grid { grid-template-columns: 1fr; }
@@ -930,6 +937,8 @@
             overflow: hidden;
         }
         .project-accordion summary {
+            position: relative;
+            isolation: isolate;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -938,16 +947,63 @@
             cursor: pointer;
             padding: 0.85rem 1rem;
             color: var(--mercure-text);
+            background: rgba(255, 255, 255, 0.045);
+            border: 1px solid rgba(255, 255, 255, 0.14);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.24), 0 3px 12px rgba(0, 0, 0, 0.14);
+            backdrop-filter: blur(10px) saturate(125%);
+            -webkit-backdrop-filter: blur(10px) saturate(125%);
             font-weight: 700;
             line-height: 1.25;
             text-wrap: balance;
             list-style: none;
+            transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
         }
         .project-accordion summary::-webkit-details-marker { display: none; }
+        .project-accordion summary::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            z-index: -1;
+            background-image: var(--project-thumb);
+            background-size: cover;
+            background-position: 50% calc(50% + var(--project-parallax, 0px));
+            filter: blur(5px) saturate(0.8);
+            opacity: 0.18;
+            transform: scale(1.06);
+            transition: background-position 0.45s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease, transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .project-accordion summary:hover {
+            background: rgba(255, 255, 255, 0.14);
+            border-color: rgba(165, 255, 231, 0.55);
+            box-shadow: var(--glass-highlight-strong), var(--glass-inner-border), 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+        .project-accordion[open] summary {
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.055);
+            border-color: rgba(255, 255, 255, 0.14);
+            box-shadow: var(--glass-highlight), var(--glass-inner-border), 0 3px 12px rgba(0, 0, 0, 0.16);
+        }
+        .project-accordion[open] summary:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(165, 255, 231, 0.42);
+        }
+        .project-accordion summary:hover::before {
+            --project-parallax: -8px;
+            opacity: 0.34;
+            transform: scale(1.1);
+        }
         .project-accordion summary::after { content: '+'; color: var(--mercure-accent); font-size: 1.25rem; }
+        .project-accordion[open] summary::before { opacity: 0; }
         .project-accordion[open] summary::after { content: '−'; }
         .project-accordion summary:focus-visible { outline: 2px solid var(--mercure-accent); outline-offset: -2px; }
-        .project-accordion-body { padding: 0 1rem 1rem; }
+        .project-accordion-body {
+            margin: 0 0.35rem 0.35rem;
+            padding: 0.35rem 0.9rem 0.9rem;
+            border-radius: 0 0 9px 9px;
+            background: rgba(0, 0, 0, 0.08);
+        }
         .project-accordion-body .video-wrapper { margin-top: 0.25rem; }
         .project-accordion-body p { color: var(--mercure-text-secondary); margin: 0.5rem 0 0.9rem; }
         .project-accordion-placeholder { color: var(--mercure-text-secondary); font-style: italic; }
@@ -2185,7 +2241,7 @@
                 <div class="project-accordion-section reveal" id="selected-projects">
                     <div class="project-accordion-list project-accordion-grid">
                         <details class="project-accordion">
-                            <summary data-translate-key="selected_think_title">Think Plastic Brazil — Summit 2025</summary>
+                            <summary data-translate-key="selected_think_title" style="--project-thumb: url('https://video.gumlet.io/6a45b78918d11bffd503ee1a/6a45bf80e4e7cc890ee34095/thumbnail-1-0.png?width=900');">Think Plastic Brazil — Summit 2025</summary>
                             <div class="project-accordion-body">
                                 <div class="project-case-copy">
                                 <p><strong data-translate-key="selected_think_role">Motion design para a abertura do Summit 2025</strong><br><span data-translate-key="selected_think_desc">Peça institucional de 2min40 para a abertura do World Plastic Connection Summit 2025, com foco em design, inovação e sustentabilidade no plástico transformado.</span></p>
@@ -2197,7 +2253,7 @@
                             </div>
                         </details>
                         <details class="project-accordion">
-                            <summary data-translate-key="selected_imponderavel_title">O Imponderável — Record News</summary>
+                            <summary data-translate-key="selected_imponderavel_title" style="--project-thumb: url('https://video.gumlet.io/6a45b78918d11bffd503ee1a/6a471f53e81b019c974c3eed/thumbnail-1-0.png?width=900');">O Imponderável — Record News</summary>
                             <div class="project-accordion-body">
                                 <div class="project-case-copy">
                                 <p><strong data-translate-key="selected_imponderavel_role">Talk show semanal de inovação · 2021–2023</strong><br><span data-translate-key="selected_imponderavel_desc">Talk show da Record News apresentado por Gil Giardelli, sobre inovação, cultura digital e tecnologia.</span></p>
@@ -2209,7 +2265,7 @@
                             </div>
                         </details>
                         <details class="project-accordion" id="selected-transpetro">
-                            <summary data-translate-key="selected_transpetro_title">TRANSPETRO — Jd. Hollywood</summary>
+                            <summary data-translate-key="selected_transpetro_title" style="--project-thumb: url('https://video.gumlet.io/6a45b78918d11bffd503ee1a/6a45bb7f18d11bffd504439a/thumbnail-1-0.png?width=900');">TRANSPETRO — Jd. Hollywood</summary>
                             <div class="project-accordion-body">
                                 <div class="project-case-copy">
                                 <p><strong data-translate-key="selected_transpetro_role">Cobertura e edição same-day</strong><br><span data-translate-key="selected_transpetro_desc">Cobertura same-day de uma ação de hortas comunitárias na faixa do gasoduto da TRANSPETRO, editada para entrega no mesmo dia.</span></p>
@@ -2219,7 +2275,7 @@
                             </div>
                         </details>
                         <details class="project-accordion" id="selected-caixa">
-                            <summary data-translate-key="selected_caixa_title">Hackathon CAIXA Consórcio</summary>
+                            <summary data-translate-key="selected_caixa_title" style="--project-thumb: url('https://video.gumlet.io/6a45b78918d11bffd503ee1a/6ae508c834bee2c4e82840c1/thumbnail-1-0.png?width=900');">Hackathon CAIXA Consórcio</summary>
                             <div class="project-accordion-body">
                                 <div class="project-case-copy">
                                 <p><strong data-translate-key="selected_caixa_role">Same-day · 3 dias · 1 vídeo por dia</strong><br><span data-translate-key="selected_caixa_desc">Hackathon da CAIXA Consórcio, no Guarujá, ao longo de três dias. Editei um vídeo ao final de cada dia com os principais momentos.</span></p>
@@ -2232,7 +2288,7 @@
                             </div>
                         </details>
                         <details class="project-accordion" id="selected-apas">
-                            <summary data-translate-key="selected_apas_title">APAS Show 2024</summary>
+                            <summary data-translate-key="selected_apas_title" style="--project-thumb: url('https://video.gumlet.io/6a45b78918d11bffd503ee1a/6a45ba33e81b019c9723df2b/thumbnail-1-0.png?width=900');">APAS Show 2024</summary>
                             <div class="project-accordion-body">
                                 <div class="project-case-copy">
                                 <p><strong data-translate-key="selected_apas_role">Cobertura same-day · 6 dias</strong><br><span data-translate-key="selected_apas_desc">Cobertura da APAS Show 2024, no Expo Center Norte, em São Paulo, com entregas para o perfil @apasoficial.</span></p>
@@ -3399,7 +3455,29 @@ en: {
             if (e.target === modal) closeVideoModal();
         });
 
+        let glassEggBuffer = '';
+        let glassEggTimer;
+        const showGlassEgg = () => {
+            let notice = document.getElementById('glassEggNotice');
+            if (!notice) {
+                notice = document.createElement('div');
+                notice.id = 'glassEggNotice';
+                notice.textContent = 'sim, eu adoro glassmorphism';
+                notice.style.cssText = 'position:fixed;left:50%;bottom:2rem;z-index:1000;transform:translateX(-50%);padding:.7rem 1rem;border:1px solid rgba(255,255,255,.2);border-radius:999px;background:rgba(20,24,45,.72);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);box-shadow:inset 0 1px 0 rgba(255,255,255,.24),0 8px 24px rgba(0,0,0,.25);color:#f7f8ff;font-size:.78rem;letter-spacing:.04em;opacity:0;transition:opacity .2s ease';
+                document.body.appendChild(notice);
+            }
+            notice.style.opacity = '1';
+            clearTimeout(glassEggTimer);
+            glassEggTimer = setTimeout(() => { notice.style.opacity = '0'; }, 2600);
+        };
         document.addEventListener('keydown', (e) => {
+            if (e.key.length === 1 && /[a-z]/i.test(e.key)) {
+                glassEggBuffer = (glassEggBuffer + e.key.toLowerCase()).slice(-5);
+                if (glassEggBuffer === 'glass') {
+                    showGlassEgg();
+                    glassEggBuffer = '';
+                }
+            }
             if (e.key === 'Escape' && isModalOpen) closeVideoModal();
             if (e.key === 'Escape' && mobileMenu.classList.contains('open')) closeMobileMenu();
 

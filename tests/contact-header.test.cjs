@@ -71,4 +71,9 @@ test('contact panel is moved outside the isolated header for page-level backdrop
     assert.match(html, /<div class="project-accordion-list project-accordion-grid">/);
     assert.equal((html.match(/<div class="project-case-copy">/g) || []).length, 5);
     assert.equal((html.match(/<div class="video-wrapper" data-video-id=/g) || []).length, 28);
+    assert.equal((html.match(/<summary data-translate-key="selected_[^"]+_title"[^>]*--project-thumb:/g) || []).length, 5);
+    assert.match(html, /\.project-accordion\[open\] summary::before\s*\{\s*opacity: 0;\s*\}/);
+    assert.match(html, /\.project-accordion summary\s*\{[\s\S]*?border-radius: 10px;/);
+    assert.match(html, /\.project-accordion\[open\] summary\s*\{[\s\S]*?border-radius: 10px;/);
+    assert.match(html, /\.project-accordion-body\s*\{[\s\S]*?border-radius: 0 0 9px 9px;/);
 });
