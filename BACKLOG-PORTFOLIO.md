@@ -12,7 +12,8 @@ Atualizado em 2026-10-30 a partir da auditoria de posicionamento, código e SEO.
 - Botão Play escolhe vídeos horizontais ou verticais conforme a orientação atual.
 - Contato desktop/mobile com WhatsApp, e-mail, LinkedIn, SVGs, tradução PT/EN e painel responsivo.
 - Modal vertical usa proporção 9:16; modal horizontal usa 16:9.
-- Suíte local atual: 32 testes aprovados.
+- Suíte local atual: 32 testes aprovados; a cobertura estrutural inclui cinco cases selecionados, 28 IDs Gumlet únicos e somente Perfil profissional aberto por padrão.
+- Projetos selecionados: Think Plastic Brazil — Summit 2025, O Imponderável, TRANSPETRO — Jd. Hollywood, Hackathon CAIXA e APAS Show 2024, com contexto, papel e ferramentas em PT/EN quando confirmados.
 - Não há revisão visual pendente neste backlog: a versão publicada foi aprovada visualmente.
 
 ## Onda 1: maior retorno e baixo risco

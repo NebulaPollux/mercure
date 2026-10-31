@@ -3,7 +3,7 @@
 ## Estado verificado em 30/10/2026
 
 - Estado local e publicado: a home contém JSON-LD Person, copy de posicionamento, imagem social raster `images/social-share.png` e nomenclatura Mercure Vídeo.
-- A suíte atual cobre 32 testes aprovados; validação visual/browser e previews externos ainda não foram executadas.
+- A suíte atual cobre 32 testes aprovados; a home tem cinco cases selecionados, 28 IDs Gumlet únicos e somente o acordeão Perfil profissional aberto por padrão. Validação visual/browser e previews externos ainda não foram executados.
 
 - `https://mercurevideo.com.br/` responde 200 e declara canonical sem www. `https://www.mercurevideo.com.br/` responde 308; confirmar o destino exato no painel Vercel caso queira rever o redirect.
 - `robots.txt` e `sitemap.xml` respondem 200 no domínio canônico; sitemap lista as três páginas públicas.

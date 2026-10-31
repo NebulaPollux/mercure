@@ -865,11 +865,14 @@
         }
         .project-accordion-grid .project-accordion-body {
             display: grid;
-            grid-template-columns: minmax(150px, 0.72fr) minmax(0, 1.28fr);
-            align-items: center;
+            grid-template-columns: minmax(0, 0.9fr) minmax(260px, 1.1fr);
+            align-items: start;
             gap: 1rem;
             padding: 0 0.85rem 0.85rem;
         }
+        .project-case-copy { display: grid; gap: 0.75rem; align-content: start; }
+        .project-case-copy p { margin: 0; }
+        .project-accordion-grid .project-accordion-body > .video-wrapper { grid-column: 2; grid-row: 1; }
         .project-accordion-grid .project-accordion-body .video-wrapper { aspect-ratio: 16 / 9; }
         .project-accordion-grid .project-accordion-body p {
             min-height: 0;
@@ -916,8 +919,8 @@
                 gap: 0.85rem;
                 padding: 0 0.85rem 0.85rem;
             }
-            .project-accordion-grid .project-accordion-body p { order: 1; }
-            .project-accordion-grid .project-accordion-body .video-wrapper { order: 2; }
+            .project-accordion-grid .project-accordion-body > .video-wrapper { grid-column: 1; grid-row: 2; }
+            .project-case-copy { grid-column: 1; grid-row: 1; }
             .project-accordion[open] .project-accordion-body .video-wrapper { min-height: 0; }
         }
         .project-accordion {
@@ -2181,42 +2184,70 @@
                 <!-- PROJETOS SELECIONADOS: acordeão horizontal -->
                 <div class="project-accordion-section reveal" id="selected-projects">
                     <div class="project-accordion-list project-accordion-grid">
-                        <details class="project-accordion" open>
-                            <summary data-translate-key="selected_think_title">Think Plastic Brazil — Abertura do Seminário</summary>
+                        <details class="project-accordion">
+                            <summary data-translate-key="selected_think_title">Think Plastic Brazil — Summit 2025</summary>
                             <div class="project-accordion-body">
-                                <p><strong data-translate-key="selected_think_role">Vídeo de abertura de seminário</strong><br><span data-translate-key="selected_think_desc">Vídeo de abertura do seminário Think Plastic Brazil, sobre economia circular e inovação no setor de plásticos.</span></p>
-                                <div class="video-wrapper" data-video-id="6a45bf80e4e7cc890ee34095"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Think Plastic Brazil — Abertura do Seminário" class="video-thumbnail" loading="lazy"><div class="play-button"></div></div>
+                                <div class="project-case-copy">
+                                <p><strong data-translate-key="selected_think_role">Motion design para a abertura do Summit 2025</strong><br><span data-translate-key="selected_think_desc">Peça institucional de 2min40 para a abertura do World Plastic Connection Summit 2025, com foco em design, inovação e sustentabilidade no plástico transformado.</span></p>
+                                <p class="project-case-meta"><strong data-translate-key="case_context_label">O que era o projeto</strong><br><span data-translate-key="selected_think_context">Peça institucional/promocional do Think Plastic Brazil para o World Plastic Connection Summit 2025.</span></p>
+                                <p class="project-case-meta"><strong data-translate-key="case_role_label">Meu papel</strong><br><span data-translate-key="selected_think_case_role">Motion design e edição da peça de abertura.</span></p>
+                                <p class="project-case-meta"><strong data-translate-key="case_tools_label">Ferramentas</strong><br><span data-translate-key="selected_think_tools">DaVinci Resolve e Fusion.</span></p>
+                                </div>
+                                <div class="video-wrapper" data-video-id="6a45bf80e4e7cc890ee34095"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Think Plastic Brazil — Summit 2025" class="video-thumbnail" loading="lazy"><div class="play-button"></div></div>
                             </div>
                         </details>
-                        <details class="project-accordion" open>
+                        <details class="project-accordion">
                             <summary data-translate-key="selected_imponderavel_title">O Imponderável — Record News</summary>
                             <div class="project-accordion-body">
-                                <p><strong data-translate-key="selected_imponderavel_role">Talk show de inovação · TV</strong><br><span data-translate-key="selected_imponderavel_desc">Talk show de inovação da Record News. Faz parte dos mais de 40 episódios que editei para a emissora.</span></p>
+                                <div class="project-case-copy">
+                                <p><strong data-translate-key="selected_imponderavel_role">Talk show semanal de inovação · 2021–2023</strong><br><span data-translate-key="selected_imponderavel_desc">Talk show da Record News apresentado por Gil Giardelli, sobre inovação, cultura digital e tecnologia.</span></p>
+                                <p class="project-case-meta"><strong data-translate-key="case_context_label">O que era o projeto</strong><br><span data-translate-key="selected_imponderavel_context">Talk show semanal da Record News apresentado por Gil Giardelli, com pautas de inovação, cultura digital e tecnologia.</span></p>
+                                <p class="project-case-meta"><strong data-translate-key="case_role_label">Meu papel</strong><br><span data-translate-key="selected_imponderavel_case_role">Edição de mais de 40 episódios entre 2021 e 2023.</span></p>
+                                <p class="project-case-meta"><strong data-translate-key="case_tools_label">Ferramentas</strong><br><span data-translate-key="selected_imponderavel_tools">DaVinci Resolve e Fusion.</span></p>
+                                </div>
                                 <div class="video-wrapper" data-video-id="6a471f53e81b019c974c3eed"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="O Imponderável — Record News" class="video-thumbnail" loading="lazy"><div class="play-button"></div></div>
                             </div>
                         </details>
-                        <details class="project-accordion" open>
+                        <details class="project-accordion" id="selected-transpetro">
                             <summary data-translate-key="selected_transpetro_title">TRANSPETRO — Jd. Hollywood</summary>
                             <div class="project-accordion-body">
-                                <p><strong data-translate-key="selected_transpetro_role">Cobertura e edição same-day</strong><br><span data-translate-key="selected_transpetro_desc">Conteúdo da cobertura da TRANSPETRO editado para entrega no mesmo dia, enquanto o evento acontecia.</span></p>
+                                <div class="project-case-copy">
+                                <p><strong data-translate-key="selected_transpetro_role">Cobertura e edição same-day</strong><br><span data-translate-key="selected_transpetro_desc">Cobertura same-day de uma ação de hortas comunitárias na faixa do gasoduto da TRANSPETRO, editada para entrega no mesmo dia.</span></p>
+                                <p class="project-case-meta"><strong data-translate-key="case_tools_label">Ferramentas</strong><br><span data-translate-key="selected_transpetro_tools">DaVinci Resolve e Fusion.</span></p>
+                                </div>
                                 <div class="video-wrapper" data-video-id="6a45bb7f18d11bffd504439a"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="TRANSPETRO — Jd. Hollywood" class="video-thumbnail" loading="lazy"><div class="play-button"></div></div>
                             </div>
                         </details>
-                        <details class="project-accordion" open>
+                        <details class="project-accordion" id="selected-caixa">
                             <summary data-translate-key="selected_caixa_title">Hackathon CAIXA Consórcio</summary>
                             <div class="project-accordion-body">
+                                <div class="project-case-copy">
                                 <p><strong data-translate-key="selected_caixa_role">Same-day · 3 dias · 1 vídeo por dia</strong><br><span data-translate-key="selected_caixa_desc">Hackathon da CAIXA Consórcio, no Guarujá, ao longo de três dias. Editei um vídeo ao final de cada dia com os principais momentos.</span></p>
+                                <p class="project-case-meta"><strong data-translate-key="case_tools_label">Ferramentas</strong><br><span data-translate-key="selected_caixa_tools">DaVinci Resolve.</span></p>
+                                </div>
                                 <div class="video-wrapper" data-video-id="6ae508c834bee2c4e82840c1">
                                     <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Hackathon CAIXA Consórcio" class="video-thumbnail" loading="lazy">
                                     <div class="play-button"></div>
                                 </div>
                             </div>
                         </details>
+                        <details class="project-accordion" id="selected-apas">
+                            <summary data-translate-key="selected_apas_title">APAS Show 2024</summary>
+                            <div class="project-accordion-body">
+                                <div class="project-case-copy">
+                                <p><strong data-translate-key="selected_apas_role">Cobertura same-day · 6 dias</strong><br><span data-translate-key="selected_apas_desc">Cobertura da APAS Show 2024, no Expo Center Norte, em São Paulo, com entregas para o perfil @apasoficial.</span></p>
+                                <p class="project-case-meta"><strong data-translate-key="case_context_label">O que era o projeto</strong><br><span data-translate-key="selected_apas_context">A maior feira de varejo da América Latina, com cobertura de abertura, estandes, coletivas e entrevistas.</span></p>
+                                <p class="project-case-meta"><strong data-translate-key="case_role_label">Meu papel</strong><br><span data-translate-key="selected_apas_case_role">Cobertura same-day durante seis dias consecutivos, com jornadas de até 12 horas.</span></p>
+                                <p class="project-case-meta"><strong data-translate-key="case_delivery_label">Como foi a entrega</strong><br><span data-translate-key="selected_apas_delivery">Dezenas de Reels e Stories produzidos após a captação para publicação durante o evento.</span></p>
+                                <p class="project-case-meta"><strong data-translate-key="case_tools_label">Ferramentas</strong><br><span data-translate-key="selected_apas_tools">DaVinci Resolve e Fusion.</span></p>
+                                </div>
+                                <div class="video-wrapper" data-video-id="6a45ba33e81b019c9723df2b"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="APAS Show 2024" class="video-thumbnail" loading="lazy"><div class="play-button"></div></div>
+                            </div>
+                        </details>
                     </div>
-                </div>
 
                 <div class="section-header reveal" style="margin: 3rem 0 2.5rem 0;">
-                    <h3 class="section-title" data-translate-key="other_projects" style="font-size: 1.25rem;">Outros Projetos</h3>
+                    <h3 class="section-title" data-translate-key="other_projects" style="font-size: 1.25rem;">Mais projetos selecionados</h3>
                 </div>
 
                 <!-- GRUPO 1: HIGHLIGHTS (demais projetos) -->
@@ -2363,6 +2394,7 @@
                 <div class="reveal" style="text-align: center; margin-top: 1.5rem; margin-bottom: 0;">
                     <button class="btn-ver-todos" id="toggleArchiveBtn" data-translate-key="toggle_more" aria-expanded="false">Ver Mais Projetos</button>
                 </div>
+                </div>
             </section>
 
             <!-- SEÇÃO 2: REELS, SHORTS & CAMPANHAS DIGITAIS -->
@@ -2474,18 +2506,7 @@
                             </div>
                         </div>
 
-                        <!-- SAME DAY APAS -->
-                        <div class="vertical-card" data-category="apas">
-                            <div class="video-wrapper" data-video-id="6a45ba33e81b019c9723df2b">
-                                <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="APAS Show 2024 - Cerimônia solene de abertura" class="video-thumbnail-reel" loading="lazy">
-                                <div class="play-button"></div>
-                            </div>
-                            <div class="card-caption">
-                                <h3 data-translate-key="Abertura Solene">Abertura Solene</h3>
-                                <p data-translate-key="Same-day Event Coverage">Same-day Event Coverage</p>
-                            </div>
-                        </div>
-
+                        <!-- SAME DAY APAS: o case principal usa o vídeo de abertura acima. -->
                         <div class="vertical-card" data-category="apas">
                             <div class="video-wrapper" data-video-id="6a45ba3318d11bffd50426cf">
                                 <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="APAS Show 2024 - Coletiva" class="video-thumbnail-reel" loading="lazy">
@@ -2550,12 +2571,12 @@
                             <p class="about-text" data-translate-key="about_p1">Sou Marcos Soares Santos, editor de vídeo e motion designer com 7 anos de experiência em televisão, documentários, campanhas, vídeos institucionais, eventos e conteúdo digital. Trabalho da construção narrativa à finalização, com atenção ao ritmo, à clareza da mensagem e às necessidades de cada entrega. Ao longo da minha trajetória, editei mais de 40 episódios para a Record News, participei de projetos para marcas e instituições como Dior, Santander, P&amp;G, TRANSPETRO, CAIXA Consórcio, CNP Assurances e SESC Brasil, e também atuei na coordenação de pós-produção e na organização de fluxos de trabalho. Entre as entregas recentes, editei um vídeo institucional de 11 minutos para a ação “Sentir para Transformar”, da CNP Assurances, a partir de mais de 1h50 de gravações, e produzo Reels e Shorts para os canais digitais do SESC Brasil.</p>
                         </details>
 
-                        <details class="about-accordion" open>
+                        <details class="about-accordion">
                             <summary data-translate-key="about_sameday_title">Same-day e entregas</summary>
                             <blockquote class="about-quote" data-translate-key="about_quote">Tenho experiência em edição same-day, com entregas feitas enquanto o evento acontece. Na cobertura da TRANSPETRO, editei conteúdo para entrega no mesmo dia. No Hackathon CAIXA Consórcio, realizado ao longo de três dias, editei um vídeo ao final de cada dia para divulgação dos principais momentos.</blockquote>
                         </details>
 
-                        <details class="about-accordion" open>
+                        <details class="about-accordion">
                             <summary data-translate-key="about_tools_title">Ferramentas e especialidades</summary>
                             <p class="about-text" data-translate-key="about_p2">Gosto de unir narrativa e organização: entender o que cada história precisa, fazer escolhas claras na montagem e deixar o material pronto para sua próxima etapa. Trabalho com Premiere Pro, After Effects, DaVinci Resolve/Fusion, CapCut Pro, Photoshop, Illustrator e Blender. Integro ferramentas de inteligência artificial quando contribuem para o processo, mantendo a revisão técnica e criativa das entregas.</p>
                             <div class="services-subgrid">
@@ -2826,18 +2847,37 @@
                 "hero_subtitle": "Broadcast, campanhas e edição same-day para agências, produtoras e clientes diretos.",
                 "selected_projects_title": "PROJETOS SELECIONADOS",
                 "selected_projects_subtitle": "Uma seleção curta de trabalhos para agências e clientes diretos.",
-                "selected_think_title": "Think Plastic Brazil — Abertura do Seminário",
-                "selected_think_role": "Vídeo de abertura de seminário",
-                "selected_think_desc": "Vídeo de abertura do seminário Think Plastic Brazil, sobre economia circular e inovação no setor de plásticos.",
+                "case_context_label": "O que era o projeto",
+                "case_role_label": "Meu papel",
+                "case_tools_label": "Ferramentas",
+                "selected_think_title": "Think Plastic Brazil — Summit 2025",
+                "selected_think_role": "Motion design para a abertura do Summit 2025",
+                "selected_think_desc": "Peça institucional de 2min40 para a abertura do World Plastic Connection Summit 2025, com foco em design, inovação e sustentabilidade no plástico transformado.",
+                "selected_think_context": "Peça institucional/promocional do Think Plastic Brazil para o World Plastic Connection Summit 2025.",
+                "selected_think_case_role": "Motion design e edição da peça de abertura.",
+                "selected_think_tools": "DaVinci Resolve e Fusion.",
+                "selected_apas_title": "APAS Show 2024",
+                "selected_apas_role": "Cobertura same-day · 6 dias",
+                "selected_apas_desc": "Cobertura da APAS Show 2024, no Expo Center Norte, em São Paulo, com entregas para o perfil @apasoficial.",
+                "selected_apas_context": "A maior feira de varejo da América Latina, com cobertura de abertura, estandes, coletivas e entrevistas.",
+                "selected_apas_case_role": "Cobertura same-day durante seis dias consecutivos, com jornadas de até 12 horas.",
+                "selected_apas_delivery": "Dezenas de Reels e Stories produzidos após a captação para publicação durante o evento.",
+                "selected_apas_tools": "DaVinci Resolve e Fusion.",
+                "case_delivery_label": "Como foi a entrega",
                 "selected_imponderavel_title": "O Imponderável — Record News",
-                "selected_imponderavel_role": "Talk show de inovação · TV",
-                "selected_imponderavel_desc": "Talk show de inovação da Record News. Faz parte dos mais de 40 episódios que editei para a emissora.",
+                "selected_imponderavel_role": "Talk show semanal de inovação · 2021–2023",
+                "selected_imponderavel_desc": "Talk show da Record News apresentado por Gil Giardelli, sobre inovação, cultura digital e tecnologia.",
+                "selected_imponderavel_context": "Talk show semanal da Record News apresentado por Gil Giardelli, com pautas de inovação, cultura digital e tecnologia.",
+                "selected_imponderavel_case_role": "Edição de mais de 40 episódios entre 2021 e 2023.",
+                "selected_imponderavel_tools": "DaVinci Resolve e Fusion.",
                 "selected_transpetro_title": "TRANSPETRO — Jd. Hollywood",
                 "selected_transpetro_role": "Cobertura e edição same-day",
-                "selected_transpetro_desc": "Conteúdo da cobertura da TRANSPETRO editado para entrega no mesmo dia, enquanto o evento acontecia.",
+                "selected_transpetro_desc": "Cobertura same-day de uma ação de hortas comunitárias na faixa do gasoduto da TRANSPETRO, editada para entrega no mesmo dia.",
+                "selected_transpetro_tools": "DaVinci Resolve e Fusion.",
                 "selected_caixa_title": "Hackathon CAIXA Consórcio",
                 "selected_caixa_role": "Same-day · 3 dias · 1 vídeo por dia",
                 "selected_caixa_desc": "Hackathon da CAIXA Consórcio, no Guarujá, ao longo de três dias. Editei um vídeo ao final de cada dia com os principais momentos.",
+                "selected_caixa_tools": "DaVinci Resolve.",
                 "nav_contact_wa": "WHATSAPP ↗",
                 "contact_button": "Contato",
                 "contact_panel_title": "Fale sobre seu projeto",
@@ -2906,18 +2946,37 @@ en: {
                 "hero_subtitle": "Broadcast, campaigns, and same-day editing for agencies, production companies, and direct clients.",
                 "selected_projects_title": "SELECTED PROJECTS",
                 "selected_projects_subtitle": "A short selection of work for agencies and direct clients.",
-                "selected_think_title": "Think Plastic Brazil — Seminar Opening",
-                "selected_think_role": "Seminar opening video",
-                "selected_think_desc": "Opening video for the Think Plastic Brazil seminar, on the circular economy and innovation in the plastics sector.",
+                "case_context_label": "What the project was",
+                "case_role_label": "My role",
+                "case_tools_label": "Tools",
+                "selected_think_title": "Think Plastic Brazil — Summit 2025",
+                "selected_think_role": "Motion design for the 2025 Summit opening",
+                "selected_think_desc": "A 2:40 institutional piece for the opening of the 2025 World Plastic Connection Summit, focused on design, innovation, and sustainability in converted plastics.",
+                "selected_think_context": "Institutional/promotional piece for Think Plastic Brazil and the 2025 World Plastic Connection Summit.",
+                "selected_think_case_role": "Motion design and editing for the opening piece.",
+                "selected_think_tools": "DaVinci Resolve and Fusion.",
+                "selected_apas_title": "APAS Show 2024",
+                "selected_apas_role": "Same-day coverage · 6 days",
+                "selected_apas_desc": "Coverage of APAS Show 2024 at Expo Center Norte in São Paulo, with deliverables for @apasoficial.",
+                "selected_apas_context": "Latin America’s largest retail trade show, with coverage of the opening, booths, press conferences, and interviews.",
+                "selected_apas_case_role": "Same-day coverage across six consecutive days, with shifts of up to 12 hours.",
+                "selected_apas_delivery": "Dozens of Reels and Stories produced after capture for publication during the event.",
+                "selected_apas_tools": "DaVinci Resolve and Fusion.",
+                "case_delivery_label": "How it was delivered",
                 "selected_imponderavel_title": "The Imponderable — Record News",
-                "selected_imponderavel_role": "Innovation talk show · TV",
-                "selected_imponderavel_desc": "Innovation talk show on Record News, part of the 40+ episodes I edited for the network.",
+                "selected_imponderavel_role": "Weekly innovation talk show · 2021–2023",
+                "selected_imponderavel_desc": "Record News talk show hosted by Gil Giardelli about innovation, digital culture, and technology.",
+                "selected_imponderavel_context": "Weekly Record News talk show hosted by Gil Giardelli, covering innovation, digital culture, and technology.",
+                "selected_imponderavel_case_role": "Editing more than 40 episodes between 2021 and 2023.",
+                "selected_imponderavel_tools": "DaVinci Resolve and Fusion.",
                 "selected_transpetro_title": "TRANSPETRO — Jd. Hollywood",
                 "selected_transpetro_role": "Same-day coverage and editing",
-                "selected_transpetro_desc": "Content from the TRANSPETRO coverage, edited for same-day delivery while the event was still happening.",
+                "selected_transpetro_desc": "Same-day coverage of a community garden initiative along TRANSPETRO's gas pipeline corridor, edited for delivery the same day.",
+                "selected_transpetro_tools": "DaVinci Resolve and Fusion.",
                 "selected_caixa_title": "CAIXA Consórcio Hackathon",
                 "selected_caixa_role": "Same-day · 3 days · 1 video per day",
                 "selected_caixa_desc": "CAIXA Consórcio hackathon in Guarujá, over three days. I edited one video at the end of each day with the key moments.",
+                "selected_caixa_tools": "DaVinci Resolve.",
                 "nav_contact_wa": "WHATSAPP ↗",
                 "contact_button": "Contact",
                 "contact_panel_title": "Talk about your project",
