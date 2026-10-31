@@ -12,7 +12,7 @@ Atualizado em 2026-10-31 após a implementação da primeira frente do plano UX.
 - Botão Play escolhe vídeos horizontais ou verticais conforme a orientação atual.
 - Contato desktop/mobile com WhatsApp, e-mail, LinkedIn, SVGs, tradução PT/EN e painel responsivo.
 - Modal vertical usa proporção 9:16; modal horizontal usa 16:9.
-- Suíte local atual: 41 testes aprovados; inclui navegação do lightbox, cinco cases selecionados, 28 IDs Gumlet únicos e somente Perfil profissional aberto por padrão.
+- Suíte local atual: 44 testes aprovados; inclui navegação do lightbox, cinco cases selecionados, 28 IDs Gumlet únicos e somente Perfil profissional aberto por padrão.
 - Plano UX implementado localmente: navegação global do lightbox, nome no hero, três frames por cabeçalho e oito perguntas frequentes PT/EN. Cabeçalhos recolhidos com altura igual, incluindo APAS. Ainda não publicado; evidências e limites em `PORTFOLIO-UX-PLAN.md`.
 - Projetos selecionados: Think Plastic Brazil — Summit 2025, O Imponderável, TRANSPETRO — Jd. Hollywood, Hackathon CAIXA e APAS Show 2024, com contexto, papel e ferramentas em PT/EN quando confirmados.
 - Não há revisão visual pendente neste backlog: a versão publicada foi aprovada visualmente.
@@ -171,9 +171,9 @@ Se o público internacional justificar o custo, criar `/en/` estático com `href
 
 ### 15. Medição de performance
 
-**Status:** pendente. Ambiente atual não possui Lighthouse, Playwright, Puppeteer ou navegador CLI; nenhuma métrica foi inventada. **Prioridade:** P2
+**Status:** medição exploratória Edge/CDP executada localmente, sem throttling, e otimização de imagens concluída. Foto 584.535 → 22.576 bytes, logo 79.660 → 12.240 bytes, lazy loading da foto e retry dos originais verificados. Evidências e limites em `PERFORMANCE-REPORT.md`. **Prioridade:** P2
 
-Rodar Lighthouse mobile e registrar LCP, peso total e tempo até o primeiro vídeo antes de otimizar.
+Lighthouse mobile e tempo até o primeiro vídeo reproduzir continuam pendentes. As amostras locais não comprovam ganho de tempo em produção nem substituem Core Web Vitals.
 
 Pontos candidatos:
 
