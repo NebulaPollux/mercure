@@ -3134,7 +3134,7 @@
                 toggleArchiveBtn.textContent = translations[currentLang].toggle_more;
                 toggleArchiveBtn.setAttribute('aria-expanded', 'false');
                 setReelsExpanded(activeReelFilter !== 'all');
-                toggleReelsBtn.hidden = activeReelFilter === 'all';
+                toggleReelsBtn.hidden = false;
             }
             const hasAnyMatchingItem = [...serviceFilterItems].some(itemMatchesService);
             const hasAnyMatchingReel = [...verticalCards].some(reelCardMatchesFilters);

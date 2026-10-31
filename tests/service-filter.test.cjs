@@ -60,5 +60,6 @@ test('service filter preserves accessibility and reset behavior in source', () =
     assert.match(html, /setReelsExpanded\(reelsMatches\)/);
     assert.match(html, /renderReelCards\(\);/);
     assert.match(html, /setReelsExpanded\(activeReelFilter !== 'all'\)/);
+    assert.match(html, /toggleReelsBtn\.hidden = false/);
     assert.match(html, /setReelsExpanded\(hasMatchingReels\)/);
 });
