@@ -809,6 +809,14 @@
             will-change: opacity, transform;
         }
 
+        .hero-identity {
+            margin: 0 0 0.75rem;
+            color: #fff;
+            font-size: clamp(0.85rem, 1.6vw, 1.1rem);
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-shadow: 0 2px 12px rgba(18, 23, 58, 0.95);
+        }
         .hero-title {
             font-size: clamp(1rem, 2.3vw, 1.65rem);
             font-weight: 700;
@@ -1006,6 +1014,45 @@
         }
         .project-accordion-body .video-wrapper { margin-top: 0.25rem; }
         .project-accordion-body p { color: var(--mercure-text-secondary); margin: 0.5rem 0 0.9rem; }
+        .project-accordion summary { display: grid; grid-template-columns: minmax(0, 1fr) auto; }
+        .project-summary-title {
+            grid-column: 1;
+            grid-row: 1;
+            min-width: 0;
+            display: flex;
+            align-items: center;
+        }
+        .project-accordion:not([open]) summary { min-height: var(--project-closed-height, 0px); }
+        .project-accordion summary::after { grid-column: 2; grid-row: 1; }
+        .project-frame-strip {
+            grid-column: 1 / -1;
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 4px;
+            min-width: 0;
+            height: 46px;
+            overflow: hidden;
+            border-radius: 6px;
+            pointer-events: none;
+        }
+        .project-frame-strip img {
+            display: block;
+            width: 100%;
+            height: 46px;
+            min-width: 0;
+            object-fit: cover;
+            opacity: 0.72;
+            transform: scale(1.04);
+            transition: transform 0.4s ease, opacity 0.3s ease;
+        }
+        .project-frame-strip img[hidden] { display: none; }
+        .project-accordion summary:hover .project-frame-strip img { transform: scale(1.1) translateY(-2px); opacity: 0.9; }
+        .project-accordion[open] .project-frame-strip { display: none; }
+        @media (prefers-reduced-motion: reduce) {
+            .project-frame-strip img,
+            .project-accordion summary:hover .project-frame-strip img { transition: none; transform: none; }
+            .project-accordion summary:hover::before { --project-parallax: 0px; transform: scale(1.06); transition: none; }
+        }
         .project-accordion-placeholder { color: var(--mercure-text-secondary); font-style: italic; }
         .legacy-projects-section { display: none !important; }
         .project-card-accordion .card-caption h3 {
@@ -1827,6 +1874,12 @@
             transform: translateY(-2px);
         }
 
+        .faq-section { margin: 4rem 0; }
+        .faq-list { max-width: 850px; margin: 0 auto; }
+        .faq-item summary { gap: 1rem; line-height: 1.4; }
+        .faq-item summary::after { flex-shrink: 0; }
+        .faq-answer { color: var(--mercure-text-secondary); line-height: 1.65; margin-top: 0.25rem; margin-bottom: 1rem; }
+
         /* --- FOOTER --- */
         footer {
             border-top: 1px solid var(--mercure-border);
@@ -2163,6 +2216,7 @@
         </div>
         <div class="parallax-overlay" id="parallaxOverlay"></div>
         <div class="hero-content" id="heroContent">
+            <p class="hero-identity">Marcos Soares Santos · Mercure Vídeo</p>
             <h1 class="hero-title" data-translate-key="hero_title">Editor de vídeo sênior e motion designer em São Paulo</h1>
             <p class="hero-subtitle" data-translate-key="hero_subtitle">Broadcast, campanhas e edição same-day para agências, produtoras e clientes diretos.</p>
         </div>
@@ -2289,7 +2343,7 @@
                 <div class="project-accordion-section reveal" id="selected-projects">
                     <div class="project-accordion-list project-accordion-grid">
                         <details class="project-accordion">
-                            <summary data-translate-key="selected_think_title" style="--project-thumb: url('https://video.gumlet.io/6a45b78918d11bffd503ee1a/6a45bf80e4e7cc890ee34095/thumbnail-1-0.png?width=900');">Think Plastic Brazil — Summit 2025</summary>
+                            <summary data-translate-key="selected_think_title" style="--project-thumb: url('https://video.gumlet.io/6a45b78918d11bffd503ee1a/6a45bf80e4e7cc890ee34095/thumbnail-1-0.png?width=900');"><span class="project-summary-title" data-translate-text>Think Plastic Brazil — Summit 2025</span></summary>
                             <div class="project-accordion-body">
                                 <div class="project-case-copy">
                                 <p><strong data-translate-key="selected_think_role">Motion design para a abertura do Summit 2025</strong><br><span data-translate-key="selected_think_desc">Peça institucional de 2min40 para a abertura do World Plastic Connection Summit 2025, com foco em design, inovação e sustentabilidade no plástico transformado.</span></p>
@@ -2301,7 +2355,7 @@
                             </div>
                         </details>
                         <details class="project-accordion">
-                            <summary data-translate-key="selected_imponderavel_title" style="--project-thumb: url('https://video.gumlet.io/6a45b78918d11bffd503ee1a/6a471f53e81b019c974c3eed/thumbnail-1-0.png?width=900');">O Imponderável — Record News</summary>
+                            <summary data-translate-key="selected_imponderavel_title" style="--project-thumb: url('https://video.gumlet.io/6a45b78918d11bffd503ee1a/6a471f53e81b019c974c3eed/thumbnail-1-0.png?width=900');"><span class="project-summary-title" data-translate-text>O Imponderável — Record News</span></summary>
                             <div class="project-accordion-body">
                                 <div class="project-case-copy">
                                 <p><strong data-translate-key="selected_imponderavel_role">Talk show semanal de inovação · 2021–2023</strong><br><span data-translate-key="selected_imponderavel_desc">Talk show da Record News apresentado por Gil Giardelli, sobre inovação, cultura digital e tecnologia.</span></p>
@@ -2313,7 +2367,7 @@
                             </div>
                         </details>
                         <details class="project-accordion" id="selected-transpetro">
-                            <summary data-translate-key="selected_transpetro_title" style="--project-thumb: url('https://video.gumlet.io/6a45b78918d11bffd503ee1a/6a45bb7f18d11bffd504439a/thumbnail-1-0.png?width=900');">TRANSPETRO — Jd. Hollywood</summary>
+                            <summary data-translate-key="selected_transpetro_title" style="--project-thumb: url('https://video.gumlet.io/6a45b78918d11bffd503ee1a/6a45bb7f18d11bffd504439a/thumbnail-1-0.png?width=900');"><span class="project-summary-title" data-translate-text>TRANSPETRO — Jd. Hollywood</span></summary>
                             <div class="project-accordion-body">
                                 <div class="project-case-copy">
                                 <p><strong data-translate-key="selected_transpetro_role">Cobertura e edição same-day</strong><br><span data-translate-key="selected_transpetro_desc">Cobertura same-day de uma ação de hortas comunitárias na faixa do gasoduto da TRANSPETRO, editada para entrega no mesmo dia.</span></p>
@@ -2323,7 +2377,7 @@
                             </div>
                         </details>
                         <details class="project-accordion" id="selected-caixa">
-                            <summary data-translate-key="selected_caixa_title" style="--project-thumb: url('https://video.gumlet.io/6a45b78918d11bffd503ee1a/6ae508c834bee2c4e82840c1/thumbnail-1-0.png?width=900');">Hackathon CAIXA Consórcio</summary>
+                            <summary data-translate-key="selected_caixa_title" style="--project-thumb: url('https://video.gumlet.io/6a45b78918d11bffd503ee1a/6ae508c834bee2c4e82840c1/thumbnail-1-0.png?width=900');"><span class="project-summary-title" data-translate-text>Hackathon CAIXA Consórcio</span></summary>
                             <div class="project-accordion-body">
                                 <div class="project-case-copy">
                                 <p><strong data-translate-key="selected_caixa_role">Same-day · 3 dias · 1 vídeo por dia</strong><br><span data-translate-key="selected_caixa_desc">Hackathon da CAIXA Consórcio, no Guarujá, ao longo de três dias. Editei um vídeo ao final de cada dia com os principais momentos.</span></p>
@@ -2336,7 +2390,7 @@
                             </div>
                         </details>
                         <details class="project-accordion" id="selected-apas">
-                            <summary data-translate-key="selected_apas_title" style="--project-thumb: url('https://video.gumlet.io/6a45b78918d11bffd503ee1a/6a45ba33e81b019c9723df2b/thumbnail-1-0.png?width=900');">APAS Show 2024</summary>
+                            <summary data-translate-key="selected_apas_title" style="--project-thumb: url('https://video.gumlet.io/6a45b78918d11bffd503ee1a/6a45ba33e81b019c9723df2b/thumbnail-1-0.png?width=900');"><span class="project-summary-title" data-translate-text>APAS Show 2024</span></summary>
                             <div class="project-accordion-body">
                                 <div class="project-case-copy">
                                 <p><strong data-translate-key="selected_apas_role">Cobertura same-day · 6 dias</strong><br><span data-translate-key="selected_apas_desc">Cobertura da APAS Show 2024, no Expo Center Norte, em São Paulo, com entregas para o perfil @apasoficial.</span></p>
@@ -2722,6 +2776,47 @@
                 </div>
         </section>
 
+            <section class="faq-section reveal" id="faq" aria-labelledby="faqTitle">
+                <div class="section-header">
+                    <h2 class="section-title" id="faqTitle" data-translate-key="faq_title">PERGUNTAS FREQUENTES</h2>
+                    <p class="section-subtitle" data-translate-key="faq_intro">Alguns pontos para começar seu projeto.</p>
+                </div>
+                <div class="faq-list">
+                    <details class="about-accordion faq-item">
+                        <summary data-translate-key="faq_work_q">Que tipos de trabalho você faz?</summary>
+                        <p class="faq-answer" data-translate-key="faq_work_a">Edição e finalização de vídeos para TV, institucionais, campanhas, eventos e conteúdo digital, além de motion graphics. O escopo é definido conforme a peça e o canal de publicação.</p>
+                    </details>
+                    <details class="about-accordion faq-item">
+                        <summary data-translate-key="faq_sameday_q">Você trabalha com edição same-day?</summary>
+                        <p class="faq-answer" data-translate-key="faq_sameday_a">Sim. Tenho experiência com edição durante eventos e entregas no mesmo dia. Datas, estrutura, fluxo de captação e volume de peças precisam ser alinhados antes de confirmar a cobertura.</p>
+                    </details>
+                    <details class="about-accordion faq-item">
+                        <summary data-translate-key="faq_materials_q">O que preciso enviar para começar?</summary>
+                        <p class="faq-answer" data-translate-key="faq_materials_a">Um briefing com objetivo, público, referências, destino do vídeo e prazo desejado. Inclua os arquivos de imagem e som, identidade visual e textos disponíveis; o material necessário depende do projeto.</p>
+                    </details>
+                    <details class="about-accordion faq-item">
+                        <summary data-translate-key="faq_timing_q">Como o prazo é definido?</summary>
+                        <p class="faq-answer" data-translate-key="faq_timing_a">O prazo depende do volume e da organização do material, da duração da peça, do trabalho de motion e das etapas de aprovação. O cronograma é alinhado antes do início.</p>
+                    </details>
+                    <details class="about-accordion faq-item">
+                        <summary data-translate-key="faq_formats_q">Quais formatos posso pedir?</summary>
+                        <p class="faq-answer" data-translate-key="faq_formats_a">Peças horizontais, verticais ou quadradas, conforme o canal e o material de origem. Resolução, duração, legendas e versões precisam entrar no briefing e no escopo.</p>
+                    </details>
+                    <details class="about-accordion faq-item">
+                        <summary data-translate-key="faq_revisions_q">Como funcionam as revisões?</summary>
+                        <p class="faq-answer" data-translate-key="faq_revisions_a">Rodadas de revisão e aprovações são combinadas no escopo. Feedback consolidado ajuda a manter o fluxo; mudanças de briefing e novas versões precisam ser realinhadas.</p>
+                    </details>
+                    <details class="about-accordion faq-item">
+                        <summary data-translate-key="faq_tools_q">Com quais ferramentas você trabalha?</summary>
+                        <p class="faq-answer" data-translate-key="faq_tools_a">Premiere Pro, After Effects, DaVinci Resolve/Fusion, CapCut Pro, Photoshop, Illustrator e Blender. A escolha depende da necessidade da peça e do fluxo de trabalho.</p>
+                    </details>
+                    <details class="about-accordion faq-item">
+                        <summary data-translate-key="faq_quote_q">Como peço um orçamento?</summary>
+                        <p class="faq-answer" data-translate-key="faq_quote_a">Use o contato por e-mail ou WhatsApp e envie objetivo, tipo de vídeo, volume de material, versões desejadas e prazo. Essas informações ajudam a definir um escopo e uma proposta.</p>
+                    </details>
+                </div>
+            </section>
+
         </main>
 
         <!-- FOOTER -->
@@ -2962,6 +3057,24 @@
 
         const translations = {
             pt: {
+                "faq_title": "PERGUNTAS FREQUENTES",
+                "faq_intro": "Alguns pontos para começar seu projeto.",
+                "faq_work_q": "Que tipos de trabalho você faz?",
+                "faq_work_a": "Edição e finalização de vídeos para TV, institucionais, campanhas, eventos e conteúdo digital, além de motion graphics. O escopo é definido conforme a peça e o canal de publicação.",
+                "faq_sameday_q": "Você trabalha com edição same-day?",
+                "faq_sameday_a": "Sim. Tenho experiência com edição durante eventos e entregas no mesmo dia. Datas, estrutura, fluxo de captação e volume de peças precisam ser alinhados antes de confirmar a cobertura.",
+                "faq_materials_q": "O que preciso enviar para começar?",
+                "faq_materials_a": "Um briefing com objetivo, público, referências, destino do vídeo e prazo desejado. Inclua os arquivos de imagem e som, identidade visual e textos disponíveis; o material necessário depende do projeto.",
+                "faq_timing_q": "Como o prazo é definido?",
+                "faq_timing_a": "O prazo depende do volume e da organização do material, da duração da peça, do trabalho de motion e das etapas de aprovação. O cronograma é alinhado antes do início.",
+                "faq_formats_q": "Quais formatos posso pedir?",
+                "faq_formats_a": "Peças horizontais, verticais ou quadradas, conforme o canal e o material de origem. Resolução, duração, legendas e versões precisam entrar no briefing e no escopo.",
+                "faq_revisions_q": "Como funcionam as revisões?",
+                "faq_revisions_a": "Rodadas de revisão e aprovações são combinadas no escopo. Feedback consolidado ajuda a manter o fluxo; mudanças de briefing e novas versões precisam ser realinhadas.",
+                "faq_tools_q": "Com quais ferramentas você trabalha?",
+                "faq_tools_a": "Premiere Pro, After Effects, DaVinci Resolve/Fusion, CapCut Pro, Photoshop, Illustrator e Blender. A escolha depende da necessidade da peça e do fluxo de trabalho.",
+                "faq_quote_q": "Como peço um orçamento?",
+                "faq_quote_a": "Use o contato por e-mail ou WhatsApp e envie objetivo, tipo de vídeo, volume de material, versões desejadas e prazo. Essas informações ajudam a definir um escopo e uma proposta.",
                 "nav_about": "SOBRE MIM",
                 "hero_title": "Editor de vídeo sênior e motion designer em São Paulo",
                 "hero_subtitle": "Broadcast, campanhas e edição same-day para agências, produtoras e clientes diretos.",
@@ -3063,6 +3176,24 @@
                  "bottom_bar_label": "Barra de navegação inferior"
             },
 en: {
+                "faq_title": "FREQUENTLY ASKED QUESTIONS",
+                "faq_intro": "A few things to help get your project started.",
+                "faq_work_q": "What kinds of projects do you work on?",
+                "faq_work_a": "Video editing and finishing for TV, corporate films, campaigns, events and digital content, as well as motion graphics. Scope depends on the piece and its publishing channel.",
+                "faq_sameday_q": "Do you offer same-day editing?",
+                "faq_sameday_a": "Yes. I have experience editing during events and delivering on the same day. Dates, setup, footage workflow and the number of pieces need to be agreed before confirming coverage.",
+                "faq_materials_q": "What do you need to get started?",
+                "faq_materials_a": "A brief covering the goal, audience, references, publishing channel and target deadline. Include available footage, audio, brand assets and copy; the required materials depend on the project.",
+                "faq_timing_q": "How is the delivery schedule set?",
+                "faq_timing_a": "Timing depends on the volume and organization of the footage, the length of the piece, motion work and approval stages. The schedule is agreed before work begins.",
+                "faq_formats_q": "Which formats can I request?",
+                "faq_formats_a": "Landscape, portrait or square pieces, depending on the channel and source material. Resolution, length, captions and versions should be included in the brief and scope.",
+                "faq_revisions_q": "How do revisions work?",
+                "faq_revisions_a": "Revision rounds and approvals are agreed in the scope. Consolidated feedback helps the process; changes to the brief and additional versions need to be discussed.",
+                "faq_tools_q": "Which tools do you use?",
+                "faq_tools_a": "Premiere Pro, After Effects, DaVinci Resolve/Fusion, CapCut Pro, Photoshop, Illustrator and Blender. The choice depends on the piece and the workflow.",
+                "faq_quote_q": "How do I request a quote?",
+                "faq_quote_a": "Contact me by email or WhatsApp with the goal, type of video, amount of footage, versions needed and deadline. These details help define a scope and proposal.",
                 "nav_about": "ABOUT ME",
                 "hero_title": "Senior video editor and motion designer in São Paulo",
                 "hero_subtitle": "Broadcast, campaigns, and same-day editing for agencies, production companies, and direct clients.",
@@ -3308,6 +3439,7 @@ en: {
                 elem.setAttribute('title', translations[currentLang][elem.dataset.translateTitle]);
             });
             setContactOpen(false);
+            equalizeClosedProjectHeaders();
             if (isModalOpen) {
                 const title = getPortfolioVideoTitle(activeVideoWrapper);
                 document.getElementById('modalTitle').textContent = title;
@@ -3344,8 +3476,60 @@ en: {
 
         initThumbnails();
 
+        // Frames are decorative; the summary title remains the accessible name.
+        function initProjectFrames() {
+            const frameTimes = {
+                selected_think_title: [8, 24, 48],
+                selected_imponderavel_title: [8, 16, 24],
+                selected_transpetro_title: [8, 16, 24],
+                selected_caixa_title: [8, 16, 24],
+                selected_apas_title: [8, 16, 24]
+            };
+            document.querySelectorAll('.project-accordion').forEach(project => {
+                const summary = project.querySelector('summary');
+                const videoId = project.querySelector('.video-wrapper')?.dataset.videoId;
+                const times = frameTimes[summary?.dataset.translateKey];
+                if (!videoId || !times || summary.querySelector('.project-frame-strip')) return;
+                const strip = document.createElement('span');
+                strip.className = 'project-frame-strip';
+                strip.setAttribute('aria-hidden', 'true');
+                let failed = 0;
+                times.forEach(time => {
+                    const frame = document.createElement('img');
+                    frame.alt = '';
+                    frame.loading = 'lazy';
+                    frame.decoding = 'async';
+                    frame.addEventListener('error', () => {
+                        frame.hidden = true;
+                        failed += 1;
+                        if (failed === times.length) strip.style.display = 'none';
+                    }, { once: true });
+                    frame.src = 'https://video.gumlet.io/' + GUMLET_WORKSPACE_ID + '/' + videoId + '/thumbnail-1-0.png?time=' + time + '&width=240';
+                    strip.appendChild(frame);
+                });
+                summary.appendChild(strip);
+            });
+        }
+        initProjectFrames();
+
+        function equalizeClosedProjectHeaders() {
+            const grid = document.querySelector('.project-accordion-grid');
+            if (!grid) return;
+            grid.style.removeProperty('--project-closed-height');
+            const summaries = grid.querySelectorAll('.project-accordion:not([open]) > summary');
+            const height = Math.max(0, ...Array.from(summaries, summary => summary.getBoundingClientRect().height));
+            grid.style.setProperty('--project-closed-height', height + 'px');
+        }
+        equalizeClosedProjectHeaders();
+        document.querySelectorAll('.project-accordion').forEach(project => {
+            project.addEventListener('toggle', equalizeClosedProjectHeaders);
+        });
+        window.addEventListener('resize', equalizeClosedProjectHeaders, { passive: true });
+        document.fonts?.ready.then(equalizeClosedProjectHeaders);
+
         // --- FALLBACK PARA IMAGENS ---
         document.querySelectorAll('img').forEach(img => {
+            if (img.closest('.project-frame-strip')) return;
             img.addEventListener('error', function errorHandler() {
                 img.removeEventListener('error', errorHandler);
                 const isVertical = this.classList.contains('video-thumbnail-reel');

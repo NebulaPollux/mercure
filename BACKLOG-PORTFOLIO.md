@@ -12,8 +12,8 @@ Atualizado em 2026-10-31 após a implementação da primeira frente do plano UX.
 - Botão Play escolhe vídeos horizontais ou verticais conforme a orientação atual.
 - Contato desktop/mobile com WhatsApp, e-mail, LinkedIn, SVGs, tradução PT/EN e painel responsivo.
 - Modal vertical usa proporção 9:16; modal horizontal usa 16:9.
-- Suíte local atual: 36 testes aprovados; inclui navegação do lightbox, cinco cases selecionados, 28 IDs Gumlet únicos e somente Perfil profissional aberto por padrão.
-- Primeira frente UX implementada localmente: anterior/próximo global, título acima do player à esquerda, teclado e entrada pelo Play aleatório desktop/mobile. Ainda não publicada; demais frentes em `PORTFOLIO-UX-PLAN.md`.
+- Suíte local atual: 41 testes aprovados; inclui navegação do lightbox, cinco cases selecionados, 28 IDs Gumlet únicos e somente Perfil profissional aberto por padrão.
+- Plano UX implementado localmente: navegação global do lightbox, nome no hero, três frames por cabeçalho e oito perguntas frequentes PT/EN. Cabeçalhos recolhidos com altura igual, incluindo APAS. Ainda não publicado; evidências e limites em `PORTFOLIO-UX-PLAN.md`.
 - Projetos selecionados: Think Plastic Brazil — Summit 2025, O Imponderável, TRANSPETRO — Jd. Hollywood, Hackathon CAIXA e APAS Show 2024, com contexto, papel e ferramentas em PT/EN quando confirmados.
 - Não há revisão visual pendente neste backlog: a versão publicada foi aprovada visualmente.
 
