@@ -1226,6 +1226,57 @@
         }
 
         /* --- FILTROS --- */
+        .service-filter-container {
+            margin: 0 auto 2rem;
+            max-width: 980px;
+            padding: 0.8rem 1rem;
+            border: 1px solid var(--mercure-border);
+            border-radius: 10px;
+            background: rgba(0, 0, 0, 0.12);
+        }
+        .service-filter-label {
+            display: block;
+            margin-bottom: 0.55rem;
+            color: var(--mercure-text-secondary);
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-align: center;
+            text-transform: uppercase;
+        }
+        .service-filter-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+        .service-filter-btn {
+            min-height: 2.5rem;
+            padding: 0.55rem 0.85rem;
+            border: 1px solid var(--mercure-border);
+            border-radius: 8px;
+            background: transparent;
+            color: var(--mercure-text);
+            cursor: pointer;
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 0.04em;
+            transition: var(--transition-smooth);
+        }
+        .service-filter-btn:hover,
+        .service-filter-btn.active {
+            border-color: var(--mercure-accent);
+            color: var(--mercure-accent);
+        }
+        .service-filter-item.service-filter-hidden { display: none !important; }
+        .service-filter-empty {
+            display: none;
+            margin: 1rem 0;
+            color: var(--mercure-text-secondary);
+            font-style: italic;
+            text-align: center;
+        }
+        .service-filter-empty.is-visible { display: block; }
         .filter-container {
             display: flex;
             justify-content: center;
@@ -2353,11 +2404,22 @@
                     <h2 class="section-title" data-translate-key="sec1_title">PRODUÇÕES CORPORATIVAS, TV & SAME-DAY</h2>
                     <p class="section-subtitle" data-translate-key="sec1_subtitle">Campanhas publicitárias, coberturas de alto impacto e jornalismo broadcast.</p>
                 </div>
+                <div class="service-filter-container" role="group" aria-label="Filtrar por serviço" data-translate-aria-label="service_filter_group">
+                    <span class="service-filter-label" data-translate-key="service_filter_label">Filtrar por serviço</span>
+                    <div class="service-filter-buttons">
+                        <button class="service-filter-btn active" data-service-filter="all" data-translate-key="service_filter_all" aria-pressed="true">Todos</button>
+                        <button class="service-filter-btn" data-service-filter="broadcast-corporativo" data-translate-key="service_filter_broadcast" aria-pressed="false">Broadcast e corporativo</button>
+                        <button class="service-filter-btn" data-service-filter="social-performance" data-translate-key="service_filter_social" aria-pressed="false">Social e performance</button>
+                        <button class="service-filter-btn" data-service-filter="same-day" data-translate-key="service_filter_sameday" aria-pressed="false">Same-day</button>
+                        <button class="service-filter-btn" data-service-filter="motion-vfx" data-translate-key="service_filter_motion" aria-pressed="false">Motion / VFX</button>
+                    </div>
+                </div>
+                <p class="service-filter-empty" data-translate-key="service_filter_empty" aria-live="polite">Nenhum projeto corresponde a este serviço.</p>
 
                 <!-- PROJETOS SELECIONADOS: acordeão horizontal -->
                 <div class="project-accordion-section reveal" id="selected-projects">
                     <div class="project-accordion-list project-accordion-grid">
-                        <details class="project-accordion">
+                        <details class="project-accordion service-filter-item" data-services="broadcast-corporativo motion-vfx">
                             <summary data-translate-key="selected_think_title" style="--project-thumb: url('https://video.gumlet.io/6a45b78918d11bffd503ee1a/6a45bf80e4e7cc890ee34095/thumbnail-1-0.png?width=900');"><span class="project-summary-title" data-translate-text>Think Plastic Brazil — Summit 2025</span></summary>
                             <div class="project-accordion-body">
                                 <div class="project-case-copy">
@@ -2369,7 +2431,7 @@
                                 <div class="video-wrapper" data-video-id="6a45bf80e4e7cc890ee34095"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Think Plastic Brazil — Summit 2025" class="video-thumbnail" loading="lazy"><div class="play-button"></div></div>
                             </div>
                         </details>
-                        <details class="project-accordion">
+                        <details class="project-accordion service-filter-item" data-services="broadcast-corporativo">
                             <summary data-translate-key="selected_imponderavel_title" style="--project-thumb: url('https://video.gumlet.io/6a45b78918d11bffd503ee1a/6a471f53e81b019c974c3eed/thumbnail-1-0.png?width=900');"><span class="project-summary-title" data-translate-text>O Imponderável — Record News</span></summary>
                             <div class="project-accordion-body">
                                 <div class="project-case-copy">
@@ -2381,7 +2443,7 @@
                                 <div class="video-wrapper" data-video-id="6a471f53e81b019c974c3eed"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="O Imponderável — Record News" class="video-thumbnail" loading="lazy"><div class="play-button"></div></div>
                             </div>
                         </details>
-                        <details class="project-accordion" id="selected-transpetro">
+                        <details class="project-accordion service-filter-item" data-services="broadcast-corporativo same-day" id="selected-transpetro">
                             <summary data-translate-key="selected_transpetro_title" style="--project-thumb: url('https://video.gumlet.io/6a45b78918d11bffd503ee1a/6a45bb7f18d11bffd504439a/thumbnail-1-0.png?width=900');"><span class="project-summary-title" data-translate-text>TRANSPETRO — Jd. Hollywood</span></summary>
                             <div class="project-accordion-body">
                                 <div class="project-case-copy">
@@ -2391,7 +2453,7 @@
                                 <div class="video-wrapper" data-video-id="6a45bb7f18d11bffd504439a"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="TRANSPETRO — Jd. Hollywood" class="video-thumbnail" loading="lazy"><div class="play-button"></div></div>
                             </div>
                         </details>
-                        <details class="project-accordion" id="selected-caixa">
+                        <details class="project-accordion service-filter-item" data-services="broadcast-corporativo same-day" id="selected-caixa">
                             <summary data-translate-key="selected_caixa_title" style="--project-thumb: url('https://video.gumlet.io/6a45b78918d11bffd503ee1a/6ae508c834bee2c4e82840c1/thumbnail-1-0.png?width=900');"><span class="project-summary-title" data-translate-text>Hackathon CAIXA Consórcio</span></summary>
                             <div class="project-accordion-body">
                                 <div class="project-case-copy">
@@ -2404,7 +2466,7 @@
                                 </div>
                             </div>
                         </details>
-                        <details class="project-accordion" id="selected-apas">
+                        <details class="project-accordion service-filter-item" data-services="broadcast-corporativo same-day social-performance" id="selected-apas">
                             <summary data-translate-key="selected_apas_title" style="--project-thumb: url('https://video.gumlet.io/6a45b78918d11bffd503ee1a/6a45ba33e81b019c9723df2b/thumbnail-1-0.png?width=900');"><span class="project-summary-title" data-translate-text>APAS Show 2024</span></summary>
                             <div class="project-accordion-body">
                                 <div class="project-case-copy">
@@ -2425,7 +2487,7 @@
 
                 <!-- GRUPO 1: HIGHLIGHTS (demais projetos) -->
                 <div class="video-grid-horizontal reveal">
-                    <div class="horizontal-card">
+                    <div class="horizontal-card service-filter-item" data-services="broadcast-corporativo">
                         <div class="video-wrapper" data-video-id="6a45babde81b019c9723eb60">
                             <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="BodyAction na Arnold Expo" class="video-thumbnail" loading="lazy">
                             <div class="play-button"></div>
@@ -2435,7 +2497,7 @@
                             <p data-translate-key="Cobertura de Evento / Esportivo">Cobertura de Evento / Esportivo</p>
                         </div>
                     </div>
-                    <div class="horizontal-card">
+                    <div class="horizontal-card service-filter-item" data-services="broadcast-corporativo motion-vfx">
                         <div class="video-wrapper" data-video-id="6a45b9b7e81b019c9723d6d3">
                             <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Gree Senai" class="video-thumbnail" loading="lazy">
                             <div class="play-button"></div>
@@ -2445,7 +2507,7 @@
                             <p data-translate-key="Edição Comercial / Motion Graphics">Edição Comercial / Motion Graphics</p>
                         </div>
                     </div>
-                    <div class="horizontal-card">
+                    <div class="horizontal-card service-filter-item" data-services="broadcast-corporativo same-day">
                         <div class="video-wrapper" data-video-id="6a45b92318d11bffd5040e32">
                             <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="HTI Longevidade Saudável 2023" class="video-thumbnail" loading="lazy">
                             <div class="play-button"></div>
@@ -2461,7 +2523,7 @@
                 <div class="expandable-wrapper" id="archiveContainer" inert>
                     <div class="video-grid-horizontal">
 
-                        <div class="horizontal-card">
+                        <div class="horizontal-card service-filter-item" data-services="broadcast-corporativo same-day">
                             <div class="video-wrapper" data-video-id="6a45bb92e4e7cc890ee2fa22">
                                 <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Same-day TRANSPETRO - Salesópolis" class="video-thumbnail" loading="lazy">
                                 <div class="play-button"></div>
@@ -2472,7 +2534,7 @@
                             </div>
                         </div>
 
-                        <div class="horizontal-card">
+                        <div class="horizontal-card service-filter-item" data-services="broadcast-corporativo">
                             <div class="video-wrapper" data-video-id="6a45b8a618d11bffd50405b6">
                                 <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Aftermovie Escola Eugenio Montale" class="video-thumbnail" loading="lazy">
                                 <div class="play-button"></div>
@@ -2483,7 +2545,7 @@
                             </div>
                         </div>
 
-                        <div class="horizontal-card">
+                        <div class="horizontal-card service-filter-item" data-services="broadcast-corporativo motion-vfx">
                             <div class="video-wrapper" data-video-id="6a45b89018d11bffd50404a1">
                                 <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Institucional Rapha Filmes" class="video-thumbnail" loading="lazy">
                                 <div class="play-button"></div>
@@ -2494,7 +2556,7 @@
                             </div>
                         </div>
 
-                        <div class="horizontal-card">
+                        <div class="horizontal-card service-filter-item" data-services="broadcast-corporativo motion-vfx">
                             <div class="video-wrapper" data-video-id="6a45bef418d11bffd5048073">
                                 <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Institucional Logpark - motion graphics" class="video-thumbnail" loading="lazy">
                                 <div class="play-button"></div>
@@ -2505,7 +2567,7 @@
                             </div>
                         </div>
 
-                        <div class="horizontal-card">
+                        <div class="horizontal-card service-filter-item" data-services="social-performance motion-vfx">
                             <div class="video-wrapper" data-video-id="6a45b9a0e81b019c9723d556">
                                 <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Coleções G91 - Pai e Filho" class="video-thumbnail" loading="lazy">
                                 <div class="play-button"></div>
@@ -2516,7 +2578,7 @@
                             </div>
                         </div>
 
-                        <div class="horizontal-card">
+                        <div class="horizontal-card service-filter-item" data-services="broadcast-corporativo">
                             <div class="video-wrapper" data-video-id="6a45b97818d11bffd50415eb">
                                 <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Aftermovie P&G" class="video-thumbnail" loading="lazy">
                                 <div class="play-button"></div>
@@ -2527,7 +2589,7 @@
                             </div>
                         </div>
 
-                        <div class="horizontal-card">
+                        <div class="horizontal-card service-filter-item" data-services="broadcast-corporativo">
                             <div class="video-wrapper" data-video-id="6a45ba55e81b019c9723e28f">
                                 <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="MANDIC CAMESP Ouro" class="video-thumbnail" loading="lazy">
                                 <div class="play-button"></div>
@@ -2538,7 +2600,7 @@
                             </div>
                         </div>
 
-                        <div class="horizontal-card">
+                        <div class="horizontal-card service-filter-item" data-services="broadcast-corporativo same-day">
                             <div class="video-wrapper" data-video-id="6a45be3e18d11bffd50473aa">
                                 <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="TuzinhoAcademy e Original SP Tattoo na TattooWeek 2024" class="video-thumbnail" loading="lazy">
                                 <div class="play-button"></div>
@@ -2549,7 +2611,7 @@
                             </div>
                         </div>
 
-                        <div class="horizontal-card">
+                        <div class="horizontal-card service-filter-item" data-services="broadcast-corporativo">
                             <div class="video-wrapper" data-video-id="6a45bbf6e4e7cc890ee300aa">
                                 <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Institucional VATECH" class="video-thumbnail" loading="lazy">
                                 <div class="play-button"></div>
@@ -2588,7 +2650,7 @@
                 <div class="reels-grid reveal" id="reelsGrid">
                     
                     <!-- CAMPANHAS TATTOO -->
-                    <div class="vertical-card" data-category="campanhas">
+                    <div class="vertical-card service-filter-item" data-category="campanhas" data-services="social-performance motion-vfx">
                         <div class="video-wrapper" data-video-id="6a45be3ee4e7cc890ee3284d">
                             <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Campanha Tattoo — ShenLong" class="video-thumbnail-reel" loading="lazy">
                             <div class="play-button"></div>
@@ -2600,7 +2662,7 @@
                     </div>
 
                     <div class="reels-expand-wrapper" id="reelsExpandWrapper">
-                        <div class="vertical-card" data-category="campanhas">
+                        <div class="vertical-card service-filter-item" data-category="campanhas" data-services="social-performance motion-vfx">
                             <div class="video-wrapper" data-video-id="6a45be3de81b019c97242b4e">
                                 <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="NumbFlow - Por que ainda sofre pra se tatuar?" class="video-thumbnail-reel" loading="lazy">
                                 <div class="play-button"></div>
@@ -2611,7 +2673,7 @@
                             </div>
                         </div>
 
-                        <div class="vertical-card" data-category="campanhas">
+                        <div class="vertical-card service-filter-item" data-category="campanhas" data-services="social-performance motion-vfx">
                             <div class="video-wrapper" data-video-id="6a45be3de81b019c97242b46">
                                 <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Cobra viva — Original SP Tattoo" class="video-thumbnail-reel" loading="lazy">
                                 <div class="play-button"></div>
@@ -2622,7 +2684,7 @@
                             </div>
                         </div>
 
-                        <div class="vertical-card" data-category="campanhas">
+                        <div class="vertical-card service-filter-item" data-category="campanhas" data-services="social-performance motion-vfx">
                             <div class="video-wrapper" data-video-id="6a45be3d18d11bffd5047388">
                                 <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Batman — Original SP Tattoo" class="video-thumbnail-reel" loading="lazy">
                                 <div class="play-button"></div>
@@ -2634,7 +2696,7 @@
                         </div>
 
                         <!-- INSTITUCIONAIS -->
-                        <div class="vertical-card" data-category="institucionais">
+                        <div class="vertical-card service-filter-item" data-category="institucionais" data-services="broadcast-corporativo motion-vfx">
                             <div class="video-wrapper" data-video-id="6a45bb6ee4e7cc890ee2f7a9">
                                 <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="QualityCert" class="video-thumbnail-reel" loading="lazy">
                                 <div class="play-button"></div>
@@ -2645,7 +2707,7 @@
                             </div>
                         </div>
 
-                        <div class="vertical-card" data-category="institucionais">
+                        <div class="vertical-card service-filter-item" data-category="institucionais" data-services="broadcast-corporativo motion-vfx">
                             <div class="video-wrapper" data-video-id="6a45bb13e81b019c9723f308">
                                 <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Missão Contador" class="video-thumbnail-reel" loading="lazy">
                                 <div class="play-button"></div>
@@ -2657,7 +2719,7 @@
                         </div>
 
                         <!-- INTERNACIONAIS -->
-                        <div class="vertical-card" data-category="internacionais">
+                        <div class="vertical-card service-filter-item" data-category="internacionais" data-services="social-performance">
                             <div class="video-wrapper" data-video-id="6a45bafa18d11bffd5043ad5">
                                 <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="The Pad Sarasota" class="video-thumbnail-reel" loading="lazy">
                                 <div class="play-button"></div>
@@ -2668,7 +2730,7 @@
                             </div>
                         </div>
 
-                        <div class="vertical-card" data-category="internacionais">
+                        <div class="vertical-card service-filter-item" data-category="internacionais" data-services="social-performance">
                             <div class="video-wrapper" data-video-id="6a45badb18d11bffd5043858">
                                 <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Pettingell Professionals" class="video-thumbnail-reel" loading="lazy">
                                 <div class="play-button"></div>
@@ -2680,7 +2742,7 @@
                         </div>
 
                         <!-- SAME DAY APAS: o case principal usa o vídeo de abertura acima. -->
-                        <div class="vertical-card" data-category="apas">
+                        <div class="vertical-card service-filter-item" data-category="apas" data-services="social-performance same-day">
                             <div class="video-wrapper" data-video-id="6a45ba3318d11bffd50426cf">
                                 <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="APAS Show 2024 - Coletiva" class="video-thumbnail-reel" loading="lazy">
                                 <div class="play-button"></div>
@@ -2691,7 +2753,7 @@
                             </div>
                         </div>
 
-                        <div class="vertical-card" data-category="apas">
+                        <div class="vertical-card service-filter-item" data-category="apas" data-services="social-performance same-day">
                             <div class="video-wrapper" data-video-id="6a45ba3318d11bffd504269d">
                                 <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="APAS Show 2024 - Destaques" class="video-thumbnail-reel" loading="lazy">
                                 <div class="play-button"></div>
@@ -2702,7 +2764,7 @@
                             </div>
                         </div>
 
-                        <div class="vertical-card" data-category="apas">
+                        <div class="vertical-card service-filter-item" data-category="apas" data-services="social-performance same-day">
                             <div class="video-wrapper" data-video-id="6a45ba3318d11bffd50426a0">
                                 <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="APAS Show 2024 - Entrevista com expositores" class="video-thumbnail-reel" loading="lazy">
                                 <div class="play-button"></div>
@@ -3014,8 +3076,67 @@
             });
         }
 
+        const serviceFilterBtns = document.querySelectorAll('.service-filter-btn');
+        const serviceFilterItems = document.querySelectorAll('.service-filter-item');
+        const serviceFilterEmpty = document.querySelector('.service-filter-empty');
+        const selectedServiceItems = document.querySelectorAll('#selected-projects .service-filter-item');
+        const highlightServiceItems = document.querySelectorAll('.video-grid-horizontal > .service-filter-item');
+        let activeServiceFilter = 'all';
+        let activeReelFilter = 'all';
         const filterBtns = document.querySelectorAll('.filter-btn');
         const verticalCards = document.querySelectorAll('#reelsGrid .vertical-card');
+
+        function itemMatchesService(item) {
+            return activeServiceFilter === 'all' || item.dataset.services?.split(/\s+/).includes(activeServiceFilter);
+        }
+
+        function applyServiceFilter() {
+            serviceFilterItems.forEach(item => {
+                const matches = itemMatchesService(item);
+                item.classList.toggle('service-filter-hidden', !matches);
+                if (!matches && item.matches('details')) item.open = false;
+            });
+            const archiveMatches = [...document.querySelectorAll('#archiveContainer .service-filter-item')].some(itemMatchesService);
+            const reelsMatches = [...verticalCards].some(itemMatchesService);
+            if (activeServiceFilter !== 'all') {
+                archiveContainer.classList.toggle('expanded', archiveMatches);
+                archiveContainer.inert = !archiveMatches;
+                toggleArchiveBtn.textContent = translations[currentLang][archiveMatches ? 'toggle_less' : 'toggle_more'];
+                toggleArchiveBtn.setAttribute('aria-expanded', String(archiveMatches));
+                if (reelsExpandWrapper && reelsMatches) {
+                    reelsExpandWrapper.classList.add('expanded');
+                    reelsExpandWrapper.inert = false;
+                    toggleReelsBtn.textContent = translations[currentLang].toggle_reels_less;
+                    toggleReelsBtn.setAttribute('aria-expanded', 'true');
+                }
+            } else {
+                archiveContainer.classList.remove('expanded');
+                archiveContainer.inert = true;
+                toggleArchiveBtn.textContent = translations[currentLang].toggle_more;
+                toggleArchiveBtn.setAttribute('aria-expanded', 'false');
+                if (reelsExpandWrapper) {
+                    reelsExpandWrapper.classList.remove('expanded');
+                    reelsExpandWrapper.inert = false;
+                    toggleReelsBtn.textContent = translations[currentLang].toggle_reels_more;
+                    toggleReelsBtn.setAttribute('aria-expanded', 'false');
+                }
+            }
+            if (serviceFilterEmpty) serviceFilterEmpty.classList.toggle('is-visible', ![...serviceFilterItems].some(itemMatchesService));
+            equalizeClosedProjectHeaders();
+        }
+
+        serviceFilterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                activeServiceFilter = btn.dataset.serviceFilter;
+                serviceFilterBtns.forEach(filterBtn => {
+                    const isActive = filterBtn === btn;
+                    filterBtn.classList.toggle('active', isActive);
+                    filterBtn.setAttribute('aria-pressed', String(isActive));
+                });
+                applyServiceFilter();
+            });
+        });
+
         filterBtns.forEach(btn => {
             btn.addEventListener('click', () => {
                 const filterValue = btn.dataset.filter;
@@ -3027,9 +3148,12 @@
                     filterBtn.setAttribute('aria-pressed', String(isActive));
                 });
 
+                activeReelFilter = filterValue;
                 verticalCards.forEach(card => {
                     const cardCategory = card.dataset.category;
-                    card.style.display = (!isFiltered || cardCategory === filterValue) ? '' : 'none';
+                    const matchesTheme = !isFiltered || cardCategory === filterValue;
+                    const matchesService = itemMatchesService(card);
+                    card.style.display = (matchesTheme && matchesService) ? '' : 'none';
                 });
 
                 if (reelsExpandWrapper) {
@@ -3138,6 +3262,14 @@
                 "trust_bar_label": "Trabalhos entregues para",
                 "sec1_title": "PRODUÇÕES CORPORATIVAS, TV & SAME-DAY",
                 "sec1_subtitle": "Campanhas publicitárias, coberturas de alto impacto e jornalismo broadcast.",
+                 "service_filter_group": "Filtrar por serviço",
+                 "service_filter_label": "Filtrar por serviço",
+                 "service_filter_all": "Todos",
+                 "service_filter_broadcast": "Broadcast e corporativo",
+                 "service_filter_social": "Social e performance",
+                 "service_filter_sameday": "Same-day",
+                 "service_filter_motion": "Motion / VFX",
+                 "service_filter_empty": "Nenhum projeto corresponde a este serviço.",
                 "showcase_title": "Think Plastic Brazil – Abertura do Seminário",
                 "showcase_desc": "Vídeo de abertura do seminário Think Plastic Brazil, destacando a importância da economia circular e da inovação no setor de plásticos, com uma montagem dinâmica e uma mensagem inspiradora sobre sustentabilidade e futuro.",
                 "other_projects": "Outros Projetos",
@@ -3257,6 +3389,14 @@ en: {
                 "trust_bar_label": "Work delivered for",
                 "sec1_title": "CORPORATE PRODUCTIONS, TV & SAME-DAY",
                 "sec1_subtitle": "Advertising campaigns, high-impact coverage, and broadcast journalism.",
+                 "service_filter_group": "Filter by service",
+                 "service_filter_label": "Filter by service",
+                 "service_filter_all": "All",
+                 "service_filter_broadcast": "Broadcast and corporate",
+                 "service_filter_social": "Social and performance",
+                 "service_filter_sameday": "Same-day",
+                 "service_filter_motion": "Motion / VFX",
+                 "service_filter_empty": "No project matches this service.",
                 "showcase_title": "Think Plastic Brazil – Opening of the Seminar",
                 "showcase_desc": "Opening video of the Think Plastic Brazil seminar, highlighting the importance of the circular economy and innovation in the plastics sector, with dynamic editing and an inspiring message about sustainability and the future.",
                 "other_projects": "Other Projects",

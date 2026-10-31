@@ -53,7 +53,19 @@ function setup() {
         archiveContainer, reelsExpandWrapper, toggleArchiveBtn, toggleReelsBtn,
         currentLang: 'pt',
         translations: { pt: { toggle_more: 'Mais', toggle_less: 'Menos', toggle_reels_more: 'Mais Reels', toggle_reels_less: 'Menos Reels' } },
-        document: { querySelectorAll: selector => selector === '.filter-btn' ? filters : cards }
+        document: {
+            querySelector(selector) {
+                if (selector === '.service-filter-empty') return element();
+                if (selector === '#selected-projects .service-filter-item') return [];
+                return null;
+            },
+            querySelectorAll: selector => {
+                if (selector === '.filter-btn') return filters;
+                if (selector === '#reelsGrid .vertical-card') return cards;
+                if (selector === '.service-filter-btn' || selector === '.service-filter-item') return [];
+                return [];
+            }
+        }
     });
     return { archiveContainer, reelsExpandWrapper, toggleArchiveBtn, toggleReelsBtn, filters, cards };
 }

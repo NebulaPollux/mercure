@@ -4,7 +4,7 @@
 
 Aprimorar o portfólio de vídeo com quatro referências: perfil do editor apresentado logo no início (UWE Bristol Showcase), navegação anterior/próximo entre vídeos (Cut+Run), rolo de frames nos cabeçalhos dos acordeões (Stanley Payne) e uma seção de perguntas e respostas para potenciais clientes.
 
-**Estado:** as quatro frentes estão implementadas na branch `ux/lightbox-navigation-20261031`, sem publicação desta rodada. Navegação do lightbox no commit `f6c32ec`; hero, frames e Q&A adicionados na continuação de 31/10/2026.
+**Estado:** as quatro frentes originais estão implementadas e aprovadas visualmente na branch `ux/lightbox-navigation-20261031`, sem publicação desta rodada. Navegação do lightbox no commit `f6c32ec`; hero, frames e Q&A adicionados na continuação de 31/10/2026. A organização por serviço foi implementada como frente seguinte do backlog, com validação técnica concluída e aprovação visual pendente.
 
 ## Escopo e critérios de sucesso
 
@@ -92,7 +92,7 @@ Critérios originais:
 
 **Validação da continuação:**
 
-- 41 testes Node, incluindo cinco novos para hero, cobertura PT/EN, criação idempotente dos frames, falhas e alturas recolhidas.
+- 47 testes Node, incluindo testes para hero, cobertura PT/EN, criação idempotente dos frames, falhas, alturas recolhidas e organização por serviço.
 - Edge headless em 1440×900, 390×844 e 844×390: hero dentro da viewport, sem overflow horizontal, traduções preservam as cinco faixas, faixa oculta ao expandir e fallback total testado.
 - Cinco cabeçalhos recolhidos com alturas iguais: 127,19 px no desktop; 112,19 px em ambas as larguras menores testadas. Medidas dependem da fonte/viewport, a igualdade é o critério.
 - 15 URLs Gumlet retornaram HTTP 200 e imagem; hashes distintos nos três tempos de cada um dos cinco projetos.

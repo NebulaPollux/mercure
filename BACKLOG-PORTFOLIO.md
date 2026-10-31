@@ -86,16 +86,18 @@ Próximos complementos possíveis, somente com dados autorizados:
 
 ### 7. Organização por serviço
 
-**Prioridade:** P1 · **Dependência:** seleção de projetos
+**Status:** implementada localmente na branch UX; 28 itens existentes receberam classificação explícita e quatro filtros bilíngues combinam com os filtros temáticos de Reels. **Prioridade:** P1
 
-Criar uma navegação ou filtros mais claros para:
+Filtros disponíveis:
 
 - broadcast e corporativo;
 - social e performance;
 - same-day;
 - motion/VFX.
 
-Manter a curadoria atual e evitar transformar a home em um catálogo indiscriminado.
+O filtro atua nos cinco projetos selecionados, nos cards horizontais do acervo e nos 12 Reels, sem duplicar players ou IDs Gumlet. Itens ambíguos não receberam categoria inventada; Same-day ficou restrito aos trabalhos com entrega durante o evento documentada. Em filtro ativo, grupos recolhidos necessários são expandidos e itens incompatíveis ficam fora do foco; Todos restaura a curadoria inicial. PT/EN, `aria-pressed`, expansão, reset e ausência de overflow foram testados no Edge em 1440×900, 390×844 e 844×390.
+
+Pendência: aprovação visual desta nova frente e publicação da branch.
 
 ### 8. Organização Same-day
 

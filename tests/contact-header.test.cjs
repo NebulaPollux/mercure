@@ -56,13 +56,13 @@ test('contact panel is moved outside the isolated header for page-level backdrop
     assert.equal((html.match(/data-video-id=/g) || []).length, 28);
     assert.doesNotMatch(html, /data-video-id="6a45b87be81b019c9723bc54"/);
     assert.match(html, /data-video-id="6a45ba33e81b019c9723df2b"/);
-    assert.equal((html.match(/class="project-accordion"/g) || []).length, 5);
+    assert.equal((html.match(/class="project-accordion(?:\s|"|>)/g) || []).length, 5);
     assert.match(html, /data-video-id="6a45bf80e4e7cc890ee34095"/);
     assert.match(html, /data-video-id="6a471f53e81b019c974c3eed"/);
     assert.match(html, /data-video-id="6a45bb7f18d11bffd504439a"/);
     assert.equal((html.match(/data-translate-key="case_imponderavel_title"/g) || []).length, 0);
     assert.match(html, /id="selected-projects"/);
-    assert.equal((html.match(/class="project-accordion"/g) || []).length, 5);
+    assert.equal((html.match(/class="project-accordion(?:\s|"|>)/g) || []).length, 5);
     assert.match(html, /selected_caixa_desc/);
     assert.equal((html.match(/<details[^>]*\sopen(?:\s|>)/g) || []).length, 1);
     assert.match(html, /<details class="about-accordion" open>\s*<summary data-translate-key="about_profile_title"/);
