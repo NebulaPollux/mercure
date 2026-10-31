@@ -1,18 +1,19 @@
 # Backlog do portfólio Mercure
 
-Atualizado em 2026-10-30 a partir da auditoria de posicionamento, código e SEO.
+Atualizado em 2026-10-31 após a implementação da primeira frente do plano UX.
 
 ## Estado atual
 
 - Onda autônoma desta rodada publicada: JSON-LD Person, imagem social raster 1200x630, rótulo factual para o botão de trabalhos, copy de posicionamento, métricas sem contexto removidas, faixa de marcas neutralizada e destaques de projetos com papel e contexto em PT/EN.
-- Medição Lighthouse/browser não executada: o workspace não possui Lighthouse, Playwright, Puppeteer nem navegador CLI disponível.
+- Lighthouse não executado. Edge headless localizado e usado para verificar o novo lightbox em 1440×900, 390×844 e 844×390; reprodução remota Gumlet não foi validada nesse teste.
 - Produção publicada em `https://mercurevideo.com.br/`.
 - Vercel Analytics, Google Search Console e redirect do domínio já configurados pelo proprietário.
 - Hero horizontal fixo e hero portrait com vídeo vertical aleatório.
 - Botão Play escolhe vídeos horizontais ou verticais conforme a orientação atual.
 - Contato desktop/mobile com WhatsApp, e-mail, LinkedIn, SVGs, tradução PT/EN e painel responsivo.
 - Modal vertical usa proporção 9:16; modal horizontal usa 16:9.
-- Suíte local atual: 32 testes aprovados; a cobertura estrutural inclui cinco cases selecionados, 28 IDs Gumlet únicos e somente Perfil profissional aberto por padrão.
+- Suíte local atual: 36 testes aprovados; inclui navegação do lightbox, cinco cases selecionados, 28 IDs Gumlet únicos e somente Perfil profissional aberto por padrão.
+- Primeira frente UX implementada localmente: anterior/próximo global, título acima do player à esquerda, teclado e entrada pelo Play aleatório desktop/mobile. Ainda não publicada; demais frentes em `PORTFOLIO-UX-PLAN.md`.
 - Projetos selecionados: Think Plastic Brazil — Summit 2025, O Imponderável, TRANSPETRO — Jd. Hollywood, Hackathon CAIXA e APAS Show 2024, com contexto, papel e ferramentas em PT/EN quando confirmados.
 - Não há revisão visual pendente neste backlog: a versão publicada foi aprovada visualmente.
 
@@ -74,17 +75,14 @@ Registrar para cada marca se o trabalho foi direto, via agência ou sob NDA.
 
 ### 6. Bloco de créditos por projeto
 
-**Status:** destaques publicados com papel e contexto factual em PT/EN para Think Plastic, Hackathon CAIXA, O Imponderável e TRANSPETRO. Créditos de agência, ano, ferramentas, autorização e resultados continuam pendentes por falta de dados confirmados. **Prioridade:** P1
+**Status:** cinco cases publicados na home com contexto, papel e ferramentas confirmadas em PT/EN: Think Plastic Brazil — Summit 2025, O Imponderável, TRANSPETRO — Jd. Hollywood, Hackathon CAIXA e APAS Show 2024. Créditos de agência, autorização e resultados continuam pendentes quando não há confirmação pública. **Prioridade:** P1
 
-Adicionar aos cards e/ou páginas:
+Próximos complementos possíveis, somente com dados autorizados:
 
-- papel desempenhado;
 - cliente ou agência;
-- ano;
-- ferramentas relevantes;
-- prazo ou formato de entrega.
-
-Começar pelos destaques e pelo projeto Think Plastic.
+- créditos adicionais;
+- resultados verificáveis;
+- páginas próprias para cases.
 
 ### 7. Organização por serviço
 
@@ -99,17 +97,17 @@ Criar uma navegação ou filtros mais claros para:
 
 Manter a curadoria atual e evitar transformar a home em um catálogo indiscriminado.
 
-### 8. Seção Same-day
+### 8. Organização Same-day
 
-**Prioridade:** P1 · **Dependência:** inventário de peças
+**Status:** incorporada aos Projetos Selecionados e aos filtros de Reels. **Prioridade:** P1
 
-Reunir TRANSPETRO, HTI, TattooWeek, APAS e Hackathon CAIXA em uma categoria própria, indicando evento, quantidade de vídeos e tempo de entrega quando esses dados forem verificáveis.
+TRANSPETRO — Jd. Hollywood, Hackathon CAIXA e APAS Show aparecem com contexto same-day na home. HTI, TattooWeek e demais peças continuam no acervo/filtros até receberem contexto equivalente confirmado.
 
 ### 9. Cases com URLs próprias
 
-**Prioridade:** P1 · **Dependência:** autorização e materiais
+**Status:** não iniciado; os cinco cases atuais vivem na home em acordeões. **Prioridade:** P1 · **Dependência:** autorização e materiais
 
-Publicar de 3 a 4 cases com briefing, papel, decisões de montagem, resultado e vídeo final.
+Publicar de 3 a 4 cases com briefing, papel, decisões de montagem, resultado e vídeo final quando houver autorização e material suficiente.
 
 Candidatos:
 

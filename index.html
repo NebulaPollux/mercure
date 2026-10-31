@@ -1867,12 +1867,33 @@
             justify-content: center;
             align-items: center;
         }
+        .lightbox-stage {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) auto;
+            align-items: center;
+            gap: 12px;
+            max-width: calc(100vw - 32px);
+        }
+        .lightbox-title {
+            grid-column: 1;
+            margin: 0;
+            min-width: 0;
+            font-size: clamp(0.85rem, 2vw, 1.15rem);
+            font-weight: 600;
+            line-height: 1.3;
+            text-align: left;
+            overflow-wrap: anywhere;
+            max-height: 3.9em;
+            overflow-y: auto;
+        }
         .lightbox-content {
             position: relative;
             background: #000;
             box-shadow: 0 12px 45px rgba(18, 23, 58, 0.5);
             overflow: hidden;
-            width: 90%;
+            width: 100%;
+            grid-column: 1 / -1;
+            grid-row: 2;
             aspect-ratio: 16/9;
         }
         .lightbox-content iframe {
@@ -1884,9 +1905,8 @@
             border: none;
         }
         .lightbox-close {
-            position: absolute;
-            top: 25px;
-            right: 25px;
+            grid-column: 2;
+            grid-row: 1;
             background: var(--mercure-accent);
             color: var(--mercure-bg);
             border: 2px solid rgba(255, 255, 255, 0.3);
@@ -1901,6 +1921,34 @@
             background: var(--color-lilas);
             color: var(--mercure-text);
             border-color: white;
+        }
+        .lightbox-nav {
+            grid-row: 3;
+            z-index: 1002;
+            display: grid;
+            place-items: center;
+            width: 48px;
+            height: 48px;
+            padding: 0;
+            border: 1px solid rgba(255, 255, 255, 0.32);
+            border-radius: 50%;
+            color: var(--mercure-text);
+            background: rgba(20, 24, 45, 0.72);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            cursor: pointer;
+            transition: background 0.2s ease, opacity 0.2s ease;
+        }
+        .lightbox-nav:hover:not(:disabled) { background: rgba(31, 194, 155, 0.88); }
+        .lightbox-nav:focus-visible { outline: 3px solid var(--mercure-accent); outline-offset: 3px; }
+        .lightbox-nav:disabled { opacity: 0.35; cursor: not-allowed; }
+        .lightbox-nav svg { width: 22px; height: 22px; }
+        .lightbox-nav[hidden] { display: none; }
+        .lightbox-prev { grid-column: 1; justify-self: start; }
+        .lightbox-next { grid-column: 2; justify-self: end; }
+        @media (max-width: 600px) {
+            .lightbox-nav { width: 40px; height: 40px; }
+            .lightbox-close { padding: 0.5rem 0.75rem; font-size: 0.75rem; }
         }
 
         /* ============================================
@@ -2703,9 +2751,17 @@
 
     <!-- LIGHTBOX MODAL -->
     <div class="lightbox-modal" id="videoModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-hidden="true" tabindex="-1">
-        <span id="modalTitle" class="visually-hidden" data-translate-key="modal_title">Vídeo em destaque</span>
+        <div class="lightbox-stage" id="lightboxStage">
+        <h2 id="modalTitle" class="lightbox-title" aria-live="polite">Vídeo em destaque</h2>
         <button class="lightbox-close" id="closeBtn" data-translate-key="close_btn">Fechar [X]</button>
+        <button class="lightbox-nav lightbox-prev" id="lightboxPrev" type="button" aria-label="Vídeo anterior" data-translate-aria-label="previous_video" disabled>
+            <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+        </button>
+        <button class="lightbox-nav lightbox-next" id="lightboxNext" type="button" aria-label="Próximo vídeo" data-translate-aria-label="next_video" disabled>
+            <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+        </button>
         <div class="lightbox-content" id="modalContent"></div>
+        </div>
     </div>
 
     <!-- SCRIPT -->
@@ -2715,6 +2771,8 @@
         const modal = document.getElementById('videoModal');
         const modalContent = document.getElementById('modalContent');
         const closeBtn = document.getElementById('closeBtn');
+        const lightboxPrev = document.getElementById('lightboxPrev');
+        const lightboxNext = document.getElementById('lightboxNext');
         const backgroundRegions = [
             document.getElementById('home'),
             document.getElementById('mainHeader'),
@@ -2736,6 +2794,12 @@
         const hamburgerMobile = document.getElementById('hamburgerBtnMobile');
         let isModalOpen = false;
         let modalTrigger = null;
+        let activeVideoWrapper = null;
+        let activeVideoIndex = -1;
+        let lightboxVideos = Array.from(wrappers, wrapper => ({
+            wrapper, id: wrapper.getAttribute('data-video-id'),
+            portrait: Boolean(wrapper.closest('.reels-grid'))
+        }));
         const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
         const GUMLET_PLAYER_ORIGIN = 'https://play.gumlet.io';
         const canHoverPreview = window.matchMedia('(hover: hover) and (pointer: fine)').matches && !reduceMotion;
@@ -2991,6 +3055,8 @@
                 "btn_cv": "Currículo",
                 "copyright": "© 2026 Mercure Vídeo | Marcos Soares Santos",
                 "close_btn": "Fechar [X]",
+                "previous_video": "Vídeo anterior",
+                "next_video": "Próximo vídeo",
                 "modal_title": "Vídeo em destaque",
                  "modal_player_title": "Player de vídeo em destaque",
                  "menu_button": "Abrir menu",
@@ -3090,6 +3156,8 @@ en: {
                 "btn_cv": "Resume",
                 "copyright": "© 2026 Mercure Vídeo | Marcos Soares Santos",
                 "close_btn": "Close [X]",
+                "previous_video": "Previous video",
+                "next_video": "Next video",
                 "modal_title": "Featured video",
                  "modal_player_title": "Featured video player",
                  "menu_button": "Open menu",
@@ -3240,6 +3308,12 @@ en: {
                 elem.setAttribute('title', translations[currentLang][elem.dataset.translateTitle]);
             });
             setContactOpen(false);
+            if (isModalOpen) {
+                const title = getPortfolioVideoTitle(activeVideoWrapper);
+                document.getElementById('modalTitle').textContent = title;
+                const player = document.getElementById('activeGumletPlayer');
+                if (player) player.title = translations[currentLang].modal_player_title + ': ' + title;
+            }
 
             const isExpanded = archiveContainer.classList.contains('expanded');
             archiveContainer.inert = !isExpanded;
@@ -3348,53 +3422,103 @@ en: {
 
             wrapper.addEventListener('click', () => {
                 modalTrigger = wrapper;
-                isModalOpen = true;
-                
-                const bgPlayer = document.getElementById('backgroundBannerPlayer');
-                if (bgPlayer && bgPlayer.contentWindow) {
-                    bgPlayer.contentWindow.postMessage(JSON.stringify({method: 'pause'}), GUMLET_PLAYER_ORIGIN);
-                    bgPlayer.contentWindow.postMessage(JSON.stringify({event: 'command', func: 'pause'}), GUMLET_PLAYER_ORIGIN);
-                }
-
-                document.querySelectorAll('.hover-player').forEach(player => player.remove());
-
-                const iframe = document.createElement('iframe');
-                iframe.src = `https://play.gumlet.io/embed/${videoId}?autoplay=true&preload=true`;
-                iframe.setAttribute('referrerpolicy', 'origin');
-                iframe.setAttribute('allow', 'accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture; fullscreen; clipboard-write;');
-                iframe.setAttribute('allowfullscreen', 'true');
-                iframe.title = translations[currentLang].modal_player_title;
-                iframe.id = "activeGumletPlayer";
-
-                if (wrapper.closest('.reels-grid')) {
-                    modalContent.style.aspectRatio = "9/16";
-                    modalContent.style.width = "calc(80vh * 9 / 16)";
-                    modalContent.style.maxWidth = "90%";
-                } else {
-                    modalContent.style.aspectRatio = "16/9";
-                    modalContent.style.width = "90%";
-                    modalContent.style.maxWidth = "1100px";
-                }
-
-                const oldPlayer = document.getElementById('activeGumletPlayer');
-                if (oldPlayer) oldPlayer.remove();
-
-                setVideoModalOpen(true);
-                modalContent.appendChild(iframe);
+                resetLightboxVideos();
+                openPortfolioVideo(lightboxVideos.findIndex(video => video.wrapper === wrapper));
                 closeBtn.focus();
             });
         });
+
+        // --- NAVEGAÇÃO DO LIGHTBOX ---
+        function resetLightboxVideos() {
+            lightboxVideos = Array.from(wrappers, wrapper => ({
+                wrapper, id: wrapper.getAttribute('data-video-id'),
+                portrait: Boolean(wrapper.closest('.reels-grid'))
+            }));
+        }
+
+        function getPortfolioVideoTitle(wrapper) {
+            if (!wrapper) return translations[currentLang].modal_title;
+            const project = wrapper.closest('.project-accordion');
+            const card = wrapper.closest('.horizontal-card, .vertical-card, .video-hero');
+            return project?.querySelector('summary')?.textContent.trim()
+                || card?.querySelector('h3')?.textContent.trim()
+                || wrapper.querySelector('img')?.alt
+                || translations[currentLang].modal_title;
+        }
+
+        function openPortfolioVideo(index) {
+            if (index < 0 || index >= lightboxVideos.length) return;
+            activeVideoIndex = index;
+            const video = lightboxVideos[index];
+            activeVideoWrapper = video.wrapper;
+            const videoId = video.id;
+            const title = getPortfolioVideoTitle(activeVideoWrapper);
+            const bgPlayer = document.getElementById('backgroundBannerPlayer');
+            if (bgPlayer?.contentWindow) {
+                bgPlayer.contentWindow.postMessage(JSON.stringify({method: 'pause'}), GUMLET_PLAYER_ORIGIN);
+                bgPlayer.contentWindow.postMessage(JSON.stringify({event: 'command', func: 'pause'}), GUMLET_PLAYER_ORIGIN);
+            }
+            document.querySelectorAll('.hover-player').forEach(player => player.remove());
+            const iframe = document.createElement('iframe');
+            iframe.src = `https://play.gumlet.io/embed/${videoId}?autoplay=true&preload=true`;
+            iframe.setAttribute('referrerpolicy', 'origin');
+            iframe.setAttribute('allow', 'accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture; fullscreen; clipboard-write;');
+            iframe.setAttribute('allowfullscreen', 'true');
+            iframe.title = `${translations[currentLang].modal_player_title}: ${title}`;
+            iframe.id = 'activeGumletPlayer';
+            sizeLightboxPlayer(video.portrait);
+            document.getElementById('activeGumletPlayer')?.remove();
+            modalContent.appendChild(iframe);
+            document.getElementById('modalTitle').textContent = title;
+            setVideoModalOpen(true);
+        }
+
+        function sizeLightboxPlayer(isPortrait) {
+            if (isPortrait) {
+                modalContent.style.aspectRatio = "9/16";
+                modalContent.style.width = 'min(calc((100dvh - 180px) * 9 / 16), calc(100vw - 32px))';
+            } else {
+                modalContent.style.aspectRatio = "16/9";
+                modalContent.style.width = 'min(calc((100dvh - 180px) * 16 / 9), calc(100vw - 32px), 1100px)';
+            }
+            document.getElementById('lightboxStage').style.width = modalContent.style.width;
+            modalContent.style.width = '100%';
+            modalContent.style.maxWidth = '100%';
+        }
+
+        function navigateLightbox(direction) {
+            if (!isModalOpen) return;
+            const index = activeVideoIndex + direction;
+            if (index < 0 || index >= lightboxVideos.length) return;
+            openPortfolioVideo(index);
+            if (document.activeElement === lightboxPrev && lightboxPrev.disabled) lightboxNext.focus();
+            if (document.activeElement === lightboxNext && lightboxNext.disabled) lightboxPrev.focus();
+        }
+
+        lightboxPrev.addEventListener('click', () => navigateLightbox(-1));
+        lightboxNext.addEventListener('click', () => navigateLightbox(1));
+
+        function updateLightboxNavigation() {
+            const hasSequence = activeVideoIndex >= 0;
+            lightboxPrev.disabled = !hasSequence || activeVideoIndex === 0;
+            lightboxNext.disabled = !hasSequence || activeVideoIndex === lightboxVideos.length - 1;
+            lightboxPrev.hidden = !hasSequence;
+            lightboxNext.hidden = !hasSequence;
+        }
 
         function setVideoModalOpen(isOpen) {
             isModalOpen = isOpen;
             modal.style.display = isOpen ? 'flex' : 'none';
             modal.setAttribute('aria-hidden', String(!isOpen));
             backgroundRegions.forEach(region => { region.inert = isOpen; });
+            if (isOpen) updateLightboxNavigation();
         }
 
         function closeVideoModal() {
             setVideoModalOpen(false);
             modalContent.innerHTML = '';
+            activeVideoIndex = -1;
+            activeVideoWrapper = null;
             if (modalTrigger && modalTrigger.isConnected) modalTrigger.focus();
             modalTrigger = null;
 
@@ -3411,42 +3535,15 @@ en: {
         const headerPlayBtn = document.getElementById('headerPlayBtn');
         function openRandomShowreel(trigger) {
             modalTrigger = trigger;
-            isModalOpen = true;
-
-            const bgPlayer = document.getElementById('backgroundBannerPlayer');
-            if (bgPlayer && bgPlayer.contentWindow) {
-                bgPlayer.contentWindow.postMessage(JSON.stringify({method: 'pause'}), GUMLET_PLAYER_ORIGIN);
-                bgPlayer.contentWindow.postMessage(JSON.stringify({event: 'command', func: 'pause'}), GUMLET_PLAYER_ORIGIN);
-            }
-
-            document.querySelectorAll('.hover-player').forEach(player => player.remove());
-
+            resetLightboxVideos();
             const isPortrait = window.matchMedia('(orientation: portrait)').matches;
             const videoIdToOpen = window.choosePlayVideo ? window.choosePlayVideo() : (isPortrait ? '6a45be3ee4e7cc890ee3284d' : '6a45bf80e4e7cc890ee34095');
-
-            const iframe = document.createElement('iframe');
-            iframe.src = `https://play.gumlet.io/embed/${videoIdToOpen}?autoplay=true&preload=true`;
-            iframe.setAttribute('referrerpolicy', 'origin');
-            iframe.setAttribute('allow', 'accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture; fullscreen; clipboard-write;');
-            iframe.setAttribute('allowfullscreen', 'true');
-            iframe.title = translations[currentLang].modal_player_title;
-            iframe.id = "activeGumletPlayer";
-
-            if (isPortrait) {
-                modalContent.style.aspectRatio = "9/16";
-                modalContent.style.width = "min(80vh * 9 / 16, 90vw)";
-                modalContent.style.maxWidth = "90vw";
-            } else {
-                modalContent.style.aspectRatio = "16/9";
-                modalContent.style.width = "90%";
-                modalContent.style.maxWidth = "1100px";
+            let index = lightboxVideos.findIndex(video => video.id === videoIdToOpen);
+            if (index < 0) {
+                lightboxVideos.unshift({ id: videoIdToOpen, wrapper: null, portrait: isPortrait });
+                index = 0;
             }
-
-            const oldPlayer = document.getElementById('activeGumletPlayer');
-            if (oldPlayer) oldPlayer.remove();
-
-            setVideoModalOpen(true);
-            modalContent.appendChild(iframe);
+            openPortfolioVideo(index);
             closeBtn.focus();
         }
         headerPlayBtn.addEventListener('click', () => openRandomShowreel(headerPlayBtn));
@@ -3481,15 +3578,25 @@ en: {
             if (e.key === 'Escape' && isModalOpen) closeVideoModal();
             if (e.key === 'Escape' && mobileMenu.classList.contains('open')) closeMobileMenu();
 
+            if (isModalOpen && !e.altKey && !e.ctrlKey && !e.metaKey && !e.shiftKey
+                && !e.target.closest('input, textarea, select, [contenteditable="true"]')) {
+                if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') {
+                    e.preventDefault();
+                    navigateLightbox(e.key === 'ArrowLeft' ? -1 : 1);
+                }
+            }
             if (e.key === 'Tab' && isModalOpen) {
                 const player = document.getElementById('activeGumletPlayer');
-                if (e.shiftKey && document.activeElement === closeBtn) {
+                const focusables = [closeBtn, lightboxPrev, lightboxNext, player]
+                    .filter(element => element && !element.hidden && !element.disabled);
+                const first = focusables[0];
+                const last = focusables[focusables.length - 1];
+                if (e.shiftKey && document.activeElement === first) {
                     e.preventDefault();
-                    if (player) player.focus();
-                    else closeBtn.focus();
-                } else if (!e.shiftKey && document.activeElement === player) {
+                    last.focus();
+                } else if (!e.shiftKey && document.activeElement === last) {
                     e.preventDefault();
-                    closeBtn.focus();
+                    first.focus();
                 }
             }
         });

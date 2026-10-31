@@ -2,8 +2,8 @@
 
 ## Estado verificado em 30/10/2026
 
-- Estado local e publicado: a home contém JSON-LD Person, copy de posicionamento, imagem social raster `images/social-share.png` e nomenclatura Mercure Vídeo.
-- A suíte atual cobre 32 testes aprovados; a home tem cinco cases selecionados, 28 IDs Gumlet únicos e somente o acordeão Perfil profissional aberto por padrão. Validação visual/browser e previews externos ainda não foram executados.
+- Estado publicado: a home contém JSON-LD Person, copy de posicionamento, imagem social raster `images/social-share.png`, nomenclatura Mercure Vídeo e cinco cases selecionados.
+- A suíte atual cobre 32 testes aprovados; a home tem 28 IDs Gumlet únicos, thumbnails glass/parallax nos cinco acordeões e somente o acordeão Perfil profissional aberto por padrão. Validação visual/browser e previews externos ainda não foram executados.
 
 - `https://mercurevideo.com.br/` responde 200 e declara canonical sem www. `https://www.mercurevideo.com.br/` responde 308; confirmar o destino exato no painel Vercel caso queira rever o redirect.
 - `robots.txt` e `sitemap.xml` respondem 200 no domínio canônico; sitemap lista as três páginas públicas.
@@ -15,7 +15,7 @@
 ## Último loop local
 
 - Currículos PT/EN agora têm layout screen-only até 800px e 480px: folha fluida, habilidades em coluna única, cabeçalhos/datas quebráveis, contatos com quebra de linha e impressão preservada por `@media print`. `tests/resume-layout.test.cjs` deixou de ser skipped; os dois casos passaram.
-- `tests/profile-content.test.cjs` agora cobre a chave `about_sesc` PT/EN, além das chaves de perfil existentes. Suíte completa reportou 15 testes aprovados, sem falhas ou skips. Alterações locais não foram publicadas.
+- `tests/profile-content.test.cjs` cobre a chave `about_sesc` PT/EN, além das chaves de perfil existentes. A suíte completa atual reporta 32 testes aprovados, sem falhas ou skips. O pacote visual dos acordeões foi publicado no commit `4ec061c`.
 
 ## Confirmado no site público
 
@@ -38,7 +38,7 @@
 
 ## Prioridade 2 — metadados e conteúdo
 
-- [x] Canonical e descrição próprios adicionados localmente aos dois currículos; testes passaram, publicação pendente.
+- [x] Canonical e descrição próprios publicados nos dois currículos; testes passaram.
 - Adicionar dados estruturados Person/ProfilePage coerentes com o conteúdo visível e LinkedIn existente.
 - Revisar imagem social raster e testar compartilhamento; sem geração de arte neste ciclo.
 - Melhorar o H1 descritivo ou texto imediatamente próximo com serviços reais (edição de vídeo, motion design, same-day), sem repetição artificial de palavras-chave.
