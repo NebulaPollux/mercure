@@ -95,7 +95,7 @@ Filtros disponíveis:
 - same-day;
 - motion/VFX.
 
-O filtro atua nos cinco projetos selecionados, nos cards horizontais do acervo e nos 12 Reels, sem duplicar players ou IDs Gumlet. Itens ambíguos não receberam categoria inventada; Same-day ficou restrito aos trabalhos com entrega durante o evento documentada. Em filtro ativo, grupos recolhidos necessários são expandidos e itens incompatíveis ficam fora do foco; Todos restaura a curadoria inicial. PT/EN, `aria-pressed`, expansão, reset e ausência de overflow foram testados no Edge em 1440×900, 390×844 e 844×390.
+O filtro atua nos cinco projetos selecionados, nos cards horizontais do acervo e nos 12 Reels, sem duplicar players ou IDs Gumlet. TattooWeek 2024 é aftermovie, sem classificação de serviço atribuída, e não aparece em Broadcast/corporativo ou Same-day. Motion/VFX segue os créditos fornecidos: inclui Escola Eugenio Montale e MANDIC CAMESP, não Rapha Filmes nem Coleções G91. Same-day fica restrito aos trabalhos confirmados pelo proprietário ou descritos com entrega durante o evento. Em filtro ativo, grupos recolhidos necessários são expandidos e itens incompatíveis ficam fora do foco; Todos restaura a curadoria original ou preserva o filtro temático ativo. PT/EN, `aria-pressed`, expansão, reset e ausência de overflow foram testados no Edge em 1440×900, 390×844 e 844×390.
 
 Pendência: aprovação visual desta nova frente e publicação da branch.
 
@@ -103,7 +103,7 @@ Pendência: aprovação visual desta nova frente e publicação da branch.
 
 **Status:** incorporada aos Projetos Selecionados e aos filtros de Reels. **Prioridade:** P1
 
-TRANSPETRO — Jd. Hollywood, Hackathon CAIXA e APAS Show aparecem com contexto same-day na home. HTI, TattooWeek e demais peças continuam no acervo/filtros até receberem contexto equivalente confirmado.
+TRANSPETRO — Jd. Hollywood, Hackathon CAIXA, APAS Show e HTI aparecem com contexto same-day confirmado. TattooWeek 2024 é aftermovie e não deve ser rotulada como same-day.
 
 ### 9. Cases com URLs próprias
 
