@@ -7,8 +7,8 @@ const html = fs.readFileSync(path.join(__dirname, '..', 'index.html'), 'utf8');
 test('professional profile sits below the hero and before the brand bar without duplicated copy', () => {
     const hero = html.indexOf('<section class="parallax-banner"');
     const profile = html.indexOf('<section class="professional-profile container"');
-    const trust = html.indexOf('<div class="trust-bar');
-    assert.ok(hero >= 0 && profile > hero && trust > profile);
+    const main = html.indexOf('<main class="container"');
+    assert.ok(hero >= 0 && profile > hero && main > profile);
     assert.match(html, /<div class="profile-content" id="about-profile">/);
     assert.match(html, /<h2 id="professional-profile-title" data-translate-key="about_profile_title"/);
     assert.match(html, /\.professional-profile \.about-text \{ color: #fff; font-size: clamp\(1\.1rem, 1\.3vw, 1\.25rem\); line-height: 1\.7/);
@@ -16,7 +16,7 @@ test('professional profile sits below the hero and before the brand bar without 
     assert.doesNotMatch(html, /hero-profile-(?:summary|link)|hero_profile_(?:summary|link)/);
     const about = html.slice(html.indexOf('<section class="about-section'));
     assert.doesNotMatch(about, /id="about-profile"/);
-    const profileSection = html.slice(profile, trust);
+    const profileSection = html.slice(profile, main);
     assert.match(profileSection, /class="profile-photo"[\s\S]*?data-translate-key="about_p1"/);
     assert.match(profileSection, /fetchpriority="high" decoding="async"/);
     assert.match(html, /\.professional-profile \.profile-intro \{ display: grid; grid-template-columns: 12rem minmax\(0, 1fr\)/);
@@ -34,7 +34,7 @@ const context = {};
 vm.runInNewContext(html.slice(dictStart, dictEnd) + ';globalThis.dict = translations;', context);
 
 test('profile introduces the editor while About explains the workflow in both languages', () => {
-    const profile = html.slice(html.indexOf('<section class="professional-profile'), html.indexOf('<!-- TRUST BAR'));
+    const profile = html.slice(html.indexOf('<section class="professional-profile'), html.indexOf('<main class="container"'));
     const markup = [...profile.matchAll(/<p>(.*?)<\/p>/g)].map(match => match[1]).join('\n\n');
     assert.equal(markup, context.dict.pt.about_p1, 'language initialization must retain the approved initial copy');
     assert.equal(markup.split('\n\n').length, 3);

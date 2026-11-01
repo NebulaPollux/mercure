@@ -714,10 +714,6 @@
                 margin: 10px auto;
                 border-radius: 16px;
             }
-            .trust-bar {
-                padding-top: 2rem;
-                padding-bottom: 1rem;
-            }
             .header-play-btn {
                 width: 48px;
                 height: 48px;
@@ -1193,96 +1189,6 @@
         }
 
 
-/* --- TRUST BAR MARQUEE (Efeito Infinito Contínuo) --- */
-        .trust-bar {
-            display: none !important;
-            padding: 2.5rem 0;
-            border-bottom: 1px solid var(--mercure-border);
-            text-align: center;
-            overflow: hidden;
-            position: relative;
-        }
-        .trust-bar-label {
-            font-size: 0.725rem;
-            letter-spacing: 0.18em;
-            color: #C1BDE2;
-            text-transform: uppercase;
-            margin-bottom: 18px;
-            font-weight: 600;
-        }
-        .marquee-container {
-            position: relative;
-            width: 100%;
-            overflow: hidden;
-            display: flex;
-            padding: 4px 0;
-            box-sizing: border-box;
-            mask-image: linear-gradient(to right, transparent, #000 15%, #000 85%, transparent);
-            -webkit-mask-image: linear-gradient(to right, transparent, #000 15%, #000 85%, transparent);
-        }
-        .marquee-track {
-            display: flex;
-            align-items: center;
-            gap: 48px;
-            animation: marquee-scroll 40s linear infinite;
-            width: max-content;
-            padding: 4px 0;
-            flex-wrap: nowrap;
-            will-change: transform;
-            backface-visibility: hidden;
-            transform: translateZ(0);
-        }
-        .marquee-track > * {
-            flex-shrink: 0;
-        }
-        .brand-badge {
-            font-size: 0.75rem;
-            font-weight: 600;
-            color: var(--mercure-text);
-            border: 1px solid var(--mercure-border);
-            padding: 6px 14px;
-            background: var(--mercure-card-bg);
-            white-space: nowrap; 
-            letter-spacing: 0.05em;
-            transition: var(--transition-smooth);
-        }
-        .brand-badge:hover {
-            border-color: var(--mercure-accent);
-            color: var(--mercure-accent);
-        }
-        .brand-logo {
-            width: 112px;
-            height: 36px;
-            object-fit: contain;
-            object-position: center;
-            filter: brightness(0) saturate(100%) invert(100%);
-            flex: 0 0 112px;
-        }
-        .brand-logo--santander {
-            width: 150px;
-            height: 40px;
-            flex-basis: 150px;
-        }
-        .brand-logo--pg {
-            width: 148px;
-            height: 52px;
-            flex-basis: 148px;
-            margin-inline: -12px;
-        }
-        .brand-logo--transpetro {
-            width: 150px;
-            height: 42px;
-            flex-basis: 150px;
-        }
-        .brand-logo--caixa {
-            width: 128px;
-            height: 42px;
-            flex-basis: 128px;
-        }
-        @keyframes marquee-scroll {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
-        }
 
         .visually-hidden {
             position: absolute;
@@ -2402,12 +2308,6 @@
                 scroll-behavior: auto !important;
                 transition-duration: 0.01ms !important;
             }
-
-            .marquee-track {
-                animation: none !important;
-                transform: none;
-                will-change: auto;
-            }
         }
     </style>
 </head>
@@ -2528,21 +2428,6 @@
                 </div>
             </div>
         </section>
-
-        <!-- TRUST BAR: Marquee Infinito de Alta Performance -->
-        <div class="trust-bar container reveal">
-            <p class="trust-bar-label" data-translate-key="trust_bar_label">Trabalhos entregues para</p>
-            <div class="marquee-container">
-                <div class="marquee-track" id="marqueeTrack">
-                    <img src="logos/transpetro.png" alt="TRANSPETRO" class="brand-logo brand-logo--transpetro" onerror="this.style.display='none';">
-                    <img src="logos/record_news.svg" alt="Record News" class="brand-logo" onerror="this.style.display='none';">
-                    <img src="logos/5era.png" alt="5era" class="brand-logo" onerror="this.style.display='none';">
-                    <img src="logos/gree.svg" alt="Gree" class="brand-logo" onerror="this.style.display='none';">
-                    <img src="logos/sesc.png" alt="SESC" class="brand-logo brand-logo--sesc" onerror="this.style.display='none';">
-                    <img src="logos/caixa_consorcio.png" alt="Caixa Consórcio" class="brand-logo brand-logo--caixa" onerror="this.style.display='none';">
-                </div>
-            </div>
-        </div>
 
         <main class="container">
             
@@ -4387,16 +4272,6 @@ en: {
         // --- DOM CONTENT LOADED ---
         document.addEventListener('DOMContentLoaded', () => {
             try {
-                // Duplicação automática de elementos do Marquee de Marcas
-                const marqueeTrack = document.getElementById('marqueeTrack');
-                if (marqueeTrack) {
-                    Array.from(marqueeTrack.children).forEach(item => {
-                        const clone = item.cloneNode(true);
-                        clone.setAttribute('aria-hidden', 'true');
-                        marqueeTrack.appendChild(clone);
-                    });
-                }
-
                 // --- VÍDEO DE FUNDO DO BANNER HERO RESPONSIVO ---
                 const config = {
                     backgroundPoster: (typeof VIDEO_CONFIG !== 'undefined' && VIDEO_CONFIG.backgroundPoster)

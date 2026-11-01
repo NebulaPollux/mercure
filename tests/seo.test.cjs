@@ -36,7 +36,7 @@ test('approved portfolio copy, hidden metrics, and project context are handled',
     assert.match(html, /agencies, production companies, and direct clients/);
     assert.doesNotMatch(html, /heroShowreelBtn|hero_showreel_cta|class="hero-cta"/);
     assert.match(html, /Trabalhos entregues para/);
-    assert.match(html, /\.trust-bar \{\s*display: none !important;/);
+    assert.doesNotMatch(html, /trust-bar|marquee-track|brand-logo--/);
     assert.doesNotMatch(html, /1\.5M\+|\+46%|stat_subs_title|stat_ticket_title/);
     assert.match(html, /selected_caixa_desc/);
     assert.match(html, /selected_imponderavel_desc/);

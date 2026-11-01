@@ -50,7 +50,7 @@ test('contact panel is moved outside the isolated header for page-level backdrop
     assert.match(html, /padding: 1rem 0\.75rem 0\.75rem/);
     assert.match(html, /const right = Math\.max\(16, window\.innerWidth - triggerRect\.right\)/);
     assert.match(html, /header-nav > a\[data-translate-key="nav_projects"\][\s\S]*?background: rgba\(255, 255, 255, 0\.08\)/);
-    assert.match(html, /\.trust-bar \{\s*display: none !important;/);
+    assert.doesNotMatch(html, /trust-bar|marquee-track|brand-logo--/);
     assert.match(html, /\.about-stats \{[\s\S]*?grid-template-columns: repeat\(2, minmax\(0, 220px\)\)[\s\S]*?justify-content: center/);
     assert.equal((html.match(/class="stat-card"/g) || []).length, 2);
     assert.equal((html.match(/data-video-id=/g) || []).length, 28);
