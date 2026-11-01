@@ -1159,8 +1159,7 @@
         @media (prefers-reduced-motion: reduce) { .featured-wrap .project-accordion { transition: none; } }
         #more-projects .video-grid-horizontal { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; align-items: start; }
         #more-projects .expandable-wrapper { display: contents; max-height: none; opacity: 1; overflow: visible; }
-        #more-projects .expandable-wrapper .video-grid-horizontal { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; align-items: start; margin-top: 1rem; }
-        @media (max-width: 560px) { #more-projects .expandable-wrapper .video-grid-horizontal { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .7rem; margin-top: .7rem; } }
+        #more-projects .expandable-wrapper .video-grid-horizontal { display: contents; }
         #toggleArchiveBtn, #toggleReelsBtn { display: none !important; }
         #more-projects .project-card-accordion { overflow: visible; border: 0; background: none; }
         #more-projects .project-card-accordion > summary {
@@ -2681,9 +2680,8 @@
                         </div>
                             </div>
                         </details>
-                </div>
 
-                <!-- GRUPO 2: MAIS PROJETOS (expansível) -->
+                <!-- GRUPO 2: MAIS PROJETOS -->
                 <div class="expandable-wrapper expanded" id="archiveContainer">
                     <div class="video-grid-horizontal">
 
@@ -2823,6 +2821,7 @@
                         </details>
 
                     </div>
+                </div>
                 </div>
 
                 <!-- Botão Ver Mais -->
@@ -3146,17 +3145,6 @@
         const heroContent = document.getElementById('heroContent');
         const archiveContainer = document.getElementById('archiveContainer');
         const toggleArchiveBtn = document.getElementById('toggleArchiveBtn');
-        const archiveHighlightsGrid = document.querySelector('#more-projects > .video-grid-horizontal');
-        const archiveOverflowGrid = archiveContainer?.querySelector('.video-grid-horizontal');
-        const mobileArchiveLeadQuery = window.matchMedia('(max-width: 768px)');
-        function syncMobileArchiveLead() {
-            const lead = archiveOverflowGrid?.querySelector('.project-card-accordion');
-            if (!lead || !archiveHighlightsGrid || !archiveOverflowGrid) return;
-            if (mobileArchiveLeadQuery.matches) archiveHighlightsGrid.appendChild(lead);
-            else archiveOverflowGrid.prepend(lead);
-        }
-        syncMobileArchiveLead();
-        mobileArchiveLeadQuery.addEventListener?.('change', syncMobileArchiveLead);
         const reelsExpandWrapper = document.getElementById('reelsExpandWrapper');
         const toggleReelsBtn = document.getElementById('toggleReelsBtn');
         const playBtnMobile = document.getElementById('headerPlayBtnMobile');
