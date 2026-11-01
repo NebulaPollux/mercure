@@ -74,30 +74,26 @@ for (const [label, container, button] of [
     ['projects', 'archiveContainer', 'toggleArchiveBtn'],
     ['reels', 'reelsExpandWrapper', 'toggleReelsBtn']
 ]) {
-    test(`${label}: expanding enables interaction; collapsing disables it`, () => {
+    test(`${label}: full grid stays expanded and interactive without a toggle`, () => {
         const state = setup();
-        assert.equal(state[container].inert, true);
         state[button].click();
         assert.equal(state[container].classList.contains('expanded'), true);
         assert.equal(state[container].inert, false);
-        assert.equal(state[button].attributes['aria-expanded'], 'true');
         state[button].click();
-        assert.equal(state[container].inert, label === 'projects');
-        assert.equal(state[button].attributes['aria-expanded'], 'false');
+        assert.equal(state[container].classList.contains('expanded'), true);
+        assert.equal(state[container].inert, false);
     });
 }
 
-test('filtering enables matching reels and All restores collapsed state', () => {
+test('filtering reveals matching reels and All restores the full collection', () => {
     const state = setup();
     state.filters[1].click();
     assert.equal(state.reelsExpandWrapper.inert, false);
-    assert.equal(state.toggleReelsBtn.hidden, false);
+    assert.equal(state.toggleReelsBtn.hidden, true);
     assert.equal(state.cards[0].style.display, '');
     assert.equal(state.cards[1].style.display, 'none');
     assert.equal(state.filters[1].attributes['aria-pressed'], 'true');
     state.filters[0].click();
     assert.equal(state.reelsExpandWrapper.inert, false);
-    assert.equal(state.toggleReelsBtn.hidden, false);
-    assert.equal(state.toggleReelsBtn.attributes['aria-expanded'], 'true');
     assert.ok(state.cards.every(card => card.style.display === ''));
 });

@@ -13,9 +13,9 @@ test('all reels filter reveals the complete expandable collection', () => {
     const end = html.indexOf('// ---- Botão Play da barra inferior ----', start);
     const handler = html.slice(start, end);
     assert.match(handler, /setReelsExpanded\(hasMatchingReels\)/);
-    assert.match(handler, /reelsExpandWrapper\.classList\.toggle\('expanded', isExpanded\)/);
+    assert.match(handler, /reelsExpandWrapper\.classList\.add\('expanded'\)/);
     assert.match(handler, /reelsExpandWrapper\.inert = false/);
-    assert.match(handler, /toggleReelsBtn\.hidden = !hasMatchingReels/);
+    assert.match(handler, /toggleReelsBtn\.hidden = true/);
     assert.match(handler, /toggleReelsBtn\.textContent = translations\[currentLang\]\[isExpanded \? 'toggle_reels_less' : 'toggle_reels_more'\]/);
     assert.match(handler, /toggleReelsBtn\.setAttribute\('aria-expanded', String\(isExpanded\)\)/);
 });

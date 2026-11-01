@@ -1143,9 +1143,25 @@
         .featured-wrap [data-position="prev"], .featured-wrap [data-position="next"] { opacity: .82; filter: none; }
         .featured-description .project-case-copy > p:first-child { grid-column: 1 / -1; }
         .featured-description h3 { margin: 0 0 1rem; }
-        @media (max-width: 560px) { .featured-wrap .project-accordion-grid { --stage-width: 84cqw; } .featured-description { padding: 1rem; } .featured-description .project-case-copy { grid-template-columns: 1fr; } .featured-arrow { width: 42px; height: 42px; } }
+        @media (max-width: 560px) {
+            .featured-wrap { padding-inline: .35rem; }
+            .featured-wrap .project-accordion-grid { --stage-width: 96cqw; }
+            .featured-description { padding: 1rem; }
+            .featured-description .project-case-copy { grid-template-columns: 1fr; }
+            .featured-arrow { width: 42px; height: 42px; }
+            #more-projects .project-card-accordion > summary .card-caption { padding: .7rem; }
+            #more-projects .project-card-accordion > summary .card-caption h3 { font-size: .82rem; }
+            #more-projects .project-card-accordion > summary .card-caption p { font-size: .68rem; }
+            #reelsGrid .vertical-card .card-caption { padding: .7rem; }
+            #reelsGrid .vertical-card .card-caption h3 { font-size: .82rem; }
+            #reelsGrid .vertical-card .card-caption p { margin-top: .25rem; font-size: .68rem; }
+         }
         @media (prefers-reduced-motion: reduce) { .featured-wrap .project-accordion { transition: none; } }
-        #more-projects .video-grid-horizontal { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; align-items: start; }
+        #more-projects .video-grid-horizontal { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; align-items: start; }
+        #more-projects .expandable-wrapper { display: contents; max-height: none; opacity: 1; overflow: visible; }
+        #more-projects .expandable-wrapper .video-grid-horizontal { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; align-items: start; margin-top: 1rem; }
+        @media (max-width: 560px) { #more-projects .expandable-wrapper .video-grid-horizontal { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .7rem; margin-top: .7rem; } }
+        #toggleArchiveBtn, #toggleReelsBtn { display: none !important; }
         #more-projects .project-card-accordion { overflow: visible; border: 0; background: none; }
         #more-projects .project-card-accordion > summary {
             position: relative; display: flex; align-items: flex-end; aspect-ratio: 1 / 1; min-height: 0; padding: 0; overflow: hidden;
@@ -1888,7 +1904,8 @@
             }
             .project-accordion-grid .project-accordion-body p { min-height: 0; padding: 0.7rem; }
             .reels-grid {
-                grid-template-columns: 1fr;
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: .7rem;
                 margin-bottom: 1.5rem;
             }
             .about-section {
@@ -1923,17 +1940,44 @@
             .expandable-wrapper.expanded {
                 margin-top: 12px;
             }
+            .featured-controls {
+                flex-wrap: nowrap;
+                justify-content: flex-start;
+                overflow-x: auto;
+                overflow-y: hidden;
+                gap: .4rem;
+                padding: .15rem .2rem;
+                scrollbar-width: thin;
+            }
+            .featured-controls button {
+                flex: 0 0 36px;
+                min-width: 36px;
+                min-height: 36px;
+                height: 36px;
+                padding: .25rem;
+                font-size: .72rem;
+            }
+            .featured-controls button:first-child {
+                flex: 0 0 auto;
+                min-width: 0;
+                width: auto;
+                padding-inline: .6rem;
+                white-space: nowrap;
+            }
+            .featured-controls .featured-count { flex: 0 0 auto; white-space: nowrap; }
             .reels-expand-wrapper {
-                max-height: 1200px;
-                overflow: hidden;
+                display: contents;
+                max-height: none;
+                overflow: visible;
                 opacity: 1;
                 transition: max-height 0.8s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.6s ease-in-out;
                 margin-top: 20px;
             }
             .reels-expand-wrapper:not(.expanded) .vertical-card:nth-child(n+4) {
-                display: none;
+                display: block;
             }
             .reels-expand-wrapper.expanded {
+                display: contents;
                 max-height: 9999px;
                 opacity: 1;
                 margin-top: 20px;
@@ -1941,10 +1985,12 @@
             .reels-expand-wrapper.expanded .vertical-card {
                 display: block;
             }
+            .reels-expand-wrapper:not(.expanded) .vertical-card:nth-child(n+4) { display: block; }
         }
         @media (max-width: 480px) {
             .reels-grid {
-                grid-template-columns: 1fr;
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: .6rem;
             }
             .about-stats {
                 grid-template-columns: minmax(0, 300px);
@@ -1960,7 +2006,7 @@
                 overflow: visible;
             }
             .reels-expand-wrapper:not(.expanded) .vertical-card:nth-child(n+4) {
-                display: none;
+                display: block;
             }
             .reels-expand-wrapper.expanded {
                 display: contents;
@@ -3100,6 +3146,17 @@
         const heroContent = document.getElementById('heroContent');
         const archiveContainer = document.getElementById('archiveContainer');
         const toggleArchiveBtn = document.getElementById('toggleArchiveBtn');
+        const archiveHighlightsGrid = document.querySelector('#more-projects > .video-grid-horizontal');
+        const archiveOverflowGrid = archiveContainer?.querySelector('.video-grid-horizontal');
+        const mobileArchiveLeadQuery = window.matchMedia('(max-width: 768px)');
+        function syncMobileArchiveLead() {
+            const lead = archiveOverflowGrid?.querySelector('.project-card-accordion');
+            if (!lead || !archiveHighlightsGrid || !archiveOverflowGrid) return;
+            if (mobileArchiveLeadQuery.matches) archiveHighlightsGrid.appendChild(lead);
+            else archiveOverflowGrid.prepend(lead);
+        }
+        syncMobileArchiveLead();
+        mobileArchiveLeadQuery.addEventListener?.('change', syncMobileArchiveLead);
         const reelsExpandWrapper = document.getElementById('reelsExpandWrapper');
         const toggleReelsBtn = document.getElementById('toggleReelsBtn');
         const playBtnMobile = document.getElementById('headerPlayBtnMobile');
@@ -3198,7 +3255,7 @@
         menuOverlay.addEventListener('click', closeMobileMenu);
 
         toggleArchiveBtn.addEventListener('click', () => {
-            archiveContainer.classList.toggle('expanded');
+            archiveContainer.classList.add('expanded');
             const isExpanded = archiveContainer.classList.contains('expanded');
             archiveContainer.inert = !isExpanded;
             toggleArchiveBtn.textContent = translations[currentLang][isExpanded ? 'toggle_less' : 'toggle_more'];
@@ -3207,7 +3264,7 @@
 
         if (toggleReelsBtn && reelsExpandWrapper) {
             toggleReelsBtn.addEventListener('click', () => {
-                reelsExpandWrapper.classList.toggle('expanded');
+                reelsExpandWrapper.classList.add('expanded');
                 const isExpanded = reelsExpandWrapper.classList.contains('expanded');
                 // O estado recolhido ainda mantém quatro cards visíveis e interativos.
                 reelsExpandWrapper.inert = false;
@@ -3235,8 +3292,8 @@
         }
 
         function setReelsExpanded(isExpanded) {
-            if (!reelsExpandWrapper || !toggleReelsBtn) return;
-            reelsExpandWrapper.classList.toggle('expanded', isExpanded);
+            if (!reelsExpandWrapper) return;
+            reelsExpandWrapper.classList.add('expanded');
             reelsExpandWrapper.inert = false;
             toggleReelsBtn.textContent = translations[currentLang][isExpanded ? 'toggle_reels_less' : 'toggle_reels_more'];
             toggleReelsBtn.setAttribute('aria-expanded', String(isExpanded));
@@ -3258,21 +3315,21 @@
             renderReelCards();
             const reelsMatches = [...verticalCards].some(reelCardMatchesFilters);
             if (activeServiceFilter !== 'all') {
-                archiveContainer.classList.toggle('expanded', archiveMatches);
-                archiveContainer.inert = !archiveMatches;
-                toggleArchiveBtn.hidden = !archiveMatches;
+                archiveContainer.classList.add('expanded');
+                archiveContainer.inert = false;
+                toggleArchiveBtn.hidden = true;
                 toggleArchiveBtn.textContent = translations[currentLang][archiveMatches ? 'toggle_less' : 'toggle_more'];
                 toggleArchiveBtn.setAttribute('aria-expanded', String(archiveMatches));
                 setReelsExpanded(reelsMatches);
                 toggleReelsBtn.hidden = !reelsMatches;
             } else {
-                archiveContainer.classList.remove('expanded');
-                archiveContainer.inert = true;
-                toggleArchiveBtn.hidden = false;
+                archiveContainer.classList.add('expanded');
+                archiveContainer.inert = false;
+                toggleArchiveBtn.hidden = true;
                 toggleArchiveBtn.textContent = translations[currentLang].toggle_more;
                 toggleArchiveBtn.setAttribute('aria-expanded', 'false');
                 setReelsExpanded(activeReelFilter !== 'all');
-                toggleReelsBtn.hidden = false;
+                toggleReelsBtn.hidden = true;
             }
             const hasAnyMatchingItem = [...serviceFilterItems].some(itemMatchesService);
             const hasAnyMatchingReel = [...verticalCards].some(reelCardMatchesFilters);
@@ -3317,7 +3374,7 @@
                 renderReelCards();
                 const hasMatchingReels = [...verticalCards].some(reelCardMatchesFilters);
                 setReelsExpanded(hasMatchingReels);
-                if (toggleReelsBtn) toggleReelsBtn.hidden = !hasMatchingReels;
+                if (toggleReelsBtn) toggleReelsBtn.hidden = true;
                 const reelsFilterEmpty = document.querySelector('.reels-filter-empty');
                 if (reelsFilterEmpty) reelsFilterEmpty.classList.toggle('is-visible', !hasMatchingReels);
             });
@@ -3873,6 +3930,7 @@ en: {
             pause.type = 'button';
             controls.appendChild(pause);
             const count = document.createElement('span');
+            count.className = 'featured-count';
             const reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
             let current = projects[0], player = null, paused = reduce.matches, hovering = false, focused = false, inView = true, suppressClick = false, timer = null;
             const available = () => projects.filter(project => !project.classList.contains('service-filter-hidden'));

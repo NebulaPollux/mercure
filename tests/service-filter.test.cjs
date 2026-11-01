@@ -26,17 +26,17 @@ test('service labels cover selected projects, archive cards, and reels without n
     assert.match(html, /data-services="broadcast-corporativo motion-vfx"/);
     assert.match(html, /data-services="broadcast-corporativo same-day"/);
     assert.match(html, /data-services="social-performance same-day"/);
-    assert.match(html, /<div class="horizontal-card service-filter-item" data-services="">\s+<div class="video-wrapper" data-video-id="6a45be3e18d11bffd50473aa">/);
-    assert.match(html, /<div class="horizontal-card service-filter-item" data-services="motion-vfx">\s+<div class="video-wrapper" data-video-id="6a45ba55e81b019c9723e28f">/);
-    assert.match(html, /<div class="horizontal-card service-filter-item" data-services="broadcast-corporativo motion-vfx">\s+<div class="video-wrapper" data-video-id="6a45b8a618d11bffd50405b6">/);
-    assert.match(html, /<div class="horizontal-card service-filter-item" data-services="motion-vfx">\s+<div class="video-wrapper" data-video-id="6a45ba55e81b019c9723e28f">/);
-    assert.match(html, /<div class="horizontal-card service-filter-item" data-services="broadcast-corporativo">\s+<div class="video-wrapper" data-video-id="6a45b89018d11bffd50404a1">/);
-    assert.match(html, /<div class="horizontal-card service-filter-item" data-services="social-performance">\s+<div class="video-wrapper" data-video-id="6a45b9a0e81b019c9723d556">/);
+    assert.match(html, /<details class="project-card-accordion horizontal-card service-filter-item" data-services="">\s+<summary>[\s\S]*?<div class="project-card-accordion-body">[\s\S]*?<div class="video-wrapper" data-video-id="6a45be3e18d11bffd50473aa">/);
+    assert.match(html, /<details class="project-card-accordion horizontal-card service-filter-item" data-services="motion-vfx">\s+<summary>[\s\S]*?<div class="project-card-accordion-body">[\s\S]*?<div class="video-wrapper" data-video-id="6a45ba55e81b019c9723e28f">/);
+    assert.match(html, /<details class="project-card-accordion horizontal-card service-filter-item" data-services="broadcast-corporativo motion-vfx">\s+<summary>[\s\S]*?<div class="project-card-accordion-body">[\s\S]*?<div class="video-wrapper" data-video-id="6a45b8a618d11bffd50405b6">/);
+    assert.match(html, /<details class="project-card-accordion horizontal-card service-filter-item" data-services="motion-vfx">\s+<summary>[\s\S]*?<div class="project-card-accordion-body">[\s\S]*?<div class="video-wrapper" data-video-id="6a45ba55e81b019c9723e28f">/);
+    assert.match(html, /<details class="project-card-accordion horizontal-card service-filter-item" data-services="broadcast-corporativo">\s+<summary>[\s\S]*?<div class="project-card-accordion-body">[\s\S]*?<div class="video-wrapper" data-video-id="6a45b89018d11bffd50404a1">/);
+    assert.match(html, /<details class="project-card-accordion horizontal-card service-filter-item" data-services="social-performance">\s+<summary>[\s\S]*?<div class="project-card-accordion-body">[\s\S]*?<div class="video-wrapper" data-video-id="6a45b9a0e81b019c9723d556">/);
     assert.equal((html.match(/data-translate-key="TattooWeek aftermovie"/g) || []).length, 1);
     assert.equal((html.match(/"TattooWeek aftermovie": "Aftermovie"/g) || []).length, 2);
     assert.match(html, /data-translate-key="TattooWeek aftermovie">Aftermovie<\/p>/);
-    assert.match(html, /<div class="horizontal-card service-filter-item" data-services="social-performance">\s+<div class="video-wrapper" data-video-id="6a45b9a0e81b019c9723d556">/);
-    assert.match(html, /<div class="horizontal-card service-filter-item" data-services="broadcast-corporativo">\s+<div class="video-wrapper" data-video-id="6a45b89018d11bffd50404a1">/);
+    assert.match(html, /<details class="project-card-accordion horizontal-card service-filter-item" data-services="social-performance">\s+<summary>[\s\S]*?<div class="project-card-accordion-body">[\s\S]*?<div class="video-wrapper" data-video-id="6a45b9a0e81b019c9723d556">/);
+    assert.match(html, /<details class="project-card-accordion horizontal-card service-filter-item" data-services="broadcast-corporativo">\s+<summary>[\s\S]*?<div class="project-card-accordion-body">[\s\S]*?<div class="video-wrapper" data-video-id="6a45b89018d11bffd50404a1">/);
     for (const match of html.matchAll(/class="[^"]*service-filter-item[^"]*" data-category="campanhas" data-services="([^"]+)"/g)) {
         assert.doesNotMatch(match[1], /motion-vfx/);
     }
@@ -51,15 +51,15 @@ test('service filter preserves accessibility and reset behavior in source', () =
     assert.match(html, /serviceFilterBtns\.forEach\(btn =>/);
     assert.match(html, /filterBtn\.setAttribute\('aria-pressed', String\(isActive\)\)/);
     assert.match(html, /if \(!matches && item\.matches\('details'\)\) item\.open = false;/);
-    assert.match(html, /archiveContainer\.inert = !archiveMatches/);
+    assert.match(html, /archiveContainer\.inert = false/);
     assert.match(html, /serviceFilterEmpty\.classList\.toggle\('is-visible'/);
     assert.match(html, /reelsFilterEmpty\.classList\.toggle\('is-visible', !hasMatchingReels\)/);
-    assert.match(html, /toggleReelsBtn\.hidden = !hasMatchingReels/);
+    assert.match(html, /toggleReelsBtn\.hidden = true/);
     assert.match(html, /function setReelsExpanded\(isExpanded\)/);
     assert.match(html, /toggleReelsBtn\.setAttribute\('aria-expanded', String\(isExpanded\)\)/);
     assert.match(html, /setReelsExpanded\(reelsMatches\)/);
     assert.match(html, /renderReelCards\(\);/);
     assert.match(html, /setReelsExpanded\(activeReelFilter !== 'all'\)/);
-    assert.match(html, /toggleReelsBtn\.hidden = false/);
+    assert.match(html, /toggleReelsBtn\.hidden = true/);
     assert.match(html, /setReelsExpanded\(hasMatchingReels\)/);
 });
