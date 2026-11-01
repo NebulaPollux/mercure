@@ -91,7 +91,7 @@ test('the twelve selected horizontal videos retain captions, services, order, an
         assert.equal((body.match(/class="video-wrapper" data-video-id="[^"]+"/g) || []).length, 1);
         assert.match(body, /class="project-card-accordion-body"/);
     }
-    assert.match(section, /id="archiveContainer" inert/);
+    assert.match(section, /class="expandable-wrapper expanded" id="archiveContainer">/);
     assert.match(html, /id="toggleArchiveBtn"/);
 });
 

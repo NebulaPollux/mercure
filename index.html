@@ -2684,7 +2684,7 @@
                 </div>
 
                 <!-- GRUPO 2: MAIS PROJETOS (expansível) -->
-                <div class="expandable-wrapper" id="archiveContainer" inert>
+                <div class="expandable-wrapper expanded" id="archiveContainer">
                     <div class="video-grid-horizontal">
 
                         <details class="project-card-accordion horizontal-card service-filter-item" data-services="broadcast-corporativo same-day">
@@ -3257,7 +3257,7 @@
         toggleArchiveBtn.addEventListener('click', () => {
             archiveContainer.classList.add('expanded');
             const isExpanded = archiveContainer.classList.contains('expanded');
-            archiveContainer.inert = !isExpanded;
+            archiveContainer.inert = false;
             toggleArchiveBtn.textContent = translations[currentLang][isExpanded ? 'toggle_less' : 'toggle_more'];
             toggleArchiveBtn.setAttribute('aria-expanded', String(isExpanded));
         });
@@ -3816,7 +3816,7 @@ en: {
             }
 
             const isExpanded = archiveContainer.classList.contains('expanded');
-            archiveContainer.inert = !isExpanded;
+            archiveContainer.inert = false;
             toggleArchiveBtn.textContent = translations[currentLang][isExpanded ? 'toggle_less' : 'toggle_more'];
             toggleArchiveBtn.setAttribute('aria-expanded', String(isExpanded));
             const reelsExpanded = reelsExpandWrapper && reelsExpandWrapper.classList.contains('expanded');
