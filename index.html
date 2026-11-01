@@ -4012,7 +4012,7 @@ en: {
                 wrapper.classList.remove('loading-preview');
             });
 
-            if (customCard) return; // Existing summary/Reels handlers own click and keyboard activation.
+            if (project) return; // The project summary owns its own activation.
             wrapper.addEventListener('keydown', event => {
                 if (event.key === 'Enter' || event.key === ' ') {
                     event.preventDefault();
