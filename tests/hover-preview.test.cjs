@@ -13,13 +13,16 @@ function setup({ allowed = true, open = false } = {}) {
     let timer;
     const players = [];
     const wrapper = {
+        closest: () => null,
         classList: { add() {}, remove() {} },
         querySelector: () => players[0],
         addEventListener(name, callback) { if (name === 'mouseenter') enter = callback; },
         appendChild(player) { players.push(player); }
     };
     const context = {
-        wrapper, canHoverPreview: allowed, isModalOpen: open, videoId: 'test-video',
+        wrapper, previewAspect: 16 / 9, project: null, customCard: null, canHoverPreview: allowed, isModalOpen: open, videoId: 'test-video',
+        activeHoverPlayer: null,
+        clearTimeout() {},
         setTimeout(callback) { timer = callback; },
         document: {
             querySelectorAll: () => [],

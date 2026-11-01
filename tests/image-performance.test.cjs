@@ -19,7 +19,7 @@ test('logos use smaller WebP with existing PNG fallback and explicit dimensions'
 });
 
 test('below-fold profile defers loading and retains JPG fallback', () => {
-    assert.match(html, /<picture class="profile-picture"><source srcset="images\/profile_photo.webp" type="image\/webp"><img src="images\/profile_photo_2.jpg" width="600" height="640" loading="lazy" decoding="async"/);
+    assert.match(html, /<picture class="profile-photo"><source srcset="images\/profile_photo.webp" type="image\/webp"><img src="images\/profile_photo_2.jpg" width="600" height="640" fetchpriority="high" decoding="async"/);
     const webp = fs.readFileSync(path.join(root, 'images', 'profile_photo.webp'));
     assert.equal(webp.toString('ascii', 8, 12), 'WEBP');
     assert.ok(webp.length < fs.statSync(path.join(root, 'images', 'profile_photo_2.jpg')).size / 5);

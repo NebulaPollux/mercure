@@ -42,6 +42,7 @@ function setup() {
     document.querySelectorAll = () => [];
     document.createElement = () => ({ ...element(), remove() { player = null; } });
     const context = { document, wrappers, modal, modalContent, closeBtn, lightboxPrev, lightboxNext,
+        removeProjectAccordionPlayer() {},
         backgroundRegions: [{}], currentLang: 'pt', isModalOpen: false, modalTrigger: null,
         activeVideoIndex: -1, activeVideoWrapper: null, lightboxVideos: [],
         GUMLET_PLAYER_ORIGIN: 'https://play.gumlet.io',
