@@ -5,9 +5,9 @@ const path = require('node:path');
 const vm = require('node:vm');
 const html = fs.readFileSync(path.join(__dirname, '..', 'index.html'), 'utf8');
 
-test('hero identifies the editor alongside existing role and location', () => {
+test('hero presents role and location without the removed identity line', () => {
     const hero = html.slice(html.indexOf('<div class="hero-content"'), html.indexOf('<!-- HEADER COM'));
-    assert.match(hero, /Marcos Soares Santos · Mercure Vídeo/);
+    assert.doesNotMatch(hero, /class="hero-identity"/);
     assert.match(hero, /Editor de vídeo sênior e motion designer em São Paulo/);
 });
 
@@ -28,67 +28,126 @@ test('eight closed bilingual questions follow About and precede the final CTA', 
     }
 });
 
+const featuredStart = html.indexOf('<div class="project-accordion-list project-accordion-grid">');
+const featuredEnd = html.indexOf('<details class="portfolio-collection"', featuredStart);
+assert.ok(featuredStart >= 0 && featuredEnd > featuredStart, 'featured accordion grid must exist');
+const featured = html.slice(featuredStart, featuredEnd);
+
+test('featured headers retain exactly five existing accordions and video wrappers in editorial order', () => {
+    const projects = [...featured.matchAll(/<details\b[^>]*>[\s\S]*?<\/details>/g)].map(([markup]) => ({
+        key: markup.match(/<summary data-translate-key="([^"]+)"/)[1],
+        videoId: markup.match(/class="video-wrapper" data-video-id="([^"]+)"/)[1],
+        services: markup.match(/data-services="([^"]+)"/)[1]
+    }));
+    assert.deepEqual(projects, [
+        { key: 'selected_think_title', videoId: '6a45bf80e4e7cc890ee34095', services: 'broadcast-corporativo motion-vfx' },
+        { key: 'selected_caixa_title', videoId: '6ae508c834bee2c4e82840c1', services: 'broadcast-corporativo same-day' },
+        { key: 'selected_apas_title', videoId: '6a45ba33e81b019c9723df2b', services: 'broadcast-corporativo same-day social-performance' },
+        { key: 'selected_transpetro_title', videoId: '6a45bb7f18d11bffd504439a', services: 'broadcast-corporativo same-day' },
+        { key: 'selected_imponderavel_title', videoId: '6a471f53e81b019c974c3eed', services: 'broadcast-corporativo' }
+    ]);
+    for (const className of ['project-accordion-list project-accordion-grid', 'project-accordion-body', 'video-wrapper', 'project-summary-title']) {
+        assert.equal((featured.match(new RegExp('class="' + className + '"', 'g')) || []).length, className.includes('project-accordion-list') ? 1 : 5);
+    }
+    assert.equal((html.match(/<details class="project-accordion service-filter-item"/g) || []).length, 5);
+    assert.equal((featured.match(/<summary\b/g) || []).length, 5);
+    assert.doesNotMatch(featured, /<iframe\b|<video\b|class="project-frame-strip"/);
+    assert.equal((featured.match(/<span class="project-summary-title" data-translate-text>/g) || []).length, 5);
+});
+
+test('project cards use one static high-resolution thumbnail and masked lower vignette', () => {
+    assert.doesNotMatch(html, /project-frame-(?:reel|strip)/);
+    assert.doesNotMatch(html, /projectCardFrameFade|projectCardFramePan|initProjectFrameCrossfades/);
+    assert.match(html, /thumbnail-1-0\.png\?time=8&width=\$\{/);
+    assert.match(html, /#more-projects \.project-card-accordion > summary::after \{ display: none; \}/);
+    assert.match(html, /#more-projects \.project-card-accordion > summary \.card-caption \{ position: absolute; inset: auto 0 0; z-index: 3/);
+    assert.match(html, /#more-projects \.project-card-accordion > summary \.card-caption[\s\S]*?backdrop-filter: blur\(10px\)/);
+    assert.match(html, /grid-template-columns: repeat\(3, minmax\(0, 1fr\)\)/);
+    assert.match(html, /time=8&width=\$\{project\.classList/);
+    assert.match(html, /#more-projects \.project-card-accordion > summary \{[\s\S]*?aspect-ratio: 1 \/ 1;/);
+    assert.match(html, /#more-projects \.project-card-accordion > summary::before[\s\S]*?background: var\(--project-thumb/);
+    assert.match(html, /#more-projects \.project-card-accordion > summary::after[\s\S]*?z-index: 2/);
+    assert.match(html, /#more-projects \.project-card-accordion > summary \.card-caption \{ position: relative; z-index: 3/);
+    assert.match(html, /#reelsGrid \.vertical-card \{[\s\S]*?aspect-ratio: 9 \/ 16;/);
+    assert.match(html, /#reelsGrid \.vertical-card \.video-wrapper::after \{ display: none; \}/);
+    assert.match(html, /#reelsGrid \.vertical-card \.card-caption[\s\S]*?backdrop-filter: blur\(10px\)/);
+    assert.match(html, /@media \(prefers-reduced-motion: reduce\)/);
+});
+
+test('the twelve selected horizontal videos retain captions, services, order, and IDs in accordions', () => {
+    const sectionStart = html.indexOf('<h3 class="section-title" data-translate-key="other_projects"');
+    const sectionEnd = html.indexOf('<!-- Botão Ver Mais -->', sectionStart);
+    const section = html.slice(sectionStart, sectionEnd);
+    const projects = [...section.matchAll(/<details class="project-card-accordion horizontal-card service-filter-item"([^>]*)>([\s\S]*?)<\/details>/g)];
+    assert.equal(projects.length, 12);
+    assert.equal((section.match(/<div class="project-accordion-body"/g) || []).length, 0);
+    assert.doesNotMatch(section, /project-frame-(?:reel|strip)/);
+    for (const [, attrs, body] of projects) {
+        assert.match(attrs, /data-services="[^"]*"/);
+        assert.equal((body.match(/<summary\b/g) || []).length, 1);
+        assert.equal((body.match(/class="card-caption"/g) || []).length, 1);
+        assert.equal((body.match(/<h3 data-translate-key=/g) || []).length, 1);
+        assert.equal((body.match(/<p data-translate-key=/g) || []).length, 1);
+        assert.equal((body.match(/class="video-wrapper" data-video-id="[^"]+"/g) || []).length, 1);
+        assert.match(body, /class="project-card-accordion-body"/);
+    }
+    assert.match(section, /id="archiveContainer" inert/);
+    assert.match(html, /id="toggleArchiveBtn"/);
+});
+
 function setupFrames() {
     function element() {
-        return { children: [], style: {}, handlers: {}, dataset: {},
+        return { children: [], style: { setProperty() {} }, handlers: {}, dataset: {},
             setAttribute(name, value) { this[name] = value; },
             addEventListener(name, handler) { this.handlers[name] = handler; },
             appendChild(child) { this.children.push(child); }
         };
     }
-    const keys = ['think', 'imponderavel', 'transpetro', 'caixa', 'apas'];
+    const keys = ['think', 'caixa', 'apas', 'transpetro', 'imponderavel'];
     const summaries = keys.map(key => {
         const summary = element();
         summary.dataset.translateKey = `selected_${key}_title`;
-        summary.querySelector = () => summary.children.find(child => child.className === 'project-frame-strip');
+        summary.querySelector = () => null;
         return summary;
     });
-    const projects = summaries.map((summary, index) => ({
-        querySelector: selector => selector === 'summary' ? summary : { dataset: { videoId: `id-${index}` } }
+    const cards = [...html.matchAll(/<details class="project-card-accordion[^>]*>([\s\S]*?)<\/details>/g)].map(([, markup]) => ({
+        key: markup.match(/<h3 data-translate-key="([^"]+)"/)[1],
+        videoId: markup.match(/data-video-id="([^"]+)"/)[1]
+    }));
+    assert.equal(cards.length, 12);
+    const cardSummaries = cards.map(({ key }) => {
+        const summary = element();
+        summary.querySelector = selector => selector === '[data-translate-key]'
+            ? { dataset: { translateKey: key } }
+            : null;
+        return summary;
+    });
+    const videoIds = [...summaries.map((_, index) => `id-${index}`), ...cards.map(card => card.videoId)];
+    const projects = [...summaries, ...cardSummaries].map((summary, index) => ({
+        classList: { contains: name => index >= 5 && name === 'project-card-accordion' },
+        querySelector: selector => selector === 'summary' ? summary : { dataset: { videoId: videoIds[index] } }
     }));
     const context = { GUMLET_WORKSPACE_ID: 'workspace', document: {
-        querySelectorAll: () => projects, createElement: element
+        querySelectorAll: selector => selector === '.project-accordion, .project-card-accordion, #reelsGrid .vertical-card' ? projects : [], createElement: element
     } };
     const start = html.indexOf('        function initProjectFrames()');
     const end = html.indexOf('        function equalizeClosedProjectHeaders()', start);
     assert.ok(start > 0 && end > start);
     vm.runInNewContext(html.slice(start, end), context);
-    return { summaries, context };
+    return { summaries: [...summaries, ...cardSummaries], videoIds, context };
 }
 
-test('five decorative strips use existing video IDs and three requested frame times', () => {
-    const { summaries, context } = setupFrames();
-    summaries.forEach((summary, index) => {
-        const strip = summary.children[0];
-        assert.equal(strip['aria-hidden'], 'true');
-        assert.equal(strip.children.length, 3);
-        assert.equal(new Set(strip.children.map(frame => frame.src)).size, 3);
-        strip.children.forEach(frame => {
-            assert.match(frame.src, new RegExp('/id-' + index + '/'));
-            assert.equal(frame.alt, '');
-            assert.equal(frame.loading, 'lazy');
-        });
-    });
-    context.initProjectFrames();
-    summaries.forEach(summary => assert.equal(summary.children.length, 1));
-});
-
-test('unavailable frames collapse without breaking the accordion trigger', () => {
-    const { summaries } = setupFrames();
-    const strip = summaries[0].children[0];
-    strip.children[0].handlers.error();
-    assert.equal(strip.children[0].hidden, true);
-    assert.notEqual(strip.style.display, 'none');
-    strip.children.slice(1).forEach(frame => frame.handlers.error());
-    assert.equal(strip.style.display, 'none');
-    assert.match(html, /if \(img\.closest\('\.project-frame-strip'\)\) return;/);
-    assert.match(html, /\.project-accordion\[open\] \.project-frame-strip \{ display: none; \}/);
+test('project cards keep one static high-resolution thumbnail', () => {
+    assert.doesNotMatch(html, /projectCardFrameFade|projectCardFramePan|initProjectFrameCrossfades|project-frame-(?:reel|strip)/);
+    assert.match(html, /thumbnail-1-0\.png\?time=8&width=\$\{/);
+    assert.match(html, /#reelsGrid \.vertical-card \.video-wrapper::after \{ display: none; \}/);
+    assert.match(html, /#reelsGrid \.vertical-card \.card-caption[\s\S]*?backdrop-filter: blur\(10px\)/);
 });
 
 test('only closed headers share the tallest natural height and recalculate after resize', () => {
     const style = { value: null, removeProperty() { this.value = null; }, setProperty(key, value) { this.value = value; } };
     let heights = [110, 128, 110, 110, 94];
-    const grid = { style, querySelectorAll(selector) {
+    const grid = { style, closest() { return null; }, querySelectorAll(selector) {
         assert.equal(selector, '.project-accordion:not([open]) > summary');
         assert.equal(style.value, null, 'clear previous minimum before measuring');
         return heights.map(height => ({ getBoundingClientRect: () => ({ height }) }));

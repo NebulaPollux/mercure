@@ -8,7 +8,7 @@
     <meta name="description" content="Marcos Soares Santos (Mercure Vídeo) é editor de vídeo sênior e motion designer com 7 anos de experiência em broadcast, campanhas e conteúdo para redes sociais.">
     <meta property="og:type" content="website">
     <meta property="og:title" content="Mercure Vídeo — Marcos Soares Santos | Editor de Vídeo Sênior & Motion Designer">
-    <meta property="og:description" content="Portfólio de Marcos Soares Santos: edição de vídeo sênior, motion graphics e estratégia de conteúdo para marcas como Dior, P&G, Santander e TRANSPETRO.">
+    <meta property="og:description" content="Portfólio de Marcos Soares Santos: edição de vídeo sênior, motion graphics e estratégia de conteúdo para broadcast, campanhas e conteúdo digital.">
     <meta property="og:url" content="https://mercurevideo.com.br/">
     <link rel="canonical" href="https://mercurevideo.com.br/">
     <meta property="og:image:alt" content="Mercure Vídeo — Marcos Soares Santos, editor de vídeo sênior e motion designer">
@@ -17,7 +17,7 @@
     <meta property="og:image:height" content="630">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Mercure Vídeo — Marcos Soares Santos | Editor de Vídeo Sênior &amp; Motion Designer">
-    <meta name="twitter:description" content="Portfólio de Marcos Soares Santos: edição de vídeo sênior, motion graphics e estratégia de conteúdo para marcas como Dior, P&amp;G, Santander e TRANSPETRO.">
+    <meta name="twitter:description" content="Portfólio de Marcos Soares Santos: edição de vídeo sênior, motion graphics e estratégia de conteúdo para broadcast, campanhas e conteúdo digital.">
     <meta name="twitter:image" content="https://mercurevideo.com.br/images/social-share.png">
     <meta name="twitter:image:alt" content="Mercure Vídeo — Marcos Soares Santos, editor de vídeo sênior e motion designer">
     <meta name="theme-color" content="#12173A">
@@ -333,7 +333,7 @@
         .header-nav a:hover {
             color: var(--mercure-accent);
         }
-        .header-nav > a[data-translate-key="nav_about"] {
+        .header-nav > a[data-translate-key="nav_projects"] {
             display: inline-flex;
             align-items: center;
             color: var(--mercure-text);
@@ -345,15 +345,15 @@
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
         }
-        .header-nav > a[data-translate-key="nav_about"]:hover {
+        .header-nav > a[data-translate-key="nav_projects"]:hover {
             background: rgba(255, 255, 255, 0.18);
         }
-        .header-nav > a[data-translate-key="nav_about"], .contact-trigger, .lang-btn {
+        .header-nav > a[data-translate-key="nav_projects"], .contact-trigger, .lang-btn {
             box-sizing: border-box;
             flex: 0 0 auto;
             transform-origin: center;
         }
-        .header-nav > a[data-translate-key="nav_about"]:hover,
+        .header-nav > a[data-translate-key="nav_projects"]:hover,
         .contact-trigger:hover, .contact-trigger[aria-expanded="true"],
         .lang-btn:hover {
             transform: none;
@@ -409,11 +409,11 @@
         @media (min-width: 769px) and (max-width: 1100px) {
             .header-container { padding: 0 1rem; }
             .header-nav { gap: 0.75rem; }
-            .header-nav > a[data-translate-key="nav_about"], .contact-trigger, .lang-btn {
+            .header-nav > a[data-translate-key="nav_projects"], .contact-trigger, .lang-btn {
                 font-size: 0.62rem;
                 letter-spacing: 0.06em;
             }
-            .header-nav > a[data-translate-key="nav_about"] { padding-inline: 0.6rem; }
+            .header-nav > a[data-translate-key="nav_projects"] { padding-inline: 0.6rem; }
             .contact-trigger { min-height: 34px; padding-inline: 0.7rem; }
             .header-right { gap: 0.75rem; }
         }
@@ -625,7 +625,7 @@
             height: 21px;
             display: block;
         }
-        .mobile-menu a[data-translate-key="nav_about"] {
+        .mobile-menu a[data-translate-key="nav_projects"] {
             margin-bottom: 0.35rem;
             padding-bottom: 1rem;
             border-bottom: 1px solid rgba(255, 255, 255, 0.14);
@@ -846,6 +846,21 @@
             text-shadow: 0px 3px 12px rgba(18, 23, 58, 0.9), 0px 0px 30px rgba(18, 23, 58, 0.65);
         }
 
+        .professional-profile { padding-top: 2rem; padding-bottom: 2rem; color: #fff; }
+        .professional-profile .profile-content { padding-bottom: 1rem; }
+        .professional-profile h2 { margin: 0 0 1.5rem; color: #fff; font-size: clamp(1.4rem, 2vw, 1.8rem); }
+        .professional-profile .about-text { color: #fff; font-size: clamp(1.1rem, 1.3vw, 1.25rem); line-height: 1.7; max-width: 72ch; }
+        .professional-profile .about-text p { margin: 0 0 1rem; }
+        .professional-profile .about-text p:last-child { margin-bottom: 0; }
+        .professional-profile .profile-intro { display: grid; grid-template-columns: 12rem minmax(0, 1fr); gap: 1.5rem; align-items: start; }
+        .professional-profile .profile-photo { grid-column: 1; width: 100%; aspect-ratio: 4 / 5; margin: 0; overflow: hidden; border-radius: 8px; }
+        .professional-profile .profile-photo img { width: 100%; height: 100%; display: block; object-fit: cover; }
+        .professional-profile .about-text { grid-column: 2; align-self: start; margin-top: 0.25rem; }
+        @media (max-width: 700px) {
+            .professional-profile .profile-intro { grid-template-columns: minmax(0, 1fr); gap: 0.75rem; }
+            .professional-profile .profile-photo { grid-column: 1; width: min(11rem, 60vw); margin: 0 auto; }
+            .professional-profile .about-text { grid-column: 1; }
+        }
         .hero-subtitle {
             font-family: var(--font-serif);
             font-size: clamp(0.75rem, 1.3vw, 1rem);
@@ -1039,56 +1054,127 @@
         }
         .project-accordion:not([open]) summary { min-height: var(--project-closed-height, 0px); }
         .project-accordion summary::after { grid-column: 2; grid-row: 1; }
-        .project-frame-strip {
-            grid-column: 1 / -1;
-            display: grid;
-            grid-template-columns: repeat(3, minmax(0, 1fr));
-            gap: 4px;
-            min-width: 0;
-            height: 46px;
-            overflow: hidden;
-            border-radius: 6px;
-            pointer-events: none;
-        }
-        .project-frame-strip img {
-            display: block;
-            width: 100%;
-            height: 46px;
-            min-width: 0;
-            object-fit: cover;
-            opacity: 0.72;
-            transform: scale(1.04);
-            transition: transform 0.4s ease, opacity 0.3s ease;
-        }
-        .project-frame-strip img[hidden] { display: none; }
-        .project-accordion summary:hover .project-frame-strip img { transform: scale(1.1) translateY(-2px); opacity: 0.9; }
-        .project-accordion[open] .project-frame-strip { display: none; }
         @media (prefers-reduced-motion: reduce) {
-            .project-frame-strip img,
-            .project-accordion summary:hover .project-frame-strip img { transition: none; transform: none; }
             .project-accordion summary:hover::before { --project-parallax: 0px; transform: scale(1.06); transition: none; }
         }
         .project-accordion-placeholder { color: var(--mercure-text-secondary); font-style: italic; }
         .legacy-projects-section { display: none !important; }
-        .project-card-accordion .card-caption h3 {
-            cursor: pointer;
-            outline: none;
+        .portfolio-collection { margin: 2rem 0 4rem; }
+        .portfolio-collection > summary { display: flex; justify-content: space-between; align-items: center; gap: 1rem; padding: 1.25rem 1.5rem; color: #fff; font-size: clamp(1.1rem, 2vw, 1.4rem); font-weight: 700; cursor: pointer; list-style: none; border: 1px solid #ffffff40; border-radius: 14px; background: linear-gradient(135deg, #ffffff1c, #4d499920); backdrop-filter: blur(18px) saturate(140%); -webkit-backdrop-filter: blur(18px) saturate(140%); box-shadow: inset 0 1px 0 #ffffff44, 0 8px 28px #0003; }
+        .portfolio-collection > summary::-webkit-details-marker { display: none; }
+        .portfolio-collection > summary::after { content: '+'; color: var(--mercure-accent); }
+        .portfolio-collection[open] > summary::after { content: '−'; }
+        .portfolio-collection > summary:focus-visible { outline: 3px solid var(--mercure-accent); outline-offset: 4px; }
+        .portfolio-collection-body { padding-top: .5rem; }
+
+        /* Vidro com expansão nativa: mantém teclado, foco e estado de details. */
+        :is(.portfolio-collection, .about-accordion) {
+            --glass-ease: cubic-bezier(.22, 1, .36, 1);
+
         }
-        .project-card-accordion .card-caption h3::after {
-            content: '+';
-            display: inline-block;
-            margin-left: 0.45rem;
-            color: var(--mercure-accent);
-            font-size: 0.9em;
-            transition: transform 0.25s ease;
+        :is(.portfolio-collection, .about-accordion) > summary {
+            position: relative;
+            background: linear-gradient(125deg, rgba(255,255,255,.15), rgba(124,115,205,.08) 55%, rgba(165,255,231,.06));
+            backdrop-filter: blur(20px) saturate(155%);
+            -webkit-backdrop-filter: blur(20px) saturate(155%);
+            box-shadow: inset 0 1px 0 rgba(255,255,255,.38), inset 0 -1px 0 rgba(255,255,255,.05), 0 8px 28px rgba(0,0,0,.16);
+            transition: background-color .35s ease, box-shadow .45s var(--glass-ease), border-color .35s ease;
         }
-        .project-card-accordion.is-open .card-caption h3::after { content: '−'; }
-        .project-card-accordion:not(.is-open) .video-wrapper { display: none; }
-        .project-card-accordion:not(.is-open) .card-caption p { display: none; }
-        .project-card-accordion .card-caption h3:focus-visible {
-            outline: 2px solid var(--mercure-accent);
-            outline-offset: 4px;
-            border-radius: 3px;
+        :is(.portfolio-collection, .about-accordion) > summary:hover {
+            background-color: rgba(255,255,255,.06);
+            box-shadow: inset 0 1px 0 rgba(255,255,255,.55), 0 10px 32px rgba(0,0,0,.2);
+        }
+        :is(.portfolio-collection, .about-accordion)[open] > summary {
+            border-color: rgba(165,255,231,.4);
+            box-shadow: inset 0 1px 0 rgba(255,255,255,.5), 0 8px 30px rgba(31,194,155,.08);
+        }
+        :is(.portfolio-collection, .about-accordion) > summary::after {
+            content: '';
+            flex: 0 0 9px;
+            width: 9px;
+            height: 9px;
+            margin-right: .25rem;
+            border-right: 2px solid var(--mercure-accent);
+            border-bottom: 2px solid var(--mercure-accent);
+            transform: rotate(45deg);
+            transition: transform .45s var(--glass-ease);
+        }
+        :is(.portfolio-collection, .about-accordion)[open] > summary::after { content: ''; transform: rotate(225deg); }
+        @media (prefers-reduced-motion: reduce) {
+            :is(.portfolio-collection, .about-accordion) > summary,
+            :is(.portfolio-collection, .about-accordion) > summary::after { transition: none; }
+        }
+        #about .about-grid { display: block; max-width: 900px; margin-inline: auto; }
+        #about .section-header { text-align: center; }
+        .featured-controls[hidden], .featured-description[hidden], .featured-wrap[hidden] { display: none !important; }
+        /* Palco: composição do protótipo com conteúdo real dos projetos. */
+        .featured-wrap { container-type: inline-size; overflow: visible; padding: 1.5rem 0; }
+        .featured-wrap .project-accordion-grid { --stage-width: min(70cqw, 860px); --stage-height: calc(var(--stage-width) * 9 / 16); --stage-offset: min(calc(var(--stage-width) * .64), calc((100cqw - var(--stage-width) * .7) / 2 - 8px)); position: relative; display: block; height: var(--stage-height); }
+        .featured-wrap:has(.project-accordion[data-position="active"] .video-wrapper[data-portrait="true"]) .project-accordion-grid { --portrait-width: min(calc(var(--stage-height) * 9 / 16), 100cqw); }
+        .featured-wrap:has(.project-accordion[data-position="active"] .video-wrapper[data-portrait="true"]) .project-accordion[data-position="active"] { width: var(--portrait-width); aspect-ratio: 9 / 16; left: 50%; transform: translateX(-50%); }
+        .featured-wrap .project-accordion[data-player-active="true"] > summary { visibility: hidden; }
+        .featured-wrap .project-accordion[data-player-active="true"] > .project-stage-player { background: #080a12; }
+        .featured-wrap .project-accordion { position: absolute; left: 50%; top: 0; width: var(--stage-width); aspect-ratio: 16 / 9; border-radius: 20px; background: #12173a; transform: translateX(calc(-50% + clamp(-1, var(--offset, 0), 1) * var(--stage-offset))) scale(var(--scale, 1)); transition: transform .75s cubic-bezier(.16,1,.3,1), opacity .55s, filter .55s; box-shadow: 0 18px 50px #0006; }
+        .featured-wrap [data-position="active"] { z-index: 3; }
+        .featured-wrap [data-position="prev"], .featured-wrap [data-position="next"] { --scale: .7; z-index: 2; opacity: .6; filter: saturate(.7) brightness(.72); }
+        .featured-wrap [data-position="far"] { --scale: .55; opacity: 0; pointer-events: none; }
+        .featured-wrap .project-accordion > summary { position: absolute; inset: 0; min-height: 0; padding: 0; border: 0; border-radius: 0; display: block; }
+        .featured-wrap .project-accordion > summary::before { filter: none; opacity: 1; transform: none; background-position: center; }
+        .featured-wrap .project-accordion > summary::after { display: none; }
+        .featured-wrap .project-summary-title { position: absolute; z-index: 3; bottom: 0; left: 0; right: 0; padding: .85rem 1rem 1rem; background: none; font-size: clamp(1rem, 2.6cqw, 1.6rem); }
+        .featured-wrap .project-summary-title::before { content: attr(data-project-subtitle); display: block; margin-bottom: .25rem; color: rgba(255,255,255,.78); font-size: .58em; font-weight: 500; }
+        .featured-wrap .project-accordion-body { display: none !important; }
+        .featured-wrap .project-stage-player { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; z-index: 4; }
+        .featured-arrow { position: absolute; top: 50%; z-index: 5; width: 48px; height: 48px; border-radius: 50%; border: 1px solid #ffffff55; background: #12173acc; color: white; cursor: pointer; font-size: 1.6rem; transform: translateY(-50%); }
+        .featured-prev { left: .5rem; } .featured-next { right: .5rem; }
+        .featured-controls { display: flex; justify-content: center; align-items: center; gap: .75rem; flex-wrap: wrap; margin: 1rem 0; }
+        .featured-controls button { min-width: 44px; min-height: 44px; background: transparent; color: var(--mercure-text); border: 1px solid #ffffff44; border-radius: 22px; cursor: pointer; padding: .5rem .8rem; }
+        .featured-controls button[aria-current="true"] { border-color: var(--mercure-accent); background: #1fc29b22; }
+        .featured-controls button:focus-visible, .featured-arrow:focus-visible { outline: 3px solid var(--mercure-accent); outline-offset: 3px; }
+        .featured-description { max-width: 900px; margin: 1.5rem auto; padding: 1.5rem; border-left: 2px solid var(--mercure-accent); background: #ffffff08; border-radius: 0 12px 12px 0; }
+        .featured-copy-stack { display: grid; }
+        .featured-copy-stack > .project-case-copy { grid-area: 1 / 1; }
+        .featured-description h3 { min-height: 3em; }
+        .featured-description .project-case-copy { grid-template-columns: repeat(2, minmax(0, 1fr)); line-height: 1.6; }
+        .featured-wrap .project-accordion { border: 1px solid rgba(255,255,255,.3); box-shadow: inset 0 1px 0 #ffffff66, 0 12px 36px #0004; transition: transform .45s cubic-bezier(.22,1,.36,1), opacity .25s ease; }
+        .featured-wrap .project-accordion > summary { backdrop-filter: none; -webkit-backdrop-filter: none; }
+        .featured-wrap .project-summary-title { border-top: 1px solid #ffffff30; background: linear-gradient(to bottom, rgba(8,10,24,.12), rgba(8,10,24,.92)); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); box-shadow: inset 0 1px 0 #ffffff22; }
+        #more-projects .project-card-accordion > summary .card-caption { position: absolute; inset: auto 0 0; z-index: 3; padding: 1rem; background: linear-gradient(to bottom, rgba(8,10,24,.12), rgba(8,10,24,.92)); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
+        .featured-wrap [data-position="prev"], .featured-wrap [data-position="next"] { opacity: .82; filter: none; }
+        .featured-description .project-case-copy > p:first-child { grid-column: 1 / -1; }
+        .featured-description h3 { margin: 0 0 1rem; }
+        @media (max-width: 560px) { .featured-wrap .project-accordion-grid { --stage-width: 84cqw; } .featured-description { padding: 1rem; } .featured-description .project-case-copy { grid-template-columns: 1fr; } .featured-arrow { width: 42px; height: 42px; } }
+        @media (prefers-reduced-motion: reduce) { .featured-wrap .project-accordion { transition: none; } }
+        #more-projects .video-grid-horizontal { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; align-items: start; }
+        #more-projects .project-card-accordion { overflow: visible; border: 0; background: none; }
+        #more-projects .project-card-accordion > summary {
+            position: relative; display: flex; align-items: flex-end; aspect-ratio: 1 / 1; min-height: 0; padding: 0; overflow: hidden;
+            cursor: pointer; list-style: none; border: 1px solid rgba(255,255,255,.3); border-radius: 18px;
+            background: linear-gradient(145deg, rgba(255,255,255,.16), rgba(18,23,58,.48));
+            box-shadow: inset 0 1px 0 rgba(255,255,255,.55), 0 14px 32px rgba(0,0,0,.25); isolation: isolate;
+            transition: transform .3s ease, border-color .3s ease, box-shadow .3s ease;
+        }
+        #more-projects .project-card-accordion > summary::before { content: ''; position: absolute; inset: 0; z-index: -3; background: var(--project-thumb, linear-gradient(135deg, #4d4999, #12173a)); background-size: cover; background-position: center; opacity: .42; filter: saturate(.85); transition: transform .55s ease, opacity .4s ease; }
+        #more-projects .project-card-accordion > summary::after { display: none; }
+        #more-projects .project-card-accordion > summary:hover::before, #more-projects .project-card-accordion > summary:focus-visible::before,
+        #reelsGrid .vertical-card:hover .video-thumbnail-reel, #reelsGrid .vertical-card:focus-within .video-thumbnail-reel,
+        .featured-wrap .project-accordion:hover > summary::before, .featured-wrap .project-accordion:focus-within > summary::before { opacity: 0; }
+        #more-projects .project-card-accordion > summary:hover::before, #more-projects .project-card-accordion > summary:focus-visible::before { transform: scale(1.08); }
+        #more-projects .project-card-accordion > summary:hover, #more-projects .project-card-accordion > summary:focus-visible { transform: none; border-color: rgba(165,255,231,.75); box-shadow: inset 0 1px 0 rgba(255,255,255,.7), 0 18px 38px rgba(0,0,0,.3); outline: none; }
+        #more-projects .project-card-accordion > summary:hover::before, #more-projects .project-card-accordion > summary:focus-visible::before { transform: scale(1.05); opacity: .86; }
+        #more-projects .project-card-accordion > summary:has(.hover-player)::before,
+        .featured-wrap .project-accordion > summary:has(.hover-player)::before { visibility: hidden; }
+        #reelsGrid .video-wrapper:has(.hover-player) .video-thumbnail-reel { visibility: hidden; }
+        #more-projects .project-card-accordion > summary .card-caption { position: relative; z-index: 3; width: 100%; margin: 0; padding: 1rem; color: #fff; }
+        #more-projects .project-card-accordion > summary .card-caption h3 { margin: 0; font-size: clamp(.9rem, 1.5vw, 1.1rem); line-height: 1.15; text-wrap: balance; }
+        #more-projects .project-card-accordion > summary .card-caption p { display: block; margin: .4rem 0 0; color: rgba(255,255,255,.78); font-size: .76rem; line-height: 1.25; }
+        #more-projects .project-card-accordion > summary::-webkit-details-marker { display: none; }
+        #more-projects .project-card-accordion > .project-card-accordion-body { padding: 0 .85rem .85rem; }
+        #more-projects .project-card-accordion[open] > summary { box-shadow: inset 0 1px 0 rgba(165,255,231,.8), 0 0 0 2px rgba(31,194,155,.16), 0 18px 38px rgba(0,0,0,.3); }
+        #more-projects .project-card-accordion[open] > .project-card-accordion-body .video-wrapper { aspect-ratio: 16 / 9; }
+        @media (max-width: 560px) { #more-projects .video-grid-horizontal { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .7rem; } #more-projects .project-card-accordion > summary .card-caption { padding: .75rem; } }
+        @media (prefers-reduced-motion: reduce) {
+            #more-projects .project-card-accordion > summary, #more-projects .project-card-accordion > summary::before { transition: none; }
         }
 
 
@@ -1326,6 +1412,8 @@
             transition: all 0.3s ease;
         }
 
+        .video-wrapper > [hidden] { display: none !important; }
+
         .video-hero .video-wrapper {
             border: 2px solid var(--mercure-border);
             box-shadow: 0 12px 30px rgba(77, 73, 153, 0.25);
@@ -1451,7 +1539,7 @@
             opacity: 1;
         }
         .hover-player {
-            z-index: 3 !important;
+            z-index: 1;
             transition: opacity 0.3s ease-in-out;
         }
 
@@ -1485,14 +1573,18 @@
             aspect-ratio: 9/16;
         }
         .video-thumbnail-reel {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: var(--transition-smooth);
-            display: block;
-            position: relative;
-            z-index: 2;
+            width: 100%; height: 100%; object-fit: cover; transition: none; display: block; position: relative; z-index: 2;
         }
+        #reelsGrid .vertical-card { position: relative; overflow: hidden; aspect-ratio: 9 / 16; border: 1px solid rgba(255,255,255,.36); border-radius: 18px; background: rgba(18,23,58,.32); box-shadow: inset 0 1px 0 rgba(255,255,255,.58), 0 14px 32px rgba(0,0,0,.24); isolation: isolate; }
+        #reelsGrid .vertical-card .video-wrapper { position: absolute; inset: 0; z-index: 0; }
+        #reelsGrid .vertical-card .video-thumbnail-reel { opacity: .78; }
+        #reelsGrid .vertical-card .video-wrapper::after { display: none; }
+         #reelsGrid .vertical-card .card-caption { background: linear-gradient(to bottom, rgba(8,10,24,.12), rgba(8,10,24,.92)); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
+        #reelsGrid .vertical-card .card-caption { position: absolute; inset: auto 0 0; z-index: 4; padding: 1rem; color: #fff; }
+        #reelsGrid .vertical-card .card-caption h3 { margin: 0; font-size: 1rem; line-height: 1.15; }
+        #reelsGrid .vertical-card .card-caption p { margin: .4rem 0 0; color: rgba(255,255,255,.78); font-size: .75rem; line-height: 1.25; }
+        #reelsGrid .vertical-card:hover, #reelsGrid .vertical-card:focus-within { border-color: rgba(165,255,231,.78); box-shadow: inset 0 1px 0 rgba(255,255,255,.78), 0 18px 38px rgba(0,0,0,.3); }
+        #reelsGrid .vertical-card:hover .video-thumbnail-reel, #reelsGrid .vertical-card:focus-within .video-thumbnail-reel { transform: scale(1.06); }
         .video-wrapper:hover .video-thumbnail-reel {
             transform: scale(1.02);
         }
@@ -1677,7 +1769,7 @@
 
         .about-stats {
             display: grid;
-            grid-template-columns: repeat(3, minmax(0, 220px));
+            grid-template-columns: repeat(2, minmax(0, 220px));
             width: 100%;
             max-width: 700px;
             margin-left: auto;
@@ -2283,7 +2375,6 @@
         </div>
         <div class="parallax-overlay" id="parallaxOverlay"></div>
         <div class="hero-content" id="heroContent">
-            <p class="hero-identity">Marcos Soares Santos · Mercure Vídeo</p>
             <h1 class="hero-title" data-translate-key="hero_title">Editor de vídeo sênior e motion designer em São Paulo</h1>
             <p class="hero-subtitle" data-translate-key="hero_subtitle">Broadcast, campanhas e edição same-day para agências, produtoras e clientes diretos.</p>
         </div>
@@ -2309,7 +2400,7 @@
             <div class="header-right">
                 <!-- Navegação Desktop -->
                 <nav class="header-nav">
-                    <a href="#about" data-translate-key="nav_about">SOBRE MIM</a>
+                    <a href="#selected-projects" data-translate-key="nav_projects">PROJETOS</a>
                     <div class="contact-control">
                         <button class="contact-trigger" id="contactTrigger" type="button" aria-label="Contato" data-translate-aria-label="contact_button" aria-controls="contactPanel" aria-expanded="false" data-contact-label="contact_button">
                             <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
@@ -2337,7 +2428,7 @@
 
     <!-- Menu Mobile (dropdown) -->
     <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
-        <a href="#about" data-translate-key="nav_about" onclick="closeMobileMenu()">SOBRE MIM</a>
+        <a href="#selected-projects" data-translate-key="nav_projects" onclick="closeMobileMenu()">PROJETOS</a>
         <div class="mobile-contact-links">
             <a href="https://wa.me/5511963033573" target="_blank" rel="noopener" onclick="closeMobileMenu()" data-translate-key="contact_whatsapp"><svg aria-hidden="true" width="21" height="21" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a9.8 9.8 0 0 0-8.5 14.7L2 22l5.5-1.4A9.8 9.8 0 1 0 12 2Zm0 17.8a8 8 0 0 1-4.1-1.1l-.3-.2-3.3.8.9-3.2-.2-.3A8 8 0 1 1 12 19.8Zm4.4-6c-.2-.1-1.3-.7-1.5-.8-.2-.1-.4-.1-.5.1l-.7.9c-.1.1-.3.2-.5.1-1.8-.9-3-1.6-4.1-3.6-.2-.3 0-.4.1-.6l.4-.5c.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5l-.7-1.7c-.2-.5-.4-.4-.5-.4h-.5c-.2 0-.5.1-.7.3-.2.2-.9.9-.9 2.2s.9 2.5 1 2.6c.1.2 1.8 2.8 4.4 3.9 2.6 1.1 2.6.7 3.1.7.5 0 1.6-.7 1.8-1.3.2-.6.2-1.2.1-1.3-.1-.1-.3-.2-.6-.3Z"/></svg><span data-translate-text>WhatsApp</span></a>
             <a href="mailto:marcoscpc@outlook.com" onclick="closeMobileMenu()" data-translate-key="contact_email"><svg aria-hidden="true" width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg><span data-translate-text>E-mail</span></a>
@@ -2379,14 +2470,25 @@
     <!-- ENVELOPADOR DE CONTEÚDO -->
     <div class="content-wrapper">
 
+        <section class="professional-profile container" aria-labelledby="professional-profile-title">
+            <div class="profile-content" id="about-profile">
+                <h2 id="professional-profile-title" data-translate-key="about_profile_title">Perfil profissional</h2>
+                <div class="profile-intro">
+                    <picture class="profile-photo"><source srcset="images/profile_photo.webp" type="image/webp"><img src="images/profile_photo_2.jpg" width="600" height="640" fetchpriority="high" decoding="async" alt="Marcos Soares Santos — Mercure Vídeo" onerror="retryPictureImage(this, event)"></picture>
+                <div class="about-text" data-translate-key="about_p1">
+                    <p>Sou Marcos Soares Santos, editor de vídeo sênior e motion designer em São Paulo. Meu foco é edição em prazos curtos, motion graphics e vídeos para redes sociais. Trabalho da seleção do material à finalização, combinando narrativa, ritmo e elementos gráficos conforme o formato de publicação.</p>
+                    <p>Entre as entregas recentes, trabalhei na APAS Show 2024 durante seis dias consecutivos, com jornadas de até 12 horas e conteúdo entregue em até quatro horas após a captação. No Hackathon CAIXA Consórcio, via produtora/agência, editei um vídeo por dia durante três dias; na ação da TRANSPETRO, a edição foi entregue no mesmo dia. No Think Plastic Brazil, fiz motion design e edição da peça de abertura do Summit 2025. Também editei Reels e Shorts para o SESC e conteúdo para campanhas digitais. Na TV, editei mais de 40 episódios de O Imponderável, produzido pela 5ERA e exibido na Record News, com prazos de 2 a 4 dias.</p>
+                    <p>Na Singular Filmes, editei vídeos semanais para o canal Aero Por Trás da Aviação (1,5 milhão de inscritos no período; Prêmio ABEAR de Jornalismo) e atuei na coordenação de pós-produção.</p>
+                </div>
+                </div>
+            </div>
+        </section>
+
         <!-- TRUST BAR: Marquee Infinito de Alta Performance -->
         <div class="trust-bar container reveal">
             <p class="trust-bar-label" data-translate-key="trust_bar_label">Trabalhos entregues para</p>
             <div class="marquee-container">
                 <div class="marquee-track" id="marqueeTrack">
-                    <img src="logos/dior.svg" alt="Dior" class="brand-logo" onerror="this.style.display='none';">
-                    <img src="logos/santander.svg" alt="Santander" class="brand-logo brand-logo--santander" onerror="this.style.display='none';">
-                    <img src="logos/procter-gamble-1.svg" alt="P&amp;G" class="brand-logo brand-logo--pg" onerror="this.style.display='none';">
                     <img src="logos/transpetro.png" alt="TRANSPETRO" class="brand-logo brand-logo--transpetro" onerror="this.style.display='none';">
                     <img src="logos/record_news.svg" alt="Record News" class="brand-logo" onerror="this.style.display='none';">
                     <img src="logos/5era.png" alt="5era" class="brand-logo" onerror="this.style.display='none';">
@@ -2424,7 +2526,7 @@
                             <summary data-translate-key="selected_think_title" style="--project-thumb: url('https://video.gumlet.io/6a45b78918d11bffd503ee1a/6a45bf80e4e7cc890ee34095/thumbnail-1-0.png?width=900');"><span class="project-summary-title" data-translate-text>Think Plastic Brazil — Summit 2025</span></summary>
                             <div class="project-accordion-body">
                                 <div class="project-case-copy">
-                                <p><strong data-translate-key="selected_think_role">Motion design para a abertura do Summit 2025</strong><br><span data-translate-key="selected_think_desc">Peça institucional de 2min40 para a abertura do World Plastic Connection Summit 2025, com foco em design, inovação e sustentabilidade no plástico transformado.</span></p>
+                                <p><strong data-translate-key="selected_think_role">Motion design e edição para a abertura do Summit 2025</strong><br><span data-translate-key="selected_think_desc">Peça institucional de 2min40 para a abertura do World Plastic Connection Summit 2025, com foco em design, inovação e sustentabilidade no plástico transformado.</span></p>
                                 <p class="project-case-meta"><strong data-translate-key="case_context_label">O que era o projeto</strong><br><span data-translate-key="selected_think_context">Peça institucional/promocional do Think Plastic Brazil para o World Plastic Connection Summit 2025.</span></p>
                                 <p class="project-case-meta"><strong data-translate-key="case_role_label">Meu papel</strong><br><span data-translate-key="selected_think_case_role">Motion design e edição da peça de abertura.</span></p>
                                 <p class="project-case-meta"><strong data-translate-key="case_tools_label">Ferramentas</strong><br><span data-translate-key="selected_think_tools">DaVinci Resolve e Fusion.</span></p>
@@ -2432,39 +2534,14 @@
                                 <div class="video-wrapper" data-video-id="6a45bf80e4e7cc890ee34095"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Think Plastic Brazil — Summit 2025" class="video-thumbnail" loading="lazy"><div class="play-button"></div></div>
                             </div>
                         </details>
-                        <details class="project-accordion service-filter-item" data-services="broadcast-corporativo">
-                            <summary data-translate-key="selected_imponderavel_title" style="--project-thumb: url('https://video.gumlet.io/6a45b78918d11bffd503ee1a/6a471f53e81b019c974c3eed/thumbnail-1-0.png?width=900');"><span class="project-summary-title" data-translate-text>O Imponderável — Record News</span></summary>
-                            <div class="project-accordion-body">
-                                <div class="project-case-copy">
-                                <p><strong data-translate-key="selected_imponderavel_role">Talk show semanal de inovação · 2021–2023</strong><br><span data-translate-key="selected_imponderavel_desc">Talk show da Record News apresentado por Gil Giardelli, sobre inovação, cultura digital e tecnologia.</span></p>
-                                <p class="project-case-meta"><strong data-translate-key="case_context_label">O que era o projeto</strong><br><span data-translate-key="selected_imponderavel_context">Talk show semanal da Record News apresentado por Gil Giardelli, com pautas de inovação, cultura digital e tecnologia.</span></p>
-                                <p class="project-case-meta"><strong data-translate-key="case_role_label">Meu papel</strong><br><span data-translate-key="selected_imponderavel_case_role">Edição de mais de 40 episódios entre 2021 e 2023.</span></p>
-                                <p class="project-case-meta"><strong data-translate-key="case_tools_label">Ferramentas</strong><br><span data-translate-key="selected_imponderavel_tools">DaVinci Resolve e Fusion.</span></p>
-                                </div>
-                                <div class="video-wrapper" data-video-id="6a471f53e81b019c974c3eed"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="O Imponderável — Record News" class="video-thumbnail" loading="lazy"><div class="play-button"></div></div>
-                            </div>
-                        </details>
-                        <details class="project-accordion service-filter-item" data-services="broadcast-corporativo same-day" id="selected-transpetro">
-                            <summary data-translate-key="selected_transpetro_title" style="--project-thumb: url('https://video.gumlet.io/6a45b78918d11bffd503ee1a/6a45bb7f18d11bffd504439a/thumbnail-1-0.png?width=900');"><span class="project-summary-title" data-translate-text>TRANSPETRO — Jd. Hollywood</span></summary>
-                            <div class="project-accordion-body">
-                                <div class="project-case-copy">
-                                <p><strong data-translate-key="selected_transpetro_role">Cobertura e edição same-day</strong><br><span data-translate-key="selected_transpetro_desc">Cobertura same-day de uma ação de hortas comunitárias na faixa do gasoduto da TRANSPETRO, editada para entrega no mesmo dia.</span></p>
-                                <p class="project-case-meta"><strong data-translate-key="case_tools_label">Ferramentas</strong><br><span data-translate-key="selected_transpetro_tools">DaVinci Resolve e Fusion.</span></p>
-                                </div>
-                                <div class="video-wrapper" data-video-id="6a45bb7f18d11bffd504439a"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="TRANSPETRO — Jd. Hollywood" class="video-thumbnail" loading="lazy"><div class="play-button"></div></div>
-                            </div>
-                        </details>
                         <details class="project-accordion service-filter-item" data-services="broadcast-corporativo same-day" id="selected-caixa">
                             <summary data-translate-key="selected_caixa_title" style="--project-thumb: url('https://video.gumlet.io/6a45b78918d11bffd503ee1a/6ae508c834bee2c4e82840c1/thumbnail-1-0.png?width=900');"><span class="project-summary-title" data-translate-text>Hackathon CAIXA Consórcio</span></summary>
                             <div class="project-accordion-body">
                                 <div class="project-case-copy">
-                                <p><strong data-translate-key="selected_caixa_role">Same-day · 3 dias · 1 vídeo por dia</strong><br><span data-translate-key="selected_caixa_desc">Hackathon da CAIXA Consórcio, no Guarujá, ao longo de três dias. Editei um vídeo ao final de cada dia com os principais momentos.</span></p>
+                                <p><strong data-translate-key="selected_caixa_role">Same-day · 3 dias · 1 vídeo por dia</strong><br><span data-translate-key="selected_caixa_desc">Hackathon da CAIXA Consórcio, no Guarujá, ao longo de três dias. Atuei via produtora/agência na cobertura audiovisual e editei um vídeo ao final de cada dia com os principais momentos.</span></p>
                                 <p class="project-case-meta"><strong data-translate-key="case_tools_label">Ferramentas</strong><br><span data-translate-key="selected_caixa_tools">DaVinci Resolve.</span></p>
                                 </div>
-                                <div class="video-wrapper" data-video-id="6ae508c834bee2c4e82840c1">
-                                    <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Hackathon CAIXA Consórcio" class="video-thumbnail" loading="lazy">
-                                    <div class="play-button"></div>
-                                </div>
+                                <div class="video-wrapper" data-video-id="6ae508c834bee2c4e82840c1"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Hackathon CAIXA Consórcio" class="video-thumbnail" loading="lazy"><div class="play-button"></div></div>
                             </div>
                         </details>
                         <details class="project-accordion service-filter-item" data-services="broadcast-corporativo same-day social-performance" id="selected-apas">
@@ -2477,151 +2554,227 @@
                                 <p class="project-case-meta"><strong data-translate-key="case_delivery_label">Como foi a entrega</strong><br><span data-translate-key="selected_apas_delivery">Dezenas de Reels e Stories produzidos após a captação para publicação durante o evento.</span></p>
                                 <p class="project-case-meta"><strong data-translate-key="case_tools_label">Ferramentas</strong><br><span data-translate-key="selected_apas_tools">DaVinci Resolve e Fusion.</span></p>
                                 </div>
-                                <div class="video-wrapper" data-video-id="6a45ba33e81b019c9723df2b"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="APAS Show 2024" class="video-thumbnail" loading="lazy"><div class="play-button"></div></div>
+                                <div class="video-wrapper" data-video-id="6a45ba33e81b019c9723df2b" data-portrait="true"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="APAS Show 2024" class="video-thumbnail" loading="lazy"><div class="play-button"></div></div>
+                            </div>
+                        </details>
+                        <details class="project-accordion service-filter-item" data-services="broadcast-corporativo same-day" id="selected-transpetro">
+                            <summary data-translate-key="selected_transpetro_title" style="--project-thumb: url('https://video.gumlet.io/6a45b78918d11bffd503ee1a/6a45bb7f18d11bffd504439a/thumbnail-1-0.png?width=900');"><span class="project-summary-title" data-translate-text>TRANSPETRO — Jd. Hollywood</span></summary>
+                            <div class="project-accordion-body">
+                                <div class="project-case-copy">
+                                    <p><strong data-translate-key="selected_transpetro_role">Cobertura e edição same-day</strong><br><span data-translate-key="selected_transpetro_desc">Cobertura same-day de uma ação de hortas comunitárias na faixa do gasoduto da TRANSPETRO, editada para entrega no mesmo dia.</span></p>
+                                    <p class="project-case-meta"><strong data-translate-key="case_tools_label">Ferramentas</strong><br><span data-translate-key="selected_transpetro_tools">DaVinci Resolve e Fusion.</span></p>
+                                </div>
+                                <div class="video-wrapper" data-video-id="6a45bb7f18d11bffd504439a"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="TRANSPETRO — Jd. Hollywood" class="video-thumbnail" loading="lazy"><div class="play-button"></div></div>
+                            </div>
+                        </details>
+                        <details class="project-accordion service-filter-item" data-services="broadcast-corporativo">
+                            <summary data-translate-key="selected_imponderavel_title" style="--project-thumb: url('https://video.gumlet.io/6a45b78918d11bffd503ee1a/6a471f53e81b019c974c3eed/thumbnail-1-0.png?width=900');"><span class="project-summary-title" data-translate-text>O Imponderável — produzido pela 5ERA e exibido na Record News</span></summary>
+                            <div class="project-accordion-body">
+                                <div class="project-case-copy">
+                                    <p><strong data-translate-key="selected_imponderavel_role">Talk show semanal de inovação · 2021–2023</strong><br><span data-translate-key="selected_imponderavel_desc">Talk show da Record News apresentado por Gil Giardelli, sobre inovação, cultura digital e tecnologia.</span></p>
+                                    <p class="project-case-meta"><strong data-translate-key="case_context_label">O que era o projeto</strong><br><span data-translate-key="selected_imponderavel_context">Talk show semanal da Record News apresentado por Gil Giardelli, com pautas de inovação, cultura digital e tecnologia.</span></p>
+                                    <p class="project-case-meta"><strong data-translate-key="case_role_label">Meu papel</strong><br><span data-translate-key="selected_imponderavel_case_role">Edição de mais de 40 episódios entre 2021 e 2023.</span></p>
+                                    <p class="project-case-meta"><strong data-translate-key="case_tools_label">Ferramentas</strong><br><span data-translate-key="selected_imponderavel_tools">DaVinci Resolve e Fusion.</span></p>
+                                </div>
+                                <div class="video-wrapper" data-video-id="6a471f53e81b019c974c3eed"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAALAAAAAABAAEAAAIBRAA7" alt="O Imponderável — Record News" class="video-thumbnail" loading="lazy"><div class="play-button"></div></div>
                             </div>
                         </details>
                     </div>
 
+                </div>
+            </section>
+            <details class="portfolio-collection" id="more-work">
+                <summary data-translate-key="collection_title">Mais projetos e Reels</summary>
+                <div class="portfolio-collection-body">
+                <section class="video-section" id="more-projects">
                 <div class="section-header reveal" style="margin: 3rem 0 2.5rem 0;">
                     <h3 class="section-title" data-translate-key="other_projects" style="font-size: 1.25rem;">Mais projetos selecionados</h3>
                 </div>
 
                 <!-- GRUPO 1: HIGHLIGHTS (demais projetos) -->
                 <div class="video-grid-horizontal reveal">
-                    <div class="horizontal-card service-filter-item" data-services="broadcast-corporativo">
-                        <div class="video-wrapper" data-video-id="6a45babde81b019c9723eb60">
-                            <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="BodyAction na Arnold Expo" class="video-thumbnail" loading="lazy">
-                            <div class="play-button"></div>
-                        </div>
-                        <div class="card-caption">
+                    <details class="project-card-accordion horizontal-card service-filter-item" data-services="broadcast-corporativo">
+                            <summary>
+<div class="card-caption">
                             <h3 data-translate-key="BodyAction na Arnold Expo">BodyAction na Arnold Expo</h3>
                             <p data-translate-key="Cobertura de Evento / Esportivo">Cobertura de Evento / Esportivo</p>
                         </div>
-                    </div>
-                    <div class="horizontal-card service-filter-item" data-services="broadcast-corporativo motion-vfx">
-                        <div class="video-wrapper" data-video-id="6a45b9b7e81b019c9723d6d3">
-                            <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Gree Senai" class="video-thumbnail" loading="lazy">
+                            </summary>
+                            <div class="project-card-accordion-body">
+<div class="video-wrapper" data-video-id="6a45babde81b019c9723eb60">
+                            <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="BodyAction na Arnold Expo" class="video-thumbnail" loading="lazy">
                             <div class="play-button"></div>
                         </div>
-                        <div class="card-caption">
+                            </div>
+                        </details>
+                    <details class="project-card-accordion horizontal-card service-filter-item" data-services="broadcast-corporativo motion-vfx">
+                            <summary>
+<div class="card-caption">
                             <h3 data-translate-key="Gree Senai">Gree Senai</h3>
                             <p data-translate-key="Edição Comercial / Motion Graphics">Edição Comercial / Motion Graphics</p>
                         </div>
-                    </div>
-                    <div class="horizontal-card service-filter-item" data-services="broadcast-corporativo same-day">
-                        <div class="video-wrapper" data-video-id="6a45b92318d11bffd5040e32">
-                            <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="HTI Longevidade Saudável 2023" class="video-thumbnail" loading="lazy">
+                            </summary>
+                            <div class="project-card-accordion-body">
+<div class="video-wrapper" data-video-id="6a45b9b7e81b019c9723d6d3">
+                            <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Gree Senai" class="video-thumbnail" loading="lazy">
                             <div class="play-button"></div>
                         </div>
-                        <div class="card-caption">
+                            </div>
+                        </details>
+                    <details class="project-card-accordion horizontal-card service-filter-item" data-services="broadcast-corporativo same-day">
+                            <summary>
+<div class="card-caption">
                             <h3 data-translate-key="HTI Longevidade 2023">HTI Longevidade 2023</h3>
                             <p data-translate-key="Cobertura e Edição Same-day">Cobertura e Edição Same-day</p>
                         </div>
-                    </div>
+                            </summary>
+                            <div class="project-card-accordion-body">
+<div class="video-wrapper" data-video-id="6a45b92318d11bffd5040e32">
+                            <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="HTI Longevidade Saudável 2023" class="video-thumbnail" loading="lazy">
+                            <div class="play-button"></div>
+                        </div>
+                            </div>
+                        </details>
                 </div>
 
                 <!-- GRUPO 2: MAIS PROJETOS (expansível) -->
                 <div class="expandable-wrapper" id="archiveContainer" inert>
                     <div class="video-grid-horizontal">
 
-                        <div class="horizontal-card service-filter-item" data-services="broadcast-corporativo same-day">
-                            <div class="video-wrapper" data-video-id="6a45bb92e4e7cc890ee2fa22">
-                                <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Same-day TRANSPETRO - Salesópolis" class="video-thumbnail" loading="lazy">
-                                <div class="play-button"></div>
-                            </div>
-                            <div class="card-caption">
+                        <details class="project-card-accordion horizontal-card service-filter-item" data-services="broadcast-corporativo same-day">
+                            <summary>
+<div class="card-caption">
                                 <h3 data-translate-key="TRANSPETRO - Salesópolis">TRANSPETRO - Salesópolis</h3>
                                 <p data-translate-key="Cobertura e Edição Same-day">Cobertura e Edição Same-day</p>
                             </div>
-                        </div>
-
-                        <div class="horizontal-card service-filter-item" data-services="broadcast-corporativo motion-vfx">
-                            <div class="video-wrapper" data-video-id="6a45b8a618d11bffd50405b6">
-                                <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Aftermovie Escola Eugenio Montale" class="video-thumbnail" loading="lazy">
+                            </summary>
+                            <div class="project-card-accordion-body">
+<div class="video-wrapper" data-video-id="6a45bb92e4e7cc890ee2fa22">
+                                <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Same-day TRANSPETRO - Salesópolis" class="video-thumbnail" loading="lazy">
                                 <div class="play-button"></div>
                             </div>
-                            <div class="card-caption">
+                            </div>
+                        </details>
+
+                        <details class="project-card-accordion horizontal-card service-filter-item" data-services="broadcast-corporativo motion-vfx">
+                            <summary>
+<div class="card-caption">
                                 <h3 data-translate-key="Aftermovie Escola Eugenio Montale">Aftermovie Escola Eugenio Montale</h3>
                                 <p data-translate-key="Aftermovie / Institucional">Aftermovie / Institucional</p>
                             </div>
-                        </div>
-
-                        <div class="horizontal-card service-filter-item" data-services="broadcast-corporativo">
-                            <div class="video-wrapper" data-video-id="6a45b89018d11bffd50404a1">
-                                <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Institucional Rapha Filmes" class="video-thumbnail" loading="lazy">
+                            </summary>
+                            <div class="project-card-accordion-body">
+<div class="video-wrapper" data-video-id="6a45b8a618d11bffd50405b6">
+                                <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Aftermovie Escola Eugenio Montale" class="video-thumbnail" loading="lazy">
                                 <div class="play-button"></div>
                             </div>
-                            <div class="card-caption">
+                            </div>
+                        </details>
+
+                        <details class="project-card-accordion horizontal-card service-filter-item" data-services="broadcast-corporativo">
+                            <summary>
+<div class="card-caption">
                                 <h3 data-translate-key="Institucional Rapha Filmes">Institucional Rapha Filmes</h3>
                                 <p data-translate-key="Edição Comercial / Cinematográfico">Edição Comercial / Cinematográfico</p>
                             </div>
-                        </div>
-
-                        <div class="horizontal-card service-filter-item" data-services="broadcast-corporativo motion-vfx">
-                            <div class="video-wrapper" data-video-id="6a45bef418d11bffd5048073">
-                                <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Institucional Logpark - motion graphics" class="video-thumbnail" loading="lazy">
+                            </summary>
+                            <div class="project-card-accordion-body">
+<div class="video-wrapper" data-video-id="6a45b89018d11bffd50404a1">
+                                <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Institucional Rapha Filmes" class="video-thumbnail" loading="lazy">
                                 <div class="play-button"></div>
                             </div>
-                            <div class="card-caption">
+                            </div>
+                        </details>
+
+                        <details class="project-card-accordion horizontal-card service-filter-item" data-services="broadcast-corporativo motion-vfx">
+                            <summary>
+<div class="card-caption">
                                 <h3 data-translate-key="Institucional Logpark">Institucional Logpark</h3>
                                 <p data-translate-key="Motion Graphics / Evento Corporativo">Motion Graphics / Evento Corporativo</p>
                             </div>
-                        </div>
-
-                        <div class="horizontal-card service-filter-item" data-services="social-performance">
-                            <div class="video-wrapper" data-video-id="6a45b9a0e81b019c9723d556">
-                                <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Coleções G91 - Pai e Filho" class="video-thumbnail" loading="lazy">
+                            </summary>
+                            <div class="project-card-accordion-body">
+<div class="video-wrapper" data-video-id="6a45bef418d11bffd5048073">
+                                <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Institucional Logpark - motion graphics" class="video-thumbnail" loading="lazy">
                                 <div class="play-button"></div>
                             </div>
-                            <div class="card-caption">
+                            </div>
+                        </details>
+
+                        <details class="project-card-accordion horizontal-card service-filter-item" data-services="social-performance">
+                            <summary>
+<div class="card-caption">
                                 <h3 data-translate-key="Coleções G91 - Pai e Filho">Coleções G91 - Pai e Filho</h3>
                                 <p data-translate-key="Edição Comercial / Campanha de E-Commerce">Edição Comercial / Campanha de E-Commerce</p>
                             </div>
-                        </div>
-
-                        <div class="horizontal-card service-filter-item" data-services="broadcast-corporativo">
-                            <div class="video-wrapper" data-video-id="6a45b97818d11bffd50415eb">
-                                <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Aftermovie P&G" class="video-thumbnail" loading="lazy">
+                            </summary>
+                            <div class="project-card-accordion-body">
+<div class="video-wrapper" data-video-id="6a45b9a0e81b019c9723d556">
+                                <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Coleções G91 - Pai e Filho" class="video-thumbnail" loading="lazy">
                                 <div class="play-button"></div>
                             </div>
-                            <div class="card-caption">
+                            </div>
+                        </details>
+
+                        <details class="project-card-accordion horizontal-card service-filter-item" data-services="broadcast-corporativo">
+                            <summary>
+<div class="card-caption">
                                 <h3 data-translate-key="Aftermovie P&G">Aftermovie P&G</h3>
                                 <p data-translate-key="Aftermovie de Evento Corporativo">Aftermovie de Evento Corporativo</p>
                             </div>
-                        </div>
-
-                        <div class="horizontal-card service-filter-item" data-services="motion-vfx">
-                            <div class="video-wrapper" data-video-id="6a45ba55e81b019c9723e28f">
-                                <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="MANDIC CAMESP Ouro" class="video-thumbnail" loading="lazy">
+                            </summary>
+                            <div class="project-card-accordion-body">
+<div class="video-wrapper" data-video-id="6a45b97818d11bffd50415eb">
+                                <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Aftermovie P&G" class="video-thumbnail" loading="lazy">
                                 <div class="play-button"></div>
                             </div>
-                            <div class="card-caption">
+                            </div>
+                        </details>
+
+                        <details class="project-card-accordion horizontal-card service-filter-item" data-services="motion-vfx">
+                            <summary>
+<div class="card-caption">
                                 <h3 data-translate-key="MANDIC CAMESP Ouro">MANDIC CAMESP Ouro</h3>
                                 <p data-translate-key="Cobertura de Torneio Universitário">Cobertura de Torneio Universitário</p>
                             </div>
-                        </div>
-
-                        <div class="horizontal-card service-filter-item" data-services="">
-                            <div class="video-wrapper" data-video-id="6a45be3e18d11bffd50473aa">
-                                <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="TuzinhoAcademy e Original SP Tattoo na TattooWeek 2024" class="video-thumbnail" loading="lazy">
+                            </summary>
+                            <div class="project-card-accordion-body">
+<div class="video-wrapper" data-video-id="6a45ba55e81b019c9723e28f">
+                                <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="MANDIC CAMESP Ouro" class="video-thumbnail" loading="lazy">
                                 <div class="play-button"></div>
                             </div>
-                            <div class="card-caption">
+                            </div>
+                        </details>
+
+                        <details class="project-card-accordion horizontal-card service-filter-item" data-services="">
+                            <summary>
+<div class="card-caption">
                                 <h3 data-translate-key="TattooWeek 2024">TattooWeek 2024</h3>
                                 <p data-translate-key="TattooWeek aftermovie">Aftermovie</p>
                             </div>
-                        </div>
-
-                        <div class="horizontal-card service-filter-item" data-services="broadcast-corporativo">
-                            <div class="video-wrapper" data-video-id="6a45bbf6e4e7cc890ee300aa">
-                                <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Institucional VATECH" class="video-thumbnail" loading="lazy">
+                            </summary>
+                            <div class="project-card-accordion-body">
+<div class="video-wrapper" data-video-id="6a45be3e18d11bffd50473aa">
+                                <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="TuzinhoAcademy e Original SP Tattoo na TattooWeek 2024" class="video-thumbnail" loading="lazy">
                                 <div class="play-button"></div>
                             </div>
-                            <div class="card-caption">
+                            </div>
+                        </details>
+
+                        <details class="project-card-accordion horizontal-card service-filter-item" data-services="broadcast-corporativo">
+                            <summary>
+<div class="card-caption">
                                 <h3 data-translate-key="Institucional VATECH">Institucional VATECH</h3>
                                 <p data-translate-key="Edição Comercial de Produto">Edição Comercial de Produto</p>
                             </div>
-                        </div>
+                            </summary>
+                            <div class="project-card-accordion-body">
+<div class="video-wrapper" data-video-id="6a45bbf6e4e7cc890ee300aa">
+                                <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Institucional VATECH" class="video-thumbnail" loading="lazy">
+                                <div class="play-button"></div>
+                            </div>
+                            </div>
+                        </details>
 
                     </div>
                 </div>
@@ -2629,7 +2782,6 @@
                 <!-- Botão Ver Mais -->
                 <div class="reveal" style="text-align: center; margin-top: 1.5rem; margin-bottom: 0;">
                     <button class="btn-ver-todos" id="toggleArchiveBtn" data-translate-key="toggle_more" aria-expanded="false">Ver Mais Projetos</button>
-                </div>
                 </div>
             </section>
 
@@ -2786,31 +2938,21 @@
                 </div>
             </section>
 
+                </div>
+            </details>
+
             <!-- SEÇÃO 3: SOBRE MIM -->
             <section class="about-section reveal" id="about">
                 <div class="section-header">
-                    <h2 class="section-title" data-translate-key="sec3_title">ESPECIALISTA EM PÓS-PRODUÇÃO</h2>
-                    <p class="section-subtitle" data-translate-key="sec3_subtitle">Liderança, ritmo narrativo e consistência sob forte pressão operacional.</p>
+                    <h2 class="section-title" data-translate-key="sec3_title">COMO TRABALHO</h2>
+                    <p class="section-subtitle" data-translate-key="sec3_subtitle">Escopo, organização e ferramentas a serviço de cada entrega.</p>
                 </div>
 
                 <div class="about-grid">
-                    <div class="about-left">
-                        <div class="about-avatar">
-                            <picture class="profile-picture"><source srcset="images/profile_photo.webp" type="image/webp"><img src="images/profile_photo_2.jpg" width="600" height="640" loading="lazy" decoding="async" alt="Marcos Soares Santos — Mercure Vídeo" onerror="retryPictureImage(this, event)"></picture>
-                        </div>
-                        <h3 class="about-name">MARCOS SOARES SANTOS</h3>
-                        <p class="about-headline" data-translate-key="about_headline">Editor de vídeo sênior · Motion graphics · Estrategista de conteúdo</p>
-                    </div>
-
                     <div class="about-right">
-                        <details class="about-accordion" open>
-                            <summary data-translate-key="about_profile_title">Perfil profissional</summary>
-                            <p class="about-text" data-translate-key="about_p1">Sou Marcos Soares Santos, editor de vídeo e motion designer com 7 anos de experiência em televisão, documentários, campanhas, vídeos institucionais, eventos e conteúdo digital. Trabalho da construção narrativa à finalização, com atenção ao ritmo, à clareza da mensagem e às necessidades de cada entrega. Ao longo da minha trajetória, editei mais de 40 episódios para a Record News, participei de projetos para marcas e instituições como Dior, Santander, P&amp;G, TRANSPETRO, CAIXA Consórcio, CNP Assurances e SESC Brasil, e também atuei na coordenação de pós-produção e na organização de fluxos de trabalho. Entre as entregas recentes, editei um vídeo institucional de 11 minutos para a ação “Sentir para Transformar”, da CNP Assurances, a partir de mais de 1h50 de gravações, e produzo Reels e Shorts para os canais digitais do SESC Brasil.</p>
-                        </details>
-
                         <details class="about-accordion">
-                            <summary data-translate-key="about_sameday_title">Same-day e entregas</summary>
-                            <blockquote class="about-quote" data-translate-key="about_quote">Tenho experiência em edição same-day, com entregas feitas enquanto o evento acontece. Na cobertura da TRANSPETRO, editei conteúdo para entrega no mesmo dia. No Hackathon CAIXA Consórcio, realizado ao longo de três dias, editei um vídeo ao final de cada dia para divulgação dos principais momentos.</blockquote>
+                            <summary data-translate-key="about_sameday_title">Planejamento e entregas</summary>
+                            <blockquote class="about-quote" data-translate-key="about_quote">Antes de iniciar, alinho objetivo, canal de publicação, referências e prazo. Para entregas durante eventos, também é necessário combinar o fluxo de recebimento do material, a estrutura disponível e as etapas de aprovação.</blockquote>
                         </details>
 
                         <details class="about-accordion">
@@ -2838,10 +2980,6 @@
 
 
                         <div class="about-stats">
-                            <div class="stat-card">
-                                <h4 data-translate-key="stat_years_title">7+ Anos</h4>
-                                <p data-translate-key="stat_years_desc">em pós-produção</p>
-                            </div>
                             <div class="stat-card">
                                 <h4 data-translate-key="stat_episodes_title">40+ Episódios</h4>
                                 <p data-translate-key="stat_episodes_desc">editados para TV</p>
@@ -3142,6 +3280,7 @@
             const reelsFilterEmpty = document.querySelector('.reels-filter-empty');
             if (reelsFilterEmpty) reelsFilterEmpty.classList.toggle('is-visible', !hasAnyMatchingReel);
             equalizeClosedProjectHeaders();
+            window.featuredStage?.refresh();
         }
 
         serviceFilterBtns.forEach(btn => {
@@ -3211,6 +3350,7 @@
 
         const translations = {
             pt: {
+                "collection_title": "Mais projetos e Reels",
                 "faq_title": "PERGUNTAS FREQUENTES",
                 "faq_intro": "Alguns pontos para começar seu projeto.",
                 "faq_work_q": "Que tipos de trabalho você faz?",
@@ -3229,7 +3369,7 @@
                 "faq_tools_a": "Premiere Pro, After Effects, DaVinci Resolve/Fusion, CapCut Pro, Photoshop, Illustrator e Blender. A escolha depende da necessidade da peça e do fluxo de trabalho.",
                 "faq_quote_q": "Como peço um orçamento?",
                 "faq_quote_a": "Use o contato por e-mail ou WhatsApp e envie objetivo, tipo de vídeo, volume de material, versões desejadas e prazo. Essas informações ajudam a definir um escopo e uma proposta.",
-                "nav_about": "SOBRE MIM",
+                "nav_projects": "PROJETOS",
                 "hero_title": "Editor de vídeo sênior e motion designer em São Paulo",
                 "hero_subtitle": "Broadcast, campanhas e edição same-day para agências, produtoras e clientes diretos.",
                 "selected_projects_title": "PROJETOS SELECIONADOS",
@@ -3238,7 +3378,7 @@
                 "case_role_label": "Meu papel",
                 "case_tools_label": "Ferramentas",
                 "selected_think_title": "Think Plastic Brazil — Summit 2025",
-                "selected_think_role": "Motion design para a abertura do Summit 2025",
+                "selected_think_role": "Motion design e edição para a abertura do Summit 2025",
                 "selected_think_desc": "Peça institucional de 2min40 para a abertura do World Plastic Connection Summit 2025, com foco em design, inovação e sustentabilidade no plástico transformado.",
                 "selected_think_context": "Peça institucional/promocional do Think Plastic Brazil para o World Plastic Connection Summit 2025.",
                 "selected_think_case_role": "Motion design e edição da peça de abertura.",
@@ -3253,8 +3393,8 @@
                 "case_delivery_label": "Como foi a entrega",
                 "selected_imponderavel_title": "O Imponderável — Record News",
                 "selected_imponderavel_role": "Talk show semanal de inovação · 2021–2023",
-                "selected_imponderavel_desc": "Talk show da Record News apresentado por Gil Giardelli, sobre inovação, cultura digital e tecnologia.",
-                "selected_imponderavel_context": "Talk show semanal da Record News apresentado por Gil Giardelli, com pautas de inovação, cultura digital e tecnologia.",
+                "selected_imponderavel_desc": "Talk show produzido pela 5ERA e exibido na Record News, apresentado por Gil Giardelli, sobre inovação, cultura digital e tecnologia.",
+                "selected_imponderavel_context": "Talk show semanal produzido pela 5ERA e exibido na Record News, apresentado por Gil Giardelli, com pautas de inovação, cultura digital e tecnologia.",
                 "selected_imponderavel_case_role": "Edição de mais de 40 episódios entre 2021 e 2023.",
                 "selected_imponderavel_tools": "DaVinci Resolve e Fusion.",
                 "selected_transpetro_title": "TRANSPETRO — Jd. Hollywood",
@@ -3263,7 +3403,7 @@
                 "selected_transpetro_tools": "DaVinci Resolve e Fusion.",
                 "selected_caixa_title": "Hackathon CAIXA Consórcio",
                 "selected_caixa_role": "Same-day · 3 dias · 1 vídeo por dia",
-                "selected_caixa_desc": "Hackathon da CAIXA Consórcio, no Guarujá, ao longo de três dias. Editei um vídeo ao final de cada dia com os principais momentos.",
+                "selected_caixa_desc": "Hackathon da CAIXA Consórcio, no Guarujá, ao longo de três dias. Atuei via produtora/agência na cobertura audiovisual e editei um vídeo ao final de cada dia com os principais momentos.",
                 "selected_caixa_tools": "DaVinci Resolve.",
                 "nav_contact_wa": "WHATSAPP ↗",
                 "contact_button": "Contato",
@@ -3285,6 +3425,7 @@
                  "service_filter_sameday": "Same-day",
                  "service_filter_motion": "Motion / VFX",
                  "service_filter_empty": "Nenhum projeto corresponde a este serviço.",
+
                 "showcase_title": "Think Plastic Brazil – Abertura do Seminário",
                 "showcase_desc": "Vídeo de abertura do seminário Think Plastic Brazil, destacando a importância da economia circular e da inovação no setor de plásticos, com uma montagem dinâmica e uma mensagem inspiradora sobre sustentabilidade e futuro.",
                 "other_projects": "Outros Projetos",
@@ -3299,15 +3440,15 @@
                 "filter_institucionais": "Institucionais",
                 "filter_internacionais": "Internacionais",
                 "filter_apas": "Same-day (APAS)",
-                "sec3_title": "ESPECIALISTA EM PÓS-PRODUÇÃO",
-                "sec3_subtitle": "Liderança, ritmo narrativo e consistência sob forte pressão operacional.",
+                "sec3_title": "COMO TRABALHO",
+                "sec3_subtitle": "Escopo, organização e ferramentas a serviço de cada entrega.",
                 "about_headline": "Editor de vídeo sênior · Motion graphics · Estrategista de conteúdo",
                 "about_profile_title": "Perfil profissional",
-                "about_sameday_title": "Same-day e entregas",
+                "about_sameday_title": "Planejamento e entregas",
                 "about_tools_title": "Ferramentas e especialidades",
-                "about_p1": "Sou Marcos Soares Santos, editor de vídeo e motion designer com 7 anos de experiência em televisão, documentários, campanhas, vídeos institucionais, eventos e conteúdo digital. Trabalho da construção narrativa à finalização, com atenção ao ritmo, à clareza da mensagem e às necessidades de cada entrega. Ao longo da minha trajetória, editei mais de 40 episódios para a Record News e participei de projetos para marcas e instituições como Dior, Santander, P&G, TRANSPETRO, CAIXA Consórcio e SESC Brasil. Também atuei na coordenação de pós-produção e na organização de fluxos de trabalho.",
-                "about_quote": "Tenho experiência em edição same-day, com entregas feitas enquanto o evento acontece. Na cobertura da TRANSPETRO, editei conteúdo para entrega no mesmo dia. No Hackathon CAIXA Consórcio, realizado ao longo de três dias em Guarujá, editei um vídeo ao final de cada dia para divulgação dos principais momentos.",
-                "about_quote_projects": "Para o projeto ‘Sentir para Transformar’, da CNP Assurances, montei um vídeo institucional de 11 minutos a partir de mais de 1h50 de gravações. Fiz a decupagem, estruturei os blocos narrativos, corrigi cor, tratei o áudio e organizei a timeline para a etapa posterior de motion graphics.",
+                "about_p1": "Sou Marcos Soares Santos, editor de vídeo sênior e motion designer em São Paulo. Meu foco é edição em prazos curtos, motion graphics e vídeos para redes sociais. Trabalho da seleção do material à finalização, combinando narrativa, ritmo e elementos gráficos conforme o formato de publicação.\n\nEntre as entregas recentes, trabalhei na APAS Show 2024 durante seis dias consecutivos, com jornadas de até 12 horas e conteúdo entregue em até quatro horas após a captação. No Hackathon CAIXA Consórcio, via produtora/agência, editei um vídeo por dia durante três dias; na ação da TRANSPETRO, a edição foi entregue no mesmo dia. No Think Plastic Brazil, fiz motion design e edição da peça de abertura do Summit 2025. Também editei Reels e Shorts para o SESC e conteúdo para campanhas digitais. Na TV, editei mais de 40 episódios de O Imponderável, produzido pela 5ERA e exibido na Record News, com prazos de 2 a 4 dias.\n\nNa Singular Filmes, editei vídeos semanais para o canal Aero Por Trás da Aviação (1,5 milhão de inscritos no período; Prêmio ABEAR de Jornalismo) e atuei na coordenação de pós-produção.",
+                "about_quote": "Antes de iniciar, alinho objetivo, canal de publicação, referências e prazo. Para entregas durante eventos, também é necessário combinar o fluxo de recebimento do material, a estrutura disponível e as etapas de aprovação.",
+                "about_quote_projects": "Para o projeto ‘Sentir para Transformar’, da CNP Assurances, montei um vídeo institucional de 11 minutos a partir de mais de 1h50 de material bruto. Fiz a decupagem, estruturei os blocos narrativos, corrigi cor, tratei o áudio e organizei a timeline para a etapa posterior de motion graphics.",
                 "about_sesc": "Também edito Reels e Shorts para os canais digitais do SESC Brasil, incluindo montagem, legendas, tratamento de áudio, correção de cor e adaptação para o formato vertical.",
                 "about_p2": "Gosto de unir narrativa e organização: entender o que cada história precisa, fazer escolhas claras na montagem e deixar o material pronto para sua próxima etapa. Trabalho com Premiere Pro, After Effects, DaVinci Resolve/Fusion, CapCut Pro, Photoshop, Illustrator e Blender. Integro ferramentas de inteligência artificial quando contribuem para o processo, mantendo a revisão técnica e criativa das entregas.",
                 "srv_broadcast_title": "Edição & Finalização",
@@ -3318,8 +3459,6 @@
                 "srv_sameday_desc": "VSLs, roteiros para tráfego pago (Meta/Google Ads), testes A/B de criativos e retenção de público.",
                 "srv_sup_title": "Same-day Editing",
                 "srv_sup_desc": "Edição em tempo real durante eventos com entrega em até 4 horas. Desempenho comprovado sob alta pressão operacional.",
-                "stat_years_title": "7+ Anos",
-                "stat_years_desc": "em pós-produção",
                 "stat_episodes_title": "40+ Episódios",
                 "stat_episodes_desc": "editados para TV",
                 "stat_sameday_title": "Same-day",
@@ -3338,6 +3477,7 @@
                  "bottom_bar_label": "Barra de navegação inferior"
             },
 en: {
+                "collection_title": "More projects and Reels",
                 "faq_title": "FREQUENTLY ASKED QUESTIONS",
                 "faq_intro": "A few things to help get your project started.",
                 "faq_work_q": "What kinds of projects do you work on?",
@@ -3356,7 +3496,7 @@ en: {
                 "faq_tools_a": "Premiere Pro, After Effects, DaVinci Resolve/Fusion, CapCut Pro, Photoshop, Illustrator and Blender. The choice depends on the piece and the workflow.",
                 "faq_quote_q": "How do I request a quote?",
                 "faq_quote_a": "Contact me by email or WhatsApp with the goal, type of video, amount of footage, versions needed and deadline. These details help define a scope and proposal.",
-                "nav_about": "ABOUT ME",
+                "nav_projects": "PROJECTS",
                 "hero_title": "Senior video editor and motion designer in São Paulo",
                 "hero_subtitle": "Broadcast, campaigns, and same-day editing for agencies, production companies, and direct clients.",
                 "selected_projects_title": "SELECTED PROJECTS",
@@ -3365,7 +3505,7 @@ en: {
                 "case_role_label": "My role",
                 "case_tools_label": "Tools",
                 "selected_think_title": "Think Plastic Brazil — Summit 2025",
-                "selected_think_role": "Motion design for the 2025 Summit opening",
+                "selected_think_role": "Motion design and editing for the Summit 2025 opening",
                 "selected_think_desc": "A 2:40 institutional piece for the opening of the 2025 World Plastic Connection Summit, focused on design, innovation, and sustainability in converted plastics.",
                 "selected_think_context": "Institutional/promotional piece for Think Plastic Brazil and the 2025 World Plastic Connection Summit.",
                 "selected_think_case_role": "Motion design and editing for the opening piece.",
@@ -3380,8 +3520,8 @@ en: {
                 "case_delivery_label": "How it was delivered",
                 "selected_imponderavel_title": "The Imponderable — Record News",
                 "selected_imponderavel_role": "Weekly innovation talk show · 2021–2023",
-                "selected_imponderavel_desc": "Record News talk show hosted by Gil Giardelli about innovation, digital culture, and technology.",
-                "selected_imponderavel_context": "Weekly Record News talk show hosted by Gil Giardelli, covering innovation, digital culture, and technology.",
+                "selected_imponderavel_desc": "Talk show produced by 5ERA and broadcast on Record News, hosted by Gil Giardelli and covering innovation, digital culture, and technology.",
+                "selected_imponderavel_context": "Weekly talk show produced by 5ERA and broadcast on Record News, hosted by Gil Giardelli and covering innovation, digital culture, and technology.",
                 "selected_imponderavel_case_role": "Editing more than 40 episodes between 2021 and 2023.",
                 "selected_imponderavel_tools": "DaVinci Resolve and Fusion.",
                 "selected_transpetro_title": "TRANSPETRO — Jd. Hollywood",
@@ -3390,7 +3530,7 @@ en: {
                 "selected_transpetro_tools": "DaVinci Resolve and Fusion.",
                 "selected_caixa_title": "CAIXA Consórcio Hackathon",
                 "selected_caixa_role": "Same-day · 3 days · 1 video per day",
-                "selected_caixa_desc": "CAIXA Consórcio hackathon in Guarujá, over three days. I edited one video at the end of each day with the key moments.",
+                "selected_caixa_desc": "CAIXA Consórcio hackathon in Guarujá, over three days. I worked through a production company/agency on audiovisual coverage and edited one video at the end of each day with the key moments.",
                 "selected_caixa_tools": "DaVinci Resolve.",
                 "nav_contact_wa": "WHATSAPP ↗",
                 "contact_button": "Contact",
@@ -3412,6 +3552,7 @@ en: {
                  "service_filter_sameday": "Same-day",
                  "service_filter_motion": "Motion / VFX",
                  "service_filter_empty": "No project matches this service.",
+
                 "showcase_title": "Think Plastic Brazil – Opening of the Seminar",
                 "showcase_desc": "Opening video of the Think Plastic Brazil seminar, highlighting the importance of the circular economy and innovation in the plastics sector, with dynamic editing and an inspiring message about sustainability and the future.",
                 "other_projects": "Other Projects",
@@ -3426,15 +3567,15 @@ en: {
                 "filter_institucionais": "Institutional",
                 "filter_internacionais": "International",
                 "filter_apas": "Same-day (APAS)",
-                "sec3_title": "POST-PRODUCTION SPECIALIST",
-                "sec3_subtitle": "Leadership, narrative rhythm, and consistency under heavy operational pressure.",
+                "sec3_title": "HOW I WORK",
+                "sec3_subtitle": "Scope, organization, and tools tailored to each delivery.",
                 "about_headline": "Senior Video Editor · Motion Graphics · Content Strategist",
                 "about_profile_title": "Professional profile",
-                "about_sameday_title": "Same-day and delivery",
+                "about_sameday_title": "Planning and delivery",
                 "about_tools_title": "Tools and specialties",
-                "about_p1": "I am Marcos Soares Santos, a video editor and motion designer with 7 years of experience in television, documentaries, campaigns, corporate films, events, and digital content. I work from story construction through finishing, with attention to pacing, clarity, and each project's delivery needs. My work includes more than 40 episodes for Record News and projects for brands and organizations such as Dior, Santander, P&G, TRANSPETRO, CAIXA Consórcio, CNP Assurances, and SESC Brasil. I have also worked in post-production coordination and workflow organization. Recent work includes an 11-minute corporate film for CNP Assurances’ ‘Sentir para Transformar’, edited from over 1 hour and 50 minutes of footage, and recurring Reels and Shorts for SESC Brasil’s digital channels.",
-                "about_quote": "I have same-day editing experience, delivering content while events are underway. For TRANSPETRO coverage, I edited content for same-day delivery. At the three-day CAIXA Consórcio Hackathon, I edited a video at the end of each day for immediate sharing.",
-                "about_quote_projects": "For CNP Assurances’ ‘Sentir para Transformar’, I edited an 11-minute corporate film from over 1 hour and 50 minutes of footage. I logged and structured the narrative, corrected color, treated audio, and organized the timeline for the subsequent motion graphics stage.",
+                "about_p1": "I am Marcos Soares Santos, a senior video editor and motion designer based in São Paulo. I focus on editing on short deadlines, motion graphics, and social media videos. I work from footage selection through finishing, combining storytelling, pacing, and graphic elements to suit the publishing format.\n\nRecent work includes APAS Show 2024: six consecutive days, with shifts of up to 12 hours and content delivered within four hours of capture. At Hackathon CAIXA Consórcio, through a production company/agency, I edited one video a day for three days; for the TRANSPETRO event, the edit was delivered the same day. For Think Plastic Brazil, I handled motion design and editing for the Summit 2025 opening piece. I also edited Reels and Shorts for SESC and content for digital campaigns. In TV, I edited over 40 episodes of O Imponderável, produced by 5ERA and broadcast on Record News, on 2-to-4-day schedules.\n\nAt Singular Filmes, I edited weekly videos for Aero Por Trás da Aviação (1.5 million subscribers at the time; ABEAR Journalism Award) and worked in post-production coordination.",
+                "about_quote": "Before starting, I align the objective, publishing channel, references, and deadline. For delivery during events, we also need to agree on how footage is received, the available setup, and approval stages.",
+                "about_quote_projects": "For CNP Assurances’ ‘Sentir para Transformar’, I edited an 11-minute corporate film from over 1 hour and 50 minutes of raw footage. I logged and structured the narrative, corrected color, treated audio, and organized the timeline for the subsequent motion graphics stage.",
                 "about_sesc": "I also edit Reels and Shorts for SESC Brasil’s digital channels, including editing, captions, audio treatment, color correction, and vertical format adaptation.",
                 "about_p2": "I combine storytelling with organization: understanding what each story needs, making clear editorial choices, and preparing each project for its next stage. I work with Premiere Pro, After Effects, DaVinci Resolve/Fusion, CapCut Pro, Photoshop, Illustrator, and Blender. I integrate AI tools when they serve the process, while maintaining technical and creative review of each delivery.",
                 "srv_broadcast_title": "Editing & Finishing",
@@ -3445,8 +3586,6 @@ en: {
                 "srv_sameday_desc": "VSLs, ad scripts for paid traffic (Meta/Google Ads), A/B testing of creatives, and audience retention hooks.",
                 "srv_sup_title": "Same-day Editing",
                 "srv_sup_desc": "Real-time editing during events with delivery in under 4 hours. Proven performance under high operational pressure.",
-                "stat_years_title": "7+ Years",
-                "stat_years_desc": "in post-production",
                 "stat_episodes_title": "40+ Episodes",
                 "stat_episodes_desc": "edited for TV",
                 "stat_sameday_title": "Same-day",
@@ -3601,6 +3740,7 @@ en: {
                 if (textTarget) textTarget.textContent = translatedText;
                 else if (textNode) textNode.textContent = translatedText;
                 else if (elem.children.length === 0) elem.textContent = translatedText;
+                else if (key === 'about_p1') elem.innerHTML = translatedText.split(/\n\n/).map(paragraph => `<p>${paragraph}</p>`).join('');
             });
             document.querySelectorAll('[data-translate-aria-label]').forEach(elem => {
                 elem.setAttribute('aria-label', translations[currentLang][elem.dataset.translateAriaLabel]);
@@ -3610,6 +3750,7 @@ en: {
             });
             setContactOpen(false);
             equalizeClosedProjectHeaders();
+            window.featuredStage?.refresh();
             if (isModalOpen) {
                 const title = getPortfolioVideoTitle(activeVideoWrapper);
                 document.getElementById('modalTitle').textContent = title;
@@ -3648,58 +3789,200 @@ en: {
 
         // Frames are decorative; the summary title remains the accessible name.
         function initProjectFrames() {
-            const frameTimes = {
-                selected_think_title: [8, 24, 48],
-                selected_imponderavel_title: [8, 16, 24],
-                selected_transpetro_title: [8, 16, 24],
-                selected_caixa_title: [8, 16, 24],
-                selected_apas_title: [8, 16, 24]
-            };
-            document.querySelectorAll('.project-accordion').forEach(project => {
-                const summary = project.querySelector('summary');
-                const videoId = project.querySelector('.video-wrapper')?.dataset.videoId;
-                const times = frameTimes[summary?.dataset.translateKey];
-                if (!videoId || !times || summary.querySelector('.project-frame-strip')) return;
-                const strip = document.createElement('span');
-                strip.className = 'project-frame-strip';
-                strip.setAttribute('aria-hidden', 'true');
-                let failed = 0;
-                times.forEach(time => {
-                    const frame = document.createElement('img');
-                    frame.alt = '';
-                    frame.loading = 'lazy';
-                    frame.decoding = 'async';
-                    frame.addEventListener('error', () => {
-                        frame.hidden = true;
-                        failed += 1;
-                        if (failed === times.length) strip.style.display = 'none';
-                    }, { once: true });
-                    frame.src = 'https://video.gumlet.io/' + GUMLET_WORKSPACE_ID + '/' + videoId + '/thumbnail-1-0.png?time=' + time + '&width=240';
-                    strip.appendChild(frame);
-                });
-                summary.appendChild(strip);
+            document.querySelectorAll('.project-accordion, .project-card-accordion, #reelsGrid .vertical-card').forEach(project => {
+                const summary = project.querySelector('summary') || project.querySelector('.video-wrapper');
+                const videoWrapper = project.querySelector('.video-wrapper');
+                const videoId = videoWrapper?.dataset.videoId;
+                if (!videoId) return;
+                const videoPath = `https://video.gumlet.io/${GUMLET_WORKSPACE_ID}/${videoId}/thumbnail-1-0.png?time=8&width=${project.classList?.contains('project-accordion') ? 900 : 800}`;
+                if (project.classList?.contains('project-accordion') || project.classList?.contains('project-card-accordion')) summary.style?.setProperty('--project-thumb', `url('${videoPath}')`);
+                if (project.classList?.contains('vertical-card')) videoWrapper.style?.setProperty('--project-thumb', `url('${videoPath}')`);
             });
+
         }
         initProjectFrames();
 
+
         function equalizeClosedProjectHeaders() {
             const grid = document.querySelector('.project-accordion-grid');
-            if (!grid) return;
+            if (!grid || grid.closest('.featured-wrap')) return;
             grid.style.removeProperty('--project-closed-height');
             const summaries = grid.querySelectorAll('.project-accordion:not([open]) > summary');
             const height = Math.max(0, ...Array.from(summaries, summary => summary.getBoundingClientRect().height));
             grid.style.setProperty('--project-closed-height', height + 'px');
         }
         equalizeClosedProjectHeaders();
-        document.querySelectorAll('.project-accordion').forEach(project => {
-            project.addEventListener('toggle', equalizeClosedProjectHeaders);
+        function removeProjectAccordionPlayer() {
+            document.querySelectorAll('.project-inline-player').forEach(player => player.remove());
+        }
+
+        function revealWorkCollection() {
+            const target = document.getElementById(location.hash.slice(1));
+            if (target?.closest('#more-work')) document.getElementById('more-work').open = true;
+        }
+        window.addEventListener('hashchange', revealWorkCollection);
+        revealWorkCollection();
+
+        document.getElementById('more-work').addEventListener('toggle', event => {
+            if (event.currentTarget.open) return;
+            document.querySelectorAll('#more-work .hover-player').forEach(player => player.remove());
+            if (isModalOpen && activeVideoWrapper?.closest('#more-work')) closeVideoModal();
+        });
+
+        function openSelectedProject(project, event) {
+            event.preventDefault();
+            const wrapper = project.querySelector('.video-wrapper[data-video-id]');
+            if (!wrapper) return;
+            modalTrigger = project.querySelector('summary');
+            resetLightboxVideos();
+            openPortfolioVideo(lightboxVideos.findIndex(video => video.wrapper === wrapper));
+            closeBtn.focus();
+        }
+
+        document.querySelectorAll('.project-card-accordion').forEach(project => {
+            project.querySelector('summary').addEventListener('click', event => openSelectedProject(project, event));
         });
         window.addEventListener('resize', equalizeClosedProjectHeaders, { passive: true });
         document.fonts?.ready.then(equalizeClosedProjectHeaders);
+        // --- PALCO DOS CINCO PROJETOS ---
+        function initFeaturedStage() {
+            const grid = document.querySelector('#selected-projects .project-accordion-grid');
+            if (!grid) return;
+            const projects = [...grid.querySelectorAll('.project-accordion')];
+            const wrap = document.createElement('div');
+            wrap.className = 'featured-wrap';
+            grid.before(wrap);
+            wrap.appendChild(grid);
+            grid.setAttribute('aria-roledescription', 'carousel');
+            grid.tabIndex = 0;
+            const controls = document.createElement('div');
+            controls.className = 'featured-controls';
+            const description = document.createElement('div');
+            description.className = 'featured-description';
+            wrap.after(controls, description);
+            const heading = document.createElement('h3');
+            heading.setAttribute('aria-live', 'polite');
+            heading.setAttribute('aria-atomic', 'true');
+            description.appendChild(heading);
+            const copies = projects.map(project => project.querySelector('.project-case-copy'));
+            const copyStack = document.createElement('div');
+            copyStack.className = 'featured-copy-stack';
+            copies.forEach(copy => copyStack.appendChild(copy));
+            description.appendChild(copyStack);
+            const pause = document.createElement('button');
+            pause.type = 'button';
+            controls.appendChild(pause);
+            const count = document.createElement('span');
+            const reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
+            let current = projects[0], player = null, paused = reduce.matches, hovering = false, focused = false, inView = true, suppressClick = false, timer = null;
+            const available = () => projects.filter(project => !project.classList.contains('service-filter-hidden'));
+            const label = (pt, en) => currentLang === 'pt' ? pt : en;
+            function stop() { player?.remove(); player = null; projects.forEach(project => { project.removeAttribute('data-portrait-player'); project.removeAttribute('data-player-active'); }); }
+            function schedule() {
+                clearTimeout(timer);
+                if (!paused && !hovering && !focused && !document.hidden && !player && inView && available().length > 1) timer = setTimeout(() => move(1, false), 8000);
+            }
+            function render() {
+                const visible = available();
+                wrap.hidden = controls.hidden = description.hidden = visible.length === 0;
+                if (!visible.includes(current)) { stop(); current = visible[0]; }
+                if (!current) return;
+                const index = visible.indexOf(current);
+                projects.forEach(project => {
+                    let offset = visible.indexOf(project) - index;
+                    if (offset > visible.length / 2) offset -= visible.length;
+                    if (offset < -visible.length / 2) offset += visible.length;
+                    project.style.setProperty('--offset', offset);
+                    project.dataset.position = project === current ? 'active' : Math.abs(offset) === 1 ? (offset < 0 ? 'prev' : 'next') : 'far';
+                    project.open = project === current;
+                    project.inert = !visible.includes(project) || Math.abs(offset) > 1;
+                    project.querySelector('summary').tabIndex = project.inert ? -1 : 0;
+                });
+                heading.textContent = current.querySelector('.project-summary-title').textContent;
+                copies.forEach((copy, i) => {
+                    const active = projects[i] === current;
+                    copy.style.visibility = active ? 'visible' : 'hidden';
+                    copy.inert = !active;
+                    copy.setAttribute('aria-hidden', String(!active));
+                });
+                dots.forEach((button, i) => {
+                    button.hidden = !visible.includes(projects[i]);
+                    button.setAttribute('aria-current', String(projects[i] === current));
+                    button.setAttribute('aria-label', label('Selecionar: ', 'Select: ') + projects[i].querySelector('.project-summary-title').textContent);
+                });
+                pause.textContent = paused ? label('Retomar avanço', 'Resume rotation') : label('Pausar avanço', 'Pause rotation');
+                pause.setAttribute('aria-pressed', String(paused));
+                prev.setAttribute('aria-label', label('Projeto anterior', 'Previous project'));
+                next.setAttribute('aria-label', label('Próximo projeto', 'Next project'));
+                count.textContent = `${index + 1} / ${visible.length}`;
+                grid.setAttribute('aria-label', label('Projetos em destaque', 'Featured projects'));
+                schedule();
+            }
+            function select(project, play = false) {
+                if (!available().includes(project)) return;
+                stop(); current = project;
+                render();
+                if (play) {
+                    removeProjectAccordionPlayer();
+                    if (isModalOpen) closeVideoModal();
+                    document.querySelectorAll('.hover-player').forEach(preview => preview.remove());
+                    const wrapper = project.querySelector('.video-wrapper');
+                    const id = wrapper.dataset.videoId;
+                    if (wrapper.dataset.portrait === 'true') project.dataset.portraitPlayer = 'true';
+                    project.dataset.playerActive = 'true';
+                    player = document.createElement('iframe');
+                    player.className = 'project-stage-player';
+                    player.src = `https://play.gumlet.io/embed/${id}?autoplay=true&muted=false&controls=true&preload=true`;
+                    player.title = heading.textContent;
+                    player.setAttribute('allow', 'autoplay; fullscreen; encrypted-media; picture-in-picture');
+                    player.setAttribute('allowfullscreen', 'true');
+                    project.appendChild(player);
+                    clearTimeout(timer);
+                }
+            }
+            function move(direction, play = true) {
+                const visible = available();
+                if (visible.length) select(visible[(visible.indexOf(current) + direction + visible.length) % visible.length], play);
+            }
+            function arrow(className, text, direction) {
+                const button = document.createElement('button'); button.type = 'button'; button.className = 'featured-arrow ' + className; button.textContent = text;
+                button.addEventListener('click', () => move(direction)); grid.appendChild(button); return button;
+            }
+            const prev = arrow('featured-prev', '‹', -1), next = arrow('featured-next', '›', 1);
+            const dots = projects.map((project, i) => {
+                const button = document.createElement('button'); button.type = 'button'; button.textContent = String(i + 1).padStart(2, '0');
+                button.addEventListener('click', () => select(project, true)); controls.appendChild(button);
+                project.querySelector('summary').addEventListener('click', event => { event.preventDefault(); if (suppressClick) { suppressClick = false; return; } select(project, true); });
+                return button;
+            });
+            controls.appendChild(count);
+            pause.addEventListener('click', () => { paused = !paused; if (!paused) stop(); render(); });
+            grid.addEventListener('keydown', event => {
+                if (event.key === 'ArrowRight' || event.key === 'ArrowLeft') { event.preventDefault(); move(event.key === 'ArrowRight' ? 1 : -1); }
+            });
+            let startX = null;
+            grid.addEventListener('pointerdown', event => { suppressClick = false; startX = event.clientX; });
+            grid.addEventListener('pointerup', event => { if (startX !== null && Math.abs(event.clientX - startX) > 50) { suppressClick = true; move(event.clientX < startX ? 1 : -1); } startX = null; });
+            grid.addEventListener('pointercancel', () => { startX = null; });
+            wrap.addEventListener('pointerenter', () => { hovering = true; schedule(); });
+            wrap.addEventListener('pointerleave', () => { hovering = false; schedule(); });
+            wrap.parentElement.addEventListener('focusin', () => { focused = true; schedule(); });
+            wrap.parentElement.addEventListener('focusout', event => { focused = wrap.parentElement.contains(event.relatedTarget); schedule(); });
+            document.addEventListener('visibilitychange', schedule);
+            if ('IntersectionObserver' in window) {
+                const observer = new IntersectionObserver(entries => { inView = entries[0].isIntersecting; schedule(); });
+                observer.observe(wrap);
+            }
+            reduce.addEventListener('change', event => { if (event.matches) paused = true; render(); });
+            function hashSelect() { const project = projects.find(item => item.id && '#' + item.id === location.hash); if (project) select(project); }
+            window.addEventListener('hashchange', hashSelect);
+            window.featuredStage = { refresh: render, stop: () => { stop(); paused = true; render(); } };
+            render(); hashSelect();
+        }
+        initFeaturedStage();
 
         // --- FALLBACK PARA IMAGENS ---
         document.querySelectorAll('img').forEach(img => {
-            if (img.closest('.project-frame-strip')) return;
             img.addEventListener('error', function errorHandler() {
                 img.removeEventListener('error', errorHandler);
                 const isVertical = this.classList.contains('video-thumbnail-reel');
@@ -3714,9 +3997,14 @@ en: {
         });
 
         // --- HOVER PREVIEW + CLICK LIGHTBOX ---
+        let activeHoverPlayer = null;
         wrappers.forEach(wrapper => {
             const videoId = wrapper.getAttribute('data-video-id');
             if (!videoId) return;
+            const previewAspect = wrapper.dataset.portrait === 'true' || wrapper.closest('.vertical-card') ? 9 / 16 : 16 / 9;
+            const project = wrapper.closest('.project-accordion, .project-card-accordion');
+            const customCard = project || wrapper.closest('#reelsGrid .vertical-card');
+            if (project) wrapper = project.querySelector('summary');
 
             const thumbnail = wrapper.querySelector('img[alt]');
             const projectName = thumbnail ? thumbnail.alt : 'vídeo';
@@ -3725,33 +4013,51 @@ en: {
             wrapper.setAttribute('aria-label', `Assistir: ${projectName}`);
 
             let hoverTimeout;
+            const collection = wrapper.closest('#more-work');
+            collection?.addEventListener('toggle', () => {
+                if (!collection.open) { clearTimeout(hoverTimeout); wrapper.querySelector('.hover-player')?.remove(); wrapper.classList.remove('loading-preview'); }
+            });
 
             wrapper.addEventListener('mouseenter', () => {
-                if (!canHoverPreview || isModalOpen) return;
+                if (!canHoverPreview || isModalOpen || project?.dataset.playerActive === 'true') return;
+                clearTimeout(hoverTimeout);
                 hoverTimeout = setTimeout(() => {
-                    if (isModalOpen || wrapper.querySelector('.hover-player')) return;
+                    if (isModalOpen || customCard?.hidden || project?.dataset.playerActive === 'true' || (collection && !collection.open) || wrapper.querySelector('.hover-player')) return;
                     
                     wrapper.classList.add('loading-preview');
 
-                    document.querySelectorAll('.hover-player').forEach(player => {
-                        if (player.closest('.video-wrapper') !== wrapper) player.remove();
-                    });
+                    if (activeHoverPlayer) {
+                        activeHoverPlayer.remove();
+                        activeHoverPlayer = null;
+                    }
 
                     const hoverIframe = document.createElement('iframe');
-                    hoverIframe.src = `https://play.gumlet.io/embed/${videoId}?autoplay=true&muted=true&loop=true&background=true`;
+                    hoverIframe.src = `https://play.gumlet.io/embed/${videoId}?autoplay=true&muted=true&loop=true&background=true&fit=cover`;
                     hoverIframe.className = "hover-player";
                     hoverIframe.style.position = "absolute";
                     hoverIframe.style.top = "0";
                     hoverIframe.style.left = "0";
                     hoverIframe.style.width = "100%";
                     hoverIframe.style.height = "100%";
+                    if (customCard) {
+                        // Cover the whole card even when its aspect differs from the video.
+                        const width = wrapper.clientWidth;
+                        const height = wrapper.clientHeight;
+                        hoverIframe.style.width = Math.max(width, height * previewAspect) + 'px';
+                        hoverIframe.style.height = Math.max(height, width / previewAspect) + 'px';
+                        hoverIframe.style.top = '50%';
+                        hoverIframe.style.left = '50%';
+                        hoverIframe.style.transform = 'translate(-50%, -50%)';
+                    }
+                    hoverIframe.style.background = '#080a12';
                     hoverIframe.style.border = "none";
-                    hoverIframe.style.zIndex = "3";
+                    hoverIframe.style.zIndex = "1";
                     hoverIframe.style.pointerEvents = "none";
                     hoverIframe.style.opacity = "0";
                     hoverIframe.style.transition = "opacity 0.4s ease-in-out";
                     hoverIframe.setAttribute('allow', 'autoplay');
                     wrapper.appendChild(hoverIframe);
+                    activeHoverPlayer = hoverIframe;
                     
                     hoverIframe.addEventListener('load', () => {
                         hoverIframe.style.opacity = "1";
@@ -3763,10 +4069,14 @@ en: {
             wrapper.addEventListener('mouseleave', () => {
                 clearTimeout(hoverTimeout);
                 const hoverPlayer = wrapper.querySelector('.hover-player');
-                if (hoverPlayer) hoverPlayer.remove();
+                if (hoverPlayer) {
+                    hoverPlayer.remove();
+                    if (activeHoverPlayer === hoverPlayer) activeHoverPlayer = null;
+                }
                 wrapper.classList.remove('loading-preview');
             });
 
+            if (customCard) return; // Existing summary/Reels handlers own click and keyboard activation.
             wrapper.addEventListener('keydown', event => {
                 if (event.key === 'Enter' || event.key === ' ') {
                     event.preventDefault();
@@ -3786,7 +4096,7 @@ en: {
         function resetLightboxVideos() {
             lightboxVideos = Array.from(wrappers, wrapper => ({
                 wrapper, id: wrapper.getAttribute('data-video-id'),
-                portrait: Boolean(wrapper.closest('.reels-grid'))
+                portrait: Boolean((wrapper.closest?.('.reels-grid')) || wrapper.dataset?.portrait === 'true')
             }));
         }
 
@@ -3802,6 +4112,8 @@ en: {
 
         function openPortfolioVideo(index) {
             if (index < 0 || index >= lightboxVideos.length) return;
+            window.featuredStage?.stop();
+            removeProjectAccordionPlayer();
             activeVideoIndex = index;
             const video = lightboxVideos[index];
             activeVideoWrapper = video.wrapper;
